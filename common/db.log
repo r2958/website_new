@@ -1,0 +1,569 @@
+Mon, 18 Aug 2014 10:35:08 +0800
+Page: ibscontrols/users/logout.php
+Database: andrew
+Query: SELECT data FROM sessions WHERE id = 'bf985704c0ce7f00addaed3094b35e94'
+Seconds: 0.00028
+Rows Found: 1
+Rows Affected: 1
+
+
+Mon, 18 Aug 2014 10:35:08 +0800
+Page: ibscontrols/users/logout.php
+Database: andrew
+Query: SELECT * FROM site_settings WHERE id = 1
+Seconds: 0.00017
+Rows Found: 1
+Rows Affected: 1
+
+
+Mon, 18 Aug 2014 10:35:08 +0800
+Page: ibscontrols/users/logout.php
+Database: andrew
+Query: SELECT
+				SUM(products_attributes.AttributePrice * cart_items.Qty) as Subtotal,
+				SUM(products_attributes.ShippingPrice * cart_items.Qty) as S_Price,
+				SUM(products_attributes.ShippingWeight * cart_items.Qty) as S_Weight,
+				SUM(products_attributes.ShippingLength * cart_items.Qty) as S_Length,
+				SUM(products_attributes.ShippingWidth * cart_items.Qty) as S_Width,
+				SUM(products_attributes.ShippingHeight * cart_items.Qty) as S_Height,
+				SUM(cart_items.Qty) as Quantity
+			FROM products, products_attributes, cart_items
+			WHERE
+				cart_items.SessionID = 'bf985704c0ce7f00addaed3094b35e94' AND
+				products.ProductID = cart_items.ProductID AND
+				products.ProductID = products_attributes.ProductID AND
+				products_attributes.AttributeID = cart_items.AttributeID
+			GROUP BY SessionID
+Seconds: 0.00009
+Rows Found: 0
+Rows Affected: 0
+
+
+Mon, 18 Aug 2014 10:35:08 +0800
+Page: ibscontrols/users/logout.php
+Database: andrew
+Query: SELECT * FROM taxes_countries WHERE Code = ''
+Seconds: 0.00007
+Rows Found: 0
+Rows Affected: 0
+
+
+Mon, 18 Aug 2014 10:35:08 +0800
+Page: ibscontrols/users/logout.php
+Database: andrew
+Query: REPLACE INTO sessions SET id = 'bf985704c0ce7f00addaed3094b35e94', lastaccess = NOW(),  data = 'UPSChoice|s:3:\"GND\";'
+Seconds: 0.00026
+Rows Found: 
+Rows Affected: 2
+
+
+Mon, 18 Aug 2014 10:35:08 +0800
+Page: ibscontrols/users/logout.php
+Database: andrew
+Query: SELECT id FROM sessions WHERE lastaccess < DATE_SUB(NOW(), INTERVAL 3600 SECOND)
+Seconds: 0.00021
+Rows Found: 0
+Rows Affected: 0
+
+
+Mon, 18 Aug 2014 10:42:10 +0800
+Page: ibscontrols/
+Database: andrew
+Query: SELECT data FROM sessions WHERE id = 'bf985704c0ce7f00addaed3094b35e94'
+Seconds: 0.00023
+Rows Found: 0
+Rows Affected: 0
+
+
+Mon, 18 Aug 2014 10:42:10 +0800
+Page: ibscontrols/
+Database: andrew
+Query: SELECT * FROM site_settings WHERE id = 1
+Seconds: 0.00018
+Rows Found: 1
+Rows Affected: 1
+
+
+Mon, 18 Aug 2014 10:42:10 +0800
+Page: ibscontrols/
+Database: andrew
+Query: SELECT
+				SUM(products_attributes.AttributePrice * cart_items.Qty) as Subtotal,
+				SUM(products_attributes.ShippingPrice * cart_items.Qty) as S_Price,
+				SUM(products_attributes.ShippingWeight * cart_items.Qty) as S_Weight,
+				SUM(products_attributes.ShippingLength * cart_items.Qty) as S_Length,
+				SUM(products_attributes.ShippingWidth * cart_items.Qty) as S_Width,
+				SUM(products_attributes.ShippingHeight * cart_items.Qty) as S_Height,
+				SUM(cart_items.Qty) as Quantity
+			FROM products, products_attributes, cart_items
+			WHERE
+				cart_items.SessionID = 'bf985704c0ce7f00addaed3094b35e94' AND
+				products.ProductID = cart_items.ProductID AND
+				products.ProductID = products_attributes.ProductID AND
+				products_attributes.AttributeID = cart_items.AttributeID
+			GROUP BY SessionID
+Seconds: 0.00011
+Rows Found: 0
+Rows Affected: 0
+
+
+Mon, 18 Aug 2014 10:42:10 +0800
+Page: ibscontrols/
+Database: andrew
+Query: SELECT * FROM taxes_countries WHERE Code = ''
+Seconds: 0.00010
+Rows Found: 0
+Rows Affected: 0
+
+
+Mon, 18 Aug 2014 10:42:10 +0800
+Page: ibscontrols/
+Database: andrew
+Query: SELECT * FROM website_text WHERE PageName = 'index.php'
+Seconds: 0.00009
+Rows Found: 1
+Rows Affected: 1
+
+
+Mon, 18 Aug 2014 10:42:10 +0800
+Page: ibscontrols/
+Database: andrew
+Query: SELECT CategoryID, CategoryName, CategoryDescription FROM categories WHERE ParentID = 0 AND Display = 1 AND InMenu = 1 ORDER BY MenuOrder, CategoryName
+Seconds: 0.00040
+Rows Found: 9
+Rows Affected: 9
+
+
+Mon, 18 Aug 2014 10:42:10 +0800
+Page: ibscontrols/
+Database: andrew
+Query: SELECT CategoryID FROM categories WHERE ParentID = 1 AND InMenu = 1
+Seconds: 0.00008
+Rows Found: 0
+Rows Affected: 0
+
+
+Mon, 18 Aug 2014 10:42:10 +0800
+Page: ibscontrols/
+Database: andrew
+Query: SELECT CategoryID FROM categories WHERE ParentID = 2 AND InMenu = 1
+Seconds: 0.00007
+Rows Found: 0
+Rows Affected: 0
+
+
+Mon, 18 Aug 2014 10:42:10 +0800
+Page: ibscontrols/
+Database: andrew
+Query: SELECT CategoryID FROM categories WHERE ParentID = 3 AND InMenu = 1
+Seconds: 0.00008
+Rows Found: 0
+Rows Affected: 0
+
+
+Mon, 18 Aug 2014 10:42:10 +0800
+Page: ibscontrols/
+Database: andrew
+Query: SELECT CategoryID FROM categories WHERE ParentID = 4 AND InMenu = 1
+Seconds: 0.00013
+Rows Found: 0
+Rows Affected: 0
+
+
+Mon, 18 Aug 2014 10:42:10 +0800
+Page: ibscontrols/
+Database: andrew
+Query: SELECT CategoryID FROM categories WHERE ParentID = 5 AND InMenu = 1
+Seconds: 0.00008
+Rows Found: 0
+Rows Affected: 0
+
+
+Mon, 18 Aug 2014 10:42:10 +0800
+Page: ibscontrols/
+Database: andrew
+Query: SELECT CategoryID FROM categories WHERE ParentID = 6 AND InMenu = 1
+Seconds: 0.00018
+Rows Found: 0
+Rows Affected: 0
+
+
+Mon, 18 Aug 2014 10:42:10 +0800
+Page: ibscontrols/
+Database: andrew
+Query: SELECT CategoryID FROM categories WHERE ParentID = 7 AND InMenu = 1
+Seconds: 0.00007
+Rows Found: 0
+Rows Affected: 0
+
+
+Mon, 18 Aug 2014 10:42:10 +0800
+Page: ibscontrols/
+Database: andrew
+Query: SELECT CategoryID FROM categories WHERE ParentID = 8 AND InMenu = 1
+Seconds: 0.00007
+Rows Found: 0
+Rows Affected: 0
+
+
+Mon, 18 Aug 2014 10:42:10 +0800
+Page: ibscontrols/
+Database: andrew
+Query: SELECT CategoryID FROM categories WHERE ParentID = 9 AND InMenu = 1
+Seconds: 0.00017
+Rows Found: 0
+Rows Affected: 0
+
+
+Mon, 18 Aug 2014 10:42:10 +0800
+Page: ibscontrols/
+Database: andrew
+Query: REPLACE INTO sessions SET id = 'bf985704c0ce7f00addaed3094b35e94', lastaccess = NOW(),  data = 'UPSChoice|s:3:\"GND\";'
+Seconds: 0.00044
+Rows Found: 
+Rows Affected: 1
+
+
+Mon, 18 Aug 2014 10:42:10 +0800
+Page: ibscontrols/
+Database: andrew
+Query: SELECT id FROM sessions WHERE lastaccess < DATE_SUB(NOW(), INTERVAL 3600 SECOND)
+Seconds: 0.00021
+Rows Found: 0
+Rows Affected: 0
+
+
+Mon, 18 Aug 2014 10:57:21 +0800
+Page: ibscontrols/
+Database: andrew
+Query: SELECT data FROM sessions WHERE id = 'bf985704c0ce7f00addaed3094b35e94'
+Seconds: 0.00015
+Rows Found: 1
+Rows Affected: 1
+
+
+Mon, 18 Aug 2014 10:57:21 +0800
+Page: ibscontrols/
+Database: andrew
+Query: SELECT * FROM site_settings WHERE id = 1
+Seconds: 0.00009
+Rows Found: 1
+Rows Affected: 1
+
+
+Mon, 18 Aug 2014 10:57:21 +0800
+Page: ibscontrols/
+Database: andrew
+Query: SELECT
+				SUM(products_attributes.AttributePrice * cart_items.Qty) as Subtotal,
+				SUM(products_attributes.ShippingPrice * cart_items.Qty) as S_Price,
+				SUM(products_attributes.ShippingWeight * cart_items.Qty) as S_Weight,
+				SUM(products_attributes.ShippingLength * cart_items.Qty) as S_Length,
+				SUM(products_attributes.ShippingWidth * cart_items.Qty) as S_Width,
+				SUM(products_attributes.ShippingHeight * cart_items.Qty) as S_Height,
+				SUM(cart_items.Qty) as Quantity
+			FROM products, products_attributes, cart_items
+			WHERE
+				cart_items.SessionID = 'bf985704c0ce7f00addaed3094b35e94' AND
+				products.ProductID = cart_items.ProductID AND
+				products.ProductID = products_attributes.ProductID AND
+				products_attributes.AttributeID = cart_items.AttributeID
+			GROUP BY SessionID
+Seconds: 0.00004
+Rows Found: 0
+Rows Affected: 0
+
+
+Mon, 18 Aug 2014 10:57:21 +0800
+Page: ibscontrols/
+Database: andrew
+Query: SELECT * FROM taxes_countries WHERE Code = ''
+Seconds: 0.00004
+Rows Found: 0
+Rows Affected: 0
+
+
+Mon, 18 Aug 2014 10:57:21 +0800
+Page: ibscontrols/
+Database: andrew
+Query: SELECT * FROM website_text WHERE PageName = 'index.php'
+Seconds: 0.00004
+Rows Found: 1
+Rows Affected: 1
+
+
+Mon, 18 Aug 2014 10:57:21 +0800
+Page: ibscontrols/
+Database: andrew
+Query: SELECT CategoryID, CategoryName, CategoryDescription FROM categories WHERE ParentID = 0 AND Display = 1 AND InMenu = 1 ORDER BY MenuOrder, CategoryName
+Seconds: 0.00004
+Rows Found: 9
+Rows Affected: 9
+
+
+Mon, 18 Aug 2014 10:57:21 +0800
+Page: ibscontrols/
+Database: andrew
+Query: SELECT CategoryID FROM categories WHERE ParentID = 1 AND InMenu = 1
+Seconds: 0.00004
+Rows Found: 0
+Rows Affected: 0
+
+
+Mon, 18 Aug 2014 10:57:21 +0800
+Page: ibscontrols/
+Database: andrew
+Query: SELECT CategoryID FROM categories WHERE ParentID = 2 AND InMenu = 1
+Seconds: 0.00003
+Rows Found: 0
+Rows Affected: 0
+
+
+Mon, 18 Aug 2014 10:57:21 +0800
+Page: ibscontrols/
+Database: andrew
+Query: SELECT CategoryID FROM categories WHERE ParentID = 3 AND InMenu = 1
+Seconds: 0.00004
+Rows Found: 0
+Rows Affected: 0
+
+
+Mon, 18 Aug 2014 10:57:21 +0800
+Page: ibscontrols/
+Database: andrew
+Query: SELECT CategoryID FROM categories WHERE ParentID = 4 AND InMenu = 1
+Seconds: 0.00004
+Rows Found: 0
+Rows Affected: 0
+
+
+Mon, 18 Aug 2014 10:57:21 +0800
+Page: ibscontrols/
+Database: andrew
+Query: SELECT CategoryID FROM categories WHERE ParentID = 5 AND InMenu = 1
+Seconds: 0.00003
+Rows Found: 0
+Rows Affected: 0
+
+
+Mon, 18 Aug 2014 10:57:21 +0800
+Page: ibscontrols/
+Database: andrew
+Query: SELECT CategoryID FROM categories WHERE ParentID = 6 AND InMenu = 1
+Seconds: 0.00003
+Rows Found: 0
+Rows Affected: 0
+
+
+Mon, 18 Aug 2014 10:57:21 +0800
+Page: ibscontrols/
+Database: andrew
+Query: SELECT CategoryID FROM categories WHERE ParentID = 7 AND InMenu = 1
+Seconds: 0.00004
+Rows Found: 0
+Rows Affected: 0
+
+
+Mon, 18 Aug 2014 10:57:21 +0800
+Page: ibscontrols/
+Database: andrew
+Query: SELECT CategoryID FROM categories WHERE ParentID = 8 AND InMenu = 1
+Seconds: 0.00004
+Rows Found: 0
+Rows Affected: 0
+
+
+Mon, 18 Aug 2014 10:57:21 +0800
+Page: ibscontrols/
+Database: andrew
+Query: SELECT CategoryID FROM categories WHERE ParentID = 9 AND InMenu = 1
+Seconds: 0.00003
+Rows Found: 0
+Rows Affected: 0
+
+
+Mon, 18 Aug 2014 10:57:21 +0800
+Page: ibscontrols/
+Database: andrew
+Query: REPLACE INTO sessions SET id = 'bf985704c0ce7f00addaed3094b35e94', lastaccess = NOW(),  data = 'UPSChoice|s:3:\"GND\";'
+Seconds: 0.00014
+Rows Found: 
+Rows Affected: 2
+
+
+Mon, 18 Aug 2014 10:57:21 +0800
+Page: ibscontrols/
+Database: andrew
+Query: SELECT id FROM sessions WHERE lastaccess < DATE_SUB(NOW(), INTERVAL 3600 SECOND)
+Seconds: 0.00009
+Rows Found: 0
+Rows Affected: 0
+
+
+Mon, 18 Aug 2014 11:23:30 +0800
+Page: ibscontrols/
+Database: andrew
+Query: SELECT data FROM sessions WHERE id = 'bf985704c0ce7f00addaed3094b35e94'
+Seconds: 0.00017
+Rows Found: 1
+Rows Affected: 1
+
+
+Mon, 18 Aug 2014 11:23:30 +0800
+Page: ibscontrols/
+Database: andrew
+Query: SELECT * FROM site_settings WHERE id = 1
+Seconds: 0.00009
+Rows Found: 1
+Rows Affected: 1
+
+
+Mon, 18 Aug 2014 11:23:30 +0800
+Page: ibscontrols/
+Database: andrew
+Query: SELECT
+				SUM(products_attributes.AttributePrice * cart_items.Qty) as Subtotal,
+				SUM(products_attributes.ShippingPrice * cart_items.Qty) as S_Price,
+				SUM(products_attributes.ShippingWeight * cart_items.Qty) as S_Weight,
+				SUM(products_attributes.ShippingLength * cart_items.Qty) as S_Length,
+				SUM(products_attributes.ShippingWidth * cart_items.Qty) as S_Width,
+				SUM(products_attributes.ShippingHeight * cart_items.Qty) as S_Height,
+				SUM(cart_items.Qty) as Quantity
+			FROM products, products_attributes, cart_items
+			WHERE
+				cart_items.SessionID = 'bf985704c0ce7f00addaed3094b35e94' AND
+				products.ProductID = cart_items.ProductID AND
+				products.ProductID = products_attributes.ProductID AND
+				products_attributes.AttributeID = cart_items.AttributeID
+			GROUP BY SessionID
+Seconds: 0.00005
+Rows Found: 0
+Rows Affected: 0
+
+
+Mon, 18 Aug 2014 11:23:30 +0800
+Page: ibscontrols/
+Database: andrew
+Query: SELECT * FROM taxes_countries WHERE Code = ''
+Seconds: 0.00004
+Rows Found: 0
+Rows Affected: 0
+
+
+Mon, 18 Aug 2014 11:23:30 +0800
+Page: ibscontrols/
+Database: andrew
+Query: SELECT * FROM website_text WHERE PageName = 'index.php'
+Seconds: 0.00005
+Rows Found: 1
+Rows Affected: 1
+
+
+Mon, 18 Aug 2014 11:23:30 +0800
+Page: ibscontrols/
+Database: andrew
+Query: SELECT CategoryID, CategoryName, CategoryDescription FROM categories WHERE ParentID = 0 AND Display = 1 AND InMenu = 1 ORDER BY MenuOrder, CategoryName
+Seconds: 0.00004
+Rows Found: 9
+Rows Affected: 9
+
+
+Mon, 18 Aug 2014 11:23:30 +0800
+Page: ibscontrols/
+Database: andrew
+Query: SELECT CategoryID FROM categories WHERE ParentID = 1 AND InMenu = 1
+Seconds: 0.00003
+Rows Found: 0
+Rows Affected: 0
+
+
+Mon, 18 Aug 2014 11:23:30 +0800
+Page: ibscontrols/
+Database: andrew
+Query: SELECT CategoryID FROM categories WHERE ParentID = 2 AND InMenu = 1
+Seconds: 0.00004
+Rows Found: 0
+Rows Affected: 0
+
+
+Mon, 18 Aug 2014 11:23:30 +0800
+Page: ibscontrols/
+Database: andrew
+Query: SELECT CategoryID FROM categories WHERE ParentID = 3 AND InMenu = 1
+Seconds: 0.00004
+Rows Found: 0
+Rows Affected: 0
+
+
+Mon, 18 Aug 2014 11:23:30 +0800
+Page: ibscontrols/
+Database: andrew
+Query: SELECT CategoryID FROM categories WHERE ParentID = 4 AND InMenu = 1
+Seconds: 0.00004
+Rows Found: 0
+Rows Affected: 0
+
+
+Mon, 18 Aug 2014 11:23:30 +0800
+Page: ibscontrols/
+Database: andrew
+Query: SELECT CategoryID FROM categories WHERE ParentID = 5 AND InMenu = 1
+Seconds: 0.00003
+Rows Found: 0
+Rows Affected: 0
+
+
+Mon, 18 Aug 2014 11:23:30 +0800
+Page: ibscontrols/
+Database: andrew
+Query: SELECT CategoryID FROM categories WHERE ParentID = 6 AND InMenu = 1
+Seconds: 0.00003
+Rows Found: 0
+Rows Affected: 0
+
+
+Mon, 18 Aug 2014 11:23:30 +0800
+Page: ibscontrols/
+Database: andrew
+Query: SELECT CategoryID FROM categories WHERE ParentID = 7 AND InMenu = 1
+Seconds: 0.00003
+Rows Found: 0
+Rows Affected: 0
+
+
+Mon, 18 Aug 2014 11:23:30 +0800
+Page: ibscontrols/
+Database: andrew
+Query: SELECT CategoryID FROM categories WHERE ParentID = 8 AND InMenu = 1
+Seconds: 0.00003
+Rows Found: 0
+Rows Affected: 0
+
+
+Mon, 18 Aug 2014 11:23:30 +0800
+Page: ibscontrols/
+Database: andrew
+Query: SELECT CategoryID FROM categories WHERE ParentID = 9 AND InMenu = 1
+Seconds: 0.00003
+Rows Found: 0
+Rows Affected: 0
+
+
+Mon, 18 Aug 2014 11:23:30 +0800
+Page: ibscontrols/
+Database: andrew
+Query: REPLACE INTO sessions SET id = 'bf985704c0ce7f00addaed3094b35e94', lastaccess = NOW(),  data = 'UPSChoice|s:3:\"GND\";'
+Seconds: 0.00014
+Rows Found: 
+Rows Affected: 2
+
+
+Mon, 18 Aug 2014 11:23:30 +0800
+Page: ibscontrols/
+Database: andrew
+Query: SELECT id FROM sessions WHERE lastaccess < DATE_SUB(NOW(), INTERVAL 3600 SECOND)
+Seconds: 0.00010
+Rows Found: 0
+Rows Affected: 0
+
+

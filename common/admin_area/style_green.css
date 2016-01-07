@@ -1,0 +1,10 @@
+body { 
+	background: url(/common/admin_area/images/background_green.gif) fixed; 
+}
+
+a { 
+	color: #0B8F1D;
+}
+a:hover { 
+	color: #0B8F1D;
+}

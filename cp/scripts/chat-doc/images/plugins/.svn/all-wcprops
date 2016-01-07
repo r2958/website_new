@@ -1,0 +1,161 @@
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/Nikto_2/!svn/ver/67/trunk/plugins
+END
+LW2.pm
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/Nikto_2/!svn/ver/41/trunk/plugins/LW2.pm
+END
+nikto_user_enum_cgiwrap.plugin
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/Nikto_2/!svn/ver/41/trunk/plugins/nikto_user_enum_cgiwrap.plugin
+END
+nikto_single.plugin
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/Nikto_2/!svn/ver/41/trunk/plugins/nikto_single.plugin
+END
+db_404_strings
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/Nikto_2/!svn/ver/41/trunk/plugins/db_404_strings
+END
+nikto_favicon.plugin
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/Nikto_2/!svn/ver/41/trunk/plugins/nikto_favicon.plugin
+END
+nikto_apache_expect_xss.plugin
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/Nikto_2/!svn/ver/41/trunk/plugins/nikto_apache_expect_xss.plugin
+END
+db_realms
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/Nikto_2/!svn/ver/41/trunk/plugins/db_realms
+END
+nikto_core.plugin
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/Nikto_2/!svn/ver/67/trunk/plugins/nikto_core.plugin
+END
+db_favicon
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/Nikto_2/!svn/ver/58/trunk/plugins/db_favicon
+END
+nikto_passfiles.plugin
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/Nikto_2/!svn/ver/41/trunk/plugins/nikto_passfiles.plugin
+END
+nikto_httpoptions.plugin
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/Nikto_2/!svn/ver/44/trunk/plugins/nikto_httpoptions.plugin
+END
+nikto_put_del_test.plugin
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/Nikto_2/!svn/ver/41/trunk/plugins/nikto_put_del_test.plugin
+END
+nikto_reports.plugin
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/Nikto_2/!svn/ver/56/trunk/plugins/nikto_reports.plugin
+END
+nikto_mutate.plugin
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/Nikto_2/!svn/ver/41/trunk/plugins/nikto_mutate.plugin
+END
+nikto_cgi.plugin
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/Nikto_2/!svn/ver/54/trunk/plugins/nikto_cgi.plugin
+END
+nikto_apacheusers.plugin
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/Nikto_2/!svn/ver/41/trunk/plugins/nikto_apacheusers.plugin
+END
+db_server_msgs
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/Nikto_2/!svn/ver/41/trunk/plugins/db_server_msgs
+END
+nikto_user_enum_apache.plugin
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/Nikto_2/!svn/ver/47/trunk/plugins/nikto_user_enum_apache.plugin
+END
+db_tests
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/Nikto_2/!svn/ver/45/trunk/plugins/db_tests
+END
+nikto_robots.plugin
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/Nikto_2/!svn/ver/54/trunk/plugins/nikto_robots.plugin
+END
+nikto_msgs.plugin
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/Nikto_2/!svn/ver/41/trunk/plugins/nikto_msgs.plugin
+END
+nikto_outdated.plugin
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/Nikto_2/!svn/ver/41/trunk/plugins/nikto_outdated.plugin
+END
+nikto_plugin_order.txt
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/Nikto_2/!svn/ver/65/trunk/plugins/nikto_plugin_order.txt
+END
+nikto_headers.plugin
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/Nikto_2/!svn/ver/56/trunk/plugins/nikto_headers.plugin
+END
+db_variables
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/Nikto_2/!svn/ver/47/trunk/plugins/db_variables
+END
+db_outdated
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/Nikto_2/!svn/ver/64/trunk/plugins/db_outdated
+END

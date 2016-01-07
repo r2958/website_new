@@ -1,0 +1,57 @@
+#products { 
+	width:616px; 
+	height:364px; 
+	margin:0 auto; 
+	padding:15px 0 0 15px; 
+	border:0px;
+	list-style:none;
+} 
+#products li { 
+	float:left; 
+	margin:0 12px 12px 0; 
+	display:inline;
+}
+#products li a { 
+	display:block; 
+	width:142px; 
+	height:170px; 
+	cursor:hand; 
+	text-decoration:none; 
+	text-align:center; 
+	overflow:hidden;
+}
+#products li a img { 
+	width:120px; 
+	height:120px; 
+	border:1px solid #ccc;
+}
+#products li a strong { 
+	display:block; 
+	width:142px; 
+	height:30px; 
+	line-height:15px;
+	font-weight:100; 
+	color:#333; 
+	overflow:hidden;
+}
+#products li a span { 
+	display:block; 
+	width:142px; 
+	height:20px; 
+	line-height:20px; 
+	color:#666;
+}
+#products li a span em { 
+	font-style:normal; 
+	font-weight:800; 
+	color:#f60;
+}
+#products li a:hover img { 
+	border-color:#333;
+}
+#products li a:hover strong { 
+	color:#03c;
+}
+#products li a:hover span em { 
+	color:#f00;
+}

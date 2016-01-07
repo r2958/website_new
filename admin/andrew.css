@@ -1,0 +1,2852 @@
+
+/* Tag level stuff */
+BODY {
+	font-family : Arial, Helvetica, sans-serif;
+	font-size : 11px;
+	font-weight : normal;
+	color : #333333;
+	margin-top : 8px;
+	background : #fff;
+	margin-left : 0;
+	font-family : Arial, Helvetica, sans-serif;
+	text-decoration : none;
+}
+
+TD {
+	vertical-align :top;
+
+}
+
+
+A, A:link, A:visited
+{
+	text-decoration: none;
+	background-color :transparent;
+	color : #DE0031;
+	font-size : 11px;
+	
+}
+
+A:hover
+{
+	text-decoration: underline;
+}
+
+
+STRONG, B
+{
+	font-weight: bold;
+	font-size: 8pt;
+	margin: 0px;
+	font-family : Verdana, Arial, Helvetica, sans-serif;
+}
+
+.imageWrapLeft
+{
+	FLOAT: left; 
+	MARGIN-BOTTOM: 10px; 
+	MARGIN-RIGHT: 10px; 
+}
+
+
+
+
+
+/*--Strategy Guide Classes --*/	
+
+	
+/*-- 
+	C = Colors(Hex Codes)
+	FG = Fonts (Graphic)
+	FH = Fonts (HTML)	   --*/
+
+/*--Colors--*/
+.C1 {	background-color: #DE0031; }
+.C7 {	background-color: #D6D7D6; }
+.C8 {	color: #D6D7D6; }
+.C10 {	background-color: #EDEDEF; }
+.C9 {	background-color: #E2E2E2; }
+.C13 {	background-color: #7C7C7C; }
+.C15 {	background-color: #E8E8E8; }
+.C16 {	background-color: #8F8F8F; }
+
+/*--Fonts (Graphics)--*/
+
+.FG8, .FG8:link, .FG8:visited
+{
+	font-size : 11px;
+	font-weight : bold;
+	font-family : Arial, Helvetica, sans-serif;
+	color : #7C7C7C;
+}
+
+.FG11
+{
+	font-family : Arial, Helvetica, sans-serif;
+	font-size : 20pt;
+	font-weight : bold;
+	color : #FFFFFF;
+}
+
+.FG15
+{
+	font-family : Arial, Helvetica, sans-serif;
+	font-size : 11pt;
+	font-weight : bold;
+	color : #7C7C7C;
+}
+
+
+
+.FG22, .FG22:link, .FG22:visited
+{	
+	font-family : Arial, Helvetica, sans-serif;
+	font-size : 12px;
+	font-weight : bold;
+	color : #DE0031;
+}
+
+/*--END Fonts (Graphics)--*/
+
+
+
+/*--Fonts (HTML)--*/
+
+.FH1, .FH1:link, .FH1:visited
+{
+	font-family : Arial, Helvetica, sans-serif;
+	font-size : 11pt;
+	font-weight : normal;
+	color : #FFFFFF;
+}
+
+.FH5
+{	font-family : Arial, Helvetica, sans-serif;
+	font-size : 11px;
+	font-weight : normal;
+	color : #333333;
+}
+
+.FH5Black, .FH5Black:link, .FH5Black:visited
+{	font-family : Arial, Helvetica, sans-serif;
+	font-size : 11px;
+	font-weight : normal;
+	color : #333333;
+}
+	
+.FH6
+{	
+	font-family : Arial, Helvetica, sans-serif;
+	font-size :11px;
+	text-decoration : none;
+	color : #333333;
+}
+
+
+.FH7, .FH7:link, .FH7:visited, .FH7:hover
+{	font-family : Arial, Helvetica, sans-serif;
+	font-size : 11pt;
+	font-weight : normal;
+	color : #365B82;
+}
+
+.FH8, .FH8:link, .FH8:visited
+{
+	font-size : 12px;
+	font-weight : bold;
+	font-family : Arial, Helvetica, sans-serif;
+	color : #7C7C7C;
+}
+
+.FH11, .FH11:link, .FH11:visited, .FH11:hover 
+{	font-family : Verdana, Helvetica, sans-serif;
+	font-size : 11pt;
+	font-weight : bold;
+	color : #37A164;
+}
+
+.FH22, FH22:link, FH22:visited, FH22:hover
+{	font-family : Arial, Helvetica, sans-serif;
+	font-size : 12px;
+	font-weight : bold;
+	color : #DE0031;
+	text-decoration : none;
+}
+
+.FH99
+{
+	font-family : Arial, Helvetica, sans-serif;
+	font-size : 11pt;
+	font-weight : bold;
+	color : White;
+	text-decoration : none;
+}
+.FH98
+{
+	font-family : Arial, Helvetica, sans-serif;
+	font-size : 11pt;
+	font-weight :normal;
+	color : White;
+	text-decoration : none;
+}
+
+
+.C15Header
+{
+	background-color: #E8E8E8;
+	width: 760px;
+	height: 5px;
+}
+/*--END Fonts (HTML)--*/
+
+
+/* ------------------------------------------------------------------------- */
+/* below here is stuff from old stylesheets to get the navigation controls working. */
+
+
+/*---------------------------------------------------------------------------
+FROM main.css
+---------------------------------------------------------------------------*/
+
+ADDRESS, BLOCKQUOTE, BODY, CAPTION, CENTER, DD, DIR, DIV, DL, 
+DT, FORM, H1, H2, H3, H4, H5, H6, INPUT, MENU, OL, P, TD, TH,  LAYER , SELECT, 
+SPAN, TEXTAREA {
+	font-family : Arial, Helvetica, sans-serif;
+	font-size : 11px;
+	margin-top :0;
+	margin-bottom:0;
+	margin-left :0;
+	margin-right :0;
+	text-decoration : none;
+		
+}
+
+/* Navs */
+P.nav1, P.nav3, P.nav3_act {
+	margin-left :10px;
+	margin-right :10px;
+	text-align :center;
+}
+P.nav2 {
+	margin-right :13px;
+}
+.nav2, A.nav2 A.nav2:link, A.nav2:visited,
+.nav3, A.nav3_off, A.nav3_off:link, A.nav3_off:visited,
+.nav3_on, A.nav3_on:link, A.nav3_on:visited, .nav3_act,
+.nav4, A.nav4_off, A.nav4_off:visited, A.nav3_on:hover, A.nav_on:hover,
+A.nav4_on:link, A.nav4_on:visited, .nav4_off, .nav4_on
+ {
+	font-size : 11px;
+	/*vertical-align : top;*/
+	padding-left : -5px;
+	text-decoration : none;
+}
+A.nav1:link, A.nav1:visited, .nav1 {
+	font-size : 11px;
+}
+/* Search */
+DIV.search, DIV.login {
+	margin-top :7px;
+	margin-left : 10px;
+	margin-bottom :3px;
+}
+/*DIV.search {
+	margin-top :11px;
+	margin-left : 10px;
+}
+*/
+
+/*---------------------------------------------------------------------------
+FROM HoneywellECC.css
+---------------------------------------------------------------------------*/
+
+
+#menu1, #menu2, #menu3, #menu4, #menu5, #menu6, #menu6, #menu7, #menu8 {
+		position :absolute;
+		visibility :hidden;
+	}
+/* Headers */
+H1 {
+	margin-top : 9px;
+	margin-bottom : 5px;
+	margin-left : 6px;
+}
+H1.focus {
+	margin-top : 7px;
+	margin-bottom : 4px;
+	margin-left : 9px;	
+}
+H2 {
+	margin-bottom : 1px;
+}
+
+H4 {
+	font-size : 11px;
+	font-weight : bold;
+	margin-top :8;
+	margin-right :6px;
+	margin-left : 6px;
+	margin-bottom :8px;
+}
+H4 A.h6link:link, H4 A.h6link:visited {
+	font-size : 11px;
+	font-weight : bold;
+}
+A.h4link:link, A.h4link:hover, A.h4link:visited {
+	font-size : 11px;
+	font-weight : bold;
+}	
+H5 {
+	margin-top : 8;
+	margin-left :6;
+	margin-bottom :3;
+	
+}
+H6 {
+	font-family : Verdana, Arial, Helvetica, sans-serif;
+	font-weight : bold;
+	margin-right :3px;
+	margin-top :7;
+}
+.h6link, A.h6link:link, A.h6link:visited, A.h6link:hover, 
+A.search:link, A.search:visited, A.search:active, A.search {
+	font-family : Verdana, Arial, Helvetica, sans-serif;
+	font-weight : bold;
+	font-size : 11px;
+}
+H2.icon {
+	margin-top : 5px;
+	margin-left :0px;
+	margin-bottom :0px;
+}
+/* / Headers */
+
+
+DIV.newsmod {
+	margin-top :6px;
+	margin-bottom : 11px;
+}
+P.casestudy, TABLE.casestudy {
+	font-family : Verdana, Arial, Helvetica, sans-serif;
+	font-size : 11px;
+	margin-top :9px;
+	margin-right : 13px;
+	margin-left:10px;
+}
+TD.casestudy {
+	vertical-align :top;
+}
+/* Navs */
+P.nav1, P.nav3, P.nav3_act {
+	margin-left :10px;
+	margin-right :10px;
+	text-align :center;
+}
+P.nav2 {
+	margin-right :13px;
+}
+.nav2, A.nav2 A.nav2:link, A.nav2:visited,
+.nav3, A.nav3_off, A.nav3_off:link, A.nav3_off:visited,
+.nav3_on, A.nav3_on:link, A.nav3_on:visited, .nav3_act,
+.nav4, A.nav4_off, A.nav4_off:visited, A.nav3_on:hover, A.nav_on:hover,
+A.nav4_on:link, A.nav4_on:visited, .nav4_off, .nav4_on
+ {
+	font-size : 11px;
+	/*vertical-align : top;*/
+	padding-left : -5px;
+	text-decoration : none;
+}
+A.nav1:link, A.nav1:visited, .nav1 {
+	font-size : 11px;
+}
+/* Search */
+DIV.search, DIV.login {
+	margin-top :7px;
+	margin-left : 10px;
+	margin-bottom :3px;
+}
+/*DIV.search {
+	margin-top :11px;
+	margin-left : 10px;
+}
+*/
+
+P.search {
+	font-family : Arial, Helvetica, sans-serif;
+	font-size : 11px;
+	margin-right :13px;
+	margin-bottom :17px;
+}
+TD.search {
+	vertical-align : middle;
+}
+SELECT.search, INPUT.search {
+	width :124px;
+	height :19px;
+	margin-right :4px;
+	margin-bottom :4px;
+	background-color :#fff;
+}
+SELECT.lang {
+	width :117px;
+	height :16px;
+	margin-top : 1px;
+}
+/* /Search */
+A.relatedlinks {
+	font-size :11px;
+}
+TD.bgnav1_off, TD.bgnav1_on, TD.bgnav1_act, P.nav1, TD.bgnav3_off, TD.bgnav3_on{
+	vertical-align : middle;
+}
+.marg9{
+	margin-top :9px;
+}
+.marg2v {
+	margin-top :2px;
+	margin-bottom :2px;
+}
+DIV.bdot {
+	margin-left : 1px;
+	margin-top :10px;
+}
+
+/* ids */
+
+#logo {
+	margin-left : 11px;
+}
+#fullstory {
+	margin-top :10px;
+	margin-left : 10px;
+	margin-bottom :0px;
+}
+.bgwhite {
+	background-color : #fff;
+} 
+
+#maincontent, #quicklinks, #relatedproducts, #honeywellcorp {
+	margin-top : 15px;
+}
+
+#artmaincontent A:hover, #maincontent A:hover, #prodmaincontent A:hover, #quicklinks A:hover, #relatedproducts A:hover, #honeywellcorp A:hover, .newsmod A:hover, .casestudyhead:hover, .utillinks:hover, A.h6link:hover {
+	text-decoration : underline;
+}
+
+#quicklinks {
+	margin-left :7px;
+}
+#quicklinks P {
+	margin-right :3;
+	line-height : 1.1;
+}
+P.featureprod {
+	margin-top :9px;
+	margin-left :6px;
+	margin-right : 1px;
+	margin-bottom :7px;
+	
+}
+#fprodbottom {
+	margin-bottom :17px;
+}
+P.ftxt {
+	font-family : Verdana, Arial, Helvetica, sans-serif;
+	margin-left : 6px;
+	margin-bottom :5px;
+	margin-top :0px;
+}
+.bgdot {
+	background : url(img/dot_gray_h.gif);
+}
+TD.utillinks {
+	text-align : left;
+}
+P.utillinks {
+	font-size :14px;
+	margin-bottom :8px;
+	width : 175px;
+}
+.utillinks, A.utillinks, A.utillinks:link, A.utillinks:visited, A.utillinks:active {
+	font-family : Arial, Helvetica, sans-serif;
+	font-size :11px;
+}
+P.indicon {
+	margin-top : 5px;
+}
+DIV.indmain {
+	margin-top :6px;
+	margin-bottom : 19px;
+}
+TD.footer, TD.vmid {
+	vertical-align :middle;
+}
+.marg16 {
+	margin-left :10px;
+	margin-right:5px;
+}
+.left16{
+	margin-left :16px;
+	margin-bottom: 11px;
+}
+IMG.b11{
+	margin-bottom: 11px;
+}
+#casestudybut {
+	position :absolute;
+	top : 232px;
+	left : 170px;
+	z-index : 2;
+}
+DIV.searchhdr {
+	margin-top : 2px;
+	margin-left : 3px;
+	margin-bottom: 5px;
+}
+DIV.loginhdr {
+	margin-top : 2px;
+	margin-left : 3px;
+	margin-bottom: 1px;
+
+}
+#logo {
+	margin-bottom :1px;
+}
+P.focus {
+	font-size :11px;
+}
+A.search, A.search:link, A.search:visited, A.search:hover, 
+A.login, A.login:link, A.login:visited, A.login:active  {
+	font-family : verdana, helvetica, arial, sans-serif;
+	font-weight :bold;
+}
+A.search:hover, A.login:hover, A.region:hover, .footer A:hover {
+	text-decoration : underline;
+}
+.margb3 {
+	margin-bottom :3px;
+}
+#logincb {
+	margin-left :-3px;
+}
+#loginheadimg {
+	margin-top:2px;
+}	
+
+#login2 {
+	margin-top:-1px;
+}
+TD.hlinks{
+	vertical-align : bottom;
+}
+#hlinks{
+	margin-bottom :4px;
+}
+SELECT.bizsearch {
+	width :160;
+}
+P.bizsearch {
+	margin-top :5px;
+	margin-bottom : 5px;
+}
+#otherbusiness {
+	margin-top :15px;
+}
+.intext {
+	margin-right : 12px;
+}
+.nearphoto {
+	margin-left :12px;
+}
+#artmaincontent, #artmaincontent2 {
+	margin-left : 20px;
+	width : 390px;
+}
+#prodmaincontent {
+	margin-left : 10px;
+	width : 400px;
+}
+#artmaincontent2, #artmaincontent {
+	margin-bottom :16px;
+}
+#artmaincontent H1, #prodmaincontent H1{
+	color :#737272;
+	font-size :16px;
+	margin-top :0px;
+	margin-left :0px;
+}
+#artmaincontent P {
+	margin-bottom :16px;
+}
+#artmaincontent H6 {
+	margin-top :6px;
+}
+TD.calltoaction {
+	vertical-align :bottom;
+}
+.calltoaction H6 {
+	margin-bottom :3px;
+	margin-right :0px;
+}
+.calltoaction H1 {
+	margin-bottom :1px;
+}
+SELECT.downdoc {
+	width : 415px;
+	margin-top : 9px;
+}
+DIV.downdoc {
+	margin-left : 20px;
+}
+.forminstr, .formarrow {
+	margin-left : 9px;
+	margin-top :8px;
+	margin-right :0px;
+	margin-bottom:20px;
+}
+.formarrow {
+	margin-left : 7px;
+}
+.rlnk, A.rlnk, A.rlnk:link, A.rlnk:hover, A.rlnk:visited {
+	font-family : verdana, helvetica, arial, sans-serif;
+	font-weight : bold;
+	color : e43733;
+}
+DIV.prods, P.prods, P.prodlist, DIV.prodlist {
+	margin-left : 8px;
+	margin-top :5px;
+	margin-bottom : 16px;
+}
+P.prods, P.prodlist {
+	width :288px;
+}
+
+P.prodlist, DIV.prodlist {
+	margin-left :0px;
+}
+IMG.prods {
+	margin-top :5px;
+	margin-bottom :16px;
+}
+.bggraydot {
+	background : url(/img/dot_gray_h.gif);
+}
+#docplus, #logplus {
+	display :none;
+}
+.casestudyhead, A.casestudyhead:link, A.casestudyhead:visited {
+	font-size :12px;
+	color :#fff;
+}
+.top2 {
+	margin-top :2;
+}
+#transimg {
+	margin-top:7;
+}
+#flag {
+	margin-top : 4;
+}
+
+.imageWrapLeft
+{
+	FLOAT: left; 
+	MARGIN-BOTTOM: 10px; 
+	MARGIN-RIGHT: 10px; 
+}
+
+.H4Text
+{
+	font-size : 11px;
+	font-weight : bold;
+	margin-top :8;
+	margin-right :6px;
+	
+	margin-bottom :8px;
+}
+
+.fprule {
+	background-color : #ededef;
+}
+/* Navs */
+.bgnav1_off {
+	background-color : #7c7c7c;
+}
+.bgnav1_act, TD.casestudy  {
+	background-color : #DE0031;
+}
+.bgnav1_on, .bgnav2_off {
+	background-color : #999;
+}
+
+.bgnav2_on {
+	background-color : #b5b5b5;
+}
+.bgnav3_off {
+	background-color : #E8E8E8;
+}
+.bgnav3_on {
+		background-color : #DE0031;
+}
+.bgnav4_off {
+		background-color : #E8E8E8;
+}
+.bgnav4_on {
+	background-color : #DE0031;
+}
+
+.bgnews {
+	background-color : #d3d3d6;
+}
+
+
+H6 A.h6gray11, H6 A.h6gray11:link, H6 A.h6gray11:visited, H6 A.h6gray11:hover {
+	font-size : 11px;
+	font-weight : bold;
+}
+
+H6 A.h6gray11mid, H6 A.h6gray11mid:link, H6 A.h6gray11mid:visited, H6 A.h6gray11mid:hover {
+	font-size : 11px;
+	font-weight : bold;
+	margin-left : 12px;
+
+}
+
+H6 A.H6Red11, H6 A.H6Red11:link, H6 A.H6Red11:visited, H6 A.H6Red11:hover 
+{	
+	font-size : 11px;
+	font-weight : bold;
+	color : Red;
+	margin-left : 12px;
+	margin-top : 0px;
+	margin-bottom : 0px;
+}
+
+A.Red11, A.Red11:link, A.Red11:visited, A.Red11:hover 
+{	
+	font-size : 11px;
+	font-weight : bold;
+	color : Red;
+	margin-left : 12px;
+	margin-top : 0px;
+	margin-bottom : 0px;
+}
+
+H6 A.H6Red11nl, H6 A.H6Red11nl:link, H6 A.H6Red11nl:visited, H6 A.H6Red11nl:hover 
+{	
+	font-size : 11px;
+	font-weight : bold;
+	color : Red;
+	margin-top : 0px;
+	margin-bottom : 0px;
+}
+ A.Red11nl,  A.Red11nl:link,  A.Red11nl:visited,  A.Red11nl:hover 
+{	
+	font-size : 11px;
+	font-weight : bold;
+	color : Red;
+	margin-top : 0px;
+	margin-bottom : 0px;
+}
+
+		.learnmore {
+			margin-top : 0px;
+			margin-right : 4px;
+			margin-bottom : 2px;
+		}
+		#featureprod {
+			margin-top : 10px;
+		}
+		.conscenter_prods, TABLE.conscenter_learn {
+			margin-left : 12px;
+			margin-right :8px;
+			margin-top : 6px;
+			margin-bottom :0;
+		}
+		TABLE.conscenter_learn {
+			margin-bottom :0;
+			margin-top :1px;
+		}
+		#conscenter H3 {
+			margin-left : 9px;
+		}
+		#conscenter .newsmod {
+			margin-top :10px;
+		}
+		#see_all {
+			margin-bottom: 15;
+		}
+		#rightcol IMG.prods	{
+			border : 1px solid #d3d3d6;
+			margin-bottom :5px;
+		}
+		#rightcol P.prods {
+			width : 102;
+		}
+		TABLE.fsupport {
+			margin-top : 14px;
+		}	
+		.learnmore {
+			margin-top : 0px;
+			margin-right : 4px;
+			margin-bottom : 2px;
+		}
+		#featureprod {
+			margin-top : 10px;
+		}
+		.conscenter_prods, TABLE.conscenter_learn {
+			margin-left : 12px;
+			margin-right :8px;
+			margin-top : 6px;
+			margin-bottom :0;
+		}
+		TABLE.conscenter_learn {
+			margin-bottom :0;
+			margin-top :1px;
+		}
+		#conscenter H3 {
+			margin-left : 9px;
+		}
+		#conscenter .newsmod {
+			margin-top :10px;
+		}
+		#see_all {
+			margin-bottom: 15;
+		}
+		#rightcol IMG.prods	{
+			border : 1px solid #d3d3d6;
+			margin-bottom :5px;
+		}
+		#rightcol P.prods {
+			width : 102;
+		}
+		TABLE.fsupport {
+			margin-top : 14px;
+		}	
+#menu1, #menu2, #menu3, #menu4, #menu5, #menu6, #menu6, #menu7, #menu8 {
+		position :absolute;
+		visibility :hidden;
+	}
+/* Headers */
+H1 {
+	margin-top : 9px;
+	margin-bottom : 5px;
+	margin-left : 6px;
+}
+H1.focus {
+	margin-top : 7px;
+	margin-bottom : 4px;
+	margin-left : 9px;	
+}
+H2 {
+	margin-bottom : 1px;
+}
+
+H4 {
+	font-size : 11px;
+	font-weight : bold;
+	margin-top :8;
+	margin-right :6px;
+	margin-left : 6px;
+	margin-bottom :8px;
+}
+H4 A.h6link:link, H4 A.h6link:visited {
+	font-size : 11px;
+	font-weight : bold;
+}
+A.h4link:link, A.h4link:hover, A.h4link:visited {
+	font-size : 11px;
+	font-weight : bold;
+}	
+H5 {
+	margin-top : 8;
+	margin-left :6;
+	margin-bottom :3;
+	
+}
+H6 {
+	font-family : Verdana, Arial, Helvetica, sans-serif;
+	font-weight : bold;
+	margin-right :3px;
+	margin-top :7;
+}
+.h6link, A.h6link:link, A.h6link:visited, A.h6link:hover, 
+A.search:link, A.search:visited, A.search:active, A.search {
+	font-family : Verdana, Arial, Helvetica, sans-serif;
+	font-weight : bold;
+}
+H2.icon {
+	margin-top : 5px;
+	margin-left :0px;
+	margin-bottom :0px;
+}
+/* / Headers */
+
+
+DIV.newsmod {
+	margin-top :6px;
+	margin-bottom : 11px;
+}
+P.casestudy, TABLE.casestudy {
+	font-family : Verdana, Arial, Helvetica, sans-serif;
+	font-size : 11px;
+	margin-top :9px;
+	margin-right : 13px;
+	margin-left:10px;
+}
+TD.casestudy {
+	vertical-align :top;
+}
+/* Navs */
+P.nav1, P.nav3, P.nav3_act {
+	margin-left :10px;
+	margin-right :10px;
+	text-align :center;
+}
+P.nav2 {
+	margin-right :13px;
+}
+.nav2, A.nav2 A.nav2:link, A.nav2:visited,
+.nav3, A.nav3_off, A.nav3_off:link, A.nav3_off:visited,
+.nav3_on, A.nav3_on:link, A.nav3_on:visited, .nav3_act,
+.nav4, A.nav4_off, A.nav4_off:visited, A.nav3_on:hover, A.nav_on:hover,
+A.nav4_on:link, A.nav4_on:visited, .nav4_off, .nav4_on
+ {
+	font-size : 11px;
+	/*vertical-align : top;*/
+	padding-left : -5px;
+	text-decoration : none;
+}
+A.nav1:link, A.nav1:visited, .nav1 {
+	font-size : 11px;
+}
+/* Search */
+DIV.search, DIV.login {
+	margin-top :7px;
+	margin-left : 10px;
+	margin-bottom :3px;
+}
+/*DIV.search {
+	margin-top :11px;
+	margin-left : 10px;
+}
+*/
+
+P.search {
+	font-family : Arial, Helvetica, sans-serif;
+	font-size : 11px;
+	margin-right :13px;
+	margin-bottom :17px;
+}
+TD.search {
+	vertical-align : middle;
+}
+SELECT.search, INPUT.search {
+	width :124px;
+	height :19px;
+	margin-right :4px;
+	margin-bottom :4px;
+	background-color :#fff;
+}
+SELECT.lang {
+	width :117px;
+	height :16px;
+	margin-top : 1px;
+}
+/* /Search */
+A.relatedlinks {
+	font-size :11px;
+}
+TD.bgnav1_off, TD.bgnav1_on, TD.bgnav1_act, P.nav1, TD.bgnav3_off, TD.bgnav3_on{
+	vertical-align : middle;
+}
+.marg9{
+	margin-top :9px;
+}
+.marg2v {
+	margin-top :2px;
+	margin-bottom :2px;
+}
+DIV.bdot {
+	margin-left : 1px;
+	margin-top :10px;
+}
+
+/* ids */
+
+#logo {
+	margin-left : 11px;
+}
+#fullstory {
+	margin-top :10px;
+	margin-left : 10px;
+	margin-bottom :0px;
+}
+.bgwhite {
+	background-color : #fff;
+} 
+
+#maincontent, #quicklinks, #relatedproducts, #honeywellcorp {
+	margin-top : 15px;
+}
+
+#artmaincontent A:hover, #maincontent A:hover, #prodmaincontent A:hover, #quicklinks A:hover, #relatedproducts A:hover, #honeywellcorp A:hover, .newsmod A:hover, .casestudyhead:hover, .utillinks:hover, A.h6link:hover {
+	text-decoration : underline;
+}
+
+#quicklinks {
+	margin-left :7px;
+}
+#quicklinks P {
+	margin-right :3;
+	line-height : 1.1;
+}
+P.featureprod {
+	margin-top :9px;
+	margin-left :6px;
+	margin-right : 1px;
+	margin-bottom :7px;
+	
+}
+#fprodbottom {
+	margin-bottom :17px;
+}
+P.ftxt {
+	font-family : Verdana, Arial, Helvetica, sans-serif;
+	margin-left : 6px;
+	margin-bottom :5px;
+	margin-top :0px;
+}
+.bgdot {
+	background : url(img/dot_gray_h.gif);
+}
+TD.utillinks {
+	text-align : left;
+}
+P.utillinks {
+	font-size :14px;
+	margin-bottom :8px;
+	width : 175px;
+}
+.utillinks, A.utillinks, A.utillinks:link, A.utillinks:visited, A.utillinks:active {
+	font-size :11px;
+}
+P.indicon {
+	margin-top : 5px;
+}
+DIV.indmain {
+	margin-top :6px;
+	margin-bottom : 19px;
+}
+TD.footer, TD.vmid {
+	vertical-align :middle;
+}
+.marg16 {
+	margin-left :10px;
+	margin-right:5px;
+}
+.left16{
+	margin-left :16px;
+	margin-bottom: 11px;
+}
+IMG.b11{
+	margin-bottom: 11px;
+}
+#casestudybut {
+	position :absolute;
+	top : 232px;
+	left : 170px;
+	z-index : 2;
+}
+DIV.searchhdr {
+	margin-top : 2px;
+	margin-left : 3px;
+	margin-bottom: 5px;
+}
+DIV.loginhdr {
+	margin-top : 2px;
+	margin-left : 3px;
+	margin-bottom: 1px;
+
+}
+#logo {
+	margin-bottom :1px;
+}
+P.focus {
+	font-size :11px;
+}
+A.search, A.search:link, A.search:visited, A.search:hover, 
+A.login, A.login:link, A.login:visited, A.login:active  {
+	font-family : verdana, helvetica, arial, sans-serif;
+	font-weight :bold;
+}
+A.search:hover, A.login:hover, A.region:hover, .footer A:hover {
+	text-decoration : underline;
+}
+.margb3 {
+	margin-bottom :3px;
+}
+#logincb {
+	margin-left :-3px;
+}
+#loginheadimg {
+	margin-top:2px;
+}	
+
+#login2 {
+	margin-top:-1px;
+}
+TD.hlinks{
+	vertical-align : bottom;
+}
+#hlinks{
+	margin-bottom :4px;
+}
+SELECT.bizsearch {
+	width :160;
+}
+P.bizsearch {
+	margin-top :5px;
+	margin-bottom : 5px;
+}
+#otherbusiness {
+	margin-top :15px;
+}
+.intext {
+	margin-right : 12px;
+}
+.nearphoto {
+	margin-left :12px;
+}
+#artmaincontent, #artmaincontent2 {
+	margin-left : 20px;
+	width : 390px;
+}
+#prodmaincontent {
+	margin-left : 10px;
+	width : 400px;
+}
+#artmaincontent2, #artmaincontent {
+	margin-bottom :16px;
+}
+#artmaincontent H1, #prodmaincontent H1{
+	color :#737272;
+	font-size :16px;
+	margin-top :0px;
+	margin-left :0px;
+}
+#artmaincontent P {
+	margin-bottom :16px;
+}
+#artmaincontent H6 {
+	margin-top :6px;
+}
+TD.calltoaction {
+	vertical-align :bottom;
+}
+.calltoaction H6 {
+	margin-bottom :3px;
+	margin-right :0px;
+}
+.calltoaction H1 {
+	margin-bottom :1px;
+}
+SELECT.downdoc {
+	width : 415px;
+	margin-top : 9px;
+}
+DIV.downdoc {
+	margin-left : 20px;
+}
+.forminstr, .formarrow {
+	margin-left : 9px;
+	margin-top :8px;
+	margin-right :0px;
+	margin-bottom:20px;
+}
+.formarrow {
+	margin-left : 7px;
+}
+.rlnk, A.rlnk, A.rlnk:link, A.rlnk:hover, A.rlnk:visited {
+	font-family : verdana, helvetica, arial, sans-serif;
+	font-weight : bold;
+	color : e43733;
+}
+DIV.prods, P.prods, P.prodlist, DIV.prodlist {
+	margin-left : 8px;
+	margin-top :5px;
+	margin-bottom : 16px;
+}
+P.prods, P.prodlist {
+	width :288px;
+}
+
+P.prodlist, DIV.prodlist {
+	margin-left :0px;
+}
+IMG.prods {
+	margin-top :5px;
+	margin-bottom :16px;
+}
+.bggraydot {
+	background : url(/img/dot_gray_h.gif);
+}
+#docplus, #logplus {
+	display :none;
+}
+.casestudyhead, A.casestudyhead:link, A.casestudyhead:visited {
+	font-size :12px;
+	color :#fff;
+}
+.top2 {
+	margin-top :2;
+}
+#transimg {
+	margin-top:7;
+}
+#flag {
+	margin-top : 4;
+}
+
+.imageWrapLeft
+{
+	FLOAT: left; 
+	MARGIN-BOTTOM: 10px; 
+	MARGIN-RIGHT: 10px; 
+}
+
+.H4Text
+{
+	font-size : 11px;
+	font-weight : bold;
+	margin-top :8;
+	margin-right :6px;
+	
+	margin-bottom :8px;
+}
+
+.fprule {
+	background-color : #ededef;
+}
+/* Navs */
+.bgnav1_off {
+	background-color : #7c7c7c;
+}
+.bgnav1_act, TD.casestudy  {
+	background-color : #DE0031;
+}
+.bgnav1_on, .bgnav2_off {
+	background-color : #999;
+}
+
+.bgnav2_on {
+	background-color : #b5b5b5;
+}
+.bgnav3_off {
+	background-color : #E8E8E8;
+}
+.bgnav3_on {
+		background-color : #DE0031;
+}
+.bgnav4_off {
+		background-color : #E8E8E8;
+}
+.bgnav4_on {
+	background-color : #DE0031;
+}
+
+.bgnews {
+	background-color : #d3d3d6;
+}
+
+
+H6 A.h6gray11, H6 A.h6gray11:link, H6 A.h6gray11:visited, H6 A.h6gray11:hover {
+	font-size : 11px;
+	font-weight : bold;
+}
+
+H6 A.h6gray11mid, H6 A.h6gray11mid:link, H6 A.h6gray11mid:visited, H6 A.h6gray11mid:hover {
+	font-size : 11px;
+	font-weight : bold;
+	margin-left : 12px;
+
+}
+
+H6 A.H6Red11, H6 A.H6Red11:link, H6 A.H6Red11:visited, H6 A.H6Red11:hover 
+{	
+	font-size : 11px;
+	font-weight : bold;
+	color : Red;
+	margin-left : 12px;
+	margin-top : 0px;
+	margin-bottom : 0px;
+}
+
+A.Red11, A.Red11:link, A.Red11:visited, A.Red11:hover 
+{	
+	font-size : 11px;
+	font-weight : bold;
+	color : Red;
+	margin-left : 12px;
+	margin-top : 0px;
+	margin-bottom : 0px;
+}
+
+H6 A.H6Red11nl, H6 A.H6Red11nl:link, H6 A.H6Red11nl:visited, H6 A.H6Red11nl:hover 
+{	
+	font-size : 11px;
+	font-weight : bold;
+	color : Red;
+	margin-top : 0px;
+	margin-bottom : 0px;
+}
+ A.Red11nl,  A.Red11nl:link,  A.Red11nl:visited,  A.Red11nl:hover 
+{	
+	font-size : 11px;
+	font-weight : bold;
+	color : Red;
+	margin-top : 0px;
+	margin-bottom : 0px;
+}
+
+		.learnmore {
+			margin-top : 0px;
+			margin-right : 4px;
+			margin-bottom : 2px;
+		}
+		#featureprod {
+			margin-top : 10px;
+		}
+		.conscenter_prods, TABLE.conscenter_learn {
+			margin-left : 12px;
+			margin-right :8px;
+			margin-top : 6px;
+			margin-bottom :0;
+		}
+		TABLE.conscenter_learn {
+			margin-bottom :0;
+			margin-top :1px;
+		}
+		#conscenter H3 {
+			margin-left : 9px;
+		}
+		#conscenter .newsmod {
+			margin-top :10px;
+		}
+		#see_all {
+			margin-bottom: 15;
+		}
+		#rightcol IMG.prods	{
+			border : 1px solid #d3d3d6;
+			margin-bottom :5px;
+		}
+		#rightcol P.prods {
+			width : 102;
+		}
+		TABLE.fsupport {
+			margin-top : 14px;
+		}	
+		.learnmore {
+			margin-top : 0px;
+			margin-right : 4px;
+			margin-bottom : 2px;
+		}
+		#featureprod {
+			margin-top : 10px;
+		}
+		.conscenter_prods, TABLE.conscenter_learn {
+			margin-left : 12px;
+			margin-right :8px;
+			margin-top : 6px;
+			margin-bottom :0;
+		}
+		TABLE.conscenter_learn {
+			margin-bottom :0;
+			margin-top :1px;
+		}
+		#conscenter H3 {
+			margin-left : 9px;
+		}
+		#conscenter .newsmod {
+			margin-top :10px;
+		}
+		#see_all {
+			margin-bottom: 15;
+		}
+		#rightcol IMG.prods	{
+			border : 1px solid #d3d3d6;
+			margin-bottom :5px;
+		}
+		#rightcol P.prods {
+			width : 102;
+		}
+		TABLE.fsupport {
+			margin-top : 14px;
+		}	
+
+
+
+
+
+
+
+
+/*---------------------------------------------------------------------------
+FROM HoneywellECC.css
+---------------------------------------------------------------------------*/
+
+
+/* Headers */
+H1
+{
+	font-family: Arial, Helvetica, sans-serif;
+	margin-top: 9px;
+	margin-bottom: 5px;
+	margin-left: 6px;
+}
+H1.focus
+{
+	margin-top: 7px;
+	margin-bottom: 4px;
+	margin-left: 9px;
+}
+H2
+{
+	margin-bottom: 1px;
+}
+
+H4
+{
+	font-size: 11px;
+	font-weight: bold;
+	margin-top: 8px;
+	margin-right: 6px;
+	margin-left: 6px;
+	margin-bottom: 8px;
+}
+H5
+{
+	margin-top: 8px;
+	margin-left: 6px;
+	margin-bottom: 3px;
+}
+H6
+{
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	margin-right: 3px;
+	margin-top: 7px;
+}
+
+.HoneywellECCPageTitle
+{
+	font-weight: bold;
+	font-size: 13pt;
+	font-family: Arial;
+	color: Gray;
+}
+
+.HoneywellECCPageSubTitle
+{
+	font-size: 11px;
+	font-family: Arial;
+	font-weight: bold;
+	color: #7C7C7C;
+}
+
+.HoneywellECCPageDescription
+{
+	font-size: 11px;
+	font-family: Arial;
+	font-weight: bold;
+	color: #7C7C7C;
+}
+
+.HoneywellECCSectionTitle
+{
+	font-size: 12pt;
+	font-family: Arial;
+	font-weight: bold;
+	color: #7C7C7C;
+}
+
+.HoneywellECCElementDescription
+{
+	font-size: 10px;
+	font-family: Verdana;
+	font-weight: bold;
+	color: #7C7C7C;
+}
+
+.HoneywellECCElementError
+{
+	font-size: 10px;
+	font-family: Verdana;
+	font-weight: bold;
+	color: Red;
+}
+
+.HoneywellECCWarning
+{
+	font-size: 11px;
+	font-family: verdana, helvetica, arial, sans-serif;
+	color: e43733;
+}
+
+.HoneywellECCError
+{
+	font-size: 11px;
+	font-family: Verdana;
+	font-weight: bold;
+	color: Red;
+}
+
+.HoneywellECCConfirmation
+{
+	font-size: 11px;
+	font-family: Verdana;
+	font-weight: bold;
+	color: Black;
+}
+
+.HoneywellECCInStockLabel
+{
+	font-size: 10px;
+	font-family: Verdana;
+	font-weight: bold;
+	color: Green;
+}
+
+.HoneywellECCRequiredFieldAsterisk
+{
+	font-size: 10px;
+	font-family: Verdana;
+	font-weight: bold;
+	color: Red;
+}
+
+.HoneywellECCSiteFooter
+{
+	background-color: #e2e2e2;
+	vertical-align: middle;
+}
+.HoneywellECCSiteFooterSpacerBG
+{
+	background-color: #FFFFFF;
+}
+.HoneywellECCSiteFooterRule
+{
+	background-color: #DE0031;
+}
+.HoneywellECCSiteFooterLinkSpace
+{
+	margin-left: 10px;
+	margin-right: 5px;
+}
+.HoneywellECCSiteFooter A:hover
+{
+	text-decoration: underline;
+}
+.SiteLink A:link
+{
+}
+.HoneywellECCSiteLayout
+{
+	width: 760px;
+	margin-left: 0px;
+	margin-top: 0px;
+}
+.HoneywellECCSiteHeader
+{
+	margin-top: 8px;
+}
+.Logo
+{
+	margin-left: 11px;
+	margin-bottom: 1px;
+}
+.HoneywellECSiteHeaderSpacer
+{
+	margin-right: 14px;
+}
+
+.HoneywellECCSiteMenu
+{
+	font-size: 11px;
+	margin-left: 10px;
+	vertical-align: middle;
+	padding-left: -5px;
+	width: 168px;
+	cursor: default;
+	color: #ffffff;
+	margin-right: 10px;
+	font-family: Arial, Helvetica, sans-serif;
+	background-color: #999999;
+	text-align: left;
+	text-decoration: none;
+}
+.HoneywellECCSiteMenuItem
+{
+	font-size: 11px;
+	margin-left: 10px;
+	vertical-align: middle;
+	width: 168px;
+	height: 14px;
+	cursor: hand;
+	color: #ffffff;
+	margin-right: 10px;
+	font-family: Arial, Helvetica, sans-serif;
+	background-color: #999999;
+	text-align: left;
+	text-decoration: none;
+}
+.HoneywellECCSiteMenuItemOver
+{
+	font-size: 11px;
+	margin-left: 10px;
+	vertical-align: middle;
+	width: 168px;
+	height: 14px;
+	cursor: hand;
+	color: #ffffff;
+	margin-right: 10px;
+	font-family: Arial, Helvetica, sans-serif;
+	background-color: #b5b5b5;
+	text-align: left;
+	text-decoration: none;
+}
+.HoneywellECCSiteNavigationItem
+{
+	font-size: 10px;
+	font-family: Arial, Helvetica, sans-serif;
+	color: #ffffff;
+	background-color: #7c7c7c;
+	margin-left: 10px;
+	margin-right: 10px;
+	cursor: hand;
+	text-align: center;
+	vertical-align: middle;
+	text-decoration: none;
+}
+.HoneywellECCSiteSubNavigation
+{
+	padding-right: 0px;
+	padding-left: 0px;
+	font-size: 10pt;
+	padding-bottom: 0px;
+	margin: 0px;
+	vertical-align: middle;
+	width: 100%;
+	cursor: default;
+	color: #353431;
+	padding-top: 0px;
+	font-family: Arial, Helvetica, sans-serif;
+	background-color: #e8e8e8;
+	text-align: left;
+	text-decoration: none;
+	border-collapse: collapse;
+}
+
+.HoneywellECCSiteSubNavigationItem
+{
+	font-size: 11px;
+	vertical-align: middle;
+	cursor: hand;
+	color: #353431;
+	font-family: Arial, Helvetica, sans-serif;
+	background-color: #e8e8e8;
+	text-align: center;
+	text-decoration: none;
+	border-collapse: collapse;
+}
+
+.HoneywellECCSiteSubNavigationItemSelected
+{
+	font-size: 11px;
+	font-family: Arial, Helvetica, sans-serif;
+	color: #ffffff;
+	background-color: #DE0031;
+	cursor: default;
+	text-align: center;
+	vertical-align: middle;
+	text-decoration: none;
+}
+
+.HoneywellECCSiteSubNavigationItemOver
+{
+	font-size: 11px;
+	font-family: Arial, Helvetica, sans-serif;
+	color: #ffffff;
+	background-color: #DE0031;
+	cursor: hand;
+	text-align: center;
+	vertical-align: middle;
+	text-decoration: none;
+}
+
+.HoneywellECCSiteSubNavigationItemAlign
+{
+	margin-left: 5px;
+	margin-right: 5px;
+	display: block;
+}
+
+.HoneywellECCSiteNavigationItemAlign
+{
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.HoneywellECCSiteNavigationItemSelected
+{
+	font-size: 10px;
+	font-family: Arial, Helvetica, sans-serif;
+	color: #ffffff;
+	background-color: #DE0031;
+	cursor: default;
+	text-align: center;
+	vertical-align: middle;
+	text-decoration: none;
+}
+
+.HoneywellECCSiteNavigationItemOver
+{
+	font-size: 10px;
+	font-family: Arial, Helvetica, sans-serif;
+	color: #ffffff;
+	background-color: #999999;
+	cursor: hand;
+	text-align: center;
+	vertical-align: middle;
+	text-decoration: none;
+}
+
+.HoneywellECCSiteNavigationItemSeparator
+{
+	font-size: 10px;
+	font-family: Arial, Helvetica, sans-serif;
+	color: #ffffff;
+	background-color: #ffffff;
+	cursor: default;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.HoneywellECCSiteNavigationDiv
+{
+	margin-top: 2px;
+}
+
+.HoneywellECCProductDetailHeader_Breadcrumb
+{
+	vertical-align: top;
+	margin-top: 6px;
+	margin-bottom: 11px;
+}
+
+.HoneywellECCTertiaryNavigation
+{
+	font-size: 11px;
+	vertical-align: middle;
+	cursor: hand;
+	color: #353431;
+	font-family: Arial, Helvetica, sans-serif;
+	background-color: #e8e8e8;
+	text-align: left;
+	text-decoration: none;
+	border-collapse: collapse;
+	width: 160px;
+	height: 20px;
+}
+
+.HoneywellECCTertiaryNavigationItem
+{
+	font-size: 11px;
+	vertical-align: middle;
+	cursor: hand;
+	color: #353431;
+	font-family: Arial, Helvetica, sans-serif;
+	background-color: #e8e8e8;
+	text-align: left;
+	text-decoration: none;
+	border-collapse: collapse;
+	width: 160px;
+	height: 20px;
+}
+
+.HoneywellECCTertiaryNavigationItemAlign
+{
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-bottom: 5px;
+	margin-top: 5px;
+	vertical-align: top;
+}
+
+.HoneywellECCTertiaryNavigationItemSelected
+{
+	font-size: 11px;
+	vertical-align: middle;
+	cursor: hand;
+	color: #ffffff;
+	font-family: Arial, Helvetica, sans-serif;
+	background-color: #DE0031;
+	text-align: left;
+	text-decoration: none;
+	border-collapse: collapse;
+	width: 160px;
+	height: 20px;
+}
+
+.HoneywellECCTertiaryNavigationItemMouseOver
+{
+	font-size: 11px;
+	vertical-align: middle;
+	cursor: hand;
+	color: #ffffff;
+	font-family: Arial, Helvetica, sans-serif;
+	background-color: #DE0031;
+	text-align: left;
+	text-decoration: none;
+	border-collapse: collapse;
+	width: 160px;
+	height: 20px;
+}
+
+.HoneywellECCTertiaryNavigationSub
+{
+	font-size: 11px;
+	vertical-align: top;
+	cursor: hand;
+	color: #353431;
+	font-family: Arial, Helvetica, sans-serif;
+	background-color: #DE0031;
+	text-align: left;
+	text-decoration: none;
+	border-collapse: collapse;
+	width: 160px;
+	height: 20px;
+}
+
+.HoneywellECCTertiaryNavigationSubItem
+{
+	font-size: 11px;
+	vertical-align: top;
+	cursor: hand;
+	color: #ffbebe;
+	font-family: Arial, Helvetica, sans-serif;
+	background-color: #DE0031;
+	text-align: left;
+	text-decoration: none;
+	border-collapse: collapse;
+	width: 160px;
+	height: 20px;
+}
+
+.HoneywellECCTertiaryNavigationSubItemSelected
+{
+	font-size: 11px;
+	vertical-align: top;
+	cursor: hand;
+	color: #ffffff;
+	font-family: Arial, Helvetica, sans-serif;
+	background-color: #DE0031;
+	text-align: left;
+	text-decoration: none;
+	border-collapse: collapse;
+	width: 160px;
+	height: 20px;
+}
+
+.HoneywellECCTertiaryNavigationSubItemMouseOver
+{
+	font-size: 11px;
+	vertical-align: top;
+	cursor: hand;
+	color: #ffffff;
+	font-family: Arial, Helvetica, sans-serif;
+	background-color: #DE0031;
+	text-align: left;
+	text-decoration: none;
+	border-collapse: collapse;
+	width: 160px;
+	height: 20px;
+}
+
+.HoneywellECCHeaderImage
+{
+	width: 760px;
+	padding: 0 0 0 0;
+	border-width: 0;
+	border-collapse: collapse;
+}
+
+.HoneywellECCHeaderImageSpacer
+{
+	height: 15px;
+	background-color: #ffffff;
+}
+
+.HoneywellECCSubHeaderImage
+{
+	width: 599px;
+	padding: 0 0 0 0;
+	border-width: 0;
+	border-collapse: collapse;
+}
+
+.HoneywellECCProductCatalogCategoryHeader
+{
+	background-color: #ffffff;
+	border-width: 0px;
+	width: 422px;
+	border-collapse: collapse;
+}
+
+.HoneywellECCProductCatalogCategoryHeaderTitle
+{
+	color: #737272;
+	font-size: 16px;
+	font-weight: bold;
+	margin-top: 0px;
+	margin-left: 0px;
+}
+
+
+.HoneywellECCProductCatalogCategoryHeaderDescription
+{
+	color: #737272;
+	font-size: 11px;
+	margin-top: 0px;
+	margin-left: 0px;
+}
+
+.HoneywellECCMainContent
+{
+	margin-left: 16px;
+}
+
+.HoneywellECCChildCategorySummary
+{
+	color: #737272;
+	font-size: 11px;
+	width: 406px;
+	padding: 0 0 0 0;
+	margin-left: 16px;
+}
+
+
+
+.HoneywellECCMainContentSectionSeparator
+{
+	height: 2px;
+	background-color: #d3d3d6;
+}
+
+.HoneywellECCChildCategorySummaryHeader
+{
+	color: #DE0031;
+	font-size: 12px;
+	font-weight: bold;
+}
+
+.HoneywellECCCategoryHyperLink
+{
+	text-decoration: none;
+}
+
+A.HoneywellECCCategoryHyperLink
+{
+	text-decoration: none;
+}
+A.HoneywellECCCategoryHyperLink:hover
+{
+	text-decoration: underline;
+}
+
+.HoneywellECCCatalogLearnMore
+{
+	margin-bottom: 10px;
+	vertical-align: middle;
+	font-size: 10px;
+}
+A.HoneywellECCCatalogLearnMore
+{
+	margin-bottom: 10px;
+	vertical-align: middle;
+	font-size: 10px;
+}
+
+A.HoneywellECCCatalogLearnMore:hover
+{
+	margin-bottom: 10px;
+	vertical-align: middle;
+	font-size: 10px;
+	text-decoration: underline;
+}
+
+.HoneywellECCToolBox_OuterRule
+{
+	background-color: #949494;
+}
+
+.HoneywellECCToolBox_InnerRule
+{
+	background-color: #E8E8E8;
+}
+
+.HoneywellECCSearchHeader
+{
+	background-color: #8f8f8f;
+}
+
+.HoneywellECCSubTitle
+{
+	font-size: 12px;
+	font-family: verdana, helvetica, arial, sans-serif;
+	font-weight: bold;
+	color: e43733;
+	vertical-align: middle;
+	padding-right: 3px;
+}
+.HoneywellECCProductLink
+{
+	font-size: 12px;
+	font-family: verdana, helvetica, arial, sans-serif;
+	font-weight: bold;
+	color: e43733;
+	vertical-align: middle;
+	padding-right: 3px;
+}
+A.HoneywellECCProductLink:hover
+{
+	font-size: 12px;
+	font-family: verdana, helvetica, arial, sans-serif;
+	font-weight: bold;
+	color: e43733;
+	vertical-align: middle;
+	text-decoration: underline;
+	padding-right: 3px;
+}
+
+A.HoneywellECCProductLink
+{
+	font-size: 12px;
+	font-family: verdana, helvetica, arial, sans-serif;
+	font-weight: bold;
+	color: e43733;
+	vertical-align: middle;
+	padding-right: 3px;
+}
+A.HoneywellECCProductLink:visited
+{
+	font-size: 12px;
+	font-family: verdana, helvetica, arial, sans-serif;
+	font-weight: bold;
+	color: e43733;
+	vertical-align: middle;
+	padding-right: 3px;
+}
+
+.HoneywellECCLinkButton
+{
+	font-size: 11px;
+	font-family: verdana, helvetica, arial, sans-serif;
+	font-weight: bold;
+	color: e43733;
+	vertical-align: top;
+	padding-right: 3px;
+}
+
+.HoneywellECCBlueBold
+{
+	font-size: 12px;
+	font-weight: bold;
+	color: Blue;
+}
+.HoneywellECCRedBold
+{
+	font-size: 12px;
+	font-weight: bold;
+	color: Red;
+}
+.HoneywellECCGreenBold
+{
+	font-size: 12px;
+	font-weight: bold;
+	color: Green;
+}
+.HoneywellECCBlueNormal
+{
+	color: Blue;
+}
+.HoneywellECCShipTrackGreyBold
+{
+	font-size: 12px;
+	font-weight: bold;
+	
+}
+
+A.HoneywellECCLinkButton:hover
+{
+	font-size: 11px;
+	font-family: verdana, helvetica, arial, sans-serif;
+	font-weight: bold;
+	color: e43733;
+	vertical-align: top;
+	text-decoration: underline;
+	padding-right: 3px;
+}
+
+A.HoneywellECCLinkButton
+{
+	font-size: 11px;
+	font-family: verdana, helvetica, arial, sans-serif;
+	font-weight: bold;
+	color: e43733;
+	vertical-align: top;
+	padding-right: 3px;
+}
+A.HoneywellECCLinkButton:visited
+{
+	font-size: 11px;
+	font-family: verdana, helvetica, arial, sans-serif;
+	font-weight: bold;
+	color: e43733;
+	vertical-align: top;
+	padding-right: 3px;
+}
+
+.HoneywellECCCommandDescription
+{
+	vertical-align: top;
+	padding-left: 3px;
+}
+
+
+.HoneywellECCLogin
+{
+	width: 161px;
+	background-color: #ffffff;
+	padding: 0 0 0 0;
+	border: 0;
+}
+.HoneywellECCLoginHeader
+{
+	margin-top: 2px;
+	margin-left: 3px;
+	margin-bottom: 1px;
+}
+.HoneywellECCLoginSubSection
+{
+	margin-bottom: 3px;
+	margin-top: 11px;
+	margin-left: 10px;
+}
+.HoneywellECCLoginBackColor
+{
+	background-color: #E8E8E8;
+}
+
+.HoneywellECCNewsletter_BackColor
+{
+	background-color: #737272;
+}
+
+.HoneywellECCLoginTitle
+{
+	font-size: 11px;
+	font-weight: bold;
+	color: #ffffff;
+}
+
+.HoneywellECCCaseStudy
+{
+	width: 390;
+	font-size: 12px;
+	color: #fff;
+	position: absolute;
+	top: 98;
+	left: 11;
+	z-index: 2;
+}
+
+.HoneywellECCCaseStudyLink
+{
+	width: 100;
+	font-size: 12px;
+	color: #fff;
+	position: absolute;
+	top: 135;
+	left: 380;
+	z-index: 2;
+}
+A.HoneywellECCCaseStudyLink
+{
+	width: 100;
+	font-size: 12px;
+	color: #FFFFFF;
+	position: absolute;
+	top: 135;
+	left: 390;
+	z-index: 2;
+}
+
+.HoneywellECCFeature
+{
+	background-color: #e8e8e8;
+}
+
+.HoneywellECCFeatureText
+{
+	font-size: 11px;
+	font-family: arial;
+	font-weight: bold;
+	color: #7c7c7c;
+	vertical-align: middle;
+	background-color: #e8e8e8;
+}
+
+.HoneywellECCRegistrationPanels
+{
+	left: 20px;
+	position: absolute;
+	top: 175px;
+}
+
+
+
+.HoneywellECCFeatureRule
+{
+	background-color: #ededef;
+}
+
+.HoneywellECCParametricSearchSection
+{
+	color: #737272;
+	font-size: 11px;
+	width: 406px;
+	padding: 0 0 0 0;
+	margin-left: 16px;
+	margin-right: 16px;
+	margin-top: 18px;
+}
+.HoneywellECCSearchResultSection
+{
+	color: #737272;
+	font-size: 11px;
+	width: 567px;
+	padding: 0 0 0 0;
+	margin-left: 16px;
+	margin-right: 16px;
+	margin-top: 18px;
+}
+.HoneywellECCLoginSection
+{
+	color: #737272;
+	font-size: 11px;
+	width: 728px;
+	padding: 0 0 0 0;
+	margin-left: 16px;
+	margin-right: 16px;
+	margin-top: 18px;
+}
+
+.HoneywellECCParametricSearchTitle
+{
+	color: #737272;
+	font-size: 13px;
+	font-weight: bold;
+}
+
+.HoneywellECCParametricSearchHeader
+{
+	color: #737272;
+	font-size: 11px;
+	font-weight: bold;
+}
+
+.HoneywellECCLogin_BackColor
+{
+	background-color: #DE0031;
+}
+
+.BreadCrumb
+{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	text-decoration: none;
+	margin-left: 16px;
+	padding-top: 10px
+}
+
+A.BreadCrumb
+{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	text-decoration: none;
+	padding-right: 3px;
+	padding-top: 10px
+}
+A.BreadCrumb:visited
+{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	text-decoration: none;
+	padding-right: 3px;
+	padding-top: 10px
+}
+A.BreadCrumb:hover
+{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	text-decoration: underline;
+	padding-right: 3px;
+	padding-top: 10px
+}
+.HoneywellECCComparison
+{
+	margin-left: 16px;
+	width: 740px;
+}
+
+.HoneywellECCSiteError
+{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: Red;
+	text-decoration: blink;
+}
+
+.HoneywellECCProductDetailHeader
+{
+	color: #737272;
+	font-size: 11px;
+	width: 406px;
+	padding: 0 0 0 0;
+	margin-left: 16px;
+	margin-right: 16px;
+	margin-top: 3px;
+}
+
+.HoneywellECCProductNoTitle
+{
+	color: #737272;
+	font-size: 16px;
+	font-weight: bold;
+	margin-top: 0px;
+	margin-left: 0px;
+	padding-right: 8px;
+}
+
+.HoneywellECCCustomerReferenceNoTitle
+{
+	color: #737272;
+	font-size: 12px;
+	font-weight: bold;
+	margin-top: 0px;
+	margin-left: 0px;
+	padding-right: 8px;
+}
+
+.HoneywellECCProductName
+{
+	color: #737272;
+	font-size: 14px;
+	margin-top: 3px;
+	margin-left: 0px;
+}
+.BackToTopLink
+{
+	font-size: 11px;
+	font-weight: bold;
+}
+A.BackToTopLink
+{
+	font-size: 11px;
+	font-weight: bold;
+	padding-right: 4px;
+}
+A.BackToTopLink:visited
+{
+	font-size: 11px;
+	font-weight: bold;
+	padding-right: 4px;
+}
+A.BackToTopLink:hover
+{
+	text-decoration: underline;
+}
+
+.SmallLink
+{
+	font-size: 9px;
+	font-weight: bold;
+}
+A.SmallLink
+{
+	font-size: 9px;
+	font-weight: bold;
+	padding-right: 4px;
+}
+A.SmallLink:visited
+{
+	font-size: 9px;
+	font-weight: bold;
+	padding-right: 4px;
+}
+A.SmallLink:hover
+{
+	text-decoration: underline;
+}
+
+.HoneywellECCRelatedLinkTitle
+{
+	font-size: 12px;
+	font-weight: bold;
+}
+
+.HoneywellECCTitleLine
+{
+	background-color: #D3D3D6;
+	height: 3px;
+}
+
+.HoneywellECCProductSearchDescription
+{
+	font-size: 11px;
+	font-family: verdana, helvetica, arial, sans-serif;
+	font-weight: bold;
+	color: #737272;
+	vertical-align: middle;
+}
+.MiniCartLink
+{
+	font-size: 10px;
+	font-weight: bold;
+}
+A.MiniCartLink
+{
+	font-size: 10px;
+	font-weight: bold;
+}
+A.MiniCartLink:visited
+{
+	font-size: 10px;
+	font-weight: bold;
+}
+A.MiniCartLink:hover
+{
+	text-decoration: underline;
+}
+.MiniCart
+{
+	font-family: courier new, arial,verdana,helvetica;
+	font-size: 10px;
+	font-weight: bold;
+}
+/* Added By Vijay */
+/*Attributes for the body of the Web Form*/
+
+/* Style for Pushbutton.*/
+.Button
+{
+	font-family: Arial;
+	font-size: 9pt;
+	height: 25px;
+}
+
+/*Style for HyperLink button*/
+/*Use this style for the a label that is used to identify a group of controls.  The label is used along with a "separator" to group like controls.  */
+.LinkButton
+{
+	font-family: Arial;
+	font-size: 9pt;
+	font-weight: bold;
+	color: Blue;
+	height: 25px;
+}
+
+
+/*Use this style for the labels used with text fields, list boxes, etc. and for 
+instructional text such as "Select a report to view"  */
+.Label
+{
+	background-color: Transparent;
+	font-family: Arial;
+	font-size: 9pt;
+	font-weight: bold;
+}
+
+/*Style for items in a drop down list. Width of drop down list should be 
+average width of items in list unless you have room to make it as wide as the widest*/
+.DropDownList
+{
+	height: 24px;
+	font-family: Arial;
+	font-size: 9pt;
+}
+
+/*Style for a hyperlink*/
+.HyperLink
+{
+	font-family: Arial;
+	font-size: 9pt;
+	font-weight: bold;
+	color: Blue;
+}
+
+/*Style for Image Button*/
+.ImageButton
+{
+	background-color: Transparent;
+}
+
+/*Style for list box. List box should display from 3-6 items minimum.*/
+.ListBox
+{
+	font-family: Courier New;
+	font-size: 9pt;
+}
+
+/*Basic Style for data grids...styles following this are used for the selected item, etc.*/
+.DataGrid
+{
+	border-right: #e7e7ff 1px;
+	border-top: #e7e7ff 1px;
+	font-size: 9pt;
+	overflow: auto;
+	border-left: #e7e7ff 1px;
+	color: black;
+	border-bottom: #e7e7ff 1px;
+	font-family: Arial;
+	background-color: transparent; /*text-align: left; */
+}
+
+/*Data Grid Alternate Item Style*/
+.AlternateItemStyle
+{
+	font-size: 9pt;
+	font-family: Arial;
+	background-color: #f8f2f4;
+}
+
+/*Data Grid Edit Item Style*/
+/* No custom attributes at this time*/
+
+/*Data Grid Footer Style*/
+.FooterStyle
+{
+	font-weight: bold;
+	font-size: 9pt;
+	font-family: Arial;
+	background-color: white;
+}
+
+/*Data Grid Header Style*/
+.HeaderStyle
+{
+	font-weight: bold;
+	font-size: 9pt;
+	vertical-align: sub;
+	color: #f7f7f7;
+	font-family: Arial;
+	background-color: #DE0031;
+	text-align: center;
+}
+
+
+/*Data Grid Item Style*/
+.ItemStyle
+{
+	border-right: 1px solid;
+	border-top: 1px solid;
+	font-size: 9pt;
+	border-left: 1px solid;
+	color: black;
+	border-bottom: 1px solid;
+	font-family: Arial;
+	background-color: transparent;
+}
+
+/*Data Grid Pager Style*/
+.PagerStyle
+{
+	border-right: 1px solid;
+	border-top: 1px solid;
+	border-left: 1px solid;
+	color: black;
+	border-bottom: 1px solid;
+	background-color: buttonface;
+	text-align: left;
+}
+
+/*Data Grid Selected Item Style*/
+.SelectedItem
+{
+	background-color: #800000;
+	color: #F8F8FF;
+	font-family: Arial;
+	font-size: 9pt;
+}
+
+.CheckBox
+{
+	background-color: Transparent;
+	font-family: Arial;
+	font-size: 9pt;
+	font-weight: bold;
+}
+
+.CheckBoxList
+{
+	background-color: Transparent;
+	font-family: Arial;
+	font-size: 9pt;
+	font-weight: bold;
+}
+.RadioButton
+{
+	background-color: Transparent;
+	font-family: Arial;
+	font-size: 9pt;
+	font-weight: bold;
+}
+
+.RadioButtonList
+{
+	background-color: Transparent;
+	font-family: Arial;
+	font-size: 9pt;
+	font-weight: bold;
+}
+
+/*Use this style for the a text entry box---Change the Height for multiple line controls*/
+.TextBox
+{
+	height: 24px;
+	font-family: Arial;
+	font-size: 9pt;
+}
+
+/* Added by TPI */
+
+.HoneywellECCNewsItemTitle
+{
+	color: #DE0031;
+	font-weight: bold;
+	font-size: 11px;
+}
+.HoneywellECCNewsItemTitleWhite
+{
+	color: #FFFFFF;
+	font-weight: bold;
+	font-size: 11px;
+}
+
+.HoneywellECCNewsItemLink
+{
+	color: #DE0031;
+}
+
+.HoneywellECCNewsItemDate
+{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #666666;
+}
+.HoneywellECCLocatorName
+{
+	font-size: 10px;
+	font-family: Verdana;
+	font-weight: bold;
+	color: #7C7C7C;
+}
+.HoneywellECCLocatorAddress
+{
+	font-size: 10px;
+	font-family: Verdana;
+	color: #7C7C7C;
+}
+
+.HoneywellECCPLPbgnews
+{
+	background-color: #d3d3d6;
+}
+.HoneywellECCPLPfprule {
+	background-color : #ededef;
+}
+
+.HoneywellECCPLPWarning
+{
+	font-size: 11px;
+	color: #DE0031;
+	font-weight: bold;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+.HoneywellECCPLPError
+{
+	font-size: 10px;
+	font-family: Verdana;
+	font-weight: bold;
+	color: Red;
+}
+
+.HoneywellECCPLPh6link
+{
+	font-size: 11px;
+	font-weight: bold;
+	color: Red;
+}
+
+.HoneywellECCPLPcalltoaction
+{
+	font-size : 16px;
+	font-weight: bold;	
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+.HoneywellECCPLPgrayBoldText
+{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight: bold;
+	color: #666666;
+	margin-top: 0;
+	margin-bottom: 0;
+	margin-left: 0;
+	margin-right: 0;
+	text-decoration: none;
+	vertical-align: middle;
+}
+
+.HoneywellECCPLPmarg2v {
+	margin-top :2px;
+	margin-bottom :2px;
+}
+
+.HoneywellECCPLPbgnav3_on 
+{
+	vertical-align: middle;
+	cursor: hand;	
+	font-family: Arial, Helvetica, sans-serif;	
+	text-align: center;
+	text-decoration: none;
+	border-collapse: collapse;
+	background-color : #DE0031;
+}
+
+.HoneywellECCPLPbgnav3_off {
+	background-color : #E8E8E8;
+}
+
+.HoneywellECCPLPnav3_act{
+	color : #fff;
+}
+
+.HoneywellECCPLPnav3 {
+	color : #353431;
+}
+
+.HoneywellECCPLPnav3, .HoneywellECCPLPnav3_act {
+	margin-left :10px;
+	margin-right :10px;
+	text-align :center;
+}
+
+.HoneywellECCPLPnav3, .HoneywellECCPLPnav3_act
+ {
+	font-size : 11px;
+	padding-left : -5px;
+	text-decoration : none;
+}
+
+
+.HoneywellECCPLPnormaltd
+{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	margin-top: 0;
+	margin-bottom: 0;
+	margin-left: 0;
+	margin-right: 0;
+	text-decoration: none;
+	vertical-align: middle;
+}
+.HoneywellECCPLPblnk{
+	color :#666666;
+}
+.HoneywellECCPLPlabelSampleText
+{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #193BA3;
+	margin-top: 0;
+	margin-bottom: 0;
+	margin-left: 0;
+	margin-right: 0;
+	text-decoration: none;
+	vertical-align: middle;
+}
+
+A.HoneywellECCPLPh6link:link, H4 A.HoneywellECCPLPh6link:visited
+{
+	font-size: 11px;
+	font-weight: bold;
+}
+A.HoneywellECCPLPh4link:link, A.HoneywellECCPLPh4link:hover, A.HoneywellECCPLPh4link:visited
+{
+	font-size: 11px;
+	font-weight: bold;
+}
+
+.HoneywellECCPLPh6link, A.HoneywellECCPLPh6link:link, A.HoneywellECCPLPh6link:visited, A.HoneywellECCPLPh6link:hover, A.search:link, A.search:visited, A.search:active, A.search
+{
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-weight: bold;
+}
+
+.HoneywellECCPLPheadrule_b
+{
+	color: #E8E8E8;
+}
+.HoneywellTechLitLink
+{
+	color:Blue;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-weight: bold;
+    border-bottom-style:solid  ;
+    border-bottom-width :1px ;
+}
+.search_outerrule {
+	background-color : #949494;
+}
+.search_innerrule {
+	background-color : #cdcdcd;
+}
+.search_innerrule_top {
+	background-color : #cdcdcd;
+	VERTICAL-ALIGN :top;
+}
+
+
+.searchbg {
+	background-color : #8f8f8f;
+}
+.search {
+	background-color : #e8e8e8;
+}
+.bgwhite {
+	background-color : #fff;
+} 
+.SearchHighlight
+{
+	font-weight: bold;
+}
+
+.QL1
+{	font-family : Arial, Helvetica, sans-serif;
+	font-size : 10pt ! important;
+	font-weight : normal;
+	color : #333333;
+}

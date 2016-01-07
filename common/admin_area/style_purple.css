@@ -1,0 +1,10 @@
+body { 
+	background: url(/common/admin_area/images/background_purple.gif) fixed; 
+}
+
+a { 
+	color: #af28b8;
+}
+a:hover { 
+	color: #af28b8;
+}

@@ -1,0 +1,1 @@
+<a href="#" onclick="javascript:window.open('/common/htmlarea/index.php', 'editor', 'toolbar=0,scrollbars=1,location=0,statusbar=0,menubar=0,resizable=1,width=700,height=450');">HTML Editor</a>

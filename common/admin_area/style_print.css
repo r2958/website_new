@@ -1,0 +1,17 @@
+
+body        { font-family: Arial, Helvetica, Geneva, Swiss, SunSans-Regular; margin: 0pt }
+body, td, th { font-size: 80% }
+
+.warning { color: #f00 }
+
+.formWarning {
+	background-color:#f99;
+}
+
+.formLabelWarning {
+	color:#f00;
+}
+
+.noprint { visibility: hidden; display:none; }
+
+#searchbox, #livesearch_div, #livesearch_iframe { visibility: hidden; display:none; }

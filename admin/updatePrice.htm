@@ -1,0 +1,67 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+ <link href='andrew.css' type="text/css" rel="stylesheet">
+<title>Sensor-equipment Price Update List</title>
+</head>
+
+<body>
+
+<div align="center">
+<form action="updatePrice.php?func=update" method=post>
+<input name="AttID" type="hidden" value="<?=$row->AttributeID;?>">
+	<table border="0" width="85%" cellspacing="1" cellpadding="0" id="table1" bgcolor="#99CCFF">
+		<tr>
+			<td bgcolor="#000000" colspan="2" align="center">
+			<p align="center"><b>
+			<font face="Arial" size="4" color="#FFFFFF">Temco Controls Products
+			Update</font></b></td>
+		</tr>
+		<tr>
+			<td bgcolor="#FFFFFF" width="38%" align="right">
+			<b>
+			<font face="Arial">PART#</font></b></td>
+			<td bgcolor="#FFFFFF" width="62%" style="font-family: Arial; color: #006600; font-size: 12pt; font-weight: bold"><?=$row->AttributeName;?>　</td>
+		</tr>
+		<tr>
+			<td bgcolor="#FFFFFF" width="38%" align="right">
+			<font size="2" face="Arial">Descriptions</font></td>
+			<td bgcolor="#FFFFFF" width="62%">
+			<textarea rows="7" name="desc" cols="45"><?=$row->AttribtDescriptions?></textarea></td>
+		</tr>
+		<tr>
+			<td bgcolor="#FFFFFF" width="38%" align="right">
+			<font face="Arial" size="2">Sale Price(<b>$</b>)</font></td>
+			<td bgcolor="#FFFFFF" width="62%">
+			<input type="text" name="price" size="20" value="<?=$row->AttributePrice?>"></td>
+		</tr>
+		<tr>
+			<td bgcolor="#FFFFFF" width="38%" align="right">
+			<font face="Arial" size="2">Discount Price(<b>$</b>)</font></td>
+			<td bgcolor="#FFFFFF" width="62%">
+			<input type="text" name="price1" size="20" value="<?=$row->discountPrice?>"></td>
+		</tr>
+		<tr>
+			<td bgcolor="#FFFFFF" width="38%" align="right">
+			<font face="Arial" size="2">OEM Price(<b>$</b>)</font></td>
+			<td bgcolor="#FFFFFF" width="62%">
+			<input type="text" name="price2" size="20" value="<?=$row->oemPrice?>"></td>
+		</tr>
+		<tr>
+			<td bgcolor="#FFFFFF" width="100%" align="right" colspan="2">
+			<p align="center"><input type=submit value="Update"/>　<input type=reset value="Reset"/></td>
+		</tr>
+		<tr>
+			<td bgcolor="#FFFFFF" width="100%" align="center" colspan="2" height="200">
+			<img onmousemove="this.border=1" onmouseout="this.border=0" alt="<?=$row->AttributeName;?>" src="http://www.temcocontrols.com/images/products/<?=$row->ProductID?>_01_th.jpg"></img>
+			　</td>
+		</tr>
+	</table>
+</div>
+</form>
+
+</body>
+
+</html>

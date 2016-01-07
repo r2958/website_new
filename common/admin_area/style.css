@@ -1,0 +1,171 @@
+body { 
+	background: url(/common/admin_area/images/background_grey.jpg) fixed; 
+	margin: 0px;
+	padding: 15px; 
+	font-family: "Lucida Grande", Geneva, Helvetica, Geneva, Arial, SunSans-Regular;
+}
+body, td, th {
+	font-size: 90%;
+}
+
+a { 
+	color: #DC143C;
+	text-decoration: none;
+}
+a:hover { 
+	color: #DC143C;
+	text-decoration: underline;
+}
+
+.OutsideFrame {
+	border-style: inset outset outset inset;
+	border-width: 2px 3px 3px 2px;
+	border-color: #696969;
+}
+
+.whitetext { color: #FFFFFF; }
+.whitetext a { color: #FFFFFF; text-decoration: none; }
+.whitetext a:hover { color: #FFFFFF; text-decoration: underline; }
+
+.updateComplete {
+	border-top:1px solid red;
+	border-left:1px solid red;
+	border-bottom:2px solid red;
+	border-right:2px solid red;
+	background-color:#FFFFFF;
+	font-weight:bold;
+	text-align:center;
+}
+
+
+
+.updateSuccess {
+	border-top:1px solid green;
+	border-left:1px solid green;
+	border-bottom:2px solid green;
+	border-right:2px solid green;
+	background-color:#FFFFFF;
+	font-weight:bold;
+	text-align:center;
+}
+
+.updateSuccess a { 
+	color: green;
+	text-decoration: none;
+}
+.updateSuccess a:hover { 
+	color: green;
+	text-decoration: underline;
+}
+
+.updateError {
+	border-top:1px solid red;
+	border-left:1px solid red;
+	border-bottom:2px solid red;
+	border-right:2px solid red;
+	background-color:#FFFFFF;
+	font-weight:bold;
+	text-align:center;
+}
+
+.updateError a { 
+	color: red;
+	text-decoration: none;
+}
+.updateError a:red { 
+	color: green;
+	text-decoration: underline;
+}
+
+.inactive {
+  display: none;
+}
+.active {
+  display: block;
+}
+
+/* Sortable tables with borders and hover rows */
+table.sortable {
+	border-top:1px solid grey;
+	border-left:1px solid grey;
+}
+table.sortable th {
+	padding: 2px; 
+	background-color:#000;
+	color:#fff;
+}
+table.sortable th a {
+	color:#fff;
+}
+table.sortable td {
+	padding: 2px; 
+	border-bottom: 1px solid grey;
+	border-right: 1px solid grey;
+}
+table.sortable a.sortheader {
+	color:#fff;
+	text-decoration: none;
+	display: block;
+}
+table.sortable td a {
+}
+table.sortable span.sortarrow {
+	color: #fff;
+	text-decoration: none;
+}
+table.sortable tr:hover td {
+	background-color: rgb(255, 255, 255);
+}
+
+
+/* Livesearch box and corresponding div and iFrame. */
+#searchbox    { 
+	position: absolute; 
+	z-index: 999; 
+	top: 52px; 
+	right: 200px; 
+}
+
+#livesearch_div {
+	background-color: white; 
+	text-align: left; 
+	padding: 5px; 
+	border: solid 1px black; 
+	position: absolute; 
+	z-index: 999; 
+	top: 85px; 
+	left: 200px; 
+	right: 200px; 
+	height: 300px; 
+	overflow: auto; 
+	opacity: 0.95;
+}
+
+#livesearch_iframe {
+	background-color: white; 
+	text-align: left; 
+	padding: 5px; 
+	border: solid 1px black; 
+	position: absolute; 
+	z-index: 998; 
+	top: 85px; 
+	left: 200px; 
+	right: 200px; 
+	height: 300px; 
+	overflow: auto; 
+	opacity: 0.95;
+}
+
+
+
+
+#slideoutMenu {
+}
+#slideoutMenuContainer ul {
+	opacity: 0.95;
+	background-color: white; 
+	border: 1px solid black;
+	text-align: left;
+	padding-top: 5px;
+	padding-bottom: 10px;
+}

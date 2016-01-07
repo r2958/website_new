@@ -1,0 +1,3 @@
+<link rel="stylesheet" type="text/css" media="all" href="/common/javascripts/calendar_for_forms/calendar.css">
+<script type="text/javascript" src="/common/javascripts/calendar_for_forms/calendar.js"></script>
+Date:<input type="text" name="DateFieldName" id="sel1" size="11" value='<? echo $frm["DateFieldName"]; ?>'><input type="reset" value="&gt;&gt;" onclick="return showCalendar('sel1', 'y-mm-dd');">

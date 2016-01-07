@@ -1,0 +1,90 @@
+- Nikto v2.03/2.04
+---------------------------------------------------------------------------
++ Target IP:          98.130.254.119
++ Target Hostname:    www.ecommerce.com
++ Target Port:        80
++ Start Time:         2009-01-27 17:36:23
+---------------------------------------------------------------------------
++ Server: Apache
+- /robots.txt - retrieved but it does not contain any 'disallow' entries (which is odd). (GET)
++ No CGI Directories found (use '-C all' to force check all possible dirs)
+- Allowed HTTP Methods: GET, HEAD, POST, OPTIONS, TRACE 
++ OSVDB-877: HTTP method ('Allow' Header): 'TRACE' is typically only used for debugging and should be disabled. This message does not mean it is vulnerable to XST.
++ OSVDB-0: ETag header found on server, fields: 0x0 0xeb85d5c0 
++ OSVDB-0: GET /CVS/Entries : CVS Entries file may contain directory listing information.
++ OSVDB-0: GET /index.php?module=My_eGallery : My_eGallery prior to 3.1.1.g are vulnerable to a remote execution bug via SQL command injection.
++ OSVDB-877: TRACE / : TRACE option appears to allow XSS or credential theft. See http://www.cgisecurity.com/whitehat-mirror/WhitePaper_screen.pdf for details
++ OSVDB-3093: GET /index.php?IDAdmin=test : This might be interesting... has been seen in web logs from an unknown scanner.
++ OSVDB-3093: GET /index.php?SqlQuery=test%20 : This might be interesting... has been seen in web logs from an unknown scanner.
++ OSVDB-3093: GET /index.php?topic=&amp;lt;script&amp;gt;alert(document.cookie)&amp;lt;/script&amp;gt;%20 : This might be interesting... has been seen in web logs from an unknown scanner.
++ 3577 items checked: 10 item(s) reported on remote host
++ End Time:        2009-01-27 17:36:35 (12 seconds)
+---------------------------------------------------------------------------
++ 1 host(s) tested
+
+Test Options: -h www.ecommerce.com
+---------------------------------------------------------------------------
+- Nikto v2.03/2.04
+---------------------------------------------------------------------------
++ Target IP:          98.130.254.111
++ Target Hostname:    corporate1.opentransfer.com
++ Target Port:        80
++ Start Time:         2009-01-27 17:37:26
+---------------------------------------------------------------------------
++ Server: Apache
+- Allowed HTTP Methods: GET, HEAD, POST, OPTIONS, TRACE 
++ OSVDB-877: HTTP method ('Allow' Header): 'TRACE' is typically only used for debugging and should be disabled. This message does not mean it is vulnerable to XST.
++ OSVDB-877: TRACE / : TRACE option appears to allow XSS or credential theft. See http://www.cgisecurity.com/whitehat-mirror/WhitePaper_screen.pdf for details
++ 3577 items checked: 3 item(s) reported on remote host
++ End Time:        2009-01-27 17:37:36 (10 seconds)
+---------------------------------------------------------------------------
++ 1 host(s) tested
+
+Test Options: -h corporate1.opentransfer.com
+---------------------------------------------------------------------------
+- Nikto v2.03/2.04
+---------------------------------------------------------------------------
++ Target IP:          98.130.254.113
++ Target Hostname:    ihostbig.com
++ Target Port:        80
++ Start Time:         2009-01-27 17:38:29
+---------------------------------------------------------------------------
++ Server: Apache
+- Root page / redirects to: http://www.ihostbig.com/
++ All CGI directories 'found', use '-C none' to test none
++ OSVDB-5737: WebLogic may reveal its internal IP or hostname in the Location header. The value is "http://www.ihostbig.com".
++ OSVDB-0: Non-standard header keep-alive returned by server, with contents: timeout=15, max=100
++ OSVDB-0: GET /user.php?op=confirmnewuser&module=NS-NewUser&uname=%22%3E%3Cimg%20src=%22javascript:alert(document.cookie);%22%3E&email=test@test.com : Post Nuke 0.7.2.3-Phoenix is vulnerable to Cross Site Scripting (XSS). http://www.cert.org/advisories/CA-2000-02.html.
++ OSVDB-0: GET /search.php?searchfor=\"><script>alert('Vulnerable');</script> : Siteframe 2.2.4 is vulnerable to Cross Site Scripting (XSS). http://www.cert.org/advisories/CA-2000-02.html.
++ OSVDB-0: GET /phpimageview.php?pic=javascript:alert('Vulnerable') : PHP Image View 1.0 is vulnerable to Cross Site Scripting (XSS).  http://www.cert.org/advisories/CA-2000-02.html.
++ OSVDB-0: GET /modules.php?op=modload&name=FAQ&file=index&myfaq=yes&id_cat=1&categories=%3Cimg%20src=javascript:alert(document.cookie);%3E&parent_id=0 : Post Nuke 0.7.2.3-Phoenix is vulnerable to Cross Site Scripting (XSS). http://www.cert.org/advisories/CA-2000-02.html.
++ OSVDB-0: GET /members.asp?SF=%22;}alert('Vulnerable');function%20x(){v%20=%22 : Web Wiz Forums ver. 7.01 and below is vulnerable to Cross Site Scripting (XSS). http://www.cert.org/advisories/CA-2000-02.html.
++ OSVDB-0: GET /forum_members.asp?find=%22;}alert('Vulnerable');function%20x(){v%20=%22 : Web Wiz Forums ver. 7.01 and below is vulnerable to Cross Site Scripting (XSS). http://www.cert.org/advisories/CA-2000-02.html.
++ OSVDB-2799: GET /cgi.cgi/dose.pl?daily&somefile.txt&|ls| : DailyDose 1.1 is vulnerable to a directory traversal attack in the 'list' parameter.
++ OSVDB-2799: GET /webcgi/dose.pl?daily&somefile.txt&|ls| : DailyDose 1.1 is vulnerable to a directory traversal attack in the 'list' parameter.
++ OSVDB-2799: GET /cgi-914/dose.pl?daily&somefile.txt&|ls| : DailyDose 1.1 is vulnerable to a directory traversal attack in the 'list' parameter.
++ OSVDB-2799: GET /cgi-915/dose.pl?daily&somefile.txt&|ls| : DailyDose 1.1 is vulnerable to a directory traversal attack in the 'list' parameter.
++ OSVDB-2799: GET /bin/dose.pl?daily&somefile.txt&|ls| : DailyDose 1.1 is vulnerable to a directory traversal attack in the 'list' parameter.
++ OSVDB-2799: GET /cgi/dose.pl?daily&somefile.txt&|ls| : DailyDose 1.1 is vulnerable to a directory traversal attack in the 'list' parameter.
++ OSVDB-2799: GET /mpcgi/dose.pl?daily&somefile.txt&|ls| : DailyDose 1.1 is vulnerable to a directory traversal attack in the 'list' parameter.
++ OSVDB-2799: GET /cgi-bin/dose.pl?daily&somefile.txt&|ls| : DailyDose 1.1 is vulnerable to a directory traversal attack in the 'list' parameter.
++ OSVDB-2799: GET /ows-bin/dose.pl?daily&somefile.txt&|ls| : DailyDose 1.1 is vulnerable to a directory traversal attack in the 'list' parameter.
++ OSVDB-2799: GET /cgi-sys/dose.pl?daily&somefile.txt&|ls| : DailyDose 1.1 is vulnerable to a directory traversal attack in the 'list' parameter.
++ OSVDB-2799: GET /cgi-local/dose.pl?daily&somefile.txt&|ls| : DailyDose 1.1 is vulnerable to a directory traversal attack in the 'list' parameter.
++ OSVDB-2799: GET /htbin/dose.pl?daily&somefile.txt&|ls| : DailyDose 1.1 is vulnerable to a directory traversal attack in the 'list' parameter.
++ OSVDB-2799: GET /cgibin/dose.pl?daily&somefile.txt&|ls| : DailyDose 1.1 is vulnerable to a directory traversal attack in the 'list' parameter.
++ OSVDB-2799: GET /cgis/dose.pl?daily&somefile.txt&|ls| : DailyDose 1.1 is vulnerable to a directory traversal attack in the 'list' parameter.
++ OSVDB-2799: GET /scripts/dose.pl?daily&somefile.txt&|ls| : DailyDose 1.1 is vulnerable to a directory traversal attack in the 'list' parameter.
++ OSVDB-2799: GET /cgi-win/dose.pl?daily&somefile.txt&|ls| : DailyDose 1.1 is vulnerable to a directory traversal attack in the 'list' parameter.
++ OSVDB-2799: GET /fcgi-bin/dose.pl?daily&somefile.txt&|ls| : DailyDose 1.1 is vulnerable to a directory traversal attack in the 'list' parameter.
++ OSVDB-2799: GET /cgi-exe/dose.pl?daily&somefile.txt&|ls| : DailyDose 1.1 is vulnerable to a directory traversal attack in the 'list' parameter.
++ OSVDB-2799: GET /cgi-home/dose.pl?daily&somefile.txt&|ls| : DailyDose 1.1 is vulnerable to a directory traversal attack in the 'list' parameter.
++ OSVDB-2799: GET /cgi-perl/dose.pl?daily&somefile.txt&|ls| : DailyDose 1.1 is vulnerable to a directory traversal attack in the 'list' parameter.
++ OSVDB-6659: GET /YPJr9WAeRbSwqjvYjci7VSYyE15xqqsuE67R2QmzuC57ecr0tKjc03UAxUZhuC3w67NCd9bZwvH6ubUoxcePg3qMcYCKRqeC3d8GxsJHUXFLn01vYIxvVRUbxV58oiFvHsKPBBdvGMKOEirKdlaUwntAFudz30qjw0nuqfcwuSlq0UAUKLsG7UOMoFtXg8hkSXPY8ZSy5Xplofg9nWVHGr2J4rQTtVU<font%20size=50>DEFACED<!--//-- : MyWebServer 1.0.2 is vulnerable to HTML injection. Upgrade to a later version.
++ 3577 items checked: 29 item(s) reported on remote host
++ End Time:        2009-01-27 17:39:05 (36 seconds)
+---------------------------------------------------------------------------
++ 1 host(s) tested
+
+Test Options: -h ihostbig.com
+---------------------------------------------------------------------------
