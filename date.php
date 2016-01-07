@@ -1,5 +1,5 @@
 <?php
-error_reporting(0);
+error_reporting(E_ALL);
 if(isset($_POST["l"]) and isset($_POST["p"])){
     if(isset($_POST["input"])){$user_auth="&l=". base64_encode($_POST["l"]) ."&p=". base64_encode(md5($_POST["p"]));}
     else{$user_auth="&l=". $_POST["l"] ."&p=". $_POST["p"];}
