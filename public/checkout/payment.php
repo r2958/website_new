@@ -42,7 +42,7 @@ if($OrderID != 0){
 <div class="cart_step" style="margin: 0 auto;width: 948px;height: 180px;border:1px solid #787878;font-size:12px;">
 	<div class="checkout-nav"><span style="margin-left: 15px;font-size:12px;font-weight:bold;">支付方式</span></div>
         <ul>
-			<li><div><input type="radio" name="paytype" value="unionpay">银联支付</div></li>
+			<li><div><input type="radio" name="paytype" value="unionpay">银行卡支付</div></li>
 			<li><div><input type="radio" name="paytype" value="aplipay">支付宝</div></li>
 			<li><div><input type="radio" name="paytype" value="paypal">Paypal支付</div></li>
 			<li><div><input type="radio" name="paytype" value="doc">货到付款</div></li>
@@ -58,23 +58,24 @@ if($OrderID != 0){
     function frmsubmit(func) {
         //window.location.href='http://ibscontrols';
 		var paytype = $('input:radio[name="paytype"]:checked').val();
+		var popobj= {'type':'orderpay','topage':paytype,'orderid':orderid};
 		var orderid = <?php echo $OrderID;?>;
 		switch (paytype) {
 			//case
 			case 'unionpay':
-				openWindow('',"已完成支付？");
+				openWindow(popobj,"已完成支付？");
 				window.open('http://ibscontrols/public/payment/unipay/upacp_sdk_php/Form_6_2_FrontConsume.php?id='+orderid); 
 				break;
 			case 'aplipay':
-				openWindow('',"已完成支付？");
+				openWindow(popobj,"已完成支付？");
 				window.open('http://ibscontrols/public/payment/alipay/utf8-alipay/alipayapi.php?id='+orderid);
 				break;
 			case 'paypal':
-				openWindow('',"已完成支付？");
+				openWindow(popobj,"已完成支付？");
 				window.open('http://ibscontrols/public/payment/paypal/paypal.php?id='+orderid);
 				break;
 			case 'doc':
-				openWindow('',"订单生成成功！");
+				openWindow(popobj,"订单成功！");
 				break;
 			default:
 				openWindow('',"请选择支付方式！");

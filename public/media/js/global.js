@@ -334,16 +334,38 @@ function submitForm(frm){
 
 
 function openWindow(obj,msg){
-    //console.log(typeof obj);
+    console.log(obj);
+    var $url;
     if (typeof msg == "undefined") {
         //code
         msg="确认要删除吗？";
     }
     var orderID;
-    if (typeof obj != "undefined" && obj!="") {
+    if (typeof obj != "undefined" && obj.type=="remove_order") {
         //code
         orderID = obj.getAttribute('value');
+        var $url= '/public/users/userapi.php?func=removeOrder&orderID='+orderID;
+        
     }
+    
+    if (typeof obj != "undefined" && obj.type == "orderpay") {
+        //code
+        switch (obj.topage) {
+            //case
+            case 'unionpay':
+            case 'aplipay':
+            case 'paypal':
+                $url = '/public/order/checkout_order_status.php';
+                break;
+            case 'doc':
+                $url = '';
+                break;
+            default:
+                $url = '';
+        }
+    }
+
+    
     var window_width = window.screen.width;
     var left_position = window_width/2;
     $('.white_content').css('left',left_position)
@@ -355,7 +377,12 @@ function openWindow(obj,msg){
     $(".confirm_button").click(
         function(){
             closeWindow();
-            var $url= '/public/users/userapi.php?func=removeOrder&orderID='+orderID;
+            if ($url == "") {
+                //code
+                window.location.href="/public/order/detail.php";
+                return;
+            }
+            
             $.ajax({
                     type: "GET",
                     cache: false,

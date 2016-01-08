@@ -4,6 +4,7 @@ ini_set('register_globals',0);
 ini_set('allow_call_time_pass_reference' ,'On');
 ob_start('ob_gzhandler');
 */
+
 class object {};
 $CFG = new object;
 
@@ -33,6 +34,8 @@ $nav_array = array(1=>'男装',2=>'包袋',3=>'女鞋',4=>'内衣',5=>'男鞋',6
 /* Custom Error Handler Settings - Use for debugging only */
 //$NeturfErrorHandler->setDebugMode(true);
 //$NeturfErrorHandler->setDisplayErrors(false);
+/* Load common util class */
+require_once($CFG->serverroot . '/common/functions/class.Util.php');
 
 /* Load and start up Session handler */
 require_once($CFG->serverroot . '/common/cart4/classes/class.CartSessionHandler.php');

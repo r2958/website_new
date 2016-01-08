@@ -115,7 +115,7 @@ $UserFilter = " and FirstName = '$FirstName' and LastName = '$LastName' ";
                     <div style="height: 100px;line-height: 100px;"><a href="#">评价</a></div>
                 </div>
                 <div style="width:100px;height: 100px;float: left;text-align: center;">
-                    <div style="height: 100px;line-height: 100px;"><a href="javascript:void(0);" value="<?php echo $row->OrderID; ?>" onclick="openWindow(this)" >删除</a></div>
+                    <div style="height: 100px;line-height: 100px;"><a href="javascript:void(0);" type="remove_order" value="<?php echo $row->OrderID; ?>" onclick="openWindow(this)" >删除</a></div>
                 </div>
                 
             </div>

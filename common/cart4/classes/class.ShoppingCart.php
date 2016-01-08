@@ -169,6 +169,15 @@ class ShoppingCart
 		$this->CartTotal['GrandTotal'] = $this->CartTotal['Subtotal'] + $this->CartTotal['Tax'] + $this->CartTotal['Shipping'] + $this->CartTotal['ShippingExtra'];
 	}
 
+	public function getOrderInfo($OrderID){
+		$OrderID=intval($OrderID);
+		if($OrderID){
+			$OrderTotals =$this->getOrderBalance($OrderID);
+			return $OrderTotals;
+		}else{
+			return false;
+		}
+	}
 
 	function getTax($SubTotal, $State='', $Country='')
 	{
@@ -388,7 +397,7 @@ class ShoppingCart
 		$order->Extension = $frm['Extension'];
 		$order->Fax = $frm['Fax'];
 		$order->Comments = $frm['Comments'];
-		$order->MailingList = $frm['MailingList'];
+		$order->MailingList = $frm['MailingList'];		
 		$_SESSION['orderinfo'] = $order;
 	}
 
@@ -407,7 +416,7 @@ class ShoppingCart
 	function &doSaveFinalOrder()
 	{
 		global $order;
-		$qid = $this->DB->query("
+		$sql = "
 			INSERT INTO orders (
 				OrderDate,
 				Company, Title, FirstName, LastName, Email, Telephone, Extension, Fax,
@@ -424,7 +433,8 @@ class ShoppingCart
 				'{$this->CartTotal['ShippingExtraText']}', '{$this->CartTotal['S_Weight']}', '{$_SESSION['UPSChoice']}', '{$this->CartTotal['UPSErrorMsg']}',
 				'$order->Comments', '$order->MailingList',
 				'{$this->CartTotal['Subtotal']}', '{$this->CartTotal['Tax']}', '{$this->CartTotal['Shipping']}', '{$this->CartTotal['ShippingExtra']}'
-			)");
+			)";
+		$qid = $this->DB->query($sql);
 		$OrderID = $this->DB->insertID();
 
 		// add the shopping cart items into the order_items table
