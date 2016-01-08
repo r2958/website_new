@@ -3,6 +3,7 @@ require_once('../../application.php');
 require_once('../template_header.php'); 
 $errors = new Object;
 /* form has been submitted */
+//var_dump($_POST);
 if((isset($_POST['done'])) && ($_POST['done'] == 'Yes')) {
 	if(empty($_POST['FirstName'])) $errors->errorFirstName = true;
 	if(empty($_POST['LastName'])) $errors->errorLastName = true;
@@ -21,14 +22,18 @@ if((isset($_POST['done'])) && ($_POST['done'] == 'Yes')) {
 	if(count(get_object_vars($errors)) == 0) {
 		$ShoppingCart->setShippingVariables($_POST);
 		$ShoppingCart->setOrderCheckoutInfo($_POST);
-		header('Location: payment.php');
+		$order = $ShoppingCart->getOrderCheckoutInfo();
+		$OrderID =& $ShoppingCart->doSaveFinalOrder(); //保存订单信息
+		$ShoppingCart->doDeleteOrderFromCart();
+		$ShoppingCart->setCartTotals();
+		header('Location: /public/checkout/payment.php?oid='.$OrderID);
 		die;
 	} else {
+		var_dump($errors);exit;
 		$ShoppingCart->setOrderCheckoutInfo($_POST);
 	}
 
 }
-
 
 
 $order = $ShoppingCart->getOrderCheckoutInfo();
@@ -94,7 +99,7 @@ if(isset($_SESSION['user'])){
 	
 	
 <div style="width: 930px;min-height: 180px;margin: 30px  auto 0px;border: 0px solid #000;background-color: #FFF;text-align: center;font-family: Arial,Helvetica,sans-serif;letter-spacing: 1px;">
-<form name="entryform" method="post" action="/public/checkout/payment.php">
+<form name="entryform" method="post" action="/public/checkout/index.php">
 
 	<input type="hidden" name="done" value="Yes">
 	<input type="hidden" name="FirstName" value="<?php echo $User->UserInfo->FirstName ;?>">

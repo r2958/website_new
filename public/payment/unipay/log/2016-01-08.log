@@ -1,0 +1,508 @@
+2016-01-08 11:02:15, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/Form_6_2_FrontConsume.php ], Line[20]------ ============处理前台请求开始=============== 
+2016-01-08 11:02:16, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/Form_6_2_FrontConsume.php ], Line[20]------ ============处理前台请求开始=============== 
+2016-01-08 11:02:16, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/Form_6_2_FrontConsume.php ], Line[20]------ ============处理前台请求开始=============== 
+2016-01-08 11:03:33, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/Form_6_2_FrontConsume.php ], Line[20]------ ============处理前台请求开始=============== 
+2016-01-08 11:04:08, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/Form_6_2_FrontConsume.php ], Line[20]------ ============处理前台请求开始=============== 
+2016-01-08 11:05:07, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/Form_6_2_FrontConsume.php ], Line[20]------ ============处理前台请求开始=============== 
+2016-01-08 11:05:45, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/Form_6_2_FrontConsume.php ], Line[19]------ ============处理前台请求开始=============== 
+2016-01-08 11:06:15, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/Form_6_2_FrontConsume.php ], Line[19]------ ============处理前台请求开始=============== 
+2016-01-08 11:06:15, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/utf8/func/secureUtil.php ], Line[16]------ =====签名报文开始====== 
+2016-01-08 11:06:15, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/utf8/func/secureUtil.php ], Line[22]------ 签名key=val&...串 >accessType=0&backUrl=http://ibscontrols/public/payment/unipay/upacp_sdk_php/BackReceive.php&bizType=000201&certId=124876885185794726986301355951670452718&channelType=07&currencyCode=156&defaultPayType=0001&encoding=utf-8&frontUrl=http://ibscontrols/public/payment/unipay/upacp_sdk_php/FrontReceive.php&merId=700000000000001&orderId=20160108110615&reqReserved= 透传信息&signMethod=01&txnAmt=100&txnSubType=01&txnTime=20160108110615&txnType=01&version=5.0.0 
+2016-01-08 11:06:15, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/utf8/func/secureUtil.php ], Line[25]------ 摘要sha1x16 >7d156e683162ae4d8439b896066c5288a6c6819a 
+2016-01-08 11:06:15, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/utf8/func/secureUtil.php ], Line[33]------ 签名串为 >naKQnrGQ7N4Y5derwdyO9uDfAhv54BwoH7UaKRqOT8yellO7efBJjXuDlTEvmjueR+VJ2seHIzZOocaEGqVgw5j8/+KwhEpxyYVRhEryL5vbtbVY3Hc4A8aAsnGn9ngoiGGF0IBLc1nUomC96r7nmK/oxCVZIUAZqMfNtQezi9A= 
+2016-01-08 11:06:15, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/utf8/func/secureUtil.php ], Line[38]------ =====签名报文结束====== 
+2016-01-08 11:06:15, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/Form_6_2_FrontConsume.php ], Line[50]------ 前台请求地址为>https://101.231.204.80:5000/gateway/api/frontTransReq.do 
+2016-01-08 11:06:15, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/Form_6_2_FrontConsume.php ], Line[54]------ -------前台交易自动提交表单>--begin---- 
+2016-01-08 11:06:15, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/Form_6_2_FrontConsume.php ], Line[55]------ <html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body  onload="javascript:document.pay_form.submit();">
+    <form id="pay_form" name="pay_form" action="https://101.231.204.80:5000/gateway/api/frontTransReq.do" method="post">
+	    <input type="hidden" name="version" id="version" value="5.0.0" />
+    <input type="hidden" name="encoding" id="encoding" value="utf-8" />
+    <input type="hidden" name="certId" id="certId" value="124876885185794726986301355951670452718" />
+    <input type="hidden" name="txnType" id="txnType" value="01" />
+    <input type="hidden" name="txnSubType" id="txnSubType" value="01" />
+    <input type="hidden" name="bizType" id="bizType" value="000201" />
+    <input type="hidden" name="frontUrl" id="frontUrl" value="http://ibscontrols/public/payment/unipay/upacp_sdk_php/FrontReceive.php" />
+    <input type="hidden" name="backUrl" id="backUrl" value="http://ibscontrols/public/payment/unipay/upacp_sdk_php/BackReceive.php" />
+    <input type="hidden" name="signMethod" id="signMethod" value="01" />
+    <input type="hidden" name="channelType" id="channelType" value="07" />
+    <input type="hidden" name="accessType" id="accessType" value="0" />
+    <input type="hidden" name="merId" id="merId" value="700000000000001" />
+    <input type="hidden" name="orderId" id="orderId" value="20160108110615" />
+    <input type="hidden" name="txnTime" id="txnTime" value="20160108110615" />
+    <input type="hidden" name="txnAmt" id="txnAmt" value="100" />
+    <input type="hidden" name="currencyCode" id="currencyCode" value="156" />
+    <input type="hidden" name="defaultPayType" id="defaultPayType" value="0001" />
+    <input type="hidden" name="reqReserved" id="reqReserved" value=" 透传信息" />
+    <input type="hidden" name="signature" id="signature" value="naKQnrGQ7N4Y5derwdyO9uDfAhv54BwoH7UaKRqOT8yellO7efBJjXuDlTEvmjueR+VJ2seHIzZOocaEGqVgw5j8/+KwhEpxyYVRhEryL5vbtbVY3Hc4A8aAsnGn9ngoiGGF0IBLc1nUomC96r7nmK/oxCVZIUAZqMfNtQezi9A=" />
+    <input type="submit" type="hidden">
+    </form>
+</body>
+</html> 
+2016-01-08 11:06:15, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/Form_6_2_FrontConsume.php ], Line[56]------ -------前台交易自动提交表单>--end------- 
+2016-01-08 11:06:15, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/Form_6_2_FrontConsume.php ], Line[57]------ ============处理前台请求 结束=========== 
+2016-01-08 11:09:10, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/Form_6_2_FrontConsume.php ], Line[19]------ ============处理前台请求开始=============== 
+2016-01-08 11:09:10, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/utf8/func/secureUtil.php ], Line[16]------ =====签名报文开始====== 
+2016-01-08 11:09:10, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/utf8/func/secureUtil.php ], Line[22]------ 签名key=val&...串 >accessType=0&backUrl=http://ibscontrols/public/payment/unipay/upacp_sdk_php/BackReceive.php&bizType=000201&certId=124876885185794726986301355951670452718&channelType=07&currencyCode=156&defaultPayType=0001&encoding=utf-8&frontUrl=http://ibscontrols/public/payment/unipay/upacp_sdk_php/FrontReceive.php&merId=700000000000001&orderId=20160108110910&reqReserved= 透传信息&signMethod=01&txnAmt=100&txnSubType=01&txnTime=20160108110910&txnType=01&version=5.0.0 
+2016-01-08 11:09:10, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/utf8/func/secureUtil.php ], Line[25]------ 摘要sha1x16 >ef7260ae8219f33597526518fbef55272dbfc659 
+2016-01-08 11:09:10, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/utf8/func/secureUtil.php ], Line[33]------ 签名串为 >liTJJEOUMPsZhTJL8lt+yU9hMV7dS7tiWsqdUUncEVr6BYkKzOBB7JsLoQmucsh7Y1Ul4aOfqMFp4RI3x36s6fPaCvdFy57YHifP0IRbcUnIUSEIUiiOft2lFmVLWT9YmxER5k50fKE116x+DGxVDF3eqmLC2R/f5KGUWHL35bk= 
+2016-01-08 11:09:10, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/utf8/func/secureUtil.php ], Line[38]------ =====签名报文结束====== 
+2016-01-08 11:11:21, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/Form_6_2_FrontConsume.php ], Line[19]------ ============处理前台请求开始=============== 
+2016-01-08 11:11:21, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/utf8/func/secureUtil.php ], Line[16]------ =====签名报文开始====== 
+2016-01-08 11:11:21, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/utf8/func/secureUtil.php ], Line[22]------ 签名key=val&...串 >accessType=0&backUrl=http://ibscontrols/public/payment/unipay/upacp_sdk_php/BackReceive.php&bizType=000201&certId=124876885185794726986301355951670452718&channelType=07&currencyCode=156&defaultPayType=0001&encoding=utf-8&frontUrl=http://ibscontrols/public/payment/unipay/upacp_sdk_php/FrontReceive.php&merId=700000000000001&orderId=20160108111121&reqReserved= 透传信息&signMethod=01&txnAmt=100&txnSubType=01&txnTime=20160108111121&txnType=01&version=5.0.0 
+2016-01-08 11:11:21, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/utf8/func/secureUtil.php ], Line[25]------ 摘要sha1x16 >730f2403cd3ad4a4c39829cf112107e3fab3f551 
+2016-01-08 11:11:21, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/utf8/func/secureUtil.php ], Line[33]------ 签名串为 >o7lkhFkvlDLhr/McVujQNe1CCnTFybGxWs/ynrhdHz6ox75A6H/wIYcfT8NUkUMQZPd/uoDW0U6SR4Vs/ESOFE8vDbHhoWprkZOwlDsfov0s/LiNOoWcXgOk7tOacs0Wp0bJOhqqUUmNGZUDACfZyYOo8V4c2//KM1B5rzVGHF0= 
+2016-01-08 11:11:21, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/utf8/func/secureUtil.php ], Line[38]------ =====签名报文结束====== 
+2016-01-08 11:13:50, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/Form_6_2_FrontConsume.php ], Line[19]------ ============处理前台请求开始=============== 
+2016-01-08 11:13:50, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/utf8/func/secureUtil.php ], Line[16]------ =====签名报文开始====== 
+2016-01-08 11:13:50, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/utf8/func/secureUtil.php ], Line[22]------ 签名key=val&...串 >accessType=0&backUrl=http://ibscontrols/public/payment/unipay/upacp_sdk_php/BackReceive.php&bizType=000201&certId=124876885185794726986301355951670452718&channelType=07&currencyCode=156&defaultPayType=0001&encoding=utf-8&frontUrl=http://ibscontrols/public/payment/unipay/upacp_sdk_php/FrontReceive.php&merId=700000000000001&orderId=20160108111350&reqReserved= 透传信息&signMethod=01&txnAmt=100&txnSubType=01&txnTime=20160108111350&txnType=01&version=5.0.0 
+2016-01-08 11:13:50, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/utf8/func/secureUtil.php ], Line[25]------ 摘要sha1x16 >74a5537dac959f99e5e76e2df4fee4ae9503fe58 
+2016-01-08 11:13:50, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/utf8/func/secureUtil.php ], Line[33]------ 签名串为 >G5MUAGhHj7msBZsZ41jn9haxFuN0qfSvrlxkP0xdxBDLvJTo8hDsK0A4palcRBv9NWB4y2JLE0Ktb8Jyw5O+cIa3q/xry0r8hmcz8+yw1t69zh1DvU1lSt0QbUFzlQE3H//KWGVzqAXt2t4FiIxuedwKYra37dAZ+fsIeTJidIA= 
+2016-01-08 11:13:50, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/utf8/func/secureUtil.php ], Line[38]------ =====签名报文结束====== 
+2016-01-08 11:13:51, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/Form_6_2_FrontConsume.php ], Line[19]------ ============处理前台请求开始=============== 
+2016-01-08 11:13:51, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/utf8/func/secureUtil.php ], Line[16]------ =====签名报文开始====== 
+2016-01-08 11:13:51, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/utf8/func/secureUtil.php ], Line[22]------ 签名key=val&...串 >accessType=0&backUrl=http://ibscontrols/public/payment/unipay/upacp_sdk_php/BackReceive.php&bizType=000201&certId=124876885185794726986301355951670452718&channelType=07&currencyCode=156&defaultPayType=0001&encoding=utf-8&frontUrl=http://ibscontrols/public/payment/unipay/upacp_sdk_php/FrontReceive.php&merId=700000000000001&orderId=20160108111351&reqReserved= 透传信息&signMethod=01&txnAmt=100&txnSubType=01&txnTime=20160108111351&txnType=01&version=5.0.0 
+2016-01-08 11:13:51, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/utf8/func/secureUtil.php ], Line[25]------ 摘要sha1x16 >aa980d71b02cbf48d7a5103f0068c6c8570df13b 
+2016-01-08 11:13:51, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/utf8/func/secureUtil.php ], Line[33]------ 签名串为 >L9pdBKVTmXsZgldzCjT1/8MWtbLWXeRd0ihAYOBrRECCCxSYOUtoAT+cergzrZQ+2QXHqXrq9w3rp5dlhSkoVPjetBooImtXBjtIctimLpsoHh5Z8cevghNTcTdIV6Lm8jh7NeNLlTwiGrN8PfQxB7EIXABtoyJLjBhwlO+59Zs= 
+2016-01-08 11:13:51, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/utf8/func/secureUtil.php ], Line[38]------ =====签名报文结束====== 
+2016-01-08 11:13:51, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/Form_6_2_FrontConsume.php ], Line[19]------ ============处理前台请求开始=============== 
+2016-01-08 11:13:51, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/utf8/func/secureUtil.php ], Line[16]------ =====签名报文开始====== 
+2016-01-08 11:13:51, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/utf8/func/secureUtil.php ], Line[22]------ 签名key=val&...串 >accessType=0&backUrl=http://ibscontrols/public/payment/unipay/upacp_sdk_php/BackReceive.php&bizType=000201&certId=124876885185794726986301355951670452718&channelType=07&currencyCode=156&defaultPayType=0001&encoding=utf-8&frontUrl=http://ibscontrols/public/payment/unipay/upacp_sdk_php/FrontReceive.php&merId=700000000000001&orderId=20160108111351&reqReserved= 透传信息&signMethod=01&txnAmt=100&txnSubType=01&txnTime=20160108111351&txnType=01&version=5.0.0 
+2016-01-08 11:13:51, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/utf8/func/secureUtil.php ], Line[25]------ 摘要sha1x16 >aa980d71b02cbf48d7a5103f0068c6c8570df13b 
+2016-01-08 11:13:51, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/utf8/func/secureUtil.php ], Line[33]------ 签名串为 >L9pdBKVTmXsZgldzCjT1/8MWtbLWXeRd0ihAYOBrRECCCxSYOUtoAT+cergzrZQ+2QXHqXrq9w3rp5dlhSkoVPjetBooImtXBjtIctimLpsoHh5Z8cevghNTcTdIV6Lm8jh7NeNLlTwiGrN8PfQxB7EIXABtoyJLjBhwlO+59Zs= 
+2016-01-08 11:13:51, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/utf8/func/secureUtil.php ], Line[38]------ =====签名报文结束====== 
+2016-01-08 11:14:37, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/Form_6_2_FrontConsume.php ], Line[19]------ ============处理前台请求开始=============== 
+2016-01-08 11:14:37, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/utf8/func/secureUtil.php ], Line[16]------ =====签名报文开始====== 
+2016-01-08 11:14:37, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/utf8/func/secureUtil.php ], Line[22]------ 签名key=val&...串 >accessType=0&backUrl=http://ibscontrols/public/payment/unipay/upacp_sdk_php/BackReceive.php&bizType=000201&certId=124876885185794726986301355951670452718&channelType=07&currencyCode=156&defaultPayType=0001&encoding=utf-8&frontUrl=http://ibscontrols/public/payment/unipay/upacp_sdk_php/FrontReceive.php&merId=700000000000001&orderId=20160108111437&reqReserved= 透传信息&signMethod=01&txnAmt=100&txnSubType=01&txnTime=20160108111437&txnType=01&version=5.0.0 
+2016-01-08 11:14:37, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/utf8/func/secureUtil.php ], Line[25]------ 摘要sha1x16 >11a0be34fa3473860e518f65a7f389b9a82607d3 
+2016-01-08 11:14:37, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/utf8/func/secureUtil.php ], Line[33]------ 签名串为 >AkKgKE/STbHn7Hike6g5Hq4N1oj29YSiCx5oOrNE0nEkxdBCUuRSZivqOG/Ji2HKifSz4e2eyqLoYj+KacxwTVdLS6Xl6V+3GkyRmKiF+JPe1FiBOG0BN4+1XOxwnQMAufcV2pSCU7G0Nv3TxO+HhxrNcN2RMnWDBPetOYYkySY= 
+2016-01-08 11:14:37, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/utf8/func/secureUtil.php ], Line[38]------ =====签名报文结束====== 
+2016-01-08 11:14:37, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/Form_6_2_FrontConsume.php ], Line[54]------ 前台请求地址为>https://101.231.204.80:5000/gateway/api/frontTransReq.do 
+2016-01-08 11:14:37, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/Form_6_2_FrontConsume.php ], Line[58]------ -------前台交易自动提交表单>--begin---- 
+2016-01-08 11:14:37, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/Form_6_2_FrontConsume.php ], Line[59]------ <html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body  onload="javascript:document.pay_form.submit();">
+    <form id="pay_form" name="pay_form" action="https://101.231.204.80:5000/gateway/api/frontTransReq.do" method="post">
+	    <input type="hidden" name="version" id="version" value="5.0.0" />
+    <input type="hidden" name="encoding" id="encoding" value="utf-8" />
+    <input type="hidden" name="certId" id="certId" value="124876885185794726986301355951670452718" />
+    <input type="hidden" name="txnType" id="txnType" value="01" />
+    <input type="hidden" name="txnSubType" id="txnSubType" value="01" />
+    <input type="hidden" name="bizType" id="bizType" value="000201" />
+    <input type="hidden" name="frontUrl" id="frontUrl" value="http://ibscontrols/public/payment/unipay/upacp_sdk_php/FrontReceive.php" />
+    <input type="hidden" name="backUrl" id="backUrl" value="http://ibscontrols/public/payment/unipay/upacp_sdk_php/BackReceive.php" />
+    <input type="hidden" name="signMethod" id="signMethod" value="01" />
+    <input type="hidden" name="channelType" id="channelType" value="07" />
+    <input type="hidden" name="accessType" id="accessType" value="0" />
+    <input type="hidden" name="merId" id="merId" value="700000000000001" />
+    <input type="hidden" name="orderId" id="orderId" value="20160108111437" />
+    <input type="hidden" name="txnTime" id="txnTime" value="20160108111437" />
+    <input type="hidden" name="txnAmt" id="txnAmt" value="100" />
+    <input type="hidden" name="currencyCode" id="currencyCode" value="156" />
+    <input type="hidden" name="defaultPayType" id="defaultPayType" value="0001" />
+    <input type="hidden" name="reqReserved" id="reqReserved" value=" 透传信息" />
+    <input type="hidden" name="signature" id="signature" value="AkKgKE/STbHn7Hike6g5Hq4N1oj29YSiCx5oOrNE0nEkxdBCUuRSZivqOG/Ji2HKifSz4e2eyqLoYj+KacxwTVdLS6Xl6V+3GkyRmKiF+JPe1FiBOG0BN4+1XOxwnQMAufcV2pSCU7G0Nv3TxO+HhxrNcN2RMnWDBPetOYYkySY=" />
+    <input type="submit" type="hidden">
+    </form>
+</body>
+</html> 
+2016-01-08 11:14:37, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/Form_6_2_FrontConsume.php ], Line[60]------ -------前台交易自动提交表单>--end------- 
+2016-01-08 11:14:37, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/Form_6_2_FrontConsume.php ], Line[61]------ ============处理前台请求 结束=========== 
+2016-01-08 11:15:07, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/Form_6_2_FrontConsume.php ], Line[19]------ ============处理前台请求开始=============== 
+2016-01-08 11:15:07, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/utf8/func/secureUtil.php ], Line[16]------ =====签名报文开始====== 
+2016-01-08 11:15:07, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/utf8/func/secureUtil.php ], Line[22]------ 签名key=val&...串 >accessType=0&backUrl=http://ibscontrols/public/payment/unipay/upacp_sdk_php/BackReceive.php&bizType=000201&certId=124876885185794726986301355951670452718&channelType=07&currencyCode=156&defaultPayType=0001&encoding=utf-8&frontUrl=http://ibscontrols/public/payment/unipay/upacp_sdk_php/FrontReceive.php&merId=700000000000001&orderId=20160108111507&reqReserved= 透传信息&signMethod=01&txnAmt=100&txnSubType=01&txnTime=20160108111507&txnType=01&version=5.0.0 
+2016-01-08 11:15:07, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/utf8/func/secureUtil.php ], Line[25]------ 摘要sha1x16 >42b6700699e5d8d22b4cb7ac6cf6d44dd85db6bc 
+2016-01-08 11:15:07, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/utf8/func/secureUtil.php ], Line[33]------ 签名串为 >MGG0cF8m8/fE7pRNNgCmaATRrpZ0KZI28hiZhB6d+SFT1lFxMkpPS72duywIZ5H5jBQp6AD2BX6Gdn6A+7WFYhBeEtbclXpiQrLknKb2WWHcMMzgyJ/fEhmUC8/1hNP+4hZZcyubAPZcR0uuMv3YUcM3zRdCvo82OHGGq4pcHRY= 
+2016-01-08 11:15:07, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/utf8/func/secureUtil.php ], Line[38]------ =====签名报文结束====== 
+2016-01-08 11:15:07, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/Form_6_2_FrontConsume.php ], Line[54]------ 前台请求地址为>https://101.231.204.80:5000/gateway/api/frontTransReq.do 
+2016-01-08 11:15:07, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/Form_6_2_FrontConsume.php ], Line[58]------ -------前台交易自动提交表单>--begin---- 
+2016-01-08 11:15:07, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/Form_6_2_FrontConsume.php ], Line[59]------ <html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body  onload="javascript:document.pay_form.submit();">
+    <form id="pay_form" name="pay_form" action="https://101.231.204.80:5000/gateway/api/frontTransReq.do" method="post">
+	    <input type="hidden" name="version" id="version" value="5.0.0" />
+    <input type="hidden" name="encoding" id="encoding" value="utf-8" />
+    <input type="hidden" name="certId" id="certId" value="124876885185794726986301355951670452718" />
+    <input type="hidden" name="txnType" id="txnType" value="01" />
+    <input type="hidden" name="txnSubType" id="txnSubType" value="01" />
+    <input type="hidden" name="bizType" id="bizType" value="000201" />
+    <input type="hidden" name="frontUrl" id="frontUrl" value="http://ibscontrols/public/payment/unipay/upacp_sdk_php/FrontReceive.php" />
+    <input type="hidden" name="backUrl" id="backUrl" value="http://ibscontrols/public/payment/unipay/upacp_sdk_php/BackReceive.php" />
+    <input type="hidden" name="signMethod" id="signMethod" value="01" />
+    <input type="hidden" name="channelType" id="channelType" value="07" />
+    <input type="hidden" name="accessType" id="accessType" value="0" />
+    <input type="hidden" name="merId" id="merId" value="700000000000001" />
+    <input type="hidden" name="orderId" id="orderId" value="20160108111507" />
+    <input type="hidden" name="txnTime" id="txnTime" value="20160108111507" />
+    <input type="hidden" name="txnAmt" id="txnAmt" value="100" />
+    <input type="hidden" name="currencyCode" id="currencyCode" value="156" />
+    <input type="hidden" name="defaultPayType" id="defaultPayType" value="0001" />
+    <input type="hidden" name="reqReserved" id="reqReserved" value=" 透传信息" />
+    <input type="hidden" name="signature" id="signature" value="MGG0cF8m8/fE7pRNNgCmaATRrpZ0KZI28hiZhB6d+SFT1lFxMkpPS72duywIZ5H5jBQp6AD2BX6Gdn6A+7WFYhBeEtbclXpiQrLknKb2WWHcMMzgyJ/fEhmUC8/1hNP+4hZZcyubAPZcR0uuMv3YUcM3zRdCvo82OHGGq4pcHRY=" />
+    <input type="submit" type="hidden">
+    </form>
+</body>
+</html> 
+2016-01-08 11:15:07, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/Form_6_2_FrontConsume.php ], Line[60]------ -------前台交易自动提交表单>--end------- 
+2016-01-08 11:15:07, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/Form_6_2_FrontConsume.php ], Line[61]------ ============处理前台请求 结束=========== 
+2016-01-08 11:15:32, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/Form_6_2_FrontConsume.php ], Line[19]------ ============处理前台请求开始=============== 
+2016-01-08 11:15:32, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/utf8/func/secureUtil.php ], Line[16]------ =====签名报文开始====== 
+2016-01-08 11:15:32, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/utf8/func/secureUtil.php ], Line[22]------ 签名key=val&...串 >accessType=0&backUrl=http://ibscontrols/public/payment/unipay/upacp_sdk_php/BackReceive.php&bizType=000201&certId=124876885185794726986301355951670452718&channelType=07&currencyCode=156&defaultPayType=0001&encoding=utf-8&frontUrl=http://ibscontrols/public/payment/unipay/upacp_sdk_php/FrontReceive.php&merId=700000000000001&orderId=20160108111532&reqReserved= 透传信息&signMethod=01&txnAmt=100&txnSubType=01&txnTime=20160108111532&txnType=01&version=5.0.0 
+2016-01-08 11:15:32, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/utf8/func/secureUtil.php ], Line[25]------ 摘要sha1x16 >4fc05e598c95a9e5978973b7996fa776c8636048 
+2016-01-08 11:15:32, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/utf8/func/secureUtil.php ], Line[33]------ 签名串为 >WTlIpATBdxFaIjrusndoxVwhQbob7o4SpifV2tKQutx2+cjmubXSsjZsPj9qOg1U4eE8j9L7vH2xKrgL7OwYZ5ImJJ7d+LYEELoAQTegEXnDcpQ1WoJYKQ7CmV6vxI5ysfuo2Tl3q310ZbBkFeyMSMKPin2N63LgMbC8esrr8ow= 
+2016-01-08 11:15:32, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/utf8/func/secureUtil.php ], Line[38]------ =====签名报文结束====== 
+2016-01-08 11:15:32, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/Form_6_2_FrontConsume.php ], Line[54]------ 前台请求地址为>https://101.231.204.80:5000/gateway/api/frontTransReq.do 
+2016-01-08 11:15:32, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/Form_6_2_FrontConsume.php ], Line[58]------ -------前台交易自动提交表单>--begin---- 
+2016-01-08 11:15:32, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/Form_6_2_FrontConsume.php ], Line[59]------ <html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body  onload="javascript:document.pay_form.submit();">
+    <form id="pay_form" name="pay_form" action="https://101.231.204.80:5000/gateway/api/frontTransReq.do" method="post">
+	    <input type="hidden" name="version" id="version" value="5.0.0" />
+    <input type="hidden" name="encoding" id="encoding" value="utf-8" />
+    <input type="hidden" name="certId" id="certId" value="124876885185794726986301355951670452718" />
+    <input type="hidden" name="txnType" id="txnType" value="01" />
+    <input type="hidden" name="txnSubType" id="txnSubType" value="01" />
+    <input type="hidden" name="bizType" id="bizType" value="000201" />
+    <input type="hidden" name="frontUrl" id="frontUrl" value="http://ibscontrols/public/payment/unipay/upacp_sdk_php/FrontReceive.php" />
+    <input type="hidden" name="backUrl" id="backUrl" value="http://ibscontrols/public/payment/unipay/upacp_sdk_php/BackReceive.php" />
+    <input type="hidden" name="signMethod" id="signMethod" value="01" />
+    <input type="hidden" name="channelType" id="channelType" value="07" />
+    <input type="hidden" name="accessType" id="accessType" value="0" />
+    <input type="hidden" name="merId" id="merId" value="700000000000001" />
+    <input type="hidden" name="orderId" id="orderId" value="20160108111532" />
+    <input type="hidden" name="txnTime" id="txnTime" value="20160108111532" />
+    <input type="hidden" name="txnAmt" id="txnAmt" value="100" />
+    <input type="hidden" name="currencyCode" id="currencyCode" value="156" />
+    <input type="hidden" name="defaultPayType" id="defaultPayType" value="0001" />
+    <input type="hidden" name="reqReserved" id="reqReserved" value=" 透传信息" />
+    <input type="hidden" name="signature" id="signature" value="WTlIpATBdxFaIjrusndoxVwhQbob7o4SpifV2tKQutx2+cjmubXSsjZsPj9qOg1U4eE8j9L7vH2xKrgL7OwYZ5ImJJ7d+LYEELoAQTegEXnDcpQ1WoJYKQ7CmV6vxI5ysfuo2Tl3q310ZbBkFeyMSMKPin2N63LgMbC8esrr8ow=" />
+    <input type="submit" type="hidden">
+    </form>
+</body>
+</html> 
+2016-01-08 11:15:32, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/Form_6_2_FrontConsume.php ], Line[60]------ -------前台交易自动提交表单>--end------- 
+2016-01-08 11:15:32, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/Form_6_2_FrontConsume.php ], Line[61]------ ============处理前台请求 结束=========== 
+2016-01-08 11:18:00, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/Form_6_2_FrontConsume.php ], Line[19]------ ============处理前台请求开始=============== 
+2016-01-08 11:18:00, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/utf8/func/secureUtil.php ], Line[16]------ =====签名报文开始====== 
+2016-01-08 11:18:00, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/utf8/func/secureUtil.php ], Line[22]------ 签名key=val&...串 >accessType=0&backUrl=http://ibscontrols/public/payment/unipay/upacp_sdk_php/BackReceive.php&bizType=000201&certId=124876885185794726986301355951670452718&channelType=07&currencyCode=156&defaultPayType=0001&encoding=utf-8&frontUrl=http://ibscontrols/public/payment/unipay/upacp_sdk_php/FrontReceive.php&merId=700000000000001&orderId=20160108111800&reqReserved= 透传信息&signMethod=01&txnAmt=100&txnSubType=01&txnTime=20160108111800&txnType=01&version=5.0.0 
+2016-01-08 11:18:00, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/utf8/func/secureUtil.php ], Line[25]------ 摘要sha1x16 >39189e95e6fdc1a8401bfaf84ca8c3269509c16f 
+2016-01-08 11:18:00, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/utf8/func/secureUtil.php ], Line[33]------ 签名串为 >pySQyfh7AAcRZ2AbxghDo+CqniIL/TENKYMkTPJZxhxzT2nYb+eUgUmJDrMbTcLCbUpadbd+4LGhacIIMLaJRCvyFgrG8IWJnqzG980KJLiPO2K0RwKsiG+3NuzonRAaYnTMaR9Vck6gLu4zkFj+u0CNFmBxysn1uXkNlA4jaIc= 
+2016-01-08 11:18:00, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/utf8/func/secureUtil.php ], Line[38]------ =====签名报文结束====== 
+2016-01-08 11:18:00, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/Form_6_2_FrontConsume.php ], Line[54]------ 前台请求地址为>https://101.231.204.80:5000/gateway/api/frontTransReq.do 
+2016-01-08 11:18:00, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/Form_6_2_FrontConsume.php ], Line[58]------ -------前台交易自动提交表单>--begin---- 
+2016-01-08 11:18:00, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/Form_6_2_FrontConsume.php ], Line[59]------ <html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body  onload="javascript:document.pay_form.submit();">
+    <form id="pay_form" name="pay_form" action="https://101.231.204.80:5000/gateway/api/frontTransReq.do" method="post">
+	    <input type="hidden" name="version" id="version" value="5.0.0" />
+    <input type="hidden" name="encoding" id="encoding" value="utf-8" />
+    <input type="hidden" name="certId" id="certId" value="124876885185794726986301355951670452718" />
+    <input type="hidden" name="txnType" id="txnType" value="01" />
+    <input type="hidden" name="txnSubType" id="txnSubType" value="01" />
+    <input type="hidden" name="bizType" id="bizType" value="000201" />
+    <input type="hidden" name="frontUrl" id="frontUrl" value="http://ibscontrols/public/payment/unipay/upacp_sdk_php/FrontReceive.php" />
+    <input type="hidden" name="backUrl" id="backUrl" value="http://ibscontrols/public/payment/unipay/upacp_sdk_php/BackReceive.php" />
+    <input type="hidden" name="signMethod" id="signMethod" value="01" />
+    <input type="hidden" name="channelType" id="channelType" value="07" />
+    <input type="hidden" name="accessType" id="accessType" value="0" />
+    <input type="hidden" name="merId" id="merId" value="700000000000001" />
+    <input type="hidden" name="orderId" id="orderId" value="20160108111800" />
+    <input type="hidden" name="txnTime" id="txnTime" value="20160108111800" />
+    <input type="hidden" name="txnAmt" id="txnAmt" value="100" />
+    <input type="hidden" name="currencyCode" id="currencyCode" value="156" />
+    <input type="hidden" name="defaultPayType" id="defaultPayType" value="0001" />
+    <input type="hidden" name="reqReserved" id="reqReserved" value=" 透传信息" />
+    <input type="hidden" name="signature" id="signature" value="pySQyfh7AAcRZ2AbxghDo+CqniIL/TENKYMkTPJZxhxzT2nYb+eUgUmJDrMbTcLCbUpadbd+4LGhacIIMLaJRCvyFgrG8IWJnqzG980KJLiPO2K0RwKsiG+3NuzonRAaYnTMaR9Vck6gLu4zkFj+u0CNFmBxysn1uXkNlA4jaIc=" />
+    <input type="submit" type="hidden">
+    </form>
+</body>
+</html> 
+2016-01-08 11:18:00, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/Form_6_2_FrontConsume.php ], Line[60]------ -------前台交易自动提交表单>--end------- 
+2016-01-08 11:18:00, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/Form_6_2_FrontConsume.php ], Line[61]------ ============处理前台请求 结束=========== 
+2016-01-08 11:24:21, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/Form_6_2_FrontConsume.php ], Line[19]------ ============处理前台请求开始=============== 
+2016-01-08 11:24:21, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/utf8/func/secureUtil.php ], Line[16]------ =====签名报文开始====== 
+2016-01-08 11:24:21, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/utf8/func/secureUtil.php ], Line[22]------ 签名key=val&...串 >accessType=0&backUrl=http://www.yuyanhuafs.com/upacp_sdk_php/demo/utf8/FrontReceive.php&bizType=000201&certId=124876885185794726986301355951670452718&channelType=07&currencyCode=156&defaultPayType=0001&encoding=utf-8&frontUrl=http://www.yuyanhuafs.com/upacp_sdk_php/demo/utf8/FrontReceive.php&merId=700000000000001&orderId=20160108112421&reqReserved= 透传信息&signMethod=01&txnAmt=100&txnSubType=01&txnTime=20160108112421&txnType=01&version=5.0.0 
+2016-01-08 11:24:21, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/utf8/func/secureUtil.php ], Line[25]------ 摘要sha1x16 >40273df6862198d41819a6913ba4f791cafd426c 
+2016-01-08 11:24:21, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/utf8/func/secureUtil.php ], Line[33]------ 签名串为 >ffPTgQjj44pAClXW5JcQNKzipvTF+OahhxaswrdaYerXo7doV+q2Zqb3rfFfa5Amy02PPrkdAbJc2MQybKu/UODLGBoC7E0b6tXFUoXbcZP743y0PTpjnf5TDey27hYOL+xt9aFklKqyfgLQv3lBFEW5Ndf4zEJdvDs7DhUcRkQ= 
+2016-01-08 11:24:21, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/utf8/func/secureUtil.php ], Line[38]------ =====签名报文结束====== 
+2016-01-08 11:24:21, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/Form_6_2_FrontConsume.php ], Line[54]------ 前台请求地址为>https://101.231.204.80:5000/gateway/api/frontTransReq.do 
+2016-01-08 11:24:21, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/Form_6_2_FrontConsume.php ], Line[58]------ -------前台交易自动提交表单>--begin---- 
+2016-01-08 11:24:21, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/Form_6_2_FrontConsume.php ], Line[59]------ <html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body  onload="javascript:document.pay_form.submit();">
+    <form id="pay_form" name="pay_form" action="https://101.231.204.80:5000/gateway/api/frontTransReq.do" method="post">
+	    <input type="hidden" name="version" id="version" value="5.0.0" />
+    <input type="hidden" name="encoding" id="encoding" value="utf-8" />
+    <input type="hidden" name="certId" id="certId" value="124876885185794726986301355951670452718" />
+    <input type="hidden" name="txnType" id="txnType" value="01" />
+    <input type="hidden" name="txnSubType" id="txnSubType" value="01" />
+    <input type="hidden" name="bizType" id="bizType" value="000201" />
+    <input type="hidden" name="frontUrl" id="frontUrl" value="http://www.yuyanhuafs.com/upacp_sdk_php/demo/utf8/FrontReceive.php" />
+    <input type="hidden" name="backUrl" id="backUrl" value="http://www.yuyanhuafs.com/upacp_sdk_php/demo/utf8/FrontReceive.php" />
+    <input type="hidden" name="signMethod" id="signMethod" value="01" />
+    <input type="hidden" name="channelType" id="channelType" value="07" />
+    <input type="hidden" name="accessType" id="accessType" value="0" />
+    <input type="hidden" name="merId" id="merId" value="700000000000001" />
+    <input type="hidden" name="orderId" id="orderId" value="20160108112421" />
+    <input type="hidden" name="txnTime" id="txnTime" value="20160108112421" />
+    <input type="hidden" name="txnAmt" id="txnAmt" value="100" />
+    <input type="hidden" name="currencyCode" id="currencyCode" value="156" />
+    <input type="hidden" name="defaultPayType" id="defaultPayType" value="0001" />
+    <input type="hidden" name="reqReserved" id="reqReserved" value=" 透传信息" />
+    <input type="hidden" name="signature" id="signature" value="ffPTgQjj44pAClXW5JcQNKzipvTF+OahhxaswrdaYerXo7doV+q2Zqb3rfFfa5Amy02PPrkdAbJc2MQybKu/UODLGBoC7E0b6tXFUoXbcZP743y0PTpjnf5TDey27hYOL+xt9aFklKqyfgLQv3lBFEW5Ndf4zEJdvDs7DhUcRkQ=" />
+    <input type="submit" type="hidden">
+    </form>
+</body>
+</html> 
+2016-01-08 11:24:21, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/Form_6_2_FrontConsume.php ], Line[60]------ -------前台交易自动提交表单>--end------- 
+2016-01-08 11:24:21, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/Form_6_2_FrontConsume.php ], Line[61]------ ============处理前台请求 结束=========== 
+2016-01-08 11:24:29, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/Form_6_2_FrontConsume.php ], Line[19]------ ============处理前台请求开始=============== 
+2016-01-08 11:24:29, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/utf8/func/secureUtil.php ], Line[16]------ =====签名报文开始====== 
+2016-01-08 11:24:29, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/utf8/func/secureUtil.php ], Line[22]------ 签名key=val&...串 >accessType=0&backUrl=http://www.yuyanhuafs.com/upacp_sdk_php/demo/utf8/FrontReceive.php&bizType=000201&certId=124876885185794726986301355951670452718&channelType=07&currencyCode=156&defaultPayType=0001&encoding=utf-8&frontUrl=http://www.yuyanhuafs.com/upacp_sdk_php/demo/utf8/FrontReceive.php&merId=700000000000001&orderId=20160108112429&reqReserved= 透传信息&signMethod=01&txnAmt=100&txnSubType=01&txnTime=20160108112429&txnType=01&version=5.0.0 
+2016-01-08 11:24:29, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/utf8/func/secureUtil.php ], Line[25]------ 摘要sha1x16 >d8f6de33d571febdc8aacf5970b5e7886c2357b7 
+2016-01-08 11:24:29, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/utf8/func/secureUtil.php ], Line[33]------ 签名串为 >i2ywNTcNpHW9T3zzrlm8LWIRQhykjxSqlgJ3zMADOb5DcSjg5SqiRMbMb/vOHWtvQcB0QJ866/PmdM4M4FIjvkfttqqpgpjpvZVCBmBt4arK7591ysdUGcqW/SmrDkalZYozYEDNqy18kia0hVugLqoP0xUS2tYu5BAjsZ2H0yg= 
+2016-01-08 11:24:29, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/utf8/func/secureUtil.php ], Line[38]------ =====签名报文结束====== 
+2016-01-08 11:24:29, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/Form_6_2_FrontConsume.php ], Line[54]------ 前台请求地址为>https://101.231.204.80:5000/gateway/api/frontTransReq.do 
+2016-01-08 11:24:29, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/Form_6_2_FrontConsume.php ], Line[58]------ -------前台交易自动提交表单>--begin---- 
+2016-01-08 11:24:29, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/Form_6_2_FrontConsume.php ], Line[59]------ <html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body  onload="javascript:document.pay_form.submit();">
+    <form id="pay_form" name="pay_form" action="https://101.231.204.80:5000/gateway/api/frontTransReq.do" method="post">
+	    <input type="hidden" name="version" id="version" value="5.0.0" />
+    <input type="hidden" name="encoding" id="encoding" value="utf-8" />
+    <input type="hidden" name="certId" id="certId" value="124876885185794726986301355951670452718" />
+    <input type="hidden" name="txnType" id="txnType" value="01" />
+    <input type="hidden" name="txnSubType" id="txnSubType" value="01" />
+    <input type="hidden" name="bizType" id="bizType" value="000201" />
+    <input type="hidden" name="frontUrl" id="frontUrl" value="http://www.yuyanhuafs.com/upacp_sdk_php/demo/utf8/FrontReceive.php" />
+    <input type="hidden" name="backUrl" id="backUrl" value="http://www.yuyanhuafs.com/upacp_sdk_php/demo/utf8/FrontReceive.php" />
+    <input type="hidden" name="signMethod" id="signMethod" value="01" />
+    <input type="hidden" name="channelType" id="channelType" value="07" />
+    <input type="hidden" name="accessType" id="accessType" value="0" />
+    <input type="hidden" name="merId" id="merId" value="700000000000001" />
+    <input type="hidden" name="orderId" id="orderId" value="20160108112429" />
+    <input type="hidden" name="txnTime" id="txnTime" value="20160108112429" />
+    <input type="hidden" name="txnAmt" id="txnAmt" value="100" />
+    <input type="hidden" name="currencyCode" id="currencyCode" value="156" />
+    <input type="hidden" name="defaultPayType" id="defaultPayType" value="0001" />
+    <input type="hidden" name="reqReserved" id="reqReserved" value=" 透传信息" />
+    <input type="hidden" name="signature" id="signature" value="i2ywNTcNpHW9T3zzrlm8LWIRQhykjxSqlgJ3zMADOb5DcSjg5SqiRMbMb/vOHWtvQcB0QJ866/PmdM4M4FIjvkfttqqpgpjpvZVCBmBt4arK7591ysdUGcqW/SmrDkalZYozYEDNqy18kia0hVugLqoP0xUS2tYu5BAjsZ2H0yg=" />
+    <input type="submit" type="hidden">
+    </form>
+</body>
+</html> 
+2016-01-08 11:24:29, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/Form_6_2_FrontConsume.php ], Line[60]------ -------前台交易自动提交表单>--end------- 
+2016-01-08 11:24:29, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/Form_6_2_FrontConsume.php ], Line[61]------ ============处理前台请求 结束=========== 
+2016-01-08 11:25:26, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/Form_6_2_FrontConsume.php ], Line[19]------ ============处理前台请求开始=============== 
+2016-01-08 11:25:26, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/utf8/func/secureUtil.php ], Line[16]------ =====签名报文开始====== 
+2016-01-08 11:25:26, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/utf8/func/secureUtil.php ], Line[22]------ 签名key=val&...串 >accessType=0&backUrl=http://www.yuyanhuafs.com/upacp_sdk_php/demo/utf8/FrontReceive.php&bizType=000201&certId=124876885185794726986301355951670452718&channelType=07&currencyCode=156&defaultPayType=0001&encoding=utf-8&frontUrl=http://www.yuyanhuafs.com/upacp_sdk_php/demo/utf8/FrontReceive.php&merId=700000000000001&orderId=20160108112526&reqReserved= 透传信息&signMethod=01&txnAmt=100&txnSubType=01&txnTime=20160108112526&txnType=01&version=5.0.0 
+2016-01-08 11:25:26, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/utf8/func/secureUtil.php ], Line[25]------ 摘要sha1x16 >14ed05961a6e4cb3ba645afc2e3a44b1aad5d6ef 
+2016-01-08 11:25:26, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/utf8/func/secureUtil.php ], Line[33]------ 签名串为 >b9aoSKXiH3uaSFXhCtfqjIaScC5WIXGhSmZggfsy9faQRJDrbq1WBvIgJ6Q+hVWnZW/dJGFz8rZNCLslooUT8dvvxIlvBgC6DQUKldli9qG6sz4DIOCZVG8yuoDfS1ydjt2VqbPvKF+tnFr505hZGUkRGRk6QYDL2O0+mil5uyM= 
+2016-01-08 11:25:26, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/utf8/func/secureUtil.php ], Line[38]------ =====签名报文结束====== 
+2016-01-08 11:25:26, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/Form_6_2_FrontConsume.php ], Line[54]------ 前台请求地址为>https://101.231.204.80:5000/gateway/api/frontTransReq.do 
+2016-01-08 11:25:26, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/Form_6_2_FrontConsume.php ], Line[58]------ -------前台交易自动提交表单>--begin---- 
+2016-01-08 11:25:26, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/Form_6_2_FrontConsume.php ], Line[59]------ <html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body  onload="javascript:document.pay_form.submit();">
+    <form id="pay_form" name="pay_form" action="https://101.231.204.80:5000/gateway/api/frontTransReq.do" method="post">
+	    <input type="hidden" name="version" id="version" value="5.0.0" />
+    <input type="hidden" name="encoding" id="encoding" value="utf-8" />
+    <input type="hidden" name="certId" id="certId" value="124876885185794726986301355951670452718" />
+    <input type="hidden" name="txnType" id="txnType" value="01" />
+    <input type="hidden" name="txnSubType" id="txnSubType" value="01" />
+    <input type="hidden" name="bizType" id="bizType" value="000201" />
+    <input type="hidden" name="frontUrl" id="frontUrl" value="http://www.yuyanhuafs.com/upacp_sdk_php/demo/utf8/FrontReceive.php" />
+    <input type="hidden" name="backUrl" id="backUrl" value="http://www.yuyanhuafs.com/upacp_sdk_php/demo/utf8/FrontReceive.php" />
+    <input type="hidden" name="signMethod" id="signMethod" value="01" />
+    <input type="hidden" name="channelType" id="channelType" value="07" />
+    <input type="hidden" name="accessType" id="accessType" value="0" />
+    <input type="hidden" name="merId" id="merId" value="700000000000001" />
+    <input type="hidden" name="orderId" id="orderId" value="20160108112526" />
+    <input type="hidden" name="txnTime" id="txnTime" value="20160108112526" />
+    <input type="hidden" name="txnAmt" id="txnAmt" value="100" />
+    <input type="hidden" name="currencyCode" id="currencyCode" value="156" />
+    <input type="hidden" name="defaultPayType" id="defaultPayType" value="0001" />
+    <input type="hidden" name="reqReserved" id="reqReserved" value=" 透传信息" />
+    <input type="hidden" name="signature" id="signature" value="b9aoSKXiH3uaSFXhCtfqjIaScC5WIXGhSmZggfsy9faQRJDrbq1WBvIgJ6Q+hVWnZW/dJGFz8rZNCLslooUT8dvvxIlvBgC6DQUKldli9qG6sz4DIOCZVG8yuoDfS1ydjt2VqbPvKF+tnFr505hZGUkRGRk6QYDL2O0+mil5uyM=" />
+    <input type="submit" type="hidden">
+    </form>
+</body>
+</html> 
+2016-01-08 11:25:26, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/Form_6_2_FrontConsume.php ], Line[60]------ -------前台交易自动提交表单>--end------- 
+2016-01-08 11:25:26, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/Form_6_2_FrontConsume.php ], Line[61]------ ============处理前台请求 结束=========== 
+2016-01-08 11:25:36, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/Form_6_2_FrontConsume.php ], Line[19]------ ============处理前台请求开始=============== 
+2016-01-08 11:25:36, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/utf8/func/secureUtil.php ], Line[16]------ =====签名报文开始====== 
+2016-01-08 11:25:36, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/utf8/func/secureUtil.php ], Line[22]------ 签名key=val&...串 >accessType=0&backUrl=http://www.yuyanhuafs.com/upacp_sdk_php/demo/utf8/FrontReceive.php&bizType=000201&certId=124876885185794726986301355951670452718&channelType=07&currencyCode=156&defaultPayType=0001&encoding=utf-8&frontUrl=http://www.yuyanhuafs.com/upacp_sdk_php/demo/utf8/FrontReceive.php&merId=700000000000001&orderId=20160108112536&reqReserved= 透传信息&signMethod=01&txnAmt=100&txnSubType=01&txnTime=20160108112536&txnType=01&version=5.0.0 
+2016-01-08 11:25:36, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/utf8/func/secureUtil.php ], Line[25]------ 摘要sha1x16 >4895bcc46bc8244396eeac7bcfa5a2d7f8075650 
+2016-01-08 11:25:36, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/utf8/func/secureUtil.php ], Line[33]------ 签名串为 >sotT2I3eQOKDPQzvYUxLHWESecg2qHS5u4pwY7Adknhn7FSD5aQRQBYJyBWBHALU3u8mIEnmR15sDyIh2bflwo4Lv3Ah44RLiyf6JD+paRi4qFc6ktdvOuMJBJzFfxR131QFQo2nGL9VvgoSznvUmKvU+FvD/YaXM9eA/yxIChs= 
+2016-01-08 11:25:36, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/utf8/func/secureUtil.php ], Line[38]------ =====签名报文结束====== 
+2016-01-08 11:25:36, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/Form_6_2_FrontConsume.php ], Line[54]------ 前台请求地址为>https://101.231.204.80:5000/gateway/api/frontTransReq.do 
+2016-01-08 11:25:36, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/Form_6_2_FrontConsume.php ], Line[58]------ -------前台交易自动提交表单>--begin---- 
+2016-01-08 11:25:36, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/Form_6_2_FrontConsume.php ], Line[59]------ <html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body  onload="javascript:document.pay_form.submit();">
+    <form id="pay_form" name="pay_form" action="https://101.231.204.80:5000/gateway/api/frontTransReq.do" method="post">
+	    <input type="hidden" name="version" id="version" value="5.0.0" />
+    <input type="hidden" name="encoding" id="encoding" value="utf-8" />
+    <input type="hidden" name="certId" id="certId" value="124876885185794726986301355951670452718" />
+    <input type="hidden" name="txnType" id="txnType" value="01" />
+    <input type="hidden" name="txnSubType" id="txnSubType" value="01" />
+    <input type="hidden" name="bizType" id="bizType" value="000201" />
+    <input type="hidden" name="frontUrl" id="frontUrl" value="http://www.yuyanhuafs.com/upacp_sdk_php/demo/utf8/FrontReceive.php" />
+    <input type="hidden" name="backUrl" id="backUrl" value="http://www.yuyanhuafs.com/upacp_sdk_php/demo/utf8/FrontReceive.php" />
+    <input type="hidden" name="signMethod" id="signMethod" value="01" />
+    <input type="hidden" name="channelType" id="channelType" value="07" />
+    <input type="hidden" name="accessType" id="accessType" value="0" />
+    <input type="hidden" name="merId" id="merId" value="700000000000001" />
+    <input type="hidden" name="orderId" id="orderId" value="20160108112536" />
+    <input type="hidden" name="txnTime" id="txnTime" value="20160108112536" />
+    <input type="hidden" name="txnAmt" id="txnAmt" value="100" />
+    <input type="hidden" name="currencyCode" id="currencyCode" value="156" />
+    <input type="hidden" name="defaultPayType" id="defaultPayType" value="0001" />
+    <input type="hidden" name="reqReserved" id="reqReserved" value=" 透传信息" />
+    <input type="hidden" name="signature" id="signature" value="sotT2I3eQOKDPQzvYUxLHWESecg2qHS5u4pwY7Adknhn7FSD5aQRQBYJyBWBHALU3u8mIEnmR15sDyIh2bflwo4Lv3Ah44RLiyf6JD+paRi4qFc6ktdvOuMJBJzFfxR131QFQo2nGL9VvgoSznvUmKvU+FvD/YaXM9eA/yxIChs=" />
+    <input type="submit" type="hidden">
+    </form>
+</body>
+</html> 
+2016-01-08 11:25:36, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/Form_6_2_FrontConsume.php ], Line[60]------ -------前台交易自动提交表单>--end------- 
+2016-01-08 11:25:36, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/Form_6_2_FrontConsume.php ], Line[61]------ ============处理前台请求 结束=========== 
+2016-01-08 11:37:20, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/Form_6_2_FrontConsume.php ], Line[38]------ ============处理前台请求开始=============== 
+2016-01-08 11:37:20, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/utf8/func/secureUtil.php ], Line[16]------ =====签名报文开始====== 
+2016-01-08 11:37:20, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/utf8/func/secureUtil.php ], Line[22]------ 签名key=val&...串 >accessType=0&backUrl=http://www.yuyanhuafs.com/upacp_sdk_php/demo/utf8/FrontReceive.php&bizType=000201&certId=124876885185794726986301355951670452718&channelType=07&currencyCode=156&defaultPayType=0001&encoding=utf-8&frontUrl=http://www.yuyanhuafs.com/upacp_sdk_php/demo/utf8/FrontReceive.php&merId=700000000000001&orderDesc=来自自己的测试订单&orderId=20160108113720&reqReserved= 透传信息&signMethod=01&txnAmt=29400&txnSubType=01&txnTime=20160108113720&txnType=01&version=5.0.0 
+2016-01-08 11:37:20, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/utf8/func/secureUtil.php ], Line[25]------ 摘要sha1x16 >903e0eb1b18ba66fc515b9933097f1076ac6fd36 
+2016-01-08 11:37:20, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/utf8/func/secureUtil.php ], Line[33]------ 签名串为 >f9UARon9bYrL8nbizgkwpaTHjMEHUrG2vWJJBdqtvWAt6+/NbH4SP/TEYkLAikkBnEOgy0ArVhmjz1fGkGn1p0TLUUxr2WEKEdIwyda0kcETltRHNJ7JliRjrX0y0BADXVW4IvLoimbIqDr+t7n/EBGmYs5xjEDRueBSGgsAU9o= 
+2016-01-08 11:37:20, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/utf8/func/secureUtil.php ], Line[38]------ =====签名报文结束====== 
+2016-01-08 11:37:20, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/Form_6_2_FrontConsume.php ], Line[73]------ 前台请求地址为>https://101.231.204.80:5000/gateway/api/frontTransReq.do 
+2016-01-08 11:37:20, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/Form_6_2_FrontConsume.php ], Line[77]------ -------前台交易自动提交表单>--begin---- 
+2016-01-08 11:37:20, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/Form_6_2_FrontConsume.php ], Line[78]------ <html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body  onload="javascript:document.pay_form.submit();">
+    <form id="pay_form" name="pay_form" action="https://101.231.204.80:5000/gateway/api/frontTransReq.do" method="post">
+	    <input type="hidden" name="version" id="version" value="5.0.0" />
+    <input type="hidden" name="encoding" id="encoding" value="utf-8" />
+    <input type="hidden" name="certId" id="certId" value="124876885185794726986301355951670452718" />
+    <input type="hidden" name="txnType" id="txnType" value="01" />
+    <input type="hidden" name="txnSubType" id="txnSubType" value="01" />
+    <input type="hidden" name="bizType" id="bizType" value="000201" />
+    <input type="hidden" name="frontUrl" id="frontUrl" value="http://www.yuyanhuafs.com/upacp_sdk_php/demo/utf8/FrontReceive.php" />
+    <input type="hidden" name="backUrl" id="backUrl" value="http://www.yuyanhuafs.com/upacp_sdk_php/demo/utf8/FrontReceive.php" />
+    <input type="hidden" name="signMethod" id="signMethod" value="01" />
+    <input type="hidden" name="channelType" id="channelType" value="07" />
+    <input type="hidden" name="accessType" id="accessType" value="0" />
+    <input type="hidden" name="merId" id="merId" value="700000000000001" />
+    <input type="hidden" name="orderId" id="orderId" value="20160108113720" />
+    <input type="hidden" name="txnTime" id="txnTime" value="20160108113720" />
+    <input type="hidden" name="txnAmt" id="txnAmt" value="29400" />
+    <input type="hidden" name="currencyCode" id="currencyCode" value="156" />
+    <input type="hidden" name="defaultPayType" id="defaultPayType" value="0001" />
+    <input type="hidden" name="orderDesc" id="orderDesc" value="来自自己的测试订单" />
+    <input type="hidden" name="reqReserved" id="reqReserved" value=" 透传信息" />
+    <input type="hidden" name="signature" id="signature" value="f9UARon9bYrL8nbizgkwpaTHjMEHUrG2vWJJBdqtvWAt6+/NbH4SP/TEYkLAikkBnEOgy0ArVhmjz1fGkGn1p0TLUUxr2WEKEdIwyda0kcETltRHNJ7JliRjrX0y0BADXVW4IvLoimbIqDr+t7n/EBGmYs5xjEDRueBSGgsAU9o=" />
+    <input type="submit" type="hidden">
+    </form>
+</body>
+</html> 
+2016-01-08 11:37:20, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/Form_6_2_FrontConsume.php ], Line[79]------ -------前台交易自动提交表单>--end------- 
+2016-01-08 11:37:20, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/Form_6_2_FrontConsume.php ], Line[80]------ ============处理前台请求 结束=========== 
+2016-01-08 11:37:45, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/Form_6_2_FrontConsume.php ], Line[38]------ ============处理前台请求开始=============== 
+2016-01-08 11:37:45, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/utf8/func/secureUtil.php ], Line[16]------ =====签名报文开始====== 
+2016-01-08 11:37:45, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/utf8/func/secureUtil.php ], Line[22]------ 签名key=val&...串 >accessType=0&backUrl=http://www.yuyanhuafs.com/upacp_sdk_php/demo/utf8/FrontReceive.php&bizType=000201&certId=124876885185794726986301355951670452718&channelType=07&currencyCode=156&defaultPayType=0001&encoding=utf-8&frontUrl=http://www.yuyanhuafs.com/upacp_sdk_php/demo/utf8/FrontReceive.php&merId=700000000000001&orderDesc=来自自己的测试订单&orderId=20160108113745&reqReserved= 透传信息&signMethod=01&txnAmt=29400&txnSubType=01&txnTime=20160108113745&txnType=01&version=5.0.0 
+2016-01-08 11:37:45, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/utf8/func/secureUtil.php ], Line[25]------ 摘要sha1x16 >ec8b64630b541c497b275fd904f3553d4f302177 
+2016-01-08 11:37:45, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/utf8/func/secureUtil.php ], Line[33]------ 签名串为 >ZLaAG0hhizVoKO1ZMHM8/6cdhD3hGzhCMTkLuzULlIgC/JZNgNz/mGu/kHtJ/bv4i9e3E+YJeJ65/aux+/26cO562tSPVeeRmrd1jDzs9YbZLazaAi+8P7+zrsqNxmwTZNSmJaG5hXc3v0enpPEWl+mEkjn++NaT7ysyzygnivo= 
+2016-01-08 11:37:45, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/utf8/func/secureUtil.php ], Line[38]------ =====签名报文结束====== 
+2016-01-08 11:37:45, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/Form_6_2_FrontConsume.php ], Line[73]------ 前台请求地址为>https://101.231.204.80:5000/gateway/api/frontTransReq.do 
+2016-01-08 11:37:45, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/Form_6_2_FrontConsume.php ], Line[77]------ -------前台交易自动提交表单>--begin---- 
+2016-01-08 11:37:45, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/Form_6_2_FrontConsume.php ], Line[78]------ <html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body  onload="javascript:document.pay_form.submit();">
+    <form id="pay_form" name="pay_form" action="https://101.231.204.80:5000/gateway/api/frontTransReq.do" method="post">
+	    <input type="hidden" name="version" id="version" value="5.0.0" />
+    <input type="hidden" name="encoding" id="encoding" value="utf-8" />
+    <input type="hidden" name="certId" id="certId" value="124876885185794726986301355951670452718" />
+    <input type="hidden" name="txnType" id="txnType" value="01" />
+    <input type="hidden" name="txnSubType" id="txnSubType" value="01" />
+    <input type="hidden" name="bizType" id="bizType" value="000201" />
+    <input type="hidden" name="frontUrl" id="frontUrl" value="http://www.yuyanhuafs.com/upacp_sdk_php/demo/utf8/FrontReceive.php" />
+    <input type="hidden" name="backUrl" id="backUrl" value="http://www.yuyanhuafs.com/upacp_sdk_php/demo/utf8/FrontReceive.php" />
+    <input type="hidden" name="signMethod" id="signMethod" value="01" />
+    <input type="hidden" name="channelType" id="channelType" value="07" />
+    <input type="hidden" name="accessType" id="accessType" value="0" />
+    <input type="hidden" name="merId" id="merId" value="700000000000001" />
+    <input type="hidden" name="orderId" id="orderId" value="20160108113745" />
+    <input type="hidden" name="txnTime" id="txnTime" value="20160108113745" />
+    <input type="hidden" name="txnAmt" id="txnAmt" value="29400" />
+    <input type="hidden" name="currencyCode" id="currencyCode" value="156" />
+    <input type="hidden" name="defaultPayType" id="defaultPayType" value="0001" />
+    <input type="hidden" name="orderDesc" id="orderDesc" value="来自自己的测试订单" />
+    <input type="hidden" name="reqReserved" id="reqReserved" value=" 透传信息" />
+    <input type="hidden" name="signature" id="signature" value="ZLaAG0hhizVoKO1ZMHM8/6cdhD3hGzhCMTkLuzULlIgC/JZNgNz/mGu/kHtJ/bv4i9e3E+YJeJ65/aux+/26cO562tSPVeeRmrd1jDzs9YbZLazaAi+8P7+zrsqNxmwTZNSmJaG5hXc3v0enpPEWl+mEkjn++NaT7ysyzygnivo=" />
+    <input type="submit" type="hidden">
+    </form>
+</body>
+</html> 
+2016-01-08 11:37:45, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/Form_6_2_FrontConsume.php ], Line[79]------ -------前台交易自动提交表单>--end------- 
+2016-01-08 11:37:45, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/Form_6_2_FrontConsume.php ], Line[80]------ ============处理前台请求 结束=========== 
+2016-01-08 11:48:16, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/Form_6_2_FrontConsume.php ], Line[38]------ ============处理前台请求开始=============== 
+2016-01-08 11:48:16, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/utf8/func/secureUtil.php ], Line[16]------ =====签名报文开始====== 
+2016-01-08 11:48:16, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/utf8/func/secureUtil.php ], Line[22]------ 签名key=val&...串 >accessType=0&backUrl=http://www.yuyanhuafs.com/upacp_sdk_php/demo/utf8/FrontReceive.php&bizType=000201&certId=124876885185794726986301355951670452718&channelType=07&currencyCode=156&defaultPayType=0001&encoding=utf-8&frontUrl=http://www.yuyanhuafs.com/upacp_sdk_php/demo/utf8/FrontReceive.php&merId=700000000000001&orderDesc=来自自己的测试订单&orderId=20160108114816&reqReserved= 透传信息&signMethod=01&txnAmt=29400&txnSubType=01&txnTime=20160108114816&txnType=01&version=5.0.0 
+2016-01-08 11:48:16, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/utf8/func/secureUtil.php ], Line[25]------ 摘要sha1x16 >1a9dae02c0e40d3d1cd9d28fde5daaa67bca4b1a 
+2016-01-08 11:48:16, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/utf8/func/secureUtil.php ], Line[33]------ 签名串为 >FuuCgKg/H+ObiyWrtts5d1ThM9k0yWzzOm11Px78wrGydFxXNAnNCK8hbfeRDe4dBZg6pZtqU8ES0vOFxiC8RpYkxASn8gyxzqw/Bd64sbpqwCAfYJxLXARBlj2QjaF/5A2xIQuSjHmgqH+YL3F9HbmDhUh8L06A/JwI/It29HM= 
+2016-01-08 11:48:16, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/utf8/func/secureUtil.php ], Line[38]------ =====签名报文结束====== 
+2016-01-08 11:48:16, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/Form_6_2_FrontConsume.php ], Line[73]------ 前台请求地址为>https://101.231.204.80:5000/gateway/api/frontTransReq.do 
+2016-01-08 11:48:16, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/Form_6_2_FrontConsume.php ], Line[77]------ -------前台交易自动提交表单>--begin---- 
+2016-01-08 11:48:16, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/Form_6_2_FrontConsume.php ], Line[78]------ <html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body  onload="javascript:document.pay_form.submit();">
+    <form id="pay_form" name="pay_form" action="https://101.231.204.80:5000/gateway/api/frontTransReq.do" method="post">
+	    <input type="hidden" name="version" id="version" value="5.0.0" />
+    <input type="hidden" name="encoding" id="encoding" value="utf-8" />
+    <input type="hidden" name="certId" id="certId" value="124876885185794726986301355951670452718" />
+    <input type="hidden" name="txnType" id="txnType" value="01" />
+    <input type="hidden" name="txnSubType" id="txnSubType" value="01" />
+    <input type="hidden" name="bizType" id="bizType" value="000201" />
+    <input type="hidden" name="frontUrl" id="frontUrl" value="http://www.yuyanhuafs.com/upacp_sdk_php/demo/utf8/FrontReceive.php" />
+    <input type="hidden" name="backUrl" id="backUrl" value="http://www.yuyanhuafs.com/upacp_sdk_php/demo/utf8/FrontReceive.php" />
+    <input type="hidden" name="signMethod" id="signMethod" value="01" />
+    <input type="hidden" name="channelType" id="channelType" value="07" />
+    <input type="hidden" name="accessType" id="accessType" value="0" />
+    <input type="hidden" name="merId" id="merId" value="700000000000001" />
+    <input type="hidden" name="orderId" id="orderId" value="20160108114816" />
+    <input type="hidden" name="txnTime" id="txnTime" value="20160108114816" />
+    <input type="hidden" name="txnAmt" id="txnAmt" value="29400" />
+    <input type="hidden" name="currencyCode" id="currencyCode" value="156" />
+    <input type="hidden" name="defaultPayType" id="defaultPayType" value="0001" />
+    <input type="hidden" name="orderDesc" id="orderDesc" value="来自自己的测试订单" />
+    <input type="hidden" name="reqReserved" id="reqReserved" value=" 透传信息" />
+    <input type="hidden" name="signature" id="signature" value="FuuCgKg/H+ObiyWrtts5d1ThM9k0yWzzOm11Px78wrGydFxXNAnNCK8hbfeRDe4dBZg6pZtqU8ES0vOFxiC8RpYkxASn8gyxzqw/Bd64sbpqwCAfYJxLXARBlj2QjaF/5A2xIQuSjHmgqH+YL3F9HbmDhUh8L06A/JwI/It29HM=" />
+    <input type="submit" type="hidden">
+    </form>
+</body>
+</html> 
+2016-01-08 11:48:16, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/Form_6_2_FrontConsume.php ], Line[79]------ -------前台交易自动提交表单>--end------- 
+2016-01-08 11:48:16, INFO, 127.0.0.1, File[ /home/andrew/work/ibscontrols/ibs-controls.com/public/payment/unipay/upacp_sdk_php/Form_6_2_FrontConsume.php ], Line[80]------ ============处理前台请求 结束=========== 
