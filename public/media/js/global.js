@@ -333,13 +333,23 @@ function submitForm(frm){
 
 
 
-function openWindow(obj){
+function openWindow(obj,msg){
     //console.log(typeof obj);
-    dddrrr = obj;
-    var orderID = obj.getAttribute('value');
+    if (typeof msg == "undefined") {
+        //code
+        msg="确认要删除吗？";
+    }
+    var orderID;
+    if (typeof obj != "undefined" && obj!="") {
+        //code
+        orderID = obj.getAttribute('value');
+    }
     var window_width = window.screen.width;
     var left_position = window_width/2;
     $('.white_content').css('left',left_position)
+    if (msg !="") {
+        $("#pop_msg").html('<h3>'+msg+'</h3>');
+    }
     document.getElementById('light').style.display='block';
     document.getElementById('fade').style.display='block';
     $(".confirm_button").click(
