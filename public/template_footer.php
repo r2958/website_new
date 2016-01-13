@@ -50,7 +50,7 @@
             <span>Copyright © 2010-2014 andrew.com，All Rights Reserved</span>
         </div>
     </div>
-    
+<!-- start pop window -->   
 <div id="light" class="white_content">
     <div style="width:100%;height: 30px;background: black;font: 700;color: white;">
         <div style="width:100px;height: 30px;float: left;"></div>
@@ -64,7 +64,7 @@
     </div>
 <div id="fade" class="black_overlay"></div>
     
-    
+<!-- end pop window -->   
     
     
 </body>
