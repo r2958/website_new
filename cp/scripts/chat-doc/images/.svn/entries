@@ -1,63 +1,0 @@
-8
-
-dir
-67
-http://svn2.assembla.com/svn/Nikto_2/trunk
-http://svn2.assembla.com/svn/Nikto_2
-
-
-
-2008-09-04T17:10:13.201959Z
-67
-deity
-
-
-svn:special svn:externals svn:needs-lock
-
-
-
-
-
-
-
-
-
-
-
-cb301202-1dc0-4f3e-a0a0-cd5d3132b0a9
-
-plugins
-dir
-
-config.txt
-file
-
-
-
-
-2008-09-04T17:00:41.000000Z
-6b5e1a566df49d61c4f8ab612472d410
-2008-06-24T14:52:38.645645Z
-46
-deity
-has-props
-
-docs
-dir
-
-templates
-dir
-
-nikto.pl
-file
-
-
-
-
-2008-09-04T17:00:41.000000Z
-86e0a475c8e39273fab9b323aac990f2
-2008-08-07T21:52:46.289082Z
-63
-deity
-has-props
-
