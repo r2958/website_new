@@ -51,7 +51,11 @@
         </div>
     </div>
 <!-- start pop window -->   
-<div id="light" class="white_content">
+<div id="light" class="white_content"></div>
+<div id="fade" class="black_overlay"></div>
+
+
+<script type="text/html" id="J_popdelwindow_template">
     <div style="width:100%;height: 30px;background: black;font: 700;color: white;">
         <div style="width:100px;height: 30px;float: left;"></div>
         <div style="width:100px;height: 30px;float: right;padding: 0px;line-height: 30px;font-size:12px;margin-right: 10px;">
@@ -62,9 +66,76 @@
         <a href="javascript:;" class="confirm_button">确认</a>
         <a href="javascript:;" class="cancle_button">取消</a></div>
     </div>
-<div id="fade" class="black_overlay"></div>
+</script>
+
+
+<script type="text/html" id="J_popaddress_template">
+    <div style="width:100%;height: 30px;background: black;font: 700;color: white;">
+        <div style="width:100px;height: 30px;float: left;"></div>
+        <div style="width:100px;height: 30px;float: right;padding: 0px;line-height: 30px;font-size:12px;margin-right: 10px;">
+          <a href="javascript:void(0);" style="color: white;float: right;" onClick="closeWindow()"> 关闭</a></div>
+    </div>
+    <div class="address_field">
+        <div class="filed_div" style="">                
+            <div class="form-lable"><span>收货姓名:</span></div>
+            <div class="ipt_position"><input class="ipt" type="text"> </div>
+        </div>
+        <div class="filed_div">                
+            <div class="form-lable"><span>所在地区:</span></div>
+            <div class="ipt_position">
+                省:<select id="province" name="province_select"><option>请选择</option></select>
+                市:<select id="city" name="city_select"><option>请选择</option></select>
+                区/县:<select id="area" name="area_select"><option>请选择</option></select>
+            </div>
+        </div>
+        <div class="filed_div">                
+            <div class="form-lable"><span>详细地址:</span></div>
+            <div class="ipt_position"><input class="ipt" type="text"> </div>
+        </div>
+        <div class="filed_div">                
+            <div class="form-lable"><span>手机号码:</span></div>
+            <div class="ipt_position"><input class="ipt" type="text"> </div>
+        </div>
+        <div class="filed_div">                
+            <div class="form-lable"><span>邮箱地址:</span></div>
+            <div class="ipt_position"><input class="ipt" type="text"> </div>
+        </div>
+        <div class="filed_div">                
+            <div class="form-lable"><span>电话号码:</span></div>
+            <div class="ipt_position"><input class="ipt" type="text"> </div>
+        </div>
+        <div class="filed_div">                
+            <div class="form-lable"><span>地址别名:</span></div>
+            <div class="ipt_position"><input class="ipt" type="text"> </div>
+        </div>
+        <div style="margin: 0 auto;width:100px;">
+                <input class="submit_button" type="button" maxlength="60" value="保存收货地址">
+        </div>
     
-<!-- end pop window -->   
+</script>
+
+
+
+
+
+
+
+
+
+    
+<!-- end pop window -->
+<script>
+$(function(){
+    $(window).resize(function(){
+            var currentWindowWidth = window.document.body.clientWidth;
+            var toleft = (currentWindowWidth-300)/2
+             $(".white_content").css('left',toleft);
+        
+        })
+    
+    
+    })
+</script>
     
     
 </body>

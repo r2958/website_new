@@ -288,6 +288,95 @@ $(document).ready(function(){
     
 */
     
+    /*
+    
+    
+          $.ajax({
+                    type: "GET",
+                    async:false,
+                    url: 'http://n.myopen.vip.com/address/address?areaid=0&is_show_gat=0',
+                    dataType : "jsonp",
+                    jsonpCallback:"address_api",
+                    success: function(returndata) {
+                            optionStr='';
+                            $.each(returndata.list,function(i,val){
+                                   optionStr+='<option value='+val.id+'>'+val.name+'</option>';
+
+                            })
+			    $("#province").html(optionStr);
+                    },
+                    error: function() {
+                            console.log("failed");
+                    }
+            });
+
+	    $("#province").change(function(){
+                var provinceID = '';
+                provinceID = $(this).children('option:selected').val();
+                purl = 'http://n.myopen.vip.com/address/address?areaid='+provinceID+'&is_show_gat=0';
+                $("#area").html('<option>请选择</option>');
+                //console.log(purl);
+        
+        
+                  $.ajax({
+                            type: "GET",
+                            async:false,
+                            url: purl,
+                            dataType : "jsonp",
+                            jsonpCallback:"address_api",
+                            success: function(returndata) {
+                                    optionStr='';
+                                    $.each(returndata.list,function(i,val){
+                                           optionStr+='<option value='+val.id+'>'+val.name+'</option>';
+        
+                                    })
+                        // console.log(optionStr);
+                                    $("#city").html(optionStr);
+                            },
+                            error: function() {
+                                    console.log("failed");
+                            }
+                    });
+
+	     })
+        
+        
+        
+	    $("#city").change(function(){
+                var areaID = '';
+                areaID = $(this).children('option:selected').val();
+                //console.log(areaID);
+       
+                aurl = 'http://n.myopen.vip.com/address/address?areaid='+areaID+'&is_show_gat=0';
+                console.log(aurl);
+        
+        
+                  $.ajax({
+                            type: "GET",
+                            async:false,
+                            url: aurl,
+                            dataType : "jsonp",
+                            jsonpCallback:"address_api",
+                            success: function(returndata) {
+                                    optionStr='';
+                                    $.each(returndata.list,function(i,val){
+                                           optionStr+='<option value='+val.id+'>'+val.name+'</option>';
+        
+                                    })
+                         //console.log(optionStr);
+                                    $("#area").html(optionStr);
+                            },
+                            error: function() {
+                                    console.log("failed");
+                            }
+                    });
+  
+
+	     })
+    
+    */
+    
+    
 
 });
 
@@ -332,14 +421,112 @@ function submitForm(frm){
 }
 
 
-
+// obj 当前被点击的对象，msg 对象的类型
 function openWindow(obj,msg){
-    console.log(obj);
+    //console.log(obj.type);
+    
+    if(obj.type ==='add_addr'){
+        $('.white_content').css('width','800px')
+        $('.white_content').css('height','500px')
+        $('.white_content').html($('#J_popaddress_template').html());
+        
+    }
+    
+    var white_contet_width = eval($('.white_content').css('width').substr(0,3));
+    var currentWindowWidth = window.document.body.clientWidth;
+    var toleft = (currentWindowWidth-white_contet_width)/2
+
+    $('.white_content').css('left',toleft)
+    $('.white_content').css('display','block');
+    document.getElementById('fade').style.display='block';
+    
     var $url;
+    console.log(obj.type);
+    switch(obj.type){
+        case 'add_addr':
+            msg = '添加新地址';
+            break;
+        case 'orderpay':
+            msg = '已经完成支付？';
+            $('.white_content').html($('#J_popdelwindow_template').html());
+            break;
+        case '':
+            break;
+        default:
+            msg = '确认要删除吗？';
+            $('.white_content').html($('#J_popdelwindow_template').html());
+    }
+    console.log(msg);
+    $("#pop_msg").html('<h3>'+msg+'</h3>');
+    /*
     if (typeof msg == "undefined") {
-        //code
         msg="确认要删除吗？";
     }
+    */
+    
+    //start pay type dialog
+    if (typeof obj != "undefined" && obj.type == "orderpay") {
+        //code
+        switch (obj.topage) {
+            //case
+            case 'unionpay':
+            case 'aplipay':
+            case 'paypal':
+                $url = '/public/order/check_order_status.php';
+                break;
+            case 'doc':
+                $url = '';
+                break;
+            default:
+                $url = '';
+        }
+        
+        if (msg !="") {
+            $("#pop_msg").html('<h3>'+msg+'</h3>');
+        }
+        //
+        document.getElementById('light').style.display='block';
+        document.getElementById('fade').style.display='block';
+        $(".confirm_button").click(
+            function(){
+                //alert('checking');
+                var $html = '<div style="height:100px;line-height:100px;padding-top:50px;"><img src="/public/media/images/zoomloader.gif" /></div>';
+                $("#pop_msg").html($html);
+                $.ajax({
+                        type: "GET",
+                        cache: false,
+                        url: $url,
+                        data: "",
+                        success: function(rs) {
+                           // var redata = eval(returndata);
+                           var order = eval('(' + rs + ')');
+                            if(order.order_status==1){
+                                closeWindow();
+                                window.location.href='/public/users/user.php';
+                                return;
+                            }else{
+                                $("#pop_msg").html($html+"失败");
+                            }
+                        },
+                        error: function() {
+                                closeWindow();
+                                alert("订单支付失败了，请重试");
+                                return;
+                        }
+                });
+                
+            }
+        )
+    }
+    //end pay type dialog
+    
+    
+    
+    
+    
+
+    
+
     var orderID;
     if (typeof obj != "undefined" && obj.type=="remove_order") {
         //code
@@ -348,32 +535,12 @@ function openWindow(obj,msg){
         
     }
     
-    if (typeof obj != "undefined" && obj.type == "orderpay") {
-        //code
-        switch (obj.topage) {
-            //case
-            case 'unionpay':
-            case 'aplipay':
-            case 'paypal':
-                $url = '/public/order/checkout_order_status.php';
-                break;
-            case 'doc':
-                $url = '';
-                break;
-            default:
-                $url = '';
-        }
-    }
+
 
     
-    var window_width = window.screen.width;
-    var left_position = window_width/2;
-    $('.white_content').css('left',left_position)
-    if (msg !="") {
-        $("#pop_msg").html('<h3>'+msg+'</h3>');
-    }
-    document.getElementById('light').style.display='block';
-    document.getElementById('fade').style.display='block';
+
+
+
     $(".confirm_button").click(
         function(){
             closeWindow();
@@ -399,12 +566,12 @@ function openWindow(obj,msg){
              setTimeout(function(){
                 window.location.reload();
              },1000);
-
-        
-            
-           
         }
     )
+    
+
+    
+
     
     
 }
