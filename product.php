@@ -1,10 +1,10 @@
 <?
 require_once('application.php');
 
-$ProductID = $ShoppingCart->setDefault(&$_GET['ProductID'], 0) + 0;
+$ProductID = $ShoppingCart->setDefault($_GET['ProductID'], 0) + 0;
 if($ProductID == 0) header('Location:/');
 
-$CategoryID = $ShoppingCart->setDefault(&$_GET['CategoryID'], 0) + 0;
+$CategoryID = $ShoppingCart->setDefault($_GET['CategoryID'], 0) + 0;
 
 $qid = $ShoppingCart->queryProductDetails($ProductID);
 if($DB->numRows($qid) == 0) header('Location:/');

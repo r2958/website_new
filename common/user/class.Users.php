@@ -97,7 +97,7 @@ class Users
 		return $row;
 	}
 
-	function updateUserInfo(&$frm)
+	function updateUserInfo($frm)
 	{
 		// Saves the order information into the session variable $_SESSION['userinfo'].
 		if($this->checkLogin()){

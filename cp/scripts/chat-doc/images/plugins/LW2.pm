@@ -1908,7 +1908,7 @@ structures to your callback function.
                             $tempstart + 4,
                             $found - $tempstart - 4
                         );
-                        &$callbackfunc( '!--', { '=' => $dat },
+                        $callbackfunc( '!--', { '=' => $dat },
                             $dataref, $tempstart, $c - $tempstart + 1, $fref );
                     }
                     next;
@@ -1979,7 +1979,7 @@ structures to your callback function.
                 $INTAG = 0;
                 $TAG{'/'}++
                   if ( $xml && substr( $$dataref, $c - 1, 1 ) eq '/' );
-                &$callbackfunc( $CURTAG, \%TAG, $dataref, $tagstart,
+                $callbackfunc( $CURTAG, \%TAG, $dataref, $tagstart,
                     $c - $tagstart + 1, $fref )
                   if ( $usetagmap == 0 || defined $tagmap->{$LCCURTAG} );
                 $CURTAG = $LCCURTAG = '';
@@ -2065,7 +2065,7 @@ structures to your callback function.
 
         # finish off any tags we had going
         if ($INTAG) {
-            &$callbackfunc( $CURTAG, \%TAG, $dataref, $tagstart,
+            $callbackfunc( $CURTAG, \%TAG, $dataref, $tagstart,
                 $c - $tagstart + 1, $fref )
               if ( $usetagmap == 0 || defined $tagmap->{$LCCURTAG} );
         }
@@ -5709,19 +5709,19 @@ sub utils_recperm {
     my ( $d, $p, $pp, $pn, $r, $fr, $dr, $ar, $cr ) = ( '', shift, shift, @_ );
     $p =~ s#/+#/#g;
     if ( $pp >= @$pn ) {
-        push @$r, $p if &$cr( $$dr{$p} );
+        push @$r, $p if $cr( $$dr{$p} );
     }
     else {
         my $c = $$pn[$pp];
         if ( $c !~ /^\@/ ) {
             utils_recperm( $p . $c . '/', $pp + 1, @_ )
-              if ( &$fr( $p . $c . '/' ) );
+              if ( $fr( $p . $c . '/' ) );
         }
         else {
             $c =~ tr/\@//d;
             if ( defined $$ar{$c} ) {
                 foreach $d ( @{ $$ar{$c} } ) {
-                    if ( &$fr( $p . $d . '/' ) ) {
+                    if ( $fr( $p . $d . '/' ) ) {
                         utils_recperm( $p . $d . '/', $pp + 1, @_ );
                     }
                 }

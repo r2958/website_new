@@ -1497,7 +1497,7 @@ sub run_plugins
    {
     nprint("- Calling plugin: $pluginf\.plugin","d");
     # just call it...hope it works...taint doesn't like this very much for obvious reasons
-    &$pluginf;
+    $pluginf;
    }
  }
 return;

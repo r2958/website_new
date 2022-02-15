@@ -5,7 +5,7 @@
 //
 // Usage:
 // include($CFG->serverroot . '/common/functions/class.DBBrowser.php');
-// $DBBrowser = new DBBrowser(&$DB);
+// $DBBrowser = new DBBrowser($DB);
 // $DBBrowser->showDBBrowser();
 
 class DBBrowser
@@ -24,7 +24,7 @@ class DBBrowser
 	var $OrderBy = '';	// Column that we're ordering by
 	
 	
-	function DBBrowser(&$DB)
+	function DBBrowser($DB)
 	{
 		global $querystring;
 		$this->DB =& $DB;

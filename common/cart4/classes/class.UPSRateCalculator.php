@@ -90,7 +90,7 @@ class UPSRateCalculator
 		$request = '/using/services/rave/qcostcgi.cgi?accept_UPS_license_agreement=yes&10_action=' . $action . '&13_product=' . $upsProduct . '&14_origCountry=' . $this->origCountry . '&15_origPostal=' . $this->origPostal . '&19_destPostal=' . $this->destPostal . '&22_destCountry=' . $this->destCountry . '&23_weight=' . round($PackageWeight) . '&47_rateChart=' . $rateChart . '&48_container=' . $container . '&49_residential=' . $residential;
 		
 		//echo $request;
-		$fp = @fsockopen($them, $port, &$errno, &$errstr, 30);
+		$fp = @fsockopen($them, $port, $errno, $errstr, 30);
 		if($fp) {
 			fputs($fp, "GET $request HTTP/1.0\n\n");
 			while(!feof($fp)) {

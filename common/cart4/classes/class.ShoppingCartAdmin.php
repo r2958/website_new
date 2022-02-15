@@ -53,7 +53,7 @@ class ShoppingCartAdmin
 
 	function showCategoryHeader()
 	{
-		$CategoryID = $this->ShoppingCart->setDefault(&$_GET['CategoryID'], '');
+		$CategoryID = $this->ShoppingCart->setDefault($_GET['CategoryID'], '');
 		echo '<p><b>';
 		if($CategoryID != '') {
 			echo '<a href="/admin/categories/update.php?CategoryID=' . $CategoryID . '">Edit Category</a> - <a href="/admin/products/index.php?CategoryID=' . $CategoryID . '">Show Products</a> - <a href="/admin/products/update.php?CategoryID=' . $CategoryID . '">Add Product</a> - <a href="/admin/categories/clone.php?CategoryID=' . $CategoryID . '">Clone Category</a> - <a href="/admin/categories/delete.php?CategoryID=' . $CategoryID . '">Delete Category</a> -  <a href="/admin/categories/index.php">Back to Categories</a></b></p>';
@@ -67,7 +67,7 @@ class ShoppingCartAdmin
 
 	function showCompanyHeader()
 	{
-		$CompanyID = $this->ShoppingCart->setDefault(&$_GET['CompanyID'], '');
+		$CompanyID = $this->ShoppingCart->setDefault($_GET['CompanyID'], '');
 		echo '<p><b>';
 		if($CompanyID != '') {
 			echo '<a href="/admin/companies/update.php?CompanyID=' . $CompanyID . '">Edit Company</a> - <a href="/admin/products/index.php?CompanyID=' . $CompanyID . '">Show Products</a> - <a href="/admin/products/update.php?CompanyID=' . $CompanyID . '">Add Product</a> - <a href="/admin/companies/delete.php?CompanyID=' . $CompanyID . '">Delete Company</a> -  <a href="/admin/companies/index.php">Back to Companies</a></b></p>';
@@ -702,7 +702,7 @@ class ShoppingCartAdmin
 	}
 	
 	
-	function getCategoryDD(&$output, &$preselected, $parent=0, $indent='') 
+	function getCategoryDD($output, $preselected, $parent=0, $indent='') 
 	{
 	/* recursively go through the category tree, starting at a parent, and
 	 * drill down, printing options for a selection list box.  preselected

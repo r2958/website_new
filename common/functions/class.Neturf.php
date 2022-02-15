@@ -264,7 +264,7 @@ class ErrorHandler
 	{
 		$this->setDebugMode(false);
 		$this->setDisplayErrors(true);
-		set_error_handler(array(&$this, 'error_handler'));
+		set_error_handler(array($this, 'error_handler'));
 	}
 
 

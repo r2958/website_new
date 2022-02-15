@@ -35,7 +35,7 @@ class ShoppingCart
 		$this->UPSRateCalculator->setOrigCountry($this->SITE->Country);
 		$this->UPSRateCalculator->setDestPostal(@$_SESSION['ShippingZip']);
 		$this->UPSRateCalculator->setDestCountry(@$_SESSION['ShippingCountry']);
-		$_SESSION['UPSChoice'] = $this->setDefault(&$_SESSION['UPSChoice'], 'GND');
+		$_SESSION['UPSChoice'] = $this->setDefault($_SESSION['UPSChoice'], 'GND');
 	}
 
 
@@ -362,7 +362,7 @@ class ShoppingCart
 	}
 
 
-	function setOrderCheckoutInfo(&$frm)
+	function setOrderCheckoutInfo($frm)
 	{
 		// Saves the order information into the session variable $_SESSION['orderinfo'].
 		$order = new Object();
@@ -810,7 +810,7 @@ class ShoppingCart
 
 
 
-	function pv(&$var)
+	function pv($var)
 	{
 		// prints $var with the HTML characters (like "<", ">", etc.) properly quoted,
 		// or if $var is undefined, will print an empty string.
@@ -818,7 +818,7 @@ class ShoppingCart
 	}
 
 
-	function setDefault(&$var, $default='')
+	function setDefault($var, $default='')
 	{
 		// if $var is undefined, return $default, otherwise return $var
 		return isset($var) ? $var : $default;
@@ -1050,14 +1050,14 @@ class ShoppingCart
 
 
 
-	function &getYouAreHere($CategoryID=0, &$Name)
+	function &getYouAreHere($CategoryID=0, $Name)
 	{
 		global $Name;
 		$qid = $this->DB->query("SELECT ParentID, CategoryName FROM categories WHERE CategoryID = '$CategoryID' ORDER BY MenuOrder, CategoryName");
 		if($this->DB->numRows($qid) > 0) {
 			while($row = $this->DB->fetchObject($qid)) {
 				$Name[] = ' > <a href="/index.php?CategoryID=' . $CategoryID . '">' . $row->CategoryName . '</a>';
-				$this->getYouAreHere($row->ParentID, &$Name);
+				$this->getYouAreHere($row->ParentID, $Name);
 			}
 		}
 		return $Name;
@@ -1325,7 +1325,7 @@ class ShoppingCart
 	}
 
 
-	function &getParsedText($Text, &$var)
+	function &getParsedText($Text, $var)
 	{
 		// return a (big) string containing the contents of a template file with all
 		// the variables interpolated.  all the variables must be in the $var[] array or
@@ -1936,7 +1936,7 @@ class ShoppingCart
 		echo '</textarea></td></tr><tr><td><a onclick="javascript:tog(\'debug__SERVER\');">$_SERVER</a><textarea id="debug__SERVER" rows=10 style=width:100% class="inactive">';
 		print_r($_SERVER);
 		echo '</textarea></td></tr><tr><td><a onclick="javascript:tog(\'debug_classes\');">Class Details</a><textarea id="debug_classes" rows=25 style=width:100% class="inactive">';
-		echo 'We are using: ' . get_class(&$ShoppingCart);
+		echo 'We are using: ' . get_class($ShoppingCart);
 		$this->debugShowClassesAndFunctions();
 		echo '</textarea></td></tr></table></div>';
 	}

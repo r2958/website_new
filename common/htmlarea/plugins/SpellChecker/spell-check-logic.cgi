@@ -138,7 +138,7 @@ sub spellcheck {
         my $word = $1;
         my $before = $`;
         my $after = $';
-        my $df = &$check($word);
+        my $df = $check($word);
         if (!$df) {
             $before .= $word;
         }

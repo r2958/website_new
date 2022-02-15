@@ -33,9 +33,9 @@ if($_GET['ProductID'] != '') {
 	
 	$Page->PageTitle = 'Product Details - ' . $frm['ProductName'];
 } else {
-	$frm['CompanyID'] = $ShoppingCart->setDefault(&$_GET['CompanyID'], 0);
+	$frm['CompanyID'] = $ShoppingCart->setDefault($_GET['CompanyID'], 0);
 	/* build the categories listbox options, preselect the top item */
-	$frm['categories'] = array($ShoppingCart->setDefault(&$_GET['CategoryID'], 0));
+	$frm['categories'] = array($ShoppingCart->setDefault($_GET['CategoryID'], 0));
 	$Admin->getCategoryDD($category_options, $frm['categories']);
 	$frm['newmode'] = 'insert';
 
