@@ -40,7 +40,7 @@ class DB
 		}
 
 		// Select Database
-		if(!mysqli_select_db($this->Database, $this->Handle)) {
+		if(!mysqli_select_db($this->Handle,$this->Database)) {
 			if($this->Debug) {
 				echo '<h2>Can\'t select database ' . $this->Database . '</h2>';
 				echo '<p><b>MySQL Error</b>: ' . mysqli_error();
