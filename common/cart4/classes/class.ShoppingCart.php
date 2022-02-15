@@ -1916,7 +1916,7 @@ class ShoppingCart
 	}
 
 
-	function debugShowPageVariables($GLOBALS)
+	function debugShowPageVariables()
 	{
 		echo '<br /><hr><div align="center"><table width="95%" border="1" cellspacing="0" cellpadding="0" bgcolor="black" style="background-color: grey; color: white; font-weight: bold;"><tr><td align=center>Page Variables:</td></tr>';
 		echo '<tr><td><a onclick="javascript:tog(\'debug_carttotal\');">$ShoppingCart->CartTotal</a><br /><textarea id="debug_carttotal" rows=10 style=width:100% class="inactive">';
