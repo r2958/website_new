@@ -11,11 +11,11 @@
 	<meta name="author" content="Taixing Yuyanhuafs.com Inc">
         <meta name="baidu-site-verification" content="lqnJdZKDnz" />
         <meta property="wb:webmaster" content="3383adebd5a4916e" />
-        <script src="<?php echo 'http://'.$CFG->siteurl."/public"?>/media/js/jquery-1.6.js" type="text/javascript"></script>
-        <link href="<?php echo 'http://'.$CFG->siteurl."/public"?>/media/css/main.css" rel="stylesheet" type="text/css" /> 
-	<script type='text/javascript' src='<?php echo 'http://'.$CFG->siteurl."/public"?>/media/js/jquery.jqzoom-core.js'></script>
-	<link rel="stylesheet" type="text/css" href="<?php echo 'http://'.$CFG->siteurl."/public"?>/media/js/jquery.jqzoom.css">
-	<script src="<?php echo 'http://'.$CFG->siteurl."/public"?>/media/js/global.js" type="text/javascript"></script>
+        <script src="/public/media/js/jquery-1.6.js" type="text/javascript"></script>
+        <link href="/public/media/css/main.css" rel="stylesheet" type="text/css" /> 
+	<script type='text/javascript' src='/public/media/js/jquery.jqzoom-core.js'></script>
+	<link rel="stylesheet" type="text/css" href="/public/media/js/jquery.jqzoom.css">
+	<script src="/public/media/js/global.js" type="text/javascript"></script>
 </head>
 <body>
 
