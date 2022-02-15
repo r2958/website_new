@@ -24,12 +24,13 @@ class DB
 		// and to a common one for logging errors and emails at the same time
 
 		// Connect to server
-		if(!$this->Handle = @mysqli_connect($this->Host, $this->Username, $this->Password, true)) {
+		if(!$this->Handle = mysqli_connect($this->Host, $this->Username, $this->Password, true)) {
 			if($this->Debug) {
 				echo '<h2>Can\'t connect to ' . $this->Host . ' as ' . $this->Username . '</h2>';
 				echo '<p><b>MySQL Error</b>: ' . mysqli_error();
 			} else {
 				echo '<h2>Database error encountered</h2>';
+				var_dump(mysqli_error());
 
 			}
 			if($this->DieOnFail === true) {
