@@ -42,15 +42,15 @@
 		<?php
 			if(isset($_SESSION['user'])):
 		?>
-		<li><a href="<?php echo 'http://'.$CFG->siteurl."/public/users/"?>user.php"><?php echo $_SESSION['user']->Username; ?></a></li>
-		<li><a href="<?php echo 'http://'.$CFG->siteurl."/public/users/"?>logout.php">[退出]</a></li>
+		<li><a href="/public/users/user.php"><?php echo $_SESSION['user']->Username; ?></a></li>
+		<li><a href="/public/users/logout.php">[退出]</a></li>
 		<?php
 			else:
 		?>
-		<li><a href="<?php echo 'http://'.$CFG->siteurl."/public/users/"?>register.php">免费注册</a></li>
-		<li><a href="<?php echo 'http://'.$CFG->siteurl."/public/users/"?>login.php">登录</a></li>
+		<li><a href="/public/users/register.php">免费注册</a></li>
+		<li><a href="login.php">登录</a></li>
 		<?php endif;?>
-                <li style="position: absolute;"><a href="<?php echo 'http://'.$CFG->siteurl."/public/"?>cart.php" class="cart-link">购物车</a>
+                <li style="position: absolute;"><a href="cart.php" class="cart-link">购物车</a>
 		
 		    <div class="cart_content" style="left:-78px;top:20px;width:210px;min-height: 100px;position:absolute;border: 1px solid #ccc;background-color:#FFF;display:none;">
 			
@@ -119,14 +119,14 @@
 		-->
 	    </li>
            <!--  <li><a href="brand.php" id="new_brand">品牌</a></li> -->
-            <li><a class='<?php echo (isset($_GET['id'])&$_GET['id']==1)? 'menuact':'';?>' href="<?php echo 'http://'.$CFG->siteurl."/public/"?>template.php?id=1" id="new_cloth">男装</a></li>
-            <li><a class='<?php echo (isset($_GET['id'])&$_GET['id']==2)? 'menuact':'';?>'  href="<?php echo 'http://'.$CFG->siteurl."/public/"?>template.php?id=2" id="new_bag">包袋</a></li>
-            <li><a class='<?php echo (isset($_GET['id'])&$_GET['id']==3)? 'menuact':'';?>' href="<?php echo 'http://'.$CFG->siteurl."/public/"?>template.php?id=3">流行女鞋</a></li>
-            <li><a class='<?php echo (isset($_GET['id'])&$_GET['id']==4)? 'menuact':'';?>' href="<?php echo 'http://'.$CFG->siteurl."/public/"?>template.php?id=4">内衣</a></li>
-            <li><a class='<?php echo (isset($_GET['id'])&$_GET['id']==5)? 'menuact':'';?>' href="<?php echo 'http://'.$CFG->siteurl."/public/"?>template.php?id=5">鞋子</a></li>
-            <li><a class='<?php echo (isset($_GET['id'])&$_GET['id']==6)? 'menuact':'';?>' href="<?php echo 'http://'.$CFG->siteurl."/public/"?>template.php?id=6">配饰</a></li>
-	    <li><a class='<?php echo (isset($_GET['id'])&$_GET['id']==7)? 'menuact':'';?>' href="<?php echo 'http://'.$CFG->siteurl."/public/"?>template.php?id=7">女裤</a></li>
-            <li><a class='<?php echo (isset($_GET['id'])&$_GET['id']==8)? 'menuact':'';?>' href="<?php echo 'http://'.$CFG->siteurl."/public/"?>template.php?id=8">男裤</a></li>
+            <li><a class='<?php echo (isset($_GET['id'])&$_GET['id']==1)? 'menuact':'';?>' href="/public/template.php?id=1" id="new_cloth">男装</a></li>
+            <li><a class='<?php echo (isset($_GET['id'])&$_GET['id']==2)? 'menuact':'';?>' href="/public/template.php?id=2" id="new_bag">包袋</a></li>
+            <li><a class='<?php echo (isset($_GET['id'])&$_GET['id']==3)? 'menuact':'';?>' href="/public/template.php?id=3">流行女鞋</a></li>
+            <li><a class='<?php echo (isset($_GET['id'])&$_GET['id']==4)? 'menuact':'';?>' href="/public/template.php?id=4">内衣</a></li>
+            <li><a class='<?php echo (isset($_GET['id'])&$_GET['id']==5)? 'menuact':'';?>' href="/public/template.php?id=5">鞋子</a></li>
+            <li><a class='<?php echo (isset($_GET['id'])&$_GET['id']==6)? 'menuact':'';?>' href="/public/template.php?id=6">配饰</a></li>
+	    <li><a class='<?php echo (isset($_GET['id'])&$_GET['id']==7)? 'menuact':'';?>' href="/public/template.php?id=7">女裤</a></li>
+            <li><a class='<?php echo (isset($_GET['id'])&$_GET['id']==8)? 'menuact':'';?>' href="/public/template.php?id=8">男裤</a></li>
 	    
 	    <?php
 	        $map =array(1=>'服装',2=>'包袋',3=>'配饰',4=>'内衣',5=>'运动装',6=>'美容',7=>'定制服务');
