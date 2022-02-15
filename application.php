@@ -53,7 +53,7 @@ require_once($CFG->siteroot . '/lib/class.CustomCartAdmin.php');
 $Admin = new CustomShoppingCartAdmin();
 
 require_once($CFG->serverroot . '/common/functions/class.PagedResultSet.php');
-$querystring = eregi_replace('(resultpage=[0-9]+&)', '', $_SERVER['QUERY_STRING']);
+$querystring = preg_replace('(resultpage=[0-9]+&)', '', $_SERVER['QUERY_STRING']);
 
 if((isset($_GET['CategoryID'])) && ($_GET['CategoryID'] > 0)) {
 	$caID=array($_GET['CategoryID']);
