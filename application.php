@@ -19,7 +19,7 @@ $CFG->siteurl	= $_SERVER['SERVER_NAME'];
 require_once($CFG->serverroot . '/common/functions/class.DB.php');
 $DB = new DB;
 $DB->Host = '10.0.4.14';
-$DB->Database = 'andrew';
+$DB->Database = 'andrew-new';
 $DB->Username = 'root';
 $DB->Password = 'Renwei@123';
 $DB->DieOnFail = false;
