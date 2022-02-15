@@ -135,7 +135,7 @@ $domain = $domain_array[rand(0,2)];
                     <li>
                         <div class="product_desc">
                             <div>
-                                <a href="detail.php?id=<?php echo $v['ProductID'];?>&categoryID=<?php echo $id;?>" target="_blank" > <img src="<?php echo /* $ShoppingCart->_a_getImageOrText('/products/' . $v['ProductID'] . '_01_th') */ '/images/details/'.$v['ProductID'] . '_01_th_270x270_90.jpg' ;?>" data_orig="<?php echo $i?>" width="270px" height="270px" />
+                                <a href="detail.php?id=<?php echo $v['ProductID'];?>&categoryID=<?php echo $id;?>" target="_blank" > <img src="<?php echo /* $ShoppingCart->_a_getImageOrText('/products/' . $v['ProductID'] . '_01_th') */ '/images/details/'.$v['ProductID'] . '_01_th.jpg' ;?>" data_orig="<?php echo $i?>" width="270px" height="270px" />
                                 <?php //echo $ShoppingCart->getImageOrText('/products/' . $v['ProductID'] . '_01_th'); ?>
                                 </a>
                                 <a href="detail.php?id=<?php echo $v['ProductID'];?>&categoryID=<?php echo $id;?>" class="pro_short_desc">Givenchy</a><br/>
