@@ -68,9 +68,9 @@ foreach($dir as $v){
             $des ='../images/details/'.$ProductID.'_01_th.jpg';
             $dd = rename($from,$des);
             $ids[]=$ProductID;
-            mysql_error();
+            mysqli_error();
         }catch(Exception $e){
-            mysql_error();
+            mysqli_error();
             exit('error');
         }  
     }

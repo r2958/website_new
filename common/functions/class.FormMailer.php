@@ -56,12 +56,12 @@ class FormMailer
 		$DomainName = ltrim($referer, 'www.');
 	 
 		include(Neturf::getServerRoot() . '/controlpanel/lib/db_connect.php');
-		$connection = mysql_connect($CFG->dbhost, $CFG->dbuser, $CFG->dbpass) or die($this->doErrorRedirect());
-		mysql_select_db($CFG->dbname) or die($this->doErrorRedirect());
+		$connection = mysqli_connect($CFG->dbhost, $CFG->dbuser, $CFG->dbpass) or die($this->doErrorRedirect());
+		mysqli_select_db($CFG->dbname) or die($this->doErrorRedirect());
 
 		$query = "SELECT DomainName FROM Domains WHERE DomainName = '$DomainName'";
-		$result = mysql_query($query) or die($this->doErrorRedirect());
-		if(mysql_num_rows($result) == 0) $this->Errors[] = 'referrer';
+		$result = mysqli_query($query) or die($this->doErrorRedirect());
+		if(mysqli_num_rows($result) == 0) $this->Errors[] = 'referrer';
 	}
 	
 	

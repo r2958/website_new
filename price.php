@@ -31,8 +31,8 @@ word-break:break-all;
 </style>
 </head>
 <?
-mysql_connect('76.162.254.136:3306','andrewm_temco','travel');
-mysql_select_db('andrewm_temco');
+mysqli_connect('76.162.254.136:3306','andrewm_temco','travel');
+mysqli_select_db('andrewm_temco');
 if(!isset($_GET["condition"]))
 {
 	$condition='DESC';
@@ -40,15 +40,15 @@ if(!isset($_GET["condition"]))
 if($keywords<>"")
 {
 $_SESSION['keywords']=$keywords;
-$result = mysql_query("Select DISTINCT `AttributeName`,`AttributePrice`,`AttribtDescriptions`,`discountPrice`,`oemPrice`, from products_attributes where AttribtDescriptions like '%$keywords%' or AttributeName like '%$keywords%' and  `Display` =1 order by AttributeName desc"  );
+$result = mysqli_query("Select DISTINCT `AttributeName`,`AttributePrice`,`AttribtDescriptions`,`discountPrice`,`oemPrice`, from products_attributes where AttribtDescriptions like '%$keywords%' or AttributeName like '%$keywords%' and  `Display` =1 order by AttributeName desc"  );
 }
 else
 {
 $sql = 'SELECT DISTINCT `AttributeName`,`AttributePrice`,`AttribtDescriptions`,`discountPrice`,`oemPrice`, FROM `products_attributes`  WHERE `Display` =1 order by AttributeName desc';
 
-$result = mysql_query($sql);
+$result = mysqli_query($sql);
 }
-if($num=mysql_num_rows($result) !=0)
+if($num=mysqli_num_rows($result) !=0)
 {
 ?>
 <div align="center">
@@ -88,10 +88,10 @@ if($num=mysql_num_rows($result) !=0)
 			<font face="Arial" color="#FFFFFF">View Details</font></b></span></td>
 		</tr>
 		<?
-		while($row=@mysql_fetch_object($result))
+		while($row=@mysqli_fetch_object($result))
 {
-	$id=@mysql_query("select AttributeID,ProductID from products_attributes where AttributeName='$row->AttributeName' limit 0,1");
-	$idrow=@mysql_fetch_object($id);
+	$id=@mysqli_query("select AttributeID,ProductID from products_attributes where AttributeName='$row->AttributeName' limit 0,1");
+	$idrow=@mysqli_fetch_object($id);
 		?>
 		<tr onMouseOver="this.bgColor = '#eFeFeF'"
     onMouseOut ="this.bgColor = '#FFFFFF'"

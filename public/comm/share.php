@@ -1136,7 +1136,7 @@ function order_merge($sub_orders,$main_order_id = 0,$is_admin = 1) {
 		$new_order_describe["favourable_money"]	= $fav_order["favourable_money"];
 		$new_order_describe["ex_fav_money"]		= $ext_fav_money;
 		$new_order_describe["carriage"]			= $carriage;
-		$new_order_describe["remark"]			= mysql_escape_string(implode("\n", $merge_info["remark"]));
+		$new_order_describe["remark"]			= mysqli_escape_string(implode("\n", $merge_info["remark"]));
 		inserttable("order_describe",$new_order_describe);
 	}
 	

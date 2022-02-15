@@ -18,10 +18,10 @@ $CFG->siteurl	= $_SERVER['SERVER_NAME'];
 /* Database Library and Connection Information */
 require_once($CFG->serverroot . '/common/functions/class.DB.php');
 $DB = new DB;
-$DB->Host = 'localhost';
+$DB->Host = '10.0.4.14';
 $DB->Database = 'andrew';
 $DB->Username = 'root';
-$DB->Password = 'travel';
+$DB->Password = 'Renwei@123';
 $DB->DieOnFail = false;
 $DB->Debug = false;
 $DB->Timed = false;

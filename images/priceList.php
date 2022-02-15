@@ -11,21 +11,21 @@
  <link href='andrew.css' type="text/css" rel="stylesheet">
 </head>
 <?
-mysql_connect('76.162.254.136:3306','andrewm_temco','travel');
-mysql_select_db('andrewm_temco');
+mysqli_connect('76.162.254.136:3306','andrewm_temco','travel');
+mysqli_select_db('andrewm_temco');
 if($keywords<>"")
 {
-$result = mysql_query("Select ProductID,AttributeID, AttributeName,AttributePrice,AttribtDescriptions,discountPrice,
+$result = mysqli_query("Select ProductID,AttributeID, AttributeName,AttributePrice,AttribtDescriptions,discountPrice,
 						oemPrice from products_attributes where AttributeName like '%$keywords%' or AttribtDescriptions
 						like '%$keywords%' order By AttributeName  DESC" );
 }
 else
 {
-$result = mysql_query("Select ProductID,AttributeID, AttributeName,AttributePrice,AttribtDescriptions,discountPrice,
+$result = mysqli_query("Select ProductID,AttributeID, AttributeName,AttributePrice,AttribtDescriptions,discountPrice,
 						oemPrice from products_attributes Order By  AttributeName DESC
 						");
 }
-$Customer_result = mysql_query("select distinct AttributeName,AttributePrice,AttribtDescriptions,discountPrice,oemPrice from products_attributes");
+$Customer_result = mysqli_query("select distinct AttributeName,AttributePrice,AttribtDescriptions,discountPrice,oemPrice from products_attributes");
 ?>
 <div align="center">
 <table border="0" width="85%" id="table1" cellspacing="1" cellpadding="0" bgcolor="#CCCCFF">
@@ -64,21 +64,21 @@ $Customer_result = mysql_query("select distinct AttributeName,AttributePrice,Att
 			<font face="Arial" size="2" color="#FFFFFF">MODIFY</font></b></td>
 		</tr>
 		<?
-		while($row=@mysql_fetch_object($result))
+		while($row=@mysqli_fetch_object($result))
 {
 		?>
 		<tr onMouseOver="this.bgColor = '#eFeFeF'"
     onMouseOut ="this.bgColor = '#FFFFFF'"
     bgcolor="#FFFFFF">
 			<td width="8%" align="center" height="25">
-			<font face="Arial" size="2"><?=$row->AttributeName?>¡¡</font></td>
+			<font face="Arial" size="2"><?=$row->AttributeName?>ï¿½ï¿½</font></td>
 			<td width="49%" align="center" colspan="2">
-			<font face="Arial" size="2"><?=$row->AttribtDescriptions?>¡¡</font></td>
+			<font face="Arial" size="2"><?=$row->AttribtDescriptions?>ï¿½ï¿½</font></td>
 			<td width="13%" align="center">
 			<b>
-			<font face="Arial" size="2">$<?=$row->AttributePrice?>¡¡</font></b></td>
+			<font face="Arial" size="2">$<?=$row->AttributePrice?>ï¿½ï¿½</font></b></td>
 			<td  width="12%" align="center" bgcolor="#CCCCFF"><b>
-			<font face="Arial" size="2" color="#008000">$<?=$row->discountPrice?>¡¡</font></b></td>
+			<font face="Arial" size="2" color="#008000">$<?=$row->discountPrice?>ï¿½ï¿½</font></b></td>
 			<td  width="8%" align="center" bgcolor="#FFCC99"><b>
 			<font face="Arial" size="2" color="#003300">$<?=$row->oemPrice?></font></b></td>
 			<td width="10%" align="center">

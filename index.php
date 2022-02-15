@@ -1,6 +1,6 @@
 <?
 require_once('application.php');
-$CategoryID = $ShoppingCart->setDefault(&$_GET['CategoryID'], 0) + 0;
+$CategoryID = $ShoppingCart->setDefault($_GET['CategoryID'], 0) + 0;
 
 
 if($CategoryID > 0) {

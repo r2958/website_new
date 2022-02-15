@@ -56,7 +56,7 @@ class Users
 	
 	function updatePassword($username,$oldpassword,$newpassword){		
 		$qid = $this->DB->query("UPDATE users SET Password = '$newpassword' WHERE Username = '$username' and Password = '$oldpassword'");
-		$check = mysql_affected_rows();
+		$check = mysqli_affected_rows();
 		if($check>0){
 			return true;
 		}else{
@@ -78,7 +78,7 @@ class Users
 		$sql = substr($sql,0,strlen($sql)-2);
 		$sql .= ' where Username = '."'$userName'"." and FirstName = '".$UserInfo['FirstName']."'";
 		$qid = $this->DB->query($sql);
-		//$rows = mysql_affected_rows();
+		//$rows = mysqli_affected_rows();
 		if($qid){
 			$this->updateUserInfo($UserInfo);
 			return true;

@@ -24,10 +24,10 @@ class DB
 		// and to a common one for logging errors and emails at the same time
 
 		// Connect to server
-		if(!$this->Handle = @mysql_connect($this->Host, $this->Username, $this->Password, true)) {
+		if(!$this->Handle = @mysqli_connect($this->Host, $this->Username, $this->Password, true)) {
 			if($this->Debug) {
 				echo '<h2>Can\'t connect to ' . $this->Host . ' as ' . $this->Username . '</h2>';
-				echo '<p><b>MySQL Error</b>: ' . mysql_error();
+				echo '<p><b>MySQL Error</b>: ' . mysqli_error();
 			} else {
 				echo '<h2>Database error encountered</h2>';
 
@@ -40,10 +40,10 @@ class DB
 		}
 
 		// Select Database
-		if(!mysql_select_db($this->Database, $this->Handle)) {
+		if(!mysqli_select_db($this->Database, $this->Handle)) {
 			if($this->Debug) {
 				echo '<h2>Can\'t select database ' . $this->Database . '</h2>';
-				echo '<p><b>MySQL Error</b>: ' . mysql_error();
+				echo '<p><b>MySQL Error</b>: ' . mysqli_error();
 			} else {
 				echo '<h2>Database error encountered</h2>';
 
@@ -54,8 +54,8 @@ class DB
 			}
 		}
 
-		mysql_query("SET NAMES utf8", $this->Handle);
-		mysql_query("SET CHARACTER SET utf8", $this->Handle);
+		mysqli_query("SET NAMES utf8", $this->Handle);
+		mysqli_query("SET CHARACTER SET utf8", $this->Handle);
 	}
 
 
@@ -63,18 +63,18 @@ class DB
 	{
 		// disconnect from the database
 		// we normally don't have to call this function because PHP will handle it
-		mysql_close($this->Handle);
+		mysqli_close($this->Handle);
 	}
 
 
 	function escape($value)
 	{
-		// Stripslashes if necessary, then escape with mysql_real_escape_string
+		// Stripslashes if necessary, then escape with mysqli_real_escape_string
 		// This should be used on EVERY query built!!!
 		if (get_magic_quotes_gpc()) {
 			$value = stripslashes($value);
 		}
-		return mysql_real_escape_string($value, $this->Handle);
+		return mysqli_real_escape_string($value, $this->Handle);
 	}
 
 
@@ -91,7 +91,7 @@ class DB
 			$this->TimerStart = $this->getMicrotime();
 		}
 		//echo var_dump($query);
-		$qid = @mysql_query($query, $this->Handle);
+		$qid = @mysqli_query($query, $this->Handle);
 
 
 
@@ -105,7 +105,7 @@ class DB
 			if($this->Debug === true) {
 				echo '<h2>Can\'t execute query</h2>';
 				echo '<pre>' . htmlspecialchars($query) . '</pre>';
-				echo '<p><b>MySQL Error</b>: ' . mysql_error($this->Handle);
+				echo '<p><b>MySQL Error</b>: ' . mysqli_error($this->Handle);
 			} else {
 				echo '<h2>Database error encountered</h2>';
 
@@ -148,7 +148,7 @@ class DB
 
 	function numRows($qid)
 	{
-		return @mysql_num_rows($qid);
+		return @mysqli_num_rows($qid);
 	}
 
 
@@ -157,7 +157,7 @@ class DB
 		// grab the next row from the query result identifier $qid,
 		// and return it as a associative and enumerated array. 
 		// if there are no more results, return FALSE
-		return mysql_fetch_array($qid);
+		return mysqli_fetch_array($qid);
 	}
 
 	function fetchAssoc($qid)
@@ -165,7 +165,7 @@ class DB
 		// grab the next row from the query result identifier $qid,
 		// and return it as an associative array. 
 		// if there are no more results, return FALSE
-		return mysql_fetch_assoc($qid);
+		return mysqli_fetch_assoc($qid);
 	}
 
 	function fetchObject($qid)
@@ -173,7 +173,7 @@ class DB
 		// grab the next row from the query result identifier $qid,
 		// and return it as an object. 
 		// if there are no more results, return FALSE
-		return mysql_fetch_object($qid);
+		return mysqli_fetch_object($qid);
 	}
 
 	function fetchRow($qid)
@@ -181,45 +181,45 @@ class DB
 		// grab the next row from the query result identifier $qid,
 		// and return it as an enumerated array. 
 		// if there are no more results, return FALSE
-		return mysql_fetch_row($qid);
+		return mysqli_fetch_row($qid);
 	}
 
 
 	function affectedRows()
 	{
 		// return the number of rows affected by the last INSERT, UPDATE, or DELETE query
-		return @mysql_affected_rows($this->Handle);
+		return @mysqli_affected_rows($this->Handle);
 	}
 
 	function insertID()
 	{
 		// return the ID of the autoincrement ID field from the last INSERT
-		return mysql_insert_id($this->Handle);
+		return mysqli_insert_id($this->Handle);
 	}
 
 	function freeResult($qid)
 	{
 		// free up the resources used by the query result identifier $qid
-		mysql_free_result($qid);
+		mysqli_free_result($qid);
 	}
 
 	function numFields($qid)
 	{
 		// return the number of fields returned from the SELECT query with the identifier $qid
-		return mysql_num_fields($qid);
+		return mysqli_num_fields($qid);
 	}
 
 	function fieldName($qid, $fieldno)
 	{
 		// return the name of the field number $fieldno
 		// returned from the SELECT query with the identifier $qid
-		return mysql_field_name($qid, $fieldno);
+		return mysqli_field_name($qid, $fieldno);
 	}
 
 	function dataSeek($qid, $row)
 	{
 		// move the database cursor to row $row on the SELECT query with the identifier $qid
-		if($this->numRows($qid)) return mysql_data_seek($qid, $row);
+		if($this->numRows($qid)) return mysqli_data_seek($qid, $row);
 	}
 
 

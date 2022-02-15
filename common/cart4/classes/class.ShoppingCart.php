@@ -109,7 +109,7 @@ class ShoppingCart
 	function getAllcartItems(){
 		$rs = array();
 		$query = $this->getCartItems();		
-		while($row = mysql_fetch_object($query)){
+		while($row = mysqli_fetch_object($query)){
 			$rs[] = $row;
 		}
 		return $rs;

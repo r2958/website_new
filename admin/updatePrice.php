@@ -1,10 +1,10 @@
 <?php
 ob_start();
-mysql_connect('98.130.0.76:3306','ibscont_andrew','ibscontrols');
-mysql_select_db('ibscont_andrew');
-$result = mysql_query("Select * from products_attributes where AttributeID='$AttID'");
+mysqli_connect('98.130.0.76:3306','ibscont_andrew','ibscontrols');
+mysqli_select_db('ibscont_andrew');
+$result = mysqli_query("Select * from products_attributes where AttributeID='$AttID'");
 
-if($row=mysql_fetch_object($result))
+if($row=mysqli_fetch_object($result))
 {
 	require_once("updatePrice.htm");
 	//echo "Update Success";
@@ -19,7 +19,7 @@ if(isset($func))
 	//this is Update variable check.
 	$sql="UPDATE products_attributes SET AttributePrice = '$price',AttribtDescriptions = '$desc',discountPrice='$price1',oemPrice='$price2'  WHERE AttributeID ='$AttID' LIMIT 1";
 
-	$quer=mysql_query($sql);
+	$quer=mysqli_query($sql);
 	if($quer)
 	{
 		//echo "Update Success";

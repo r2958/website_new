@@ -1757,7 +1757,7 @@ function send_msg_to_user($data)
 	$html = '<b>尊敬的 ' . $data['name'] . '：</b><div style="line-height:25px; text-indent: 2em">' . $data['html'] . '</div><p align="right"><a href="http://' . DOMAIN_WWW . '/index.php" target="_blank">唯品会</a></p>';
 	$sql = "insert into notify (name, from_user,public,content,add_time,notify_type) values
 			('$data[subject]','admin','1','$html',$time,3)";
-	$db->execute($sql) or die(mysql_error().$sql);
+	$db->execute($sql) or die(mysqli_error().$sql);
 	$nid = $db->Insert_ID();
 	if ($nid)
 	{
@@ -2019,7 +2019,7 @@ function modify_order_status($sn, $otype, $ptype, $pstatus, $paySn = null)
     setOrderOs('updateOrder', $OsData, $OsOther);
     unset($OsData, $OsOther);
 
-	$db->execute($sql) or die(mysql_error());
+	$db->execute($sql) or die(mysqli_error());
 	if ($db->affected_rows() && $pstatus == 1)
 	{	    
 		$touch_mail = $db->getOne("select touch_mail from user where id = '$row[user_id]'");
@@ -2157,7 +2157,7 @@ function modify_tour_order_status($sn, $otype, $ptype, $pstatus)
 	$oid = $row['id'];
 	
 	$sql = "update tour_orders set order_type='$otype',order_status = 1, pay_type=$ptype,pay_status='$pstatus' where id='$oid' and order_type in (0,9) and order_status not in (70,97,98,99)";
-	$db->execute($sql) or die(mysql_error());
+	$db->execute($sql) or die(mysqli_error());
 	if ($db->affected_rows() && $pstatus == 1)
 	{	
 		if($row["money_pay"] + $row["surplus"] > $row["money_paid"]) {
@@ -2399,7 +2399,7 @@ function send_notfee_favourable($fid, $uid)
 	$sql = "insert into notify (name, from_user,public,content,add_time) values
 			('$subject','admin','1','$html',$time)";
 
-	$db->execute($sql) or die(mysql_error().$sql);
+	$db->execute($sql) or die(mysqli_error().$sql);
 	$nid = $db->Insert_ID();
 	if ($nid)
 	{
