@@ -28,7 +28,7 @@ class ASessionHandler {
 	}
 
 	function close() {
-		$this->gc();
+		$this->gc($maxlifetime);
 	}
 
 	function read($id) {
