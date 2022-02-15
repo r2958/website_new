@@ -75,7 +75,7 @@ class DB
 		if (get_magic_quotes_gpc()) {
 			$value = stripslashes($value);
 		}
-		return mysqli_real_escape_string($value, $this->Handle);
+		return mysqli_real_escape_string($this->Handle , $value);
 	}
 
 
