@@ -434,7 +434,7 @@ $County["107101101"] = Array('107101101000','');
 $County["108101101"] = Array('108101101000','');
 $County["109101101"] = Array('109101101000','');
 
-function replaceWords($str)
+function replaceWords(&$str)
 {
 	$str = preg_replace("/省$|市$|区$|县$/", '', $str);
 }
@@ -556,7 +556,7 @@ function areaNameToId($pv, $cy, $cu)
 	
 }
 
-function findCity($cy, $cu, $result, $City, $County) {
+function findCity($cy, $cu, &$result, &$City, &$County) {
 	/*查找城市*/
 	$pf = array_search($cy, $City[$result['province']]);
 	if(!$pf) {
@@ -578,7 +578,7 @@ function findCity($cy, $cu, $result, $City, $County) {
 	}	
 }
 
-function findCounty($cu, $result, $County) {
+function findCounty($cu, &$result, &$County) {
 	/*查找区*/
 	if(isset($County[$result['city']]) && count($County[$result['city']]) >2) {
 		/*该城市存在区，但没有输入*/

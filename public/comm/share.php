@@ -76,7 +76,7 @@ function get_transport_fee($aid) {
 	return get_comm_fee($aid);
 }
 
-function get_special_fee($weight_type, $area_id, $fee) {
+function get_special_fee($weight_type, $area_id, &$fee) {
 	if (substr($area_id, 0 ,6) == '104104')
 		$type = 0;
 	else 
@@ -650,7 +650,7 @@ function cmp_price($a, $b) {
 	}
 	return ($a['vipshop_price'] > $b['vipshop_price'])? 1 : -1;
 }
-function sort_by_arr_price($arr) {
+function sort_by_arr_price(&$arr) {
 	return usort($arr, 'cmp_price');
 }
 
@@ -855,15 +855,15 @@ function order_merge($sub_orders,$main_order_id = 0,$is_admin = 1) {
 			}
 		}
 
-		if($row['order_date']==20111130&$row['warehouse']=='VIP_SH')
+		if($row['order_date']==20111130&&$row['warehouse']=='VIP_SH')
 		{ 
 			$tp_fress_min=188; 
 		}
-		if($row['order_date']=='20111208'&$row['aigo']==1)
+		if($row['order_date']=='20111208'&&$row['aigo']==1)
 		{//活动当天的未符合条件打折的 
 				$var_active_aigo=1;
 		}
-		if($var_active_aigo==1&$row['order_date']!='20111208')
+		if($var_active_aigo==1&&$row['order_date']!='20111208')
 		{//活动当天跟不是活动的合并 不考虑是否符合条件
 				$var_active_aigo='';
 		}
@@ -1038,7 +1038,7 @@ function order_merge($sub_orders,$main_order_id = 0,$is_admin = 1) {
 
 	if($main_os['order_date']=='20111208')
 	{
-		if($merge_info["goods_money"]>=333&$main_os["aigo"]==1&$var_active_aigo==1)
+		if($merge_info["goods_money"]>=333&&$main_os["aigo"]==1&&$var_active_aigo==1)
 		{
 			$main_os["aigo"]=0.88;
 		}
@@ -1136,7 +1136,7 @@ function order_merge($sub_orders,$main_order_id = 0,$is_admin = 1) {
 		$new_order_describe["favourable_money"]	= $fav_order["favourable_money"];
 		$new_order_describe["ex_fav_money"]		= $ext_fav_money;
 		$new_order_describe["carriage"]			= $carriage;
-		$new_order_describe["remark"]			= mysqli_escape_string(implode("\n", $merge_info["remark"]));
+		$new_order_describe["remark"]			= mysql_escape_string(implode("\n", $merge_info["remark"]));
 		inserttable("order_describe",$new_order_describe);
 	}
 	
@@ -1776,7 +1776,7 @@ function cancel_order($id, $user_id=0, $return_type=0, $is_admin=1, $reason_choi
 	}
 	
 	/*用户不能取消非线下支付的订单
-	if ( $order['pay_type'] != '8' && $order['pay_type'] != '10' && !$is_admin&$order['wms_flag']==1) {
+	if ( $order['pay_type'] != '8' && $order['pay_type'] != '10' && !$is_admin&&$order['wms_flag']==1) {
 		$result['msg'] = '不能取消非线下支付类型的订单';
 		return $result;
 	}*/
@@ -2271,7 +2271,7 @@ function generate_wallet_token($username, $stime = '', $op = '')
 function verify_wallet_token($username, $token, $op ='', $timeout=600)
 {
     $result = array('ok'=>0, 'msg'=>'令牌失效');
-    $time = $_SERVER['REQUEST_TIME'];
+    $time = &$_SERVER['REQUEST_TIME'];
    	$time = floor($time  / $timeout);
    	$hash = substr( md5($time . md5($username) . $op), 0, 6);
    	if ($hash == $token) {
@@ -2291,7 +2291,7 @@ function admin_check_op_token($url, $param, $timeout =600)
     foreach ($param as $key=>$value) {
     	$msg .= '<input type="hidden" name="'.$key.'" value="'.$value.'" />';
     }
-    $time = $_SERVER['REQUEST_TIME'];
+    $time = &$_SERVER['REQUEST_TIME'];
     $stoken = md5($_SESSION['admin_user'].date('Y-m-d', $time) . $time);
     $msg .= '<input type="submit" value="确定" /></form> <br />请 <a style="color:blue;" target="_blank" href="http://192.168.0.111/admin/wallet_token.php?stoken='.$stoken.'&username='.$_SESSION['admin_user' ] . '&t='. $time. '">点击此处</a> 获取！';
 
@@ -2474,7 +2474,7 @@ class cls_stock {
 		return true;
 	}
 	
-	function modify_stock($size_id, $total, $virtue, $leave) {
+	function modify_stock($size_id, $total, $virtue, &$leave) {
 		if (empty($size_id)) {
 			return false;
 		}
@@ -3664,7 +3664,7 @@ function send_favouriable_lbk($active_id, $user_id,$is_send_notice=NULL,$is_send
 }
 
 //判断是否含VIPCLUB商品,$goods/$order_id可任意传一个,order_id优先
-function has_vc_goods($order_id, $db, $old_vc='') {
+function has_vc_goods($order_id, &$db, $old_vc='') {
 	if ($db->getOne("select g.id from order_goods g left join brand b on g.brand_id=b.id where g.order_id=$order_id and b.sale_to='2'")) {
 		$new_vc = 2;
 	}
@@ -3808,7 +3808,7 @@ function get_back_pay_type($pay_type) {
 class cls_prs_cache {
 	private $db;
 
-	function __construct($db) {
+	function __construct(&$db) {
 		$this->db = $db;
 	}
 	public function get_user_prs($user_id) {

@@ -2,6 +2,7 @@
 <head>
     <title>LIGHTBOX EXAMPLE</title>
     <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+    <script src="/public/media/js/jquery-1.6.js" type="text/javascript"></script>
     <style type="text/css">
         .black_overlay{
             display: none;
@@ -24,8 +25,8 @@
             position: absolute;
             top: 25%;
             left: 25%;
-            width: 50%;
-            height: 50%;
+            width: 300px;
+            height: 300px;;
             padding: 16px;
             border: 2px solid orange;
             background-color: white;
@@ -35,24 +36,180 @@
     </style>
     <script language="javascript">
         function openWindow(){
+            var currentWindowWidth = window.document.body.clientWidth;
+            var toleft = (currentWindowWidth-300)/2
+            $(".white_content").css('left',toleft);
+            $(".white_content").css('top',200);
             document.getElementById('light').style.display='block';
             document.getElementById('fade').style.display='block';
         }
         function closeWindow(){
-            document.getElementById('light').style.display='none';
-            document.getElementById('fade').style.display='none';
+            document.getElementById('light').style.display="none";
+            document.getElementById('fade').style.display="none";
         }
+$(function(){
+    $(window).resize(function(){
+            var currentWindowWidth = window.document.body.clientWidth;
+            var toleft = (currentWindowWidth-300)/2
+             $(".white_content").css('left',toleft);
+        
+        })
+    
+    
+    })
     </script>
 
 </head>
 <body style="height: 1500px;">
+<!--
+    省:<select id="province" name="province_select">
+        <option>请选择</option>
+    </select>
+
+    市:<select id="city" name="city_select">
+        <option>请选择</option>
+    </select>
+
+
+    区/县:<select id="area" name="area_select">
+        <option>请选择</option>
+    </select>
+-->
+
+
+
+
+
+
+
+
+
+
+
 
 <p>可以根据自己要求修改css样式
     <input type="button" value="点击这里打开窗口" onclick="openWindow()"/></p>
 </body>
 <div id="light" class="white_content">
     This is the lightbox content.
-    <a href="#" onClick="closeWindow()"> Close</a></div>
+    <a href="#" onClick="closeWindow()"> Close</a>
+    省:<select id="province" name="province_select">
+        <option>请选择</option>
+    </select>
+
+    市:<select id="city" name="city_select">
+        <option>请选择</option>
+    </select>
+
+
+    区/县:<select id="area" name="area_select">
+        <option>请选择</option>
+    </select>
+
+</div>
 <div id="fade" class="black_overlay"></div>
+
+
+
+
+
+
+<script>
+$(function(){
+
+          $.ajax({
+                    type: "GET",
+                    async:false,
+                    url: 'http://n.myopen.vip.com/address/address?areaid=0&is_show_gat=0',
+                    dataType : "jsonp",
+                    jsonpCallback:"address_api",
+                    success: function(returndata) {
+                            optionStr='';
+                            $.each(returndata.list,function(i,val){
+                                   optionStr+='<option value='+val.id+'>'+val.name+'</option>';
+
+                            })
+			    $("#province").html(optionStr);
+                    },
+                    error: function() {
+                            console.log("failed");
+                    }
+            });
+
+	    $("#province").change(function(){
+                var provinceID = '';
+                provinceID = $(this).children('option:selected').val();
+                purl = 'http://n.myopen.vip.com/address/address?areaid='+provinceID+'&is_show_gat=0';
+                $("#area").html('<option>请选择</option>');
+                //console.log(purl);
+        
+        
+                  $.ajax({
+                            type: "GET",
+                            async:false,
+                            url: purl,
+                            dataType : "jsonp",
+                            jsonpCallback:"address_api",
+                            success: function(returndata) {
+                                    optionStr='';
+                                    $.each(returndata.list,function(i,val){
+                                           optionStr+='<option value='+val.id+'>'+val.name+'</option>';
+        
+                                    })
+                        // console.log(optionStr);
+                                    $("#city").html(optionStr);
+                            },
+                            error: function() {
+                                    console.log("failed");
+                            }
+                    });
+
+	     })
+        
+        
+        
+	    $("#city").change(function(){
+                var areaID = '';
+                areaID = $(this).children('option:selected').val();
+                //console.log(areaID);
+       
+                aurl = 'http://n.myopen.vip.com/address/address?areaid='+areaID+'&is_show_gat=0';
+                console.log(aurl);
+        
+        
+                  $.ajax({
+                            type: "GET",
+                            async:false,
+                            url: aurl,
+                            dataType : "jsonp",
+                            jsonpCallback:"address_api",
+                            success: function(returndata) {
+                                    optionStr='';
+                                    $.each(returndata.list,function(i,val){
+                                           optionStr+='<option value='+val.id+'>'+val.name+'</option>';
+        
+                                    })
+                         //console.log(optionStr);
+                                    $("#area").html(optionStr);
+                            },
+                            error: function() {
+                                    console.log("failed");
+                            }
+                    });
+  
+
+	     })
+
+
+
+
+
+
+})
+
+
+</script>
+
+
 
 </html>

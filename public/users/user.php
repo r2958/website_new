@@ -57,7 +57,7 @@ $UserFilter = " and FirstName = '$FirstName' and LastName = '$LastName' ";
             </div> 
         </div>
 
-        
+    <!-- start user_right_content-->        
         <?php
         /*
         switch($_GET['_type']){
@@ -115,7 +115,7 @@ $UserFilter = " and FirstName = '$FirstName' and LastName = '$LastName' ";
                     <div style="height: 100px;line-height: 100px;"><a href="#">评价</a></div>
                 </div>
                 <div style="width:100px;height: 100px;float: left;text-align: center;">
-                    <div style="height: 100px;line-height: 100px;"><a href="javascript:void(0);" value="<?php echo $row->OrderID; ?>" onclick="openWindow(this)" >删除</a></div>
+                    <div style="height: 100px;line-height: 100px;"><a href="javascript:void(0);" type="remove_order" value="<?php echo $row->OrderID; ?>" onclick="openWindow(this)" >删除</a></div>
                 </div>
                 
             </div>
@@ -127,6 +127,17 @@ $UserFilter = " and FirstName = '$FirstName' and LastName = '$LastName' ";
         
         <?php endif;?>
     <!-- end user_right_content-->
+    
+    <?php if(isset($_GET['_type']) && $_GET['_type'] == 'addr'): ?>
+    <div class="user_right_content" style="width:740px;min-height:800px;border:1px solid #ccc;float:right;padding:0px;margin-bottom:10px;">
+        <div style="border: 1px solid #777;height: 35px;padding-top: 10px;"><a href="#" class="submit_button"  type='add_addr' onclick="openWindow(this)" msg="新增地址">新增收货地址</a></div>
+    
+        <div style="width: 100%;height: 80px;boder:1px solid #777;"></div>
+    </div>
+    
+    <?php endif;?>
+    
+    
         
 
     </div>
