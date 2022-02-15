@@ -1,7 +1,10 @@
 <?php 
 require_once('../application.php');
 require_once('template_header.php'); 
-
+class ObjectCC{
+    
+}
+$PageText = new ObjectCC();
 $CategoryID = $ShoppingCart->setDefault($_GET['id'], 0) + 0;
 
 if($CategoryID > 0) {
