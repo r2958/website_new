@@ -23,7 +23,9 @@ class ASessionHandler {
 		session_set_save_handler(array($this, 'open'), array($this, 'close'), array($this, 'read'), array($this, 'write'), array($this, 'destroy'), array($this, 'gc'));
 	}
 
-	function open($savePath, $sessName) {}
+	function open($savePath, $sessName) {
+		return true;
+	}
 
 	function close() {
 		$this->gc();
@@ -55,7 +57,7 @@ class ASessionHandler {
 		}
 	}
 
-	function gc() {
+	function gc($maxlifetime) {
 		$qid = $this->DB->query("SELECT id FROM sessions WHERE lastaccess < DATE_SUB(NOW(), INTERVAL " . ini_get('session.gc_maxlifetime') . " SECOND)");
 		while($row = $this->DB->fetchObject($qid)) {
 			$this->DB->query("DELETE FROM sessions WHERE id = '$row->id'");
