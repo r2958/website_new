@@ -4,8 +4,8 @@ ini_set('register_globals',0);
 ini_set('allow_call_time_pass_reference' ,'On');
 ob_start('ob_gzhandler');
 */
-class object {};
-$CFG = new object;
+class Aobject {};
+$CFG = new Aobject;
 
 /* Set Username */
 $CFG->username = 'andrew';
