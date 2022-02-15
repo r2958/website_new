@@ -55,8 +55,8 @@ class DB
 			}
 		}
 
-		mysqli_query("SET NAMES utf8", $this->Handle);
-		mysqli_query("SET CHARACTER SET utf8", $this->Handle);
+		mysqli_query($this->Handle, "SET NAMES utf8");
+		mysqli_query($this->Handle, "SET CHARACTER SET utf8");
 	}
 
 
@@ -92,7 +92,7 @@ class DB
 			$this->TimerStart = $this->getMicrotime();
 		}
 		//echo var_dump($query);
-		$qid = @mysqli_query($query, $this->Handle);
+		$qid = @mysqli_query($this->Handle, $query);
 
 
 
