@@ -13,10 +13,10 @@ ini_set('session.gc_probability', 1);
 ini_set('session.gc_divisor', 1);
 */
 
-class SessionHandler {
+class ASessionHandler {
 	var $DB;
 	
-	function SessionHandler() {
+	function ASessionHandler() {
 		global $DB;
 		$this->DB =& $DB;
 		//$this->DB->Timed = 0;

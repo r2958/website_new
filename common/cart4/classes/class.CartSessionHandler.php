@@ -3,10 +3,10 @@
 require_once('./common/functions/class.Neturf.php');
 //require_once(Neturf::getServerRoot() . '/common/functions/class.SessionHandler.php');
 require_once('./common/functions/class.SessionHandler.php');
-class CartSessionHandler extends SessionHandler {
+class CartSessionHandler extends ASessionHandler {
 
 	function CartSessionHandler() {
-		parent::SessionHandler();
+		parent::ASessionHandler();
 	}
 
 	function gc($maxlifetime) {
