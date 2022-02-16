@@ -29,6 +29,7 @@ class ASessionHandler {
 
 	function close() {
 		$this->gc($maxlifetime);
+		return true;
 	}
 
 	function read($id) {
@@ -37,7 +38,7 @@ class ASessionHandler {
 			return $row['data'];
 		}
 		// MUST send an empty string if no session data
-		return '';
+		return true;
 	}
 
 	function write($id, $data) {
