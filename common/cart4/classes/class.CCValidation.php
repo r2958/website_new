@@ -164,22 +164,22 @@ class CCreditCard
 		// Is the number in the correct format?
 		switch($this->__ccType) {
 			case CARD_TYPE_MC:
-				$validFormat = ereg("^5[1-5][0-9]{14}$", $this->__ccNum);
+				$validFormat = preg_match("^5[1-5][0-9]{14}$", $this->__ccNum);
 				break;
 			case CARD_TYPE_VS:
-				$validFormat = ereg("^4[0-9]{12}([0-9]{3})?$", $this->__ccNum);
+				$validFormat = preg_match("^4[0-9]{12}([0-9]{3})?$", $this->__ccNum);
 				break;
 			case CARD_TYPE_AX:
-				$validFormat = ereg("^3[47][0-9]{13}$", $this->__ccNum);
+				$validFormat = preg_match("^3[47][0-9]{13}$", $this->__ccNum);
 				break;
 			case CARD_TYPE_DC:
-				$validFormat = ereg("^3(0[0-5]|[68][0-9])[0-9]{11}$", $this->__ccNum);
+				$validFormat = preg_match("^3(0[0-5]|[68][0-9])[0-9]{11}$", $this->__ccNum);
 				break;
 			case CARD_TYPE_DS:
-				$validFormat = ereg("^6011[0-9]{12}$", $this->__ccNum);
+				$validFormat = preg_match("^6011[0-9]{12}$", $this->__ccNum);
 				break;
 			case CARD_TYPE_JC:
-				$validFormat = ereg("^(3[0-9]{4}|2131|1800)[0-9]{11}$", $this->__ccNum);
+				$validFormat = preg_match("^(3[0-9]{4}|2131|1800)[0-9]{11}$", $this->__ccNum);
 				break;
 			default:
 				// Should never be executed
