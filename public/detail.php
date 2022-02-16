@@ -20,9 +20,14 @@ if(isset($ProductID)){
         //var_dump($prod);exit;
         
         $images = $ShoppingCart->_aGetProductDetailsImages($ProductID);
+        /*
         $big = $images.'920x1380_80.jpg';
         $mid = $images.'390x585_80.jpg';
         $icon = $images.'56x84_80.jpg';
+        */
+        $big = $images.'.jpg';
+        $mid = $images.'.jpg';
+        $icon = $images.'.jpg';
 
 }
 
