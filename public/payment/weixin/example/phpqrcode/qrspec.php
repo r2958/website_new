@@ -223,7 +223,7 @@
         //----------------------------------------------------------------------
         // CACHEABLE!!!
         
-        public static function getEccSpec($version, $level, array &$spec)
+        public static function getEccSpec($version, $level, array $spec)
         {
             if (count($spec) < 5) {
                 $spec = array(0,0,0,0,0);
@@ -277,7 +277,7 @@
          * @param width
          * @param ox,oy center coordinate of the pattern
          */
-        public static function putAlignmentMarker(array &$frame, $ox, $oy)
+        public static function putAlignmentMarker(array $frame, $ox, $oy)
         {
             $finder = array(
                 "\xa1\xa1\xa1\xa1\xa1",
@@ -296,7 +296,7 @@
         }
 
         //----------------------------------------------------------------------
-        public static function putAlignmentPattern($version, &$frame, $width)
+        public static function putAlignmentPattern($version, $frame, $width)
         {
             if($version < 2)
                 return;
@@ -389,7 +389,7 @@
          * @param width
          * @param ox,oy upper-left coordinate of the pattern
          */
-        public static function putFinderPattern(&$frame, $ox, $oy)
+        public static function putFinderPattern($frame, $ox, $oy)
         {
             $finder = array(
                 "\xc1\xc1\xc1\xc1\xc1\xc1\xc1",
@@ -489,7 +489,7 @@
         {
             if ($binary_mode) {
             
-                    foreach ($frame as &$frameLine) {
+                    foreach ($frame as $frameLine) {
                         $frameLine = join('<span class="m">&nbsp;&nbsp;</span>', explode('0', $frameLine));
                         $frameLine = join('&#9608;&#9608;', explode('1', $frameLine));
                     }
@@ -505,7 +505,7 @@
             
             } else {
             
-                foreach ($frame as &$frameLine) {
+                foreach ($frame as $frameLine) {
                     $frameLine = join('<span class="m">&nbsp;</span>',  explode("\xc0", $frameLine));
                     $frameLine = join('<span class="m">&#9618;</span>', explode("\xc1", $frameLine));
                     $frameLine = join('<span class="p">&nbsp;</span>',  explode("\xa0", $frameLine));

@@ -703,7 +703,7 @@ if (!class_exists('QRcode', false)) {
 		protected function binarize($frame) {
 			$len = count($frame);
 			// the frame is square (width = height)
-			foreach ($frame as &$frameLine) {
+			foreach ($frame as $frameLine) {
 				for ($i=0; $i<$len; $i++) {
 					$frameLine[$i] = (ord($frameLine[$i])&1)?'1':'0';
 				}
@@ -951,7 +951,7 @@ if (!class_exists('QRcode', false)) {
 		 * @param int $level error correction level
 		 * @return int blacks
 		 */
-		 protected function writeFormatInformation($width, &$frame, $mask, $level) {
+		 protected function writeFormatInformation($width, $frame, $mask, $level) {
 			$blacks = 0;
 			$format =  $this->getFormatInfo($mask, $level);
 			for ($i=0; $i<8; ++$i) {
@@ -1098,7 +1098,7 @@ if (!class_exists('QRcode', false)) {
 		 * @param boolean $maskGenOnly
 		 * @return int b
 		 */
-		 protected function makeMaskNo($maskNo, $width, $s, &$d, $maskGenOnly=false) {
+		 protected function makeMaskNo($maskNo, $width, $s, $d, $maskGenOnly=false) {
 			$b = 0;
 			$bitMask = array();
 			$bitMask = $this->generateMaskNo($maskNo, $width, $s, $d);

@@ -84,7 +84,7 @@ function bind_user($app_key, $user_id, $bind_id, $state=1) {
 }
 
 //是否拥有访问VIPCLUB权限
-function has_vc_priv($uid, &$db) {
+function has_vc_priv($uid, $db) {
 	return true;
 	if(!$uid) {
 		return false;
@@ -136,7 +136,7 @@ function delSpecialChars($str)
 }
 
 //转换字符为HTML编码
-function str_process(&$str)
+function str_process($str)
 {
     //$str = RemoveXSS($str);
 	return htmlSpecialChars(trim($str), ENT_QUOTES);
@@ -451,7 +451,7 @@ function page_info($sql, $ajax=0)
 }
 
 //分页函数
-function blog_page_info($sql, $all='',&$pages)
+function blog_page_info($sql, $all='',$pages)
 {
 	global $db, $smarty, $start, $ep, $np, $total;
 	$ajax = isset($_REQUEST['ajax']) ? 1 : 0;	//wheather ajax request
@@ -710,7 +710,7 @@ function get_order_info($id) //可能传入id号或者14位订单号
 		$goods_num += $row['amount'];
 		$goods_price += $row['amount']*$row['price'];
 
-		if ( $row["image"] &&$row['ver_id'] != '0') {
+		if ( $row["image"] &$row['ver_id'] != '0') {
 			$row["small_image"] = preg_replace("/^\d{3,}\//", "$row[image]/", $row["small_image"]);
 		}
 		/*$arr = explode(',', $row['small_image']);
@@ -1126,7 +1126,7 @@ function user_cart_info($warehouse='')
 	{
 		if (!$refresh_time)
 			$refresh_time = $row['add_time'] - $fit_time;
-		if ( $row["image"] &&$row['ver_id'] != '0') {
+		if ( $row["image"] &$row['ver_id'] != '0') {
 			$row["small_image"] = preg_replace("/^\d{3,}\//", "$row[image]/", $row["small_image"]);
 		}
 		$arr = explode(',', $row['small_image']);
@@ -1293,7 +1293,7 @@ function user_cart_info($warehouse='')
 	
 	$cib_end_time=strtotime('2011-05-01 00:00:00');
 	$cib_time=time();
-	if($_COOKIE['cib']&&$cart_goods_total >= 226&&$cib_time<$cib_end_time)
+	if($_COOKIE['cib']&$cart_goods_total >= 226&$cib_time<$cib_end_time)
 	{
 		$ext_fav_money =20;
 	}
@@ -1383,7 +1383,7 @@ function user_cart_info($warehouse='')
 	{
 		$sql = "select money,small_money,type from favourable where id='$user_favour' and userid = '$_SESSION[userid]'";
 		$row = $db->getRow($sql);
-		if($user_favour&&$row['type']==3){
+		if($user_favour&$row['type']==3){
 			//礼品卡冻结限制
 			$not_money=active_lbk_notpay($user_favour);
 			$row['money']=$row['money']-$not_money;
@@ -2920,7 +2920,7 @@ function api_payment_update($data)
 
 }
 
-function get_brand_sizes($brand_id, $sizes, $cat_parent, &$sort_tmp, &$search_sort, &$cat_arr, $vc=0) {
+function get_brand_sizes($brand_id, $sizes, $cat_parent, $sort_tmp, $search_sort, $cat_arr, $vc=0) {
 	global $db, $smarty;
 	
 	if (!is_array($sizes)) {
@@ -3341,7 +3341,7 @@ function get_is_delivery($code) {
 	$code_len = strlen($code);
 	if($code_len == 9) {
 		// 市级
-		foreach($not_area_delivery as &$v) {
+		foreach($not_area_delivery as $v) {
 			$v = substr($v , 0 , $code_len);
 			if($code == $v) {
 				return false;			// 不支持货到付款

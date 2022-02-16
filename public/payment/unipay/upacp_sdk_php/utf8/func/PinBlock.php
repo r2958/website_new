@@ -6,7 +6,7 @@
 	 * Enter description here ...
 	 * @param $spin
 	 */
-	function  Pin2PinBlock( &$sPin )
+	function  Pin2PinBlock( $sPin )
 	{
 	//	$sPin = "123456";
 		$iTemp = 1;
@@ -73,7 +73,7 @@
 	 * Enter description here ...
 	 * @param $sPan
 	 */
-	function FormatPan(&$sPan)
+	function FormatPan($sPan)
 	{
 		$iPanLen = strlen($sPan);
 		$iTemp = $iPanLen - 13;
@@ -89,7 +89,7 @@
 		return $sBuf;
 	}
 	
-	function Pin2PinBlockWithCardNO(&$sPin, &$sCardNO)
+	function Pin2PinBlockWithCardNO($sPin, $sCardNO)
 	{
 		global $log;
 		$sPinBuf = Pin2PinBlock($sPin);

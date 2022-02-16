@@ -32,7 +32,7 @@ class NativeNotifyCallBack extends WxPayNotify
 		return $result;
 	}
 	
-	public function NotifyProcess($data, &$msg)
+	public function NotifyProcess($data, $msg)
 	{
 		//echo "处理回调";
 		Log::DEBUG("call back:" . json_encode($data));

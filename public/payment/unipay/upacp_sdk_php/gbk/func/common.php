@@ -2,17 +2,17 @@
 header ( 'Content-type:text/html;charset=gbk' );
 include_once $_SERVER ['DOCUMENT_ROOT'] . '/upacp_sdk_php/gbk/func/log.class.php';
 include_once $_SERVER ['DOCUMENT_ROOT'] . '/upacp_sdk_php/gbk/func/SDKConfig.php';
-// ³õÊ¼»¯ÈÕÖ¾
+// ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½Ö¾
 $log = new PhpLog ( SDK_LOG_FILE_PATH, "PRC", SDK_LOG_LEVEL );
 /**
- * Êý×é ÅÅÐòºó×ª»¯Îª×ÖÌå´®
+ * ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½Îªï¿½ï¿½ï¿½å´®
  *
  * @param array $params        	
  * @return string
  */
 function coverParamsToString($params) {
 	$sign_str = '';
-	// ÅÅÐò
+	// ï¿½ï¿½ï¿½ï¿½
 	ksort ( $params );
 	foreach ( $params as $key => $val ) {
 		if ($key == 'signature') {
@@ -24,7 +24,7 @@ function coverParamsToString($params) {
 	return substr ( $sign_str, 0, strlen ( $sign_str ) - 1 );
 }
 /**
- * ×Ö·û´®×ª»»Îª Êý×é
+ * ï¿½Ö·ï¿½ï¿½ï¿½×ªï¿½ï¿½Îª ï¿½ï¿½ï¿½ï¿½
  *
  * @param unknown_type $str        	
  * @return multitype:unknown
@@ -48,13 +48,13 @@ function coverStringToArray($str) {
 	return $result;
 }
 /**
- * ´¦Àí·µ»Ø±¨ÎÄ ½âÂë¿Í»§ÐÅÏ¢ , Èç¹û±àÂëÎªGBK Ôò×ªÎªutf-8
+ * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Í»ï¿½ï¿½ï¿½Ï¢ , ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÎªGBK ï¿½ï¿½×ªÎªutf-8
  *
  * @param unknown_type $params        	
  */
-function deal_params(&$params) {
+function deal_params($params) {
 	/**
-	 * ½âÂë customerInfo
+	 * ï¿½ï¿½ï¿½ï¿½ customerInfo
 	 */
 	if (! empty ( $params ['customerInfo'] )) {
 		$params ['customerInfo'] = base64_decode ( $params ['customerInfo'] );
@@ -68,14 +68,14 @@ function deal_params(&$params) {
 }
 
 /**
- * Ñ¹ËõÎÄ¼þ ¶ÔÓ¦java deflate
+ * Ñ¹ï¿½ï¿½ï¿½Ä¼ï¿½ ï¿½ï¿½Ó¦java deflate
  *
  * @param unknown_type $params        	
  */
-function deflate_file(&$params) {
+function deflate_file($params) {
 	global $log;
 	foreach ( $_FILES as $file ) {
-		$log->LogInfo ( "---------´¦ÀíÎÄ¼þ---------" );
+		$log->LogInfo ( "---------ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½---------" );
 		if (file_exists ( $file ['tmp_name'] )) {
 			$params ['fileName'] = $file ['name'];
 			
@@ -83,43 +83,43 @@ function deflate_file(&$params) {
 			$file_content_deflate = gzcompress ( $file_content );
 			
 			$params ['fileContent'] = base64_encode ( $file_content_deflate );
-			$log->LogInfo ( "Ñ¹ËõºóÎÄ¼þÄÚÈÝÎª>" . base64_encode ( $file_content_deflate ) );
+			$log->LogInfo ( "Ñ¹ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½Îª>" . base64_encode ( $file_content_deflate ) );
 		} else {
-			$log->LogInfo ( ">>>>ÎÄ¼þÉÏ´«Ê§°Ü<<<<<" );
+			$log->LogInfo ( ">>>>ï¿½Ä¼ï¿½ï¿½Ï´ï¿½Ê§ï¿½ï¿½<<<<<" );
 		}
 	}
 }
 
 /**
- * ´¦Àí±¨ÎÄÖÐµÄÎÄ¼þ
+ * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ðµï¿½ï¿½Ä¼ï¿½
  *
  * @param unknown_type $params        	
  */
 function deal_file($params) {
 	global $log;
 	if (isset ( $params ['fileContent'] )) {
-		$log->LogInfo ( "---------´¦ÀíºóÌ¨±¨ÎÄ·µ»ØµÄÎÄ¼þ---------" );
+		$log->LogInfo ( "---------ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì¨ï¿½ï¿½ï¿½Ä·ï¿½ï¿½Øµï¿½ï¿½Ä¼ï¿½---------" );
 		$fileContent = $params ['fileContent'];
 		
 		if (empty ( $fileContent )) {
-			$log->LogInfo ( 'ÎÄ¼þÄÚÈÝÎª¿Õ' );
+			$log->LogInfo ( 'ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½' );
 		} else {
-			// ÎÄ¼þÄÚÈÝ ½âÑ¹Ëõ
+			// ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ñ¹ï¿½ï¿½
 			$content = gzuncompress ( base64_decode ( $fileContent ) );
 			$root = SDK_FILE_DOWN_PATH;
 			$filePath = null;
 			if (empty ( $params ['fileName'] )) {
-				$log->LogInfo ( "ÎÄ¼þÃûÎª¿Õ" );
+				$log->LogInfo ( "ï¿½Ä¼ï¿½ï¿½ï¿½Îªï¿½ï¿½" );
 				$filePath = $root . $params ['merId'] . '_' . $params ['batchNo'] . '_' . $params ['txnTime'] . 'txt';
 			} else {
 				$filePath = $root . $params ['fileName'];
 			}
 			$handle = fopen ( $filePath, "w+" );
 			if (! is_writable ( $filePath )) {
-				$log->LogInfo ( "ÎÄ¼þ:" . $filePath . "²»¿ÉÐ´£¬Çë¼ì²é£¡" );
+				$log->LogInfo ( "ï¿½Ä¼ï¿½:" . $filePath . "ï¿½ï¿½ï¿½ï¿½Ð´ï¿½ï¿½ï¿½ï¿½ï¿½é£¡" );
 			} else {
 				file_put_contents ( $filePath, $content );
-				$log->LogInfo ( "ÎÄ¼þÎ»ÖÃ >:" . $filePath );
+				$log->LogInfo ( "ï¿½Ä¼ï¿½Î»ï¿½ï¿½ >:" . $filePath );
 			}
 			fclose ( $handle );
 		}
@@ -127,7 +127,7 @@ function deal_file($params) {
 }
 
 /**
- * ¹¹Ôì×Ô¶¯Ìá½»±íµ¥
+ * ï¿½ï¿½ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½á½»ï¿½ï¿½ï¿½ï¿½
  *
  * @param unknown_type $params        	
  * @param unknown_type $action        	

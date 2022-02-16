@@ -140,7 +140,7 @@
         }
         
         //----------------------------------------------------------------------
-        public function encode_rs_char($data, &$parity)
+        public function encode_rs_char($data, $parity)
         {
             $MM       =& $this->mm;
             $NN       =& $this->nn;

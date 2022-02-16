@@ -632,7 +632,7 @@
         }
         
         //----------------------------------------------------------------------
-        public function appendPaddingBit(&$bstream)
+        public function appendPaddingBit($bstream)
         {
             $bits = $bstream->size();
             $maxwords = QRspec::getDataLength($this->version, $this->level);

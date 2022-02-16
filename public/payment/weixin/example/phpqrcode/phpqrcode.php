@@ -96,7 +96,7 @@
 	define('QR_FORMAT_PNG',  1);
 	
 	class qrstr {
-		public static function set(&$srctab, $x, $y, $repl, $replLen = false) {
+		public static function set($srctab, $x, $y, $repl, $replLen = false) {
 			$srctab[$y] = substr_replace($srctab[$y], ($replLen !== false)?substr($repl,0,$replLen):$repl, $x, ($replLen !== false)?$replLen:strlen($repl));
 		}
 	}	
@@ -161,7 +161,7 @@
         public static function binarize($frame)
         {
             $len = count($frame);
-            foreach ($frame as &$frameLine) {
+            foreach ($frame as $frameLine) {
                 
                 for($i=0; $i<$len; $i++) {
                     $frameLine[$i] = (ord($frameLine[$i])&1)?'1':'0';
@@ -535,7 +535,7 @@
         //----------------------------------------------------------------------
         // CACHEABLE!!!
         
-        public static function getEccSpec($version, $level, array &$spec)
+        public static function getEccSpec($version, $level, array $spec)
         {
             if (count($spec) < 5) {
                 $spec = array(0,0,0,0,0);
@@ -589,7 +589,7 @@
          * @param width
          * @param ox,oy center coordinate of the pattern
          */
-        public static function putAlignmentMarker(array &$frame, $ox, $oy)
+        public static function putAlignmentMarker(array $frame, $ox, $oy)
         {
             $finder = array(
                 "\xa1\xa1\xa1\xa1\xa1",
@@ -608,7 +608,7 @@
         }
 
         //----------------------------------------------------------------------
-        public static function putAlignmentPattern($version, &$frame, $width)
+        public static function putAlignmentPattern($version, $frame, $width)
         {
             if($version < 2)
                 return;
@@ -701,7 +701,7 @@
          * @param width
          * @param ox,oy upper-left coordinate of the pattern
          */
-        public static function putFinderPattern(&$frame, $ox, $oy)
+        public static function putFinderPattern($frame, $ox, $oy)
         {
             $finder = array(
                 "\xc1\xc1\xc1\xc1\xc1\xc1\xc1",
@@ -801,7 +801,7 @@
         {
             if ($binary_mode) {
             
-                    foreach ($frame as &$frameLine) {
+                    foreach ($frame as $frameLine) {
                         $frameLine = join('<span class="m">&nbsp;&nbsp;</span>', explode('0', $frameLine));
                         $frameLine = join('&#9608;&#9608;', explode('1', $frameLine));
                     }
@@ -817,7 +817,7 @@
             
             } else {
             
-                foreach ($frame as &$frameLine) {
+                foreach ($frame as $frameLine) {
                     $frameLine = join('<span class="m">&nbsp;</span>',  explode("\xc0", $frameLine));
                     $frameLine = join('<span class="m">&#9618;</span>', explode("\xc1", $frameLine));
                     $frameLine = join('<span class="p">&nbsp;</span>',  explode("\xa0", $frameLine));
@@ -1645,7 +1645,7 @@
         }
         
         //----------------------------------------------------------------------
-        public function appendPaddingBit(&$bstream)
+        public function appendPaddingBit($bstream)
         {
             $bits = $bstream->size();
             $maxwords = QRspec::getDataLength($this->version, $this->level);
@@ -2395,7 +2395,7 @@
         }
         
         //----------------------------------------------------------------------
-        public function encode_rs_char($data, &$parity)
+        public function encode_rs_char($data, $parity)
         {
             $MM       =& $this->mm;
             $NN       =& $this->nn;
@@ -2513,7 +2513,7 @@
         }
         
         //----------------------------------------------------------------------
-        public function writeFormatInformation($width, &$frame, $mask, $level)
+        public function writeFormatInformation($width, $frame, $mask, $level)
         {
             $blacks = 0;
             $format =  QRspec::getFormatInfo($mask, $level);
@@ -2610,7 +2610,7 @@
         }
         
         //----------------------------------------------------------------------
-        public function makeMaskNo($maskNo, $width, $s, &$d, $maskGenOnly = false) 
+        public function makeMaskNo($maskNo, $width, $s, $d, $maskGenOnly = false) 
         {
             $b = 0;
             $bitMask = array();
@@ -2839,7 +2839,7 @@
         public $eccLength;
         public $ecc = array();
         
-        public function __construct($dl, $data, $el, &$ecc, QRrsItem $rs)
+        public function __construct($dl, $data, $el, $ecc, QRrsItem $rs)
         {
             $rs->encode_rs_char($data, $ecc);
         
@@ -3121,7 +3121,7 @@
         public $bit;
         
         //----------------------------------------------------------------------
-        public function __construct($width, &$frame)
+        public function __construct($width, $frame)
         {
             $this->width = $width;
             $this->frame = $frame;

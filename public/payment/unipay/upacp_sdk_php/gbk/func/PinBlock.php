@@ -2,17 +2,17 @@
 	/**
 	 * Author: gu_yongkang 
 	 * data: 20110510
-	 * ÃÜÂë×ªPIN 
+	 * ï¿½ï¿½ï¿½ï¿½×ªPIN 
 	 * Enter description here ...
 	 * @param $spin
 	 */
-	function  Pin2PinBlock( &$sPin )
+	function  Pin2PinBlock( $sPin )
 	{
 	//	$sPin = "123456";
 		$iTemp = 1;
 		$sPinLen = strlen($sPin);
 		$sBuf = array();
-		//ÃÜÂëÓò´óÓÚ10Î»
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½10Î»
 		$sBuf[0]=intval($sPinLen, 10);
 	
 		if($sPinLen % 2 ==0)
@@ -73,7 +73,7 @@
 	 * Enter description here ...
 	 * @param $sPan
 	 */
-	function FormatPan(&$sPan)
+	function FormatPan($sPan)
 	{
 		$iPanLen = strlen($sPan);
 		$iTemp = $iPanLen - 13;
@@ -89,7 +89,7 @@
 		return $sBuf;
 	}
 	
-	function Pin2PinBlockWithCardNO(&$sPin, &$sCardNO)
+	function Pin2PinBlockWithCardNO($sPin, $sCardNO)
 	{
 		global $log;
 		$sPinBuf = Pin2PinBlock($sPin);
@@ -110,14 +110,14 @@
 		
 		for ($i=0; $i<8; $i++)
 		{
-//			$sBuf[$i] = $sPinBuf[$i] ^ $sPanBuf[$i];	//Ê®½øÖÆ
+//			$sBuf[$i] = $sPinBuf[$i] ^ $sPanBuf[$i];	//Ê®ï¿½ï¿½ï¿½ï¿½
 //			$sBuf[$i] = vsprintf("%02X", ($sPinBuf[$i] ^ $sPanBuf[$i]));
 			$sBuf[$i] = vsprintf("%c", ($sPinBuf[$i] ^ $sPanBuf[$i]));
 		}
 		unset($sPinBuf);
 		unset($sPanBuf);
 //		return $sBuf;
-		$sOutput = implode("", $sBuf);	//Êý×é×ª»»Îª×Ö·û´®
+		$sOutput = implode("", $sBuf);	//ï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½Îªï¿½Ö·ï¿½ï¿½ï¿½
 		return $sOutput;
 	}
 

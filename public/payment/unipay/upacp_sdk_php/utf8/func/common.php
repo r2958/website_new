@@ -53,7 +53,7 @@ function coverStringToArray($str) {
  *
  * @param unknown_type $params        	
  */
-function deal_params(&$params) {
+function deal_params($params) {
 	/**
 	 * 解码 customerInfo
 	 */
@@ -73,7 +73,7 @@ function deal_params(&$params) {
  *
  * @param unknown_type $params        	
  */
-function deflate_file(&$params) {
+function deflate_file($params) {
 	global $log;
 	foreach ( $_FILES as $file ) {
 		$log->LogInfo ( "---------处理文件---------" );

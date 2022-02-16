@@ -4,77 +4,77 @@ include_once $_SERVER ['DOCUMENT_ROOT'] . '/upacp_sdk_php/gbk/func/PublicEncrypt
 include_once $_SERVER ['DOCUMENT_ROOT'] . '/upacp_sdk_php/gbk/func/common.php';
 include_once $_SERVER ['DOCUMENT_ROOT'] . '/upacp_sdk_php/gbk/func/log.class.php';
 
-// ³õÊ¼»¯ÈÕÖ¾
+// ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½Ö¾
 $log = new PhpLog ( SDK_LOG_FILE_PATH, "PRC", SDK_LOG_LEVEL );
 /**
- * Ç©Ãû
+ * Ç©ï¿½ï¿½
  *
  * @param String $params_str
  */
-function sign(&$params) {
+function sign($params) {
 	global $log;
-	$log->LogInfo ( '=====Ç©Ãû±¨ÎÄ¿ªÊ¼======' );
+	$log->LogInfo ( '=====Ç©ï¿½ï¿½ï¿½ï¿½ï¿½Ä¿ï¿½Ê¼======' );
 	if(isset($params['transTempUrl'])){
 		unset($params['transTempUrl']);
 	}
-	// ×ª»»³Ékey=val&´®
+	// ×ªï¿½ï¿½ï¿½ï¿½key=val&ï¿½ï¿½
 	$params_str = coverParamsToString ( $params );
-	$log->LogInfo ( "Ç©Ãûkey=val&...´® >" . $params_str );
+	$log->LogInfo ( "Ç©ï¿½ï¿½key=val&...ï¿½ï¿½ >" . $params_str );
 	
 	$params_sha1x16 = sha1 ( $params_str, FALSE );
 	$log->LogInfo ( "ÕªÒªsha1x16 >" . $params_sha1x16 );
-	// Ç©ÃûÖ¤ÊéÂ·¾¶
+	// Ç©ï¿½ï¿½Ö¤ï¿½ï¿½Â·ï¿½ï¿½
 	$cert_path = SDK_SIGN_CERT_PATH;
 	$private_key = getPrivateKey ( $cert_path );
-	// Ç©Ãû
+	// Ç©ï¿½ï¿½
 	$sign_falg = openssl_sign ( $params_sha1x16, $signature, $private_key, OPENSSL_ALGO_SHA1 );
 	if ($sign_falg) {
 		$signature_base64 = base64_encode ( $signature );
-		$log->LogInfo ( "Ç©Ãû´®Îª >" . $signature_base64 );
+		$log->LogInfo ( "Ç©ï¿½ï¿½ï¿½ï¿½Îª >" . $signature_base64 );
 		$params ['signature'] = $signature_base64;
 	} else {
-		$log->LogInfo ( ">>>>>Ç©ÃûÊ§°Ü<<<<<<<" );
+		$log->LogInfo ( ">>>>>Ç©ï¿½ï¿½Ê§ï¿½ï¿½<<<<<<<" );
 	}
-	$log->LogInfo ( '=====Ç©Ãû±¨ÎÄ½áÊø======' );
+	$log->LogInfo ( '=====Ç©ï¿½ï¿½ï¿½ï¿½ï¿½Ä½ï¿½ï¿½ï¿½======' );
 }
 
 /**
- * ÑéÇ©
+ * ï¿½ï¿½Ç©
  *
  * @param String $params_str        	
  * @param String $signature_str        	
  */
 function verify($params) {
 	global $log;
-	// ¹«Ô¿
+	// ï¿½ï¿½Ô¿
 	$public_key = getPulbicKeyByCertId ( $params ['certId'] );	
 //	echo $public_key.'<br/>';
-	// Ç©Ãû´®
+	// Ç©ï¿½ï¿½ï¿½ï¿½
 	$signature_str = $params ['signature'];
 	unset ( $params ['signature'] );
 	$params_str = coverParamsToString ( $params );
-	$log->LogInfo ( '±¨ÎÄÈ¥[signature] key=val&´®>' . $params_str );
+	$log->LogInfo ( 'ï¿½ï¿½ï¿½ï¿½È¥[signature] key=val&ï¿½ï¿½>' . $params_str );
 	$signature = base64_decode ( $signature_str );
 //	echo date('Y-m-d',time());
 	$params_sha1x16 = sha1 ( $params_str, FALSE );
 	$log->LogInfo ( 'ÕªÒªshax16>' . $params_sha1x16 );	
 	$isSuccess = openssl_verify ( $params_sha1x16, $signature,$public_key, OPENSSL_ALGO_SHA1 );
-	$log->LogInfo ( $isSuccess ? 'ÑéÇ©³É¹¦' : 'ÑéÇ©Ê§°Ü' );
+	$log->LogInfo ( $isSuccess ? 'ï¿½ï¿½Ç©ï¿½É¹ï¿½' : 'ï¿½ï¿½Ç©Ê§ï¿½ï¿½' );
 	return $isSuccess;
 }
 
 /**
- * ¸ù¾ÝÖ¤ÊéID ¼ÓÔØ Ö¤Êé
+ * ï¿½ï¿½ï¿½ï¿½Ö¤ï¿½ï¿½ID ï¿½ï¿½ï¿½ï¿½ Ö¤ï¿½ï¿½
  *
  * @param unknown_type $certId        	
  * @return string NULL
  */
 function getPulbicKeyByCertId($certId) {
 	global $log;
-	$log->LogInfo ( '±¨ÎÄ·µ»ØµÄÖ¤ÊéID>' . $certId );
-	// Ö¤ÊéÄ¿Â¼
+	$log->LogInfo ( 'ï¿½ï¿½ï¿½Ä·ï¿½ï¿½Øµï¿½Ö¤ï¿½ï¿½ID>' . $certId );
+	// Ö¤ï¿½ï¿½Ä¿Â¼
 	$cert_dir = SDK_VERIFY_CERT_DIR;
-	$log->LogInfo ( 'ÑéÖ¤Ç©ÃûÖ¤ÊéÄ¿Â¼ :>' . $cert_dir );
+	$log->LogInfo ( 'ï¿½ï¿½Ö¤Ç©ï¿½ï¿½Ö¤ï¿½ï¿½Ä¿Â¼ :>' . $cert_dir );
 	$handle = opendir ( $cert_dir );
 	if ($handle) {
 		while ( $file = readdir ( $handle ) ) {
@@ -84,22 +84,22 @@ function getPulbicKeyByCertId($certId) {
 				if (pathinfo ( $file, PATHINFO_EXTENSION ) == 'cer') {
 					if (getCertIdByCerPath ( $filePath ) == $certId) {
 						closedir ( $handle );
-						$log->LogInfo ( '¼ÓÔØÑéÇ©Ö¤Êé³É¹¦' );
+						$log->LogInfo ( 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç©Ö¤ï¿½ï¿½É¹ï¿½' );
 						return getPublicKey ( $filePath );
 					}
 				}
 			}
 		}
-		$log->LogInfo ( 'Ã»ÓÐÕÒµ½Ö¤ÊéIDÎª[' . $certId . ']µÄÖ¤Êé' );
+		$log->LogInfo ( 'Ã»ï¿½ï¿½ï¿½Òµï¿½Ö¤ï¿½ï¿½IDÎª[' . $certId . ']ï¿½ï¿½Ö¤ï¿½ï¿½' );
 	} else {
-		$log->LogInfo ( 'Ö¤ÊéÄ¿Â¼ ' . $cert_dir . '²»ÕýÈ·' );
+		$log->LogInfo ( 'Ö¤ï¿½ï¿½Ä¿Â¼ ' . $cert_dir . 'ï¿½ï¿½ï¿½ï¿½È·' );
 	}
 	closedir ( $handle );
 	return null;
 }
 
 /**
- * È¡Ö¤ÊéID(.pfx)
+ * È¡Ö¤ï¿½ï¿½ID(.pfx)
  *
  * @return unknown
  */
@@ -115,7 +115,7 @@ function getCertId($cert_path) {
 }
 
 /**
- * È¡Ö¤ÊéID(.cer)
+ * È¡Ö¤ï¿½ï¿½ID(.cer)
  *
  * @param unknown_type $cert_path        	
  */
@@ -128,22 +128,22 @@ function getCertIdByCerPath($cert_path) {
 }
 
 /**
- * Ç©ÃûÖ¤ÊéID
+ * Ç©ï¿½ï¿½Ö¤ï¿½ï¿½ID
  *
  * @return unknown
  */
 function getSignCertId() {
-	// Ç©ÃûÖ¤ÊéÂ·¾¶
+	// Ç©ï¿½ï¿½Ö¤ï¿½ï¿½Â·ï¿½ï¿½
 	
 	return getCertId ( SDK_SIGN_CERT_PATH );
 }
 function getEncryptCertId() {
-	// Ç©ÃûÖ¤ÊéÂ·¾¶
+	// Ç©ï¿½ï¿½Ö¤ï¿½ï¿½Â·ï¿½ï¿½
 	return getCertIdByCerPath ( SDK_ENCRYPT_CERT_PATH );
 }
 
 /**
- * È¡Ö¤Êé¹«Ô¿ -ÑéÇ©
+ * È¡Ö¤ï¿½é¹«Ô¿ -ï¿½ï¿½Ç©
  *
  * @return string
  */
@@ -151,7 +151,7 @@ function getPublicKey($cert_path) {
 	return file_get_contents ( $cert_path );
 }
 /**
- * ·µ»Ø(Ç©Ãû)Ö¤ÊéË½Ô¿ -
+ * ï¿½ï¿½ï¿½ï¿½(Ç©ï¿½ï¿½)Ö¤ï¿½ï¿½Ë½Ô¿ -
  *
  * @return unknown
  */
@@ -162,10 +162,10 @@ function getPrivateKey($cert_path) {
 }
 
 /**
- * ¼ÓÃÜ ¿¨ºÅ
+ * ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
  *
  * @param String $pan
- *        	¿¨ºÅ
+ *        	ï¿½ï¿½ï¿½ï¿½
  * @return String
  */
 function encryptPan($pan) {
@@ -176,7 +176,7 @@ function encryptPan($pan) {
 	return base64_encode ( $cryptPan );
 }
 /**
- * pin ¼ÓÃÜ
+ * pin ï¿½ï¿½ï¿½ï¿½
  *
  * @param unknown_type $pan        	
  * @param unknown_type $pwd        	
@@ -189,7 +189,7 @@ function encryptPin($pan, $pwd) {
 	return EncryptedPin ( $pwd, $pan, $public_key );
 }
 /**
- * cvn2 ¼ÓÃÜ
+ * cvn2 ï¿½ï¿½ï¿½ï¿½
  *
  * @param unknown_type $cvn2        	
  * @return unknown
@@ -203,7 +203,7 @@ function encryptCvn2($cvn2) {
 	return base64_encode ( $crypted );
 }
 /**
- * ¼ÓÃÜ ÓÐÐ§ÆÚ
+ * ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ð§ï¿½ï¿½
  *
  * @param unknown_type $certDate        	
  * @return unknown
@@ -218,7 +218,7 @@ function encryptDate($certDate) {
 }
 
 /**
- * ¼ÓÃÜ Êý¾Ý
+ * ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
  *
  * @param unknown_type $certDatatype
  * @return unknown

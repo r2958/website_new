@@ -82,7 +82,7 @@ class MicroPay
 	 * @param int $succCode         查询订单结果
 	 * @return 0 订单不成功，1表示订单成功，2表示继续等待
 	 */
-	public function query($out_trade_no, &$succCode)
+	public function query($out_trade_no, $succCode)
 	{
 		$queryOrderInput = new WxPayOrderQuery();
 		$queryOrderInput->SetOut_trade_no($out_trade_no);

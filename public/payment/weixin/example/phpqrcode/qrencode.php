@@ -31,7 +31,7 @@
         public $eccLength;
         public $ecc = array();
         
-        public function __construct($dl, $data, $el, &$ecc, QRrsItem $rs)
+        public function __construct($dl, $data, $el, $ecc, QRrsItem $rs)
         {
             $rs->encode_rs_char($data, $ecc);
         
@@ -313,7 +313,7 @@
         public $bit;
         
         //----------------------------------------------------------------------
-        public function __construct($width, &$frame)
+        public function __construct($width, $frame)
         {
             $this->width = $width;
             $this->frame = $frame;

@@ -41,7 +41,7 @@
         }
         
         //----------------------------------------------------------------------
-        public function writeFormatInformation($width, &$frame, $mask, $level)
+        public function writeFormatInformation($width, $frame, $mask, $level)
         {
             $blacks = 0;
             $format =  QRspec::getFormatInfo($mask, $level);
@@ -138,7 +138,7 @@
         }
         
         //----------------------------------------------------------------------
-        public function makeMaskNo($maskNo, $width, $s, &$d, $maskGenOnly = false) 
+        public function makeMaskNo($maskNo, $width, $s, $d, $maskGenOnly = false) 
         {
             $b = 0;
             $bitMask = array();

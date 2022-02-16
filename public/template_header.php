@@ -120,14 +120,14 @@
 		-->
 	    </li>
            <!--  <li><a href="brand.php" id="new_brand">品牌</a></li> -->
-            <li><a class='<?php echo (isset($_GET['id'])&&$_GET['id']==1)? 'menuact':'';?>' href="<?php echo 'http://'.$CFG->siteurl."/public/"?>template.php?id=1" id="new_cloth">男装</a></li>
-            <li><a class='<?php echo (isset($_GET['id'])&&$_GET['id']==2)? 'menuact':'';?>'  href="<?php echo 'http://'.$CFG->siteurl."/public/"?>template.php?id=2" id="new_bag">包袋</a></li>
-            <li><a class='<?php echo (isset($_GET['id'])&&$_GET['id']==3)? 'menuact':'';?>' href="<?php echo 'http://'.$CFG->siteurl."/public/"?>template.php?id=3">流行女鞋</a></li>
-            <li><a class='<?php echo (isset($_GET['id'])&&$_GET['id']==4)? 'menuact':'';?>' href="<?php echo 'http://'.$CFG->siteurl."/public/"?>template.php?id=4">内衣</a></li>
-            <li><a class='<?php echo (isset($_GET['id'])&&$_GET['id']==5)? 'menuact':'';?>' href="<?php echo 'http://'.$CFG->siteurl."/public/"?>template.php?id=5">鞋子</a></li>
-            <li><a class='<?php echo (isset($_GET['id'])&&$_GET['id']==6)? 'menuact':'';?>' href="<?php echo 'http://'.$CFG->siteurl."/public/"?>template.php?id=6">配饰</a></li>
-	    <li><a class='<?php echo (isset($_GET['id'])&&$_GET['id']==7)? 'menuact':'';?>' href="<?php echo 'http://'.$CFG->siteurl."/public/"?>template.php?id=7">女裤</a></li>
-            <li><a class='<?php echo (isset($_GET['id'])&&$_GET['id']==8)? 'menuact':'';?>' href="<?php echo 'http://'.$CFG->siteurl."/public/"?>template.php?id=8">男裤</a></li>
+            <li><a class='<?php echo (isset($_GET['id'])&$_GET['id']==1)? 'menuact':'';?>' href="<?php echo 'http://'.$CFG->siteurl."/public/"?>template.php?id=1" id="new_cloth">男装</a></li>
+            <li><a class='<?php echo (isset($_GET['id'])&$_GET['id']==2)? 'menuact':'';?>'  href="<?php echo 'http://'.$CFG->siteurl."/public/"?>template.php?id=2" id="new_bag">包袋</a></li>
+            <li><a class='<?php echo (isset($_GET['id'])&$_GET['id']==3)? 'menuact':'';?>' href="<?php echo 'http://'.$CFG->siteurl."/public/"?>template.php?id=3">流行女鞋</a></li>
+            <li><a class='<?php echo (isset($_GET['id'])&$_GET['id']==4)? 'menuact':'';?>' href="<?php echo 'http://'.$CFG->siteurl."/public/"?>template.php?id=4">内衣</a></li>
+            <li><a class='<?php echo (isset($_GET['id'])&$_GET['id']==5)? 'menuact':'';?>' href="<?php echo 'http://'.$CFG->siteurl."/public/"?>template.php?id=5">鞋子</a></li>
+            <li><a class='<?php echo (isset($_GET['id'])&$_GET['id']==6)? 'menuact':'';?>' href="<?php echo 'http://'.$CFG->siteurl."/public/"?>template.php?id=6">配饰</a></li>
+	    <li><a class='<?php echo (isset($_GET['id'])&$_GET['id']==7)? 'menuact':'';?>' href="<?php echo 'http://'.$CFG->siteurl."/public/"?>template.php?id=7">女裤</a></li>
+            <li><a class='<?php echo (isset($_GET['id'])&$_GET['id']==8)? 'menuact':'';?>' href="<?php echo 'http://'.$CFG->siteurl."/public/"?>template.php?id=8">男裤</a></li>
 	    
 	    <?php
 	        $map =array(1=>'服装',2=>'包袋',3=>'配饰',4=>'内衣',5=>'运动装',6=>'美容',7=>'定制服务');

@@ -40,7 +40,7 @@ class WxPayNotify extends WxPayNotifyReply
 	 * @param string $msg 如果回调处理失败，可以将错误信息输出到该方法
 	 * @return true回调出来完成不需要继续回调，false回调处理未完成需要继续回调
 	 */
-	public function NotifyProcess($data, &$msg)
+	public function NotifyProcess($data, $msg)
 	{
 		//TODO 用户基础该类之后需要重写该方法，成功的时候返回true，失败返回false
 		return true;

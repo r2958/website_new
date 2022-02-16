@@ -11,7 +11,7 @@ $log = new PhpLog ( SDK_LOG_FILE_PATH, "PRC", SDK_LOG_LEVEL );
  *
  * @param String $params_str
  */
-function sign(&$params) {
+function sign($params) {
 	global $log;
 	$log->LogInfo ( '=====签名报文开始======' );
 	if(isset($params['transTempUrl'])){

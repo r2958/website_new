@@ -30,7 +30,7 @@ class PayNotifyCallBack extends WxPayNotify
 	}
 	
 	//重写回调处理函数
-	public function NotifyProcess($data, &$msg)
+	public function NotifyProcess($data, $msg)
 	{
 		Log::DEBUG("call back:" . json_encode($data));
 		$notfiyOutput = array();
