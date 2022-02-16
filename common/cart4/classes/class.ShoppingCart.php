@@ -1739,7 +1739,8 @@ class ShoppingCart
 	
 	
 	function _aGetProductDetailsImages($ProductID){
-		$d = '/images/details/'.$ProductID."_01_th_";
+		//$d = '/images/details/'.$ProductID."_01_th_";
+		$d = '/images/details/'.$ProductID."_01_th";
 		return $d;
 		exit; //100_01_th_920x1380_80.jpg 
 		//

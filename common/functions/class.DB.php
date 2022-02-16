@@ -85,6 +85,7 @@ class DB
 		// if $this->Debug is true, then we will display the query on screen.
 		// if $this->Timed is true, then we will time the query and log it to /common/db.log
 		// if $this->DieOnFail is true, then we will die on any errors (default)
+		
 		if($this->Debug === true) {
 			echo '<pre>' . htmlspecialchars($query) . '</pre>';
 		}
