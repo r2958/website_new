@@ -12,7 +12,7 @@ if(isset($ProductID)){
         $attArray = array();
         $shopping_items = $ShoppingCart->queryAttributesForProduct($ProductID);
         if($DB->numRows($shopping_items) > 0) {
-                while($object = mysql_fetch_assoc($shopping_items)){
+                while($object = mysqli_fetch_assoc($shopping_items)){
                         $attArray[] = $object;
                 }
                 
