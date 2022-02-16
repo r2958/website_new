@@ -38,7 +38,7 @@ class ASessionHandler {
 			return $row['data'];
 		}
 		// MUST send an empty string if no session data
-		return true;
+		return '';
 	}
 
 	function write($id, $data) {
