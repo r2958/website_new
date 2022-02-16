@@ -8,7 +8,7 @@ if(isset($_POST['done']) && ($_POST['done'] == 'Yes')) {
 	if(empty($_POST['oldpassword'])) $errors->errorOldPasswordBlank = true;
 	if(empty($_POST['newpassword'])) $errors->errorNewPassword1Blank = true;
 	if(empty($_POST['newpassword2'])) $errors->errorNewPassword2Blank = true;
-	if(isset($_POST['newpassword'])&&isset($_POST['newpassword2'])$_POST['newpassword']!=$_POST['newpassword2']) $errors->errorNewPasswordsInvalid =true;
+	if(isset($_POST['newpassword']) && isset($_POST['newpassword2']) && $_POST['newpassword']!=$_POST['newpassword2']) $errors->errorNewPasswordsInvalid =true;
 	/*
 	if(empty($_POST['Email'])) {
 		$errors->errorEmailBlank = true;
