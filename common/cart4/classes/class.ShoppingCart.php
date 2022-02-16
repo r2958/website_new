@@ -1,4 +1,7 @@
-<?
+<?php
+class ObjectClass{
+
+}
 class ShoppingCart
 {
 	var $SITE;
@@ -365,7 +368,8 @@ class ShoppingCart
 	function setOrderCheckoutInfo($frm)
 	{
 		// Saves the order information into the session variable $_SESSION['orderinfo'].
-		$order = new Object();
+
+		$order = new ObjectClass();
 		$order->Company = $frm['Company'];
 		$order->Title = $frm['Title'];
 		$order->FirstName = $frm['FirstName'];
