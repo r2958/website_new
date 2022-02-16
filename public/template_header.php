@@ -51,7 +51,6 @@
 		<li><a href="login.php">登录</a></li>
 		<?php endif;?>
                 <li style="position: absolute;"><a href="cart.php" class="cart-link">购物车</a>
-		
 		    <div class="cart_content" style="left:-78px;top:20px;width:210px;min-height: 100px;position:absolute;border: 1px solid #ccc;background-color:#FFF;display:none;">
 			
 			<div style="float: right;height:18px;width:210px;background-color: #000;text-align: right;color: #FFF;">

@@ -1,11 +1,11 @@
 <?php
 require_once('../application.php');
-require_once('template_header.php'); 
 if(isset($_POST)&& !empty($_POST)){
     session_start();
     $_SESSION['name']=$_POST['username'];
     header('location:user.php');
 }
+require_once('template_header.php'); 
 //var_dump($_SESSION);
 ?>
 
