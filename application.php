@@ -13,7 +13,8 @@ $CFG->username = 'andrew';
 $CFG->serverroot = $_SERVER['DOCUMENT_ROOT'];
 $CFG->siteroot	= $_SERVER['DOCUMENT_ROOT'];
 $CFG->siteip	= $_SERVER['SERVER_ADDR'];
-$CFG->siteurl	= $_SERVER['SERVER_NAME'];
+//$CFG->siteurl	= $_SERVER['SERVER_NAME'];
+$CFG->siteurl	= $_SERVER['SERVER_ADDR'];
 
 /* Database Library and Connection Information */
 require_once($CFG->serverroot . '/common/functions/class.DB.php');
