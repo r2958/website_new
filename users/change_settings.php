@@ -1,7 +1,9 @@
 <?
 require_once('../application.php');
+class ObjectError{
 
-$errors = new Object;
+}
+$errors = new ObjectError;
 $login = $User->checkLogin();
 if(!$login){
 	$refer = $_SERVER['HTTP_REFERER'];
