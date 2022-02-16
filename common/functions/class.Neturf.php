@@ -251,7 +251,8 @@ class ErrorHandler
 			E_COMPILE_WARNING	=> 'Compile Warning',
 			E_USER_ERROR			=> 'User Error',
 			E_USER_WARNING		=> 'User Warning',
-			E_USER_NOTICE			=> 'User Notice'
+			E_USER_NOTICE			=> 'User Notice',
+			E_DEPRECATED   => 'Deprecated error'
 		);
 	var $Domain = '';
 	var $FileName = '';
