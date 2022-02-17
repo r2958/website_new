@@ -21,8 +21,6 @@ if((isset($_POST['done'])) && ($_POST['done'] == 'Yes')) {
 	if(empty($_POST['BillingZip'])) $errors->errorBillingZip = true;
 	if(empty($_POST['BillingCountry'])) $errors->errorBillingCountry = true;
 
-	var_dump($errors);exit;
-
 	if(count(get_object_vars($errors)) == 0) {
 		$ShoppingCart->setShippingVariables($_POST);
 		$ShoppingCart->setOrderCheckoutInfo($_POST);
