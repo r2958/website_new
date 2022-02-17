@@ -2,6 +2,7 @@
 require_once('../application.php');
 
 $order = $ShoppingCart->getOrderCheckoutInfo();
+var_dump($order);exit;
 if(($order->FirstName == '') OR ($order->LastName == '') OR ($order->Email == '')) {
 	//header('Location: index.php');
 	//die;
