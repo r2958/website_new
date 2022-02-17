@@ -24,6 +24,7 @@ if((isset($_POST['done'])) && ($_POST['done'] == 'Yes')) {
 	if(count(get_object_vars($errors)) == 0) {
 		$ShoppingCart->setShippingVariables($_POST);
 		$ShoppingCart->setOrderCheckoutInfo($_POST);
+		var_dump($_SESSION);exit;
 		header('Location: payment.php');
 		die;
 	} else {
