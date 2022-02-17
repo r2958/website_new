@@ -86,7 +86,9 @@ class Neturf
 	function isEmailValid($Email) {
 		// http://www.ilovejackdaniels.com/php/email-address-validation/
 		// First, we check that there's one @ symbol, and that the lengths are right
-		if(!preg_match("^[^\@]{1,64}@[^@]{1,255}$", $Email)) {
+		$regex = '/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/';
+		return true;
+		if(!preg_match($regex, $Email)) {
 			return false;
 		}
 		// Split it into sections
