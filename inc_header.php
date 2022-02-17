@@ -30,7 +30,7 @@
 		        </div>
 				<ul id="top_menu">
 					<?php if(!empty($_SESSION['user'])):?>
-					<li><span>Welcome <?php echo $_SESSION['user']->Username;?> |</span></li>
+					<li><a href="/users/change_settings.php" title="My account"><span>Welcome <?php echo $_SESSION['user']->Username;?> |</span></a></li>
 					<li><a href="/users/change_settings.php" title="My account">My Account |</a></li>
 					<li><a href="/users/logout.php" title="Login">Logout |</a></li>
 					<?php else:?>
