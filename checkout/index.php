@@ -1,11 +1,12 @@
 <?
 require_once('../application.php');
 class ObjectAA{
-	
+
 }
 $errors = new ObjectAA;
 /* form has been submitted */
 if((isset($_POST['done'])) && ($_POST['done'] == 'Yes')) {
+	echo "hhhhh";exit;
 	if(empty($_POST['FirstName'])) $errors->errorFirstName = true;
 	if(empty($_POST['LastName'])) $errors->errorLastName = true;
 	if(empty($_POST['Email'])) {
