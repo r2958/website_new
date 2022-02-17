@@ -19,8 +19,8 @@ if(isset($_POST['done']) && ($_POST['done'] == 'Yes')) {
 	if(count(get_object_vars($errors)) == 0) {
 		$login = $User->login(trim($_POST['Username']),trim($_POST['Password']));
 		if($login){
-			var_dump($_SESSION);
-			//header('Location: /');
+			//var_dump($_SESSION);
+			header('Location: /');
 		}else{
 			$errors->errorFailed = true;
 			//header('Location: ' . $_SERVER['PHP_SELF'] . '?result=1');
