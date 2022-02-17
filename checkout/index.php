@@ -6,7 +6,7 @@ class ObjectAA{
 $errors = new ObjectAA;
 /* form has been submitted */
 if((isset($_POST['done'])) && ($_POST['done'] == 'Yes')) {
-	echo "hhhhh";exit;
+	
 	if(empty($_POST['FirstName'])) $errors->errorFirstName = true;
 	if(empty($_POST['LastName'])) $errors->errorLastName = true;
 	if(empty($_POST['Email'])) {
@@ -20,6 +20,8 @@ if((isset($_POST['done'])) && ($_POST['done'] == 'Yes')) {
 	if(empty($_POST['BillingState'])) $errors->errorBillingState = true;
 	if(empty($_POST['BillingZip'])) $errors->errorBillingZip = true;
 	if(empty($_POST['BillingCountry'])) $errors->errorBillingCountry = true;
+
+	var_dump($_POST);exit;
 
 	if(count(get_object_vars($errors)) == 0) {
 		$ShoppingCart->setShippingVariables($_POST);
