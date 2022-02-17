@@ -3,8 +3,8 @@ require_once "../application.php";
 
 $errors = new Aobject;
 if($User->checkLogin()){
-	var_dump($_SESSION);exit;
-	//header('Location: /');
+	//var_dump($_SESSION);exit;
+	header('Location: /');
 }else{
 	echo 'xxxx';
 	var_dump($_SESSION);
