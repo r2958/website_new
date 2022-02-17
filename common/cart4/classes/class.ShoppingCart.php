@@ -403,7 +403,7 @@ class ShoppingCart
 		if(empty($_SESSION['orderinfo'])) {
 			echo "=====";
 			var_dump($_SESSION); exit;
-			echo "======"
+			echo "======";
 			return false;
 		} else {
 			return $_SESSION['orderinfo'];
