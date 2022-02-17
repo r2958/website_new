@@ -1,7 +1,7 @@
 <?
 require_once('../application.php');
 
-$errors = new Object;
+$errors = new Aobject;
 
 /* form has been submitted */
 /*

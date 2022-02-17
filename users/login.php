@@ -1,10 +1,7 @@
 <?php
 require_once "../application.php";
-class ObjectError{
 
-}
-
-$errors = new ObjectError;
+$errors = new Aobject;
 if($User->checkLogin()){
 	var_dump($_SESSION);exit;
 	//header('Location: /');

@@ -3,7 +3,7 @@ require_once('../application.php');
 $ShoppingCart->showSiteHeader();
 
 
-$errors = new Object;
+$errors = new Aobject;
 
 /* form has been submitted */
 if(isset($_POST['done']) && ($_POST['done'] == 'Yes')) {
