@@ -3,11 +3,11 @@ require_once('../application.php');
 
 $order = $ShoppingCart->getOrderCheckoutInfo();
 if(($order->FirstName == '') OR ($order->LastName == '') OR ($order->Email == '')) {
-	header('Location: index.php');
-	die;
+	//header('Location: index.php');
+	//die;
 }
 
-$errors = new Object;
+$errors = new Aobject;
 
 $PageText = $ShoppingCart->getPageText('checkout/payment.php');
 $ShoppingCart->showSiteHeader();
