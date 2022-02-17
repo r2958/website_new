@@ -396,6 +396,8 @@ class ShoppingCart
 		var_dump($order);exit;
 
 		$_SESSION['orderinfo'] = $order;
+
+		var_dump($_SESSION);exit;
 	}
 
 
