@@ -394,10 +394,7 @@ class ShoppingCart
 		$order->Comments = $frm['Comments'];
 		$order->MailingList = $frm['MailingList'];
 		var_dump($order);
-
 		$_SESSION['orderinfo'] = $order;
-
-		var_dump($_SESSION);exit;
 	}
 
 
