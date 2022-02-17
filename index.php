@@ -1,8 +1,7 @@
 <?
 require_once('application.php');
 $CategoryID = $ShoppingCart->setDefault($_GET['CategoryID'], 0) + 0;
-
-
+$PageText = $ShoppingCart->getPageText('index.php');
 if($CategoryID > 0) {
 	$qid = $ShoppingCart->queryCategoryDetails($CategoryID);
 	if($DB->numRows($qid) == 0) header('Location:/');
@@ -11,7 +10,7 @@ if($CategoryID > 0) {
 	$PageText->PageTitle = $cat->CategoryName;
 	if($qid->totalrows > 0) $PageText->PageTitle .= ':'.'Supplier of HVAC Controls';
 } else {
-	$PageText = $ShoppingCart->getPageText('index.php');
+	//$PageText = $ShoppingCart->getPageText('index.php');
 }
 
 $ShoppingCart->showSiteHeader();
