@@ -401,7 +401,7 @@ class ShoppingCart
 	{
 		// Counterpart to setOrderCheckoutInfo.
 		if(empty($_SESSION['orderinfo'])) {
-			var_dump($_SESSION); exit;
+			//var_dump($_SESSION); exit;
 			return false;
 		} else {
 			return $_SESSION['orderinfo'];
