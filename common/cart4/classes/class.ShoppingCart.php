@@ -412,6 +412,8 @@ class ShoppingCart
 	function &doSaveFinalOrder()
 	{
 		global $order;
+		var_dump($order);exit;
+
 		$qid = $this->DB->query("
 			INSERT INTO orders (
 				OrderDate,
