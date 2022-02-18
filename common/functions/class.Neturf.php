@@ -149,7 +149,7 @@ class Neturf
 		$BCCHeader = '';
 
 		$Count = 0;
-		$ToArray = split(',', $To);
+		$ToArray = explode(',', $To);
 		$To = '';
 		foreach($ToArray as $ToAddress) {
 			$ToAddress = trim(str_replace($IllegalCharacters, '', $ToAddress));
