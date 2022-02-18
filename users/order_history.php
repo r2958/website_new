@@ -34,7 +34,7 @@ $LastName  = $User->UserInfo->LastName;
 $UserFilter = " and FirstName = '$FirstName' and LastName = '$LastName' ";
 
 
-$qid = new PagedResultSet("SELECT OrderID, OrderDate, OrderStatus, Username, Email FROM orders WHERE 1 $UserFilter  ORDER BY OrderDate", 100);
+$qid = new PagedResultSet("SELECT OrderID, OrderDate, OrderStatus, Username, Email FROM orders WHERE 1 $UserFilter  ORDER BY OrderDate DESC", 100);
 
 ?>
 <table border="1" cellpadding="3" cellspacing="0" width="95%" class="sortable" id="orderTable">
