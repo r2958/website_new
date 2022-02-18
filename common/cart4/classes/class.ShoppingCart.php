@@ -393,7 +393,7 @@ class ShoppingCart
 		$order->Fax = $frm['Fax'];
 		$order->Comments = $frm['Comments'];
 		$order->MailingList = $frm['MailingList'];
-		var_dump($order);exit;
+		//var_dump($order);exit;
 		$_SESSION['orderinfo'] = serialize($order);
 	}
 
@@ -404,7 +404,7 @@ class ShoppingCart
 		if(empty($_SESSION['orderinfo'])) {
 			return false;
 		} else {
-			return $_SESSION['orderinfo'];
+			return unserialize($_SESSION['orderinfo']);
 		}
 	}
 
