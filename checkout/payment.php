@@ -7,7 +7,7 @@ if(($order->FirstName == '') OR ($order->LastName == '') OR ($order->Email == ''
 	header('Location: index.php');
 	die;
 }
-
+echo "ddd" ; exit;
 $errors = new Aobject;
 
 $PageText = $ShoppingCart->getPageText('checkout/payment.php');
