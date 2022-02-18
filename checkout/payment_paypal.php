@@ -18,7 +18,7 @@ $order = $DB->fetchObject($qid_order);
 $OrderTotals =& $ShoppingCart->getOrderBalance($OrderID);
 
 $req = $ShoppingCart->getPayPalQueryString($OrderID);
-
+$EmailText = new Aobject();
 $EmailText->PageTitle = $ShoppingCart->SITE->Company . ' Order Confirmation - Order #' . $OrderID;
 $EmailText->PageText = 'Dear ' . $order->FirstName . ',
 
