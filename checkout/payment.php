@@ -15,6 +15,6 @@ if($ShoppingCart->CartTotal['Quantity'] == 0) {
 	$ShoppingCart->showEmptyCartError();
 }
 
-include('/common/cart4/includes/payment.php');
+include('../common/cart4/includes/payment.php');
 $ShoppingCart->showSiteFooter();
 ?>
