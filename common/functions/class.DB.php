@@ -250,7 +250,8 @@ class DB
 	function getColumnsFromTable($Database, $Table)
 	{
 		// Pull the column names from the table $table into a non-associative array
-		$qid = $this->query("SHOW COLUMNS FROM " . $Database . "." . $Table);
+		//$qid = $this->query("SHOW COLUMNS FROM " . $Database . "." . $Table);
+		$qid = $this->query("SHOW COLUMNS FROM " . $Table);
 		while($row = $this->fetchAssoc($qid)) {
 			$columns[] = $row['Field'];
 		}
