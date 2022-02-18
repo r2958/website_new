@@ -412,7 +412,7 @@ class ShoppingCart
 	function &doSaveFinalOrder()
 	{
 		global $order;
-		var_dump($this->CartTotal);exit;
+		//var_dump($this->CartTotal);exit;
 
 		$qid = $this->DB->query("
 			INSERT INTO orders (
@@ -433,6 +433,8 @@ class ShoppingCart
 				'{$this->CartTotal['Subtotal']}', '{$this->CartTotal['Tax']}', '{$this->CartTotal['Shipping']}', '{$this->CartTotal['ShippingExtra']}'
 			)");
 		$OrderID = $this->DB->insertID();
+
+		var_dump($OrderID);exit;
 
 		// add the shopping cart items into the order_items table
 		$qid =& $this->getCartItems($this->SessionID);
