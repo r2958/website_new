@@ -2,13 +2,10 @@
 require_once('../application.php');
 
 $order = $ShoppingCart->getOrderCheckoutInfo();
-var_dump($order);
 if(($order->FirstName == '') OR ($order->LastName == '') OR ($order->Email == '')) {
-	echo "xxxx11" ; exit;
 	header('Location: index.php');
 	die;
 }
-echo "ddd" ; exit;
 $errors = new Aobject;
 
 $PageText = $ShoppingCart->getPageText('checkout/payment.php');
