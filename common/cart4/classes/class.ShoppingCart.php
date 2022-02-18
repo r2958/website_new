@@ -394,7 +394,7 @@ class ShoppingCart
 		$order->Comments = $frm['Comments'];
 		$order->MailingList = $frm['MailingList'];
 		//var_dump($order);
-		$_SESSION['orderinfo'] = $order->toArray();
+		$_SESSION['orderinfo'] = serialize($order);
 	}
 
 
