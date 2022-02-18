@@ -412,7 +412,7 @@ class ShoppingCart
 	function &doSaveFinalOrder()
 	{
 		global $order;
-		var_dump($order，$this->CartTotal);exit;
+		var_dump($this->CartTotal);exit;
 
 		$qid = $this->DB->query("
 			INSERT INTO orders (
