@@ -434,8 +434,6 @@ class ShoppingCart
 			)");
 		$OrderID = $this->DB->insertID();
 
-		var_dump($OrderID);exit;
-
 		// add the shopping cart items into the order_items table
 		$qid =& $this->getCartItems($this->SessionID);
 		while ($item = $this->DB->fetchObject($qid)) {
