@@ -24,7 +24,7 @@ $DB->Database = 'andrew-new';
 $DB->Username = 'root';
 $DB->Password = 'Renwei@123';
 $DB->DieOnFail = false;
-$DB->Debug = true;
+$DB->Debug = false;
 $DB->Timed = false;
 $DB->connect();
 $user_url = 'http://'.$CFG->siteurl."/public/users/";
