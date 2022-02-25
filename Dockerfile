@@ -1,4 +1,4 @@
-FROM bebian:jessie
+FROM debain:kannanv
 LABEL  "author"="andyweiren<andyweiren@tencent.com>"
 
 ADD ./docker/sources.list /etc/apt/
