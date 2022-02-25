@@ -1,0 +1,4 @@
+#Ansible managed: /usr/ansible-playbook/base_roles/nginx/templates/auth_basic.j2 modified on 2016-03-07 09:55:30 by root on op-jumper
+
+foo:$apr1$mEJqnFmy$zioG2q1iDWvRxbHuNepIh0
+bar:$apr1$H2GihkSo$PwBeV8cVWFFQlnAJtvVCQ.
