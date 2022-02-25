@@ -1,4 +1,4 @@
-FROM debain:kannanv
+FROM debain
 LABEL  "author"="andyweiren<andyweiren@tencent.com>"
 
 ADD ./docker/sources.list /etc/apt/
