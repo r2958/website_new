@@ -64,7 +64,7 @@ RUN pecl install xdebug-2.7.2 && docker-php-ext-enable xdebug
 # swoole 扩展
 #RUN pecl install swoole-4.4.0 && docker-php-ext-enable swoole
 
-COPY ../ /var/www/html/
+COPY . /var/www/html/
 
 
 # 镜像信息
