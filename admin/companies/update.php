@@ -1,6 +1,6 @@
 <?
 include('../../application.php');
-
+$errorList = array();
 if(isset($_POST['done']) && ($_POST['done'] == 'Yes')) {
 	if($_POST['CompanyName'] == '') $errorList[] = 'Company Name not Entered.';
 	if (sizeof($errorList) > 0) $Admin->DisplayError($errorList);
