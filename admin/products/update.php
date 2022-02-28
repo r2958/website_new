@@ -4,7 +4,7 @@ require_once('../../application.php');
 if(isset($_POST['done']) && ($_POST['done'] == 'Yes')) {
 	if($_POST['ProductName'] == '') $errorList[] = 'Name field left blank.';
 	var_dump($_POST);
-	if(count((is_countable($_POST['categories'])?$_POST['categories']:[]))== 0) $errorList[] = 'No Category Selected.';
+	if(isset($_POST['categories']) and count($_POST['categories']) == 0) $errorList[] = 'No Category Selected.';
 	if(sizeof($errorList) > 0) $Admin->DisplayError($errorList);
 	
 	if($_POST['ProductID'] == '') {
