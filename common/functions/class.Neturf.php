@@ -79,7 +79,7 @@ class Neturf
 
 	function getServerRoot()
 	{
-		return '/home/andrew/work/ibscontrols/ibs-controls.com';
+		return $_SERVER['DOCUMENT_ROOT'];
 	}
 
 

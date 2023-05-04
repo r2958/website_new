@@ -46,6 +46,7 @@ class ShoppingCart
 	function &getSiteSettings()
 	{
 		$qid = $this->DB->query("SELECT * FROM site_settings WHERE id = 1");
+		#var_dump($qid);exit;
 		$row = $this->DB->fetchObject($qid);
 		if($row->ProductsPerPage < 1) {
 			$row->ProductsPerPage = 10;
