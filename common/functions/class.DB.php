@@ -175,7 +175,7 @@ class DB
 		// grab the next row from the query result identifier $qid,
 		// and return it as an object. 
 		// if there are no more results, return FALSE
-		return mysql_fetch_object($qid);
+		return mysqli_fetch_object($qid);
 	}
 
 	function fetchRow($qid)

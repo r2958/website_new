@@ -2,6 +2,9 @@
 require_once('application.php');
 $CategoryID = $ShoppingCart->setDefault($_GET['CategoryID'], 0) + 0;
 $PageText = $ShoppingCart->getPageText('index.php');
+
+
+
 if($CategoryID > 0) {
 	$qid = $ShoppingCart->queryCategoryDetails($CategoryID);
 	if($DB->numRows($qid) == 0) header('Location:/');

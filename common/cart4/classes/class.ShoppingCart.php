@@ -1113,6 +1113,7 @@ class ShoppingCart
 			} else {
 				$Class = 'inactive';
 			}
+			//var_dump($qid);exit;
 			echo $tabs . '<ul id="Category' . $CategoryID . '"  class="' . $Class . '">' . chr(13) . chr(10);
 			while ($row =  $this->DB->fetchObject($qid)) {
 				$qid_children = $this->DB->query("SELECT CategoryID FROM categories WHERE ParentID = $row->CategoryID AND InMenu = 1");

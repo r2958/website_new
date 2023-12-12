@@ -87,9 +87,6 @@
 				<td valign="top" width="100%">
 					<div id="YouAreHere"><? $this->showYouAreHere($CategoryID); ?></div>
 					<div id="PageBody">
-					<iframe src="//1258832441.vod2.myqcloud.com/vod-player/1258832441/387702295049641164/tcplayer/console/vod-player.html?autoplay=false&width=1280&height=720"
-frameborder="0" scrolling="no" width="800" height="600" allowfullscreen >
-</iframe>
 <!--
 注意事项：
 * 设置allowfullscreen属性将允许iframe内的页面调用Full Screen API，如去掉该属性，播放器的全屏按钮将无法使用。
