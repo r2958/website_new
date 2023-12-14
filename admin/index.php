@@ -2,7 +2,7 @@
 require_once('../application.php');
 
 $PageText = $ShoppingCart->getPageText('admin/index.php');
-$Page->PageTitle = 'Boca Main Menu';
+//$Page->PageTitle = 'Boca Main Menu';
 $Admin->showAdminHeader();
 ?>
 <table border="0" cellpadding="5" cellspacing="0" width="100%">

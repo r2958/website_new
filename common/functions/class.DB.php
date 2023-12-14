@@ -29,7 +29,7 @@ class DB
 				echo '<h2>Can\'t connect to ' . $this->Host . ' as ' . $this->Username . '</h2>';
 				echo '<p><b>MySQL Error</b>: ' . mysqli_error();
 			} else {
-				echo '<h2>Database error encountered</h2>';
+				echo '<h2>Database error encountered-conn</h2>';
 				var_dump(mysqli_error($this->Handle));
 
 			}
@@ -46,7 +46,7 @@ class DB
 				echo '<h2>Can\'t select database ' . $this->Database . '</h2>';
 				echo '<p><b>MySQL Error</b>: ' . mysqli_error();
 			} else {
-				echo '<h2>Database error encountered</h2>';
+				echo '<h2>Database error encountered 49 </h2>';
 
 			}
 			if ($this->DieOnFail === true) {
@@ -93,7 +93,7 @@ class DB
 			$this->TimerStart = $this->getMicrotime();
 		}
 		//echo var_dump($query);
-		$qid = @mysqli_query($this->Handle, $query);
+		$qid = mysqli_query($this->Handle, $query);
 
 
 
@@ -109,7 +109,9 @@ class DB
 				echo '<pre>' . htmlspecialchars($query) . '</pre>';
 				echo '<p><b>MySQL Error</b>: ' . mysqli_error($this->Handle);
 			} else {
-				echo '<h2>Database error encountered</h2>';
+				echo mysqli_error($this->Handle);
+				echo $query;
+				echo '<h2>Database error encountered 112 </h2>';
 
 
 

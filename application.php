@@ -15,7 +15,7 @@ $CFG->siteroot	= $_SERVER['DOCUMENT_ROOT'];
 $CFG->siteip	= $_SERVER['SERVER_ADDR'];
 //$CFG->siteurl	= $_SERVER['SERVER_NAME'];
 $CFG->siteurl	= $_SERVER['SERVER_ADDR'];
-
+//var_dump($CFG->siteroot);
 /* Database Library and Connection Information */
 require_once($CFG->serverroot . '/common/functions/class.DB.php');
 $DB = new DB;
@@ -25,7 +25,7 @@ $DB->Username = 'root';
 $DB->Password = 'travel';
 $DB->DieOnFail = false;
 $DB->Debug = false;
-$DB->Timed = true;
+$DB->Timed = false;
 $DB->connect();
 $user_url = 'http://'.$CFG->siteurl."/public/users/";
 $nav_array = array(1=>'男装',2=>'包袋',3=>'女鞋',4=>'内衣',5=>'男鞋',6=>'配饰',7=>'女裤',8=>'男裤');

@@ -21,7 +21,7 @@ if(isset($_GET['CompanyID']) && $_GET['CompanyID'] > 0) {
 	$frm = $DB->fetchAssoc($qid);
 	$Page->PageTitle = 'Edit Company';
 } else {
-	$Page->PageTitle = 'Add New Company';
+	//$Page->PageTitle = 'Add New Company';
 }
 $Admin->showAdminHeader();
 $Admin->showCompanyHeader();

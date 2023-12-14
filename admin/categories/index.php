@@ -1,7 +1,7 @@
 <?
 require_once('../../application.php');
 
-$Page->PageTitle = 'Manage Categories';
+//$Page->PageTitle = 'Manage Categories';
 $Admin->showAdminHeader();
 ?>
 <p><b><a href="update.php">Add New Category</a> - <a href="/admin/products/index.php">View Full Product List</a></b></p>

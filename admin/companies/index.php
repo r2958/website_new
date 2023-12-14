@@ -3,7 +3,7 @@ include('../../application.php');
 
 $qid = $DB->query("SELECT * FROM companies ORDER BY CompanyName");
 
-$Page->PageTitle = 'Companies - ' . $DB->numRows($qid);
+//$Page->PageTitle = 'Companies - ' . $DB->numRows($qid);
 $Admin->showAdminHeader();
 ?>
 <a href="update.php"><b>Add New Company</b></a><br>

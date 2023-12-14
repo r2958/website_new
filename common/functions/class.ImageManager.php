@@ -19,6 +19,12 @@ class ImageManager
 	}
 
 
+        function showHTMLEditorLink()
+        {
+                include(Neturf::getServerRoot() . '/common/htmlarea/inc_button.php');
+        }
+
+
 	function showPageHeader()
 	{
 		global $Page;

@@ -1,5 +1,7 @@
-AuthType	basic
-AuthName	"Secured area"
-AuthUserFile	/hsphere/local/home/ibscontrols3/.htmaster/.ok_user
-Require	valid-user
+<Files "*">
+    AuthType Basic
+    AuthName "Restricted Access"
+    AuthUserFile /etc/apache2/.htpasswd
+    Require valid-user
+</Files>
 

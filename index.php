@@ -29,7 +29,7 @@ if($CategoryID > 0) {
 		//$ShoppingCart->showMultiProductAddToCartForm($CategoryID);
 	}
 }else {
-	/*
+	
 	$ShoppingCart->showTextOrHTML($PageText->PageText, $PageText->PageFormat);
 	$qid = $ShoppingCart->querySpecials();
 			if($DB->numRows($qid->results) == 0) {
@@ -37,7 +37,7 @@ if($CategoryID > 0) {
 		} else {
 			$ShoppingCart->showProductsGrid($qid);
 		}
-                  */
+                 
 }
 
 
