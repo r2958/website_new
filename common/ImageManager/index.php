@@ -1,11 +1,12 @@
 <?
-ini_set("register_globals",0);
+//ini_set("register_globals",0);
 
 /* Custom Error Handler Settings - Use for debugging only */
 //$NeturfErrorHandler->setDebugMode(true);
 //$NeturfErrorHandler->setDisplayErrors(false);
 
 require_once("../functions/class.ImageManager.php");
+global $Page;
 $IM = new ImageManager();
 
 $Page->PageTitle = "NETurf Image Manager 3.0";

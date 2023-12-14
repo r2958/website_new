@@ -1356,6 +1356,7 @@ class ShoppingCart
 	function showContentBlock($CategoryID) {
 		$qid = $this->queryCategoryDetails($CategoryID);
 		$Page = $this->DB->fetchObject($qid);
+		//var_dump($Page);
 		$this->showTextOrHTML($Page->PageText, $Page->PageFormat);
 	}
 
@@ -1387,7 +1388,7 @@ class ShoppingCart
 
 		if(file_exists($ImageRoot . '.jpg')) {
 			$size = getimagesize($ImageRoot . '.jpg');
-			return '<img src="' . $ImagePath . '.jpg" border="0" ' . $AlignTag . ' alt="' . $Text . '" ' . $size[3] . ' />';
+			return '<img src="' . $ImagePath . '.jpg" border="0" ' . $AlignTag . ' alt="' . $Text . '" ' . '' . ' width="235" height="297" />';
 
 		} elseif(file_exists($ImageRoot . '.png')) {
 			$size = getimagesize($ImageRoot . '.png');

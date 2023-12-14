@@ -7,8 +7,8 @@ class ShoppingCartAdmin
 	function ShoppingCartAdmin()
 	{
 		global $ShoppingCart, $CFG;
-		$this->ShoppingCart =& $ShoppingCart;
-		$this->CFG =& $CFG;
+		$this->ShoppingCart = $ShoppingCart;
+		$this->CFG = $CFG;
 	}
 	
 

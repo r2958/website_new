@@ -3,7 +3,7 @@ require_once('application.php');
 
 $ProductID = $ShoppingCart->setDefault($_GET['ProductID'], 0) + 0;
 if($ProductID == 0) header('Location:/');
-
+$PageText = $ShoppingCart->getPageText('index.php');
 $CategoryID = $ShoppingCart->setDefault($_GET['CategoryID'], 0) + 0;
 
 $qid = $ShoppingCart->queryProductDetails($ProductID);

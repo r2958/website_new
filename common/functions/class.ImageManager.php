@@ -339,6 +339,7 @@ class ImageManager
 
 	function doProcessUploadForm()
 	{
+		 global $Page;
 		$UploadedImage = $this->doUploadAndResizeImage($_POST["ImageName"], $_POST["ImageSize"], $_POST["ImageSizeH"], $_POST["ImageSizeW"], $_POST["ImageQuality"], @$_POST["ImageNameNew"], $_POST["AllowRename"]);
 
 		$Page->PageTitle = "Image Upload Complete";
