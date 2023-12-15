@@ -3,19 +3,19 @@
 	<head>
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 <title><? $this->pv($PageText->PageTitle) ?></title>
-<meta name="keywords" content="Ibs-controls,HVAC controls,Damper motors,damper actuators,DM,floating Damper ,thermostats,temperature sensor, enclosures.motorized valves,flow switch ,converters,Ntinuously modulating,switch thermostat,floating valves,spring return,electronic thermostats,floating/modulating thermostat,relays,solid state relays,valves,flow switch" />
-
-<meta name="description" content="IBS-Controls supplier of HVAC temperature sensors(pt100,pt1000),Damper Actuators,electronic thermostats,Motorized Valves,damper motors  for Heating, Ventilation and Air Conditioning system."/>
+<meta name="keywords" content="toys, children's toys, educational toys, plush toys, model toys, puzzle toys, indoor games, baby toys, remote control toys, learning toys, creative toys, educational games, playground, toy cars, dolls, building blocks, toy collection, toy store, toy discounts, recommended toys">
+<meta name="description" content="Discover a world of joy with our diverse collection of toys for all ages. From educational games to playful plushies, find the perfect toy for your child's happiness." >
 <meta http-equiv="imagetoolbar" content="no"/>
 <meta name="robots" content="index, follow"/>
 <meta name="robots" CONTENT="NOARCHIVE">
 <meta name="revisit-after" content="7 days">
-<meta name="copyright" content="Website Designed by IBS-CONTROLS Ltd.," />
-<meta name="author" content="IBS-CONTROLS.Ltd.">
-<meta name="verify-v1" content="TIbAKc7X3+sVmi7xGc5TW0NU3FoxVFetJm7pvtw0zkI=" />
+<meta name="copyright" content="Website Designed by andyweiren" />
+<meta name="author" content="Andyweiren.Ltd.HK">
 <link type="text/css" rel="stylesheet" href="/style.css" media="screen" />
 <link type="text/css" rel="stylesheet" href="/products.css" media="screen" />
 <link type="text/css" rel="stylesheet" href="/style_print.css" media="print" />
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+
 <script type="text/javascript" src="/common/cart4/javascripts/javascripts.js"></script>
 
 

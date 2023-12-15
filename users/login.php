@@ -1,14 +1,14 @@
 <?php
+ob_start();
 require_once "../application.php";
-
+$ShoppingCart->showSiteHeader();
 $errors = new Aobject;
 if($User->checkLogin()){
 	//var_dump($_SESSION);exit;
 	header('Location: /');
 }else{
-	echo 'xxxx';
-	var_dump($_SESSION);
-	echo '----';
+	//echo 'Please login or register first!';
+	//var_dump($_SESSION);
 	//exit;
 }
 
@@ -32,6 +32,8 @@ if(isset($_POST['done']) && ($_POST['done'] == 'Yes')) {
 
 
 ?>
+<h2 style="align:center;">Login with your register account</h2>
+<div align="center">
 <form name="entryform" method="post" action="/users/login.php">
 	<div id="errorBox" class="<? echo ((count(get_object_vars($errors)) > 0)) ? 'active' : 'inactive'; ?>">Invalid login, please try again.</div>
 	<table border="0" cellspacing="0" cellpadding="2">
@@ -47,3 +49,5 @@ if(isset($_POST['done']) && ($_POST['done'] == 'Yes')) {
 	<input type="hidden" name="done" value="Yes"> <input type="submit" value="Login">
 </form>
 <a href="/users/forgot_password.php">Forgot Your Password?</a>
+</div>
+<? $ShoppingCart->showSiteFooter(); ?>

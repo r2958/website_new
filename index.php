@@ -20,6 +20,10 @@ if($CategoryID > 0) {
 $ShoppingCart->showSiteHeader();
 $ShoppingCart->showTextOrHTML($PageText->PageText, $PageText->PageFormat);
 
+//$ShoppingCart->showCategories();
+
+
+
 if($CategoryID > 0) {
 	$ShoppingCart->showTextOrHTML($cat->PageText, $cat->PageFormat);
 
