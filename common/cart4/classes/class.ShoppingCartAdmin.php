@@ -702,7 +702,7 @@ class ShoppingCartAdmin
 	}
 	
 	
-	function getCategoryDD($output, $preselected, $parent=0, $indent='') 
+	function getCategoryDD(&$output, &$preselected, $parent=0, $indent='') 
 	{
 	/* recursively go through the category tree, starting at a parent, and
 	 * drill down, printing options for a selection list box.  preselected
