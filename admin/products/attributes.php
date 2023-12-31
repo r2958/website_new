@@ -14,7 +14,7 @@ if(isset($_POST['done']) && ($_POST['done'] == 'Yes')) {
 		$Admin->doInsertAttribute();
 	}
 	$Admin->createBaseAttribute($_POST['ProductID']);
-
+	
 	$Redirect = 'attributes.php?ProductID=' . $_POST['ProductID'] . '&CategoryID=' . $_POST['CategoryID'] . '&UpdateComplete=Yes';
 	include($CFG->serverroot . '/common/admin_area/inc_liveupdate.php');
 	die;
@@ -33,7 +33,8 @@ $Admin->createBaseAttribute($row->ProductID);
 
 $count = 0;
 $qid = $Admin->queryAttributesForProduct($row->ProductID);
-
+class Object {}
+$Page  = new Object;
 $Page->PageTitle = 'Product Attributes - ' . $row->ProductName;
 $Admin->showAdminHeader();
 $Admin->showProductHeader();

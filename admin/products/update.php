@@ -14,7 +14,7 @@ if(isset($_POST['done']) && ($_POST['done'] == 'Yes')) {
 	}
 	$Admin->assignProductToCategories($ProductID, $_POST['categories']);
 	$Admin->createBaseAttribute($ProductID);
-	
+	//echo "dddx";exit;	
 	$Redirect = $_SERVER['PHP_SELF'] . '?ProductID=' . $ProductID . '&CategoryID=' . $_POST['CategoryID'] . '&UpdateComplete=Yes';
 	include($CFG->serverroot . '/common/admin_area/inc_liveupdate.php');
 	die;
@@ -32,7 +32,7 @@ if($_GET['ProductID'] != '') {
 	}
 	$Admin->getCategoryDD($category_options, $frm['categories']);
 	
-	$Page->PageTitle = 'Product Details - ' . $frm['ProductName'];
+//	$Page->PageTitle = 'Product Details - ' . $frm['ProductName'];
 } else {
 	$frm['CompanyID'] = $ShoppingCart->setDefault($_GET['CompanyID'], 0);
 	/* build the categories listbox options, preselect the top item */

@@ -889,7 +889,7 @@ class ShoppingCart
 
 	function queryProductsByCategory($CategoryID)
 	{
-		$Query = "SELECT products.ProductID, ProductName, ProductDescription, PageText, OnSpecial FROM products, products_categories WHERE products.ProductID = products_categories.ProductID AND CategoryID = '" . $this->DB->escape($CategoryID) . "' AND Display = 1 ORDER BY " . $this->SITE->OrderProductsBy;
+		$Query = "SELECT products.ProductID, ProductName, ProductDescription, PageText, OnSpecial,Image,url FROM products, products_categories WHERE products.ProductID = products_categories.ProductID AND CategoryID = '" . $this->DB->escape($CategoryID) . "' AND Display = 1 ORDER BY " . $this->SITE->OrderProductsBy;
 		return new PagedResultSet($Query, $this->SITE->ProductsPerPage);
 	}
 
@@ -1383,12 +1383,17 @@ class ShoppingCart
 		$AlignTag = '';
 		$ImageRoot = $this->CFG->siteroot . '/images' . $Image;
 		$ImagePath = '/images' . $Image;
+		$Cop = '?imageMogr2/thumbnail/200x/crop/235x297/gravity/center/interlace/0/quality/100';
+		$Domain = 'https://andyweiren-1258832441.cos.ap-shanghai.myqcloud.com';
+		$Domain = 'https://img.andyweiren.com';
+		//$Domain = 'https://andyweiren-1258832441.cos.accelerate.myqcloud.com';
+		$ImagePath = $Domain.'/pic2'.$ImagePath.".jpg".$Cop;
 		if($Text != '') $TextTag = 'alt="' . $Text . '"';
 		if($Align != '') $AlignTag = 'align="' . $Align . '"';
 
 		if(file_exists($ImageRoot . '.jpg')) {
 			$size = getimagesize($ImageRoot . '.jpg');
-			return '<img src="' . $ImagePath . '.jpg" border="0" ' . $AlignTag . ' alt="' . $Text . '" ' . '' . ' width="235" height="297" />';
+			return '<img src="' . $ImagePath . '"  border="0" ' . $AlignTag . ' alt="' . $Text . '" ' . '' . ' width="235" height="297" />';
 
 		} elseif(file_exists($ImageRoot . '.png')) {
 			$size = getimagesize($ImageRoot . '.png');
@@ -1595,7 +1600,8 @@ class ShoppingCart
 		global $cat;
 		$Image1Thumbnail = '/products/' . $Product->ProductID . '_01_th';
 		
-		
+		//var_dump($Product);
+		$Imgsrc = '<img class="product-image" src="' . $Product->Image . '"  border="0" ' . ' alt="' . $Product->ProductName . '" ' . '' . ' width="235" height="297" />';	
 		
 		$ProductLink = '/product.php?ProductID=' . $Product->ProductID . '&CategoryID=' . $cat->CategoryID;
 		echo '<form action="/cart.php" method="get" name="AddItem" onsubmit="return checkform(this);">';
@@ -1603,8 +1609,9 @@ class ShoppingCart
 		if($this->SITE->ShowImage == 'Yes') {
 			echo '<tr>';
 			echo '<td align="center">';
-			echo '<a href="' . $ProductLink . '" title="' . $Product->ProductName . '">';
-			$this->showImageOrText($Image1Thumbnail, '');
+			echo '<a class="product-link"  href="' . $ProductLink . '" title="' . $Product->ProductName . '">';
+			//$this->showImageOrText($Image1Thumbnail, '');
+			echo $Imgsrc;
 			echo '</a>';
 			echo '</td>';
 			echo '</tr>';
