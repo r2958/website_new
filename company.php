@@ -1,6 +1,8 @@
 <?
 require_once('application.php');
 $CompanyID = $ShoppingCart->setDefault($_GET['CompanyID'], 0) + 0;
+class Object {}
+$PageText = new Object();
 
 if($CompanyID > 0) {
 	$qid = $ShoppingCart->queryCompanyDetails($CompanyID);

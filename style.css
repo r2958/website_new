@@ -6,6 +6,10 @@ body {
 	background-color: #FFF;
 }
 
+.product-grid {
+    box-shadow: 3px 3px 8px 0px rgba(0, 0, 0, 0.1);
+}
+
 a {
 	color: #008348;
 
@@ -97,7 +101,7 @@ h4 {
 
 #main-table {
 	border-left: 0px solid #ACA899;
-	border-right: 1px solid #ACA899;
+	border-right: 0px solid #ACA899;
 	background-color: white;
 }
 

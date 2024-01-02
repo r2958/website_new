@@ -1605,7 +1605,7 @@ class ShoppingCart
 		
 		$ProductLink = '/product.php?ProductID=' . $Product->ProductID . '&CategoryID=' . $cat->CategoryID;
 		echo '<form action="/cart.php" method="get" name="AddItem" onsubmit="return checkform(this);">';
-		echo '<table cellspacing="0" cellpadding="1" width="100%" height="100%">';
+		echo '<table cellspacing="0" cellpadding="1" width="100%" height="100%" class="product-grid">';
 		if($this->SITE->ShowImage == 'Yes') {
 			echo '<tr>';
 			echo '<td align="center">';

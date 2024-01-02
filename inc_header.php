@@ -11,7 +11,7 @@
 <meta name="revisit-after" content="7 days">
 <meta name="copyright" content="Website Designed by andyweiren" />
 <meta name="author" content="Andyweiren.Ltd.HK">
-<link type="text/css" rel="stylesheet" href="/style.css?version=20230104" media="screen" />
+<link type="text/css" rel="stylesheet" href="/style.css?version=2024011" media="screen" />
 <link type="text/css" rel="stylesheet" href="/products.css" media="screen" />
 <link type="text/css" rel="stylesheet" href="/style_print.css" media="print" />
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -117,7 +117,6 @@
       color: #fff;
       padding: 10px;
       text-align: center;
-      position: fixed;
       bottom: 0;
       width: 100%;
     }
