@@ -4,7 +4,7 @@ FROM ubuntu:16.04
 # 更新软件包列表
 RUN apt-get update
 
-# 安装 Apache 和 PHP 7.0
+# 安装 Apache、PHP 7.0 和 Git
 RUN apt-get install -y apache2 php7.0 libapache2-mod-php7.0 git
 
 # 将 Apache 的默认站点目录设置为 /var/www/html
@@ -19,8 +19,12 @@ RUN git clone https://github.com/r2958/website_new.git /var/www/html/public && \
     cd /var/www/html/public && \
     git checkout master
 
+# 拷贝 php.ini 文件
+COPY php.ini /etc/php/7.0/apache2/php.ini
+
 # 暴露 Apache 端口
 EXPOSE 80
 
-# 启动 Apache 服务
-CMD ["apache2ctl", "-D", "FOREGROUND"]
+# 重启 Apache 服务
+CMD service apache2 restart && tail -f /var/log/apache2/access.log
+
