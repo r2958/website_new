@@ -1,62 +1,24 @@
-FROM debain
-LABEL  "author"="andyweiren<andyweiren@tencent.com>"
+# 使用官方 Ubuntu 16.04 镜像
+FROM ubuntu:16.04
 
-ADD ./docker/sources.list /etc/apt/
-RUN apt-get update \
- && apt-get install --yes --force-yes \
-    php7.0 \
-    php7.0-cgi \
-    php7.0-cli \
-    php7.0-common \
-    php7.0-curl \
-    php7.0-dev \
-    php7.0-fpm \
-    php7.0-mysql \
-    php7.0-sqlite3 \
-    php7.0-json \
-    php7.0-xml \
-    php7.0-zip \
-    php7.0-gd \
-    php7.0-bcmath \
-    php7.0-dba \
-    php7.0-imap \
-    php7.0-ldap \
-    php7.0-mcrypt \
-    php7.0-mbstring \
-    php7.0-odbc \
-    php7.0-opcache \
-    php7.0-sqlite3 \
-    php7.0-memcached \
-    libmemcached-dev \
-    libmemcached11 \
-    pkg-config \
-    php7.0-redis \
-    libgmp10 \
-    libgmp-dev \
-    php7.0-gmp \
-    supervisor \
-    nginx \
-  && useradd nginx
+# 更新软件包列表
+RUN apt-get update
 
-RUN mkdir -p /data/log/php-fpm/ \
- && mkdir -p /data/log/nginx/ \
- && mkdir -p /data/conf \
- && mkdir -p /data/app/ \
- && mkdir -p /var/log/php-fpm/ \
- && chown -R www-data.www-data /data/log /data/conf /data/app/
+# 安装 Apache 和 PHP 7.0
+RUN apt-get install -y apache2 php7.0 libapache2-mod-php7.0 git
 
-ADD ./docker/nutcracker2 /usr/local/bin/nutcracker
-RUN chmod +x /usr/local/bin/nutcracker
+# 将 Apache 的默认站点目录设置为 /var/www/html
+RUN sed -i 's/\/var\/www\/html/\/var\/www\/html\/public/g' /etc/apache2/sites-available/000-default.conf
+RUN sed -i 's/\/var\/www\/html/\/var\/www\/html\/public/g' /etc/apache2/sites-available/default-ssl.conf
 
-COPY ./docker/supervisor/conf.d /etc/supervisor/conf.d
-ADD ./docker/fpm /etc/php/7.0/fpm
-ADD ./docker/html/check.html /data/www/
-COPY ./docker/nginx /etc/nginx
+# 创建项目目录
+RUN mkdir -p /var/www/html/public
 
-ADD ./docker/background.sh /
-RUN chmod +x /background.sh
+# 克隆 GitHub 仓库
+RUN git clone https://github.com/r2958/website_new.git /var/www/html/public
 
+# 暴露 Apache 端口
 EXPOSE 80
-CMD ["/background.sh"]
 
-ADD . /data/app/website_new
+# 启动 Apache 服务
+CMD ["apache2ctl", "-D", "FOREGROUND"]
