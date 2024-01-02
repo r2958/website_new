@@ -14,8 +14,10 @@ RUN sed -i 's/\/var\/www\/html/\/var\/www\/html\/public/g' /etc/apache2/sites-av
 # 创建项目目录
 RUN mkdir -p /var/www/html/public
 
-# 克隆 GitHub 仓库
-RUN git clone https://github.com/r2958/website_new.git /var/www/html/public
+# 克隆 GitHub 仓库并切换到 master 分支
+RUN git clone https://github.com/r2958/website_new.git /var/www/html/public && \
+    cd /var/www/html/public && \
+    git checkout master
 
 # 暴露 Apache 端口
 EXPOSE 80

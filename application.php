@@ -19,7 +19,7 @@ $CFG->siteurl	= $_SERVER['SERVER_ADDR'];
 /* Database Library and Connection Information */
 require_once($CFG->serverroot . '/common/functions/class.DB.php');
 $DB = new DB;
-$DB->Host = 'localhost';
+$DB->Host = '47.100.240.225';
 $DB->Database = 'ibscontrols';
 $DB->Username = 'root';
 $DB->Password = 'travel';
