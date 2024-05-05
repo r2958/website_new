@@ -11,7 +11,7 @@ if($CategoryID > 0) {
 	$cat = $DB->fetchObject($qid);
 	$qid = $ShoppingCart->queryProductsByCategory($CategoryID);
 	$PageText->PageTitle = $cat->CategoryName;
-	if($qid->totalrows > 0) $PageText->PageTitle .= ':'.'Supplier of HVAC Controls';
+	if($qid->totalrows > 0) $PageText->PageTitle .= ':'.'Supplier of Toys Shop';
 } else {
 	$PageText = $ShoppingCart->getPageText('index.php');
 }

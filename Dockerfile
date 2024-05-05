@@ -5,7 +5,7 @@ FROM ubuntu:16.04
 RUN apt-get update
 
 # 安装 Apache、PHP 7.0、MySQLi 扩展和 Git
-RUN apt-get install -y apache2 php7.0 libapache2-mod-php7.0 php7.0-mysql git
+RUN apt-get install -y apache2 php7.0 libapache2-mod-php7.0 php7.0-mysql git php-curl
 
 # 启用 MySQLi 扩展
 RUN phpenmod mysqli
