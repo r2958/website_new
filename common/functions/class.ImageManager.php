@@ -538,7 +538,7 @@ class ImageManager
 	function showErrorPage($ErrorMessage)
 	{
 		global $_SERVER;
-		$Page->PageTitle = "ERROR:";
+		//$Page->PageTitle = "ERROR:";
 		$this->showPageHeader();
 		echo "<BR><BR><b>ERROR:</b><BR><BR>".$ErrorMessage."<br><br>";
 		if($_SERVER["HTTP_REFERER"] != "") {

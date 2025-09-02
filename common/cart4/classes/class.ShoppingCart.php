@@ -1600,7 +1600,7 @@ class ShoppingCart
 		global $cat;
 		$Image1Thumbnail = '/products/' . $Product->ProductID . '_01_th';
 		
-		//var_dump($Product);
+		//var_dump($Product);exit;
 		$Imgsrc = '<img class="product-image" src="' . $Product->Image . '"  border="0" ' . ' alt="' . $Product->ProductName . '" ' . '' . ' width="235" height="297" />';	
 		
 		$ProductLink = '/product.php?ProductID=' . $Product->ProductID . '&CategoryID=' . $cat->CategoryID;
