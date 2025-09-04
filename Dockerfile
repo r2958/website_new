@@ -5,7 +5,7 @@ FROM ubuntu:16.04
 RUN apt-get update
 
 # 安装 Apache、PHP 7.0、MySQLi 扩展和 Git
-RUN apt-get install -y apache2 php7.0 libapache2-mod-php7.0 php7.0-mysql git php-curl
+RUN apt-get install -y apache2 php7.0 libapache2-mod-php7.0 php7.0-mysql git php-curl php7-gd
 
 # 启用 MySQLi 扩展
 RUN phpenmod mysqli
@@ -18,7 +18,6 @@ RUN sed -i 's/\/var\/www\/html/\/var\/www\/html\/public/g' /etc/apache2/sites-av
 RUN mkdir -p /var/www/html/public
 
 # 克隆 GitHub 仓库并直接拉取 master 分支
-RUN git clone -b master https://github.com/r2958/website_new.git /var/www/html/public
 
 # 拷贝 php.ini 文件
 COPY php.ini /etc/php/7.0/apache2/php.ini

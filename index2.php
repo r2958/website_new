@@ -372,9 +372,12 @@
             <div class="content-section story-section">
                 <div class="text-content">
                     <h2>品牌故事</h2>
-                    <p>Andyweiren 玩具商城创立的初衷，源于我们对玩具与收藏品的热爱。我们坚信，玩具不仅仅是儿童的玩物，更是连接不同世代情感的桥梁，是成年人释放内心童真、表达个性的艺术品。我们走遍全球，与顶尖的设计师和制造商合作，只为将最具创意和匠心精神的产品带给每一位玩家。从精致的模型手办到充满想象力的潮流玩具，每一个产品都承载着我们的梦想与承诺。</p>
+                    <p>Welcome to our online figure shop, a dream destination for every collector and anime enthusiast! We understand your passion for figures, and thus, we meticulously select and present each one with the principles of "ingenious craftsmanship and beautiful prices" to you.
+                        We promise that all our figures are sourced from officially licensed channels. From the prototype design to the painting and coloring, every detail embodies the designer's ingenuity and passion, striving to perfectly restore the character's image in your heart. Here, you can not only find the most popular limited editions on the market but also discover exquisite pieces with unique artistic value.
+What's more, we are committed to offering these stunning works of art at the most affordable prices. By optimizing our supply chain and reducing intermediate links, we ensure you can acquire your beloved figures at a better value. Whether you are a seasoned collector or a beginner, we will provide you with an unparalleled shopping experience and thoughtful customer service.
+Browse our kingdom of figures now and add more brilliance to your collection!</p>
                 </div>
-                <img src="https://images.unsplash.com/photo-1579294248810-6395561a7a03?q=80&w=1770&auto=format&fit=crop" alt="Andyweiren 品牌故事">
+                <img src="/images/shouban.jpg" width="200px" height="200px" alt="Andyweiren 品牌故事">
             </div>
 
             <div class="content-section">
