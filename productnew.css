@@ -1,0 +1,243 @@
+        .main-content {
+            flex-grow: 1;
+        }
+
+        .product-card {
+            background-color: #ffffff;
+            border-radius: 12px;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08); /* 突出产品卡片 */
+        }
+
+        @media (min-width: 768px) {
+            .product-card {
+                flex-direction: row;
+            }
+        }
+
+        .image-section {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        @media (min-width: 768px) {
+            .image-section {
+                width: 50%;
+            }
+        }
+        .main-image {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+            object-fit: contain; /* 确保图片完整显示 */
+        }
+        .thumbnail-container {
+            display: flex;
+            justify-content: flex-start;
+            gap: 15px; /* 增加缩略图间距 */
+            margin-top: 15px;
+        }
+        .thumbnail-image {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border: 3px solid transparent; /* 边框默认透明 */
+            border-radius: 6px;
+            cursor: pointer;
+            transition: border-color 0.3s ease, transform 0.2s ease; /* 增加过渡效果 */
+        }
+        .thumbnail-image:hover {
+            transform: scale(1.05); /* 鼠标悬停时轻微放大 */
+        }
+        .thumbnail-image.active {
+            border-color: #e67e22; /* 选中时边框变色，更醒目 */
+        }
+
+        .details-section {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        @media (min-width: 768px) {
+            .details-section {
+                width: 50%;
+            }
+        }
+        .product-title {
+            font-size:24px; /* 标题字号加大 */
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+        .price-info {
+            font-size: 40px;
+            font-weight: bold;
+            color: #e74c3c;
+            margin-bottom: 20px;
+        }
+        .info-group {
+            margin-bottom: 15px;
+            padding: 15px 20px;
+            background-color: #f9f9f9;
+            border-left: 4px solid #ff9800; /* 侧边条颜色统一为橙色 */
+            border-radius: 4px;
+        }
+        .info-item {
+            display: flex;
+            margin-bottom: 8px;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        .info-label {
+            font-weight: bold;
+            color: #555;
+            min-width: 80px;
+        }
+        .info-text {
+            color: #666;
+        }
+        .add-to-cart-section {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+        .add-to-cart-info {
+            font-size: 18px;
+            color: #2c3e50;
+        }
+        .add-to-cart-info .price {
+            font-size: 28px; /* 购物车价格字号加大 */
+            font-weight: bold;
+            color: #e74c3c;
+        }
+   
+        .add-to-cart-btn {
+            background-color: #ff9800; /* 活泼的亮橙色 */
+            color: #fff;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            text-decoration: none;
+            text-align: center;
+        }
+        .add-to-cart-btn:hover {
+            background-color: #f57c00; /* 鼠标悬停时颜色变深 */
+            transform: translateY(-2px);
+        }
+        
+        .product-spec-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+            background-color: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); /* 增加阴影 */
+        }
+        .product-spec-table table {
+            width: 100%;
+        }
+        .product-spec-table th, .product-spec-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        .product-spec-table th {
+            background-color: #f9f9f9;
+            font-weight: bold;
+            color: #555;
+        }
+        .product-spec-table tr:last-child td {
+            border-bottom: none;
+        }
+        .product-spec-table a {
+            color: #e67e22;
+            text-decoration: none;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            font-size: 15px;
+            color: #e67e22;
+            text-decoration: none;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .bottom-section {
+            background-color: #ff9800; /* 底部与顶部导航颜色一致，形成呼应 */
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+
+        /* 飞行图片样式 */
+        #fly-image {
+            position: fixed;
+            z-index: 9999;
+            width: 50px; /* 飞行图片的大小 */
+            height: 50px;
+            border-radius: 50%; /* 可选，让图片变成圆形 */
+            pointer-events: none; /* 忽略鼠标事件 */
+            transition: all 0.8s cubic-bezier(0.5, -0.75, 0.7, 1); /* 抛物线动画的关键 */
+            opacity: 0;
+        }
+
+        /* +1 标记样式 */
+        .plus-one {
+            position: absolute;
+            font-size: 16px;
+            font-weight: bold;
+            color: #e74c3c; /* 颜色与价格保持一致 */
+            opacity: 0;
+            animation: fly-out 1s forwards; /* 动画效果 */
+        }
+
+        /* 关键帧动画：+1 标记向上飞出并消失 */
+        @keyframes fly-out {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-20px);
+                opacity: 0;
+            }
+        }
+
+        /* 为表格内的按钮单独设置样式 */
+        .table-add-btn {
+            background-color: #ff9800; /* 活泼的亮橙色 */
+            color: #fff;
+            padding: 8px 12px; /* 较小的内边距 */
+            border: none;
+            border-radius: 6px;
+            font-size: 14px; /* 字体更小以适应表格 */
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block; /* 确保内边距和宽度生效 */
+            line-height: 1; /* 避免文字垂直居中问题 */
+        }
+
+        .table-add-btn:hover {
+            background-color: #f57c00; /* 鼠标悬停时颜色变深 */
+            transform: translateY(-1px);
+        }      

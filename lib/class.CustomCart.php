@@ -16,22 +16,26 @@ class CustomShoppingCart extends ShoppingCart
 		return $this->DB->numRows($qid);
 	}
 	
-
+// <li><a id="CategoryID1" href="#"><span class="icon">🎁</span>玩具套装</a></li>
 	function showCategories() 
 	{
+	
 		global $CategoryID, $OpenedCategories;
 		$qid = $this->DB->query("SELECT CategoryID, CategoryName, CategoryDescription FROM categories WHERE ParentID = 0 AND Display = 1 AND InMenu = 1 ORDER BY MenuOrder, CategoryName");
-		echo '<ul>';
+		//echo '<ul>';
 		while ($row = $this->DB->fetchObject($qid)) {
-			$class = ($this->countChildrenCategories($row->CategoryID) > 0) ? "folder" : "page";
-			echo chr(9) . '<li style="list-style: disc" class="' . $class . '"><a id="CategoryID' . $row->CategoryID . '" title="' . $row->CategoryDescription . '" href="/index.php?CategoryID=' . $row->CategoryID . '">';
+
+			echo '<li><a id="CategoryID' . $row->CategoryID . '" title="' . $row->CategoryDescription . '" href="/category.php?CategoryID=' . $row->CategoryID . '">'.'<span class="icon">🎁 </span>'.chr(9);
 			$this->pv($row->CategoryName);
 			echo '</a></li>' . chr(13) . chr(10);
+
+
+
 			if((@in_array($row->CategoryID, $OpenedCategories))) {
-				$this->showSubCategories($row->CategoryID, 1);
+				//$this->showSubCategories($row->CategoryID, 1);
 			}
 		}
-		echo '</ul>';
+		//echo '</ul>';
 	}
 	
 	function showSubCategories($CategoryID, $Level) 

@@ -1300,6 +1300,13 @@ class ShoppingCart
 		include($this->CFG->siteroot . '/inc_footer.php');
 	}
 
+	function showCategoryFooter()
+	{
+
+		include($this->CFG->siteroot . '/inc_category_footer.php');
+	}
+
+
 
 	function showPopupHeader()
 	{
@@ -1592,6 +1599,58 @@ class ShoppingCart
 		echo '</big></b>';
 		echo '</div>';
 	}
+	/*
+
+
+
+	                <a href="/product-detail.php?id=1" class="product-item">
+                        <img src="http://43.142.220.215/images/products/2_01_th.jpg" alt="商品1">
+                        <div class="product-info">
+                            <span class="product-title">Myethos 小乔 天鹅之梦手办</span>
+                            <span class="product-price">￥300.00</span>
+                        </div>
+                    </a>
+	*/
+	function showProductsGrid2($qid,$category)
+	{
+		global $querystring;
+		
+		echo	'<div class="main-content">
+				<div class="product-list-container">
+					<div class="product-list-header">
+						<h1>'.$category->CategoryName.'</h1>
+						<div class="filter-menu">
+							<span>排序: 价格 ↓</span>
+						</div>
+					</div>
+					<div class="product-grid">';
+		
+	
+		for($i = 0; $i < $this->SITE->ProductsPerPage; $i++) {
+			if($Product = $qid->fetchObject()) {
+				$Image1Thumbnail = '/images/products/' . $Product->ProductID . '_01_th.jpg';
+
+				echo ' <a href="/product.php?ProductID='.$Product->ProductID.'&CategoryID='.$category->CategoryID.'" class="product-item">';
+				echo '<img src="'.$Image1Thumbnail.'" alt="'.$Product->ProductName.'">';
+				echo '<div class="product-info">';
+				echo '<span class="product-title">'.$Product->ProductName.'</span>';	
+				echo '<span class="product-price">￥'.$Product->Price.'</span>';
+				echo '</div>';
+				echo '</a>';
+			}
+		}
+
+				echo '</div>
+				</div>
+			</div>';
+	
+
+
+	}
+
+	
+	
+
 
 
 

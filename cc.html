@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>商品列表 - Andyweiren 玩具商城</title>
+    <meta name="keywords" content="玩具, 潮流玩具, 收藏品, 手办, 模型, 商品列表">
+    <meta name="description" content="Andyweiren 玩具商城商品列表，浏览各类高品质、新潮的玩具与收藏品。">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <style>
+        /* 🎨 全局样式与配色优化 - 橙色主题 */
+        body {
+            font-family: 'PingFang SC', 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, sans-serif;
+            background-color: #fcf6f3; /* 柔和的浅橙色背景，减少视觉疲劳 */
+            margin: 0;
+            padding: 0;
+            color: #2c3e50; /* 深色文字，对比度高且不刺眼 */
+        }
+
+        .top-menu {
+            background-color: #ff9800; /* 顶部导航改为温暖的橙色 */
+            color: #fff;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: flex-end;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 增加轻微阴影，提升层次感 */
+        }
+        .top-menu ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+        }
+        .top-menu ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+        .top-menu ul li a:hover {
+            color: #f39c12; /* 鼠标悬停时变为亮黄色 */
+            transform: translateY(-2px);
+        }
+        .top-menu ul li .icon {
+            margin-right: 8px;
+        }
+
+        .main-wrapper {
+            display: flex;
+            flex-direction: column;
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+            gap: 20px;
+        }
+
+        @media (min-width: 768px) {
+            .main-wrapper {
+                flex-direction: row;
+            }
+        }
+
+        .left-sidebar {
+            width: 100%;
+            max-width: 250px;
+        }
+
+        @media (min-width: 768px) {
+            .left-sidebar {
+                flex-shrink: 0;
+            }
+        }
+
+        .menu {
+            background-color: #ffffff; /* 菜单背景改为白色，与页面背景形成区分 */
+            color: #333;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); /* 增加阴影，提升质感 */
+        }
+        .menu .catelogn {
+            font-size: 18px; /* 标题字号加大 */
+            font-weight: bold;
+            color: #e67e22; /* 标题使用品牌色 */
+            padding: 10px 0;
+            border-bottom: 2px solid #e0e0e0; /* 底部边框加粗 */
+            margin-bottom: 10px;
+        }
+        .menu ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .menu ul li a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #555;
+            font-size: 15px;
+            padding: 10px 8px;
+            border-radius: 4px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .menu ul li a:hover {
+            background-color: #f0f0f0; /* 悬停背景色更柔和 */
+            color: #333;
+        }
+
+        /* 为菜单链接添加一个激活状态样式 */
+        .menu ul li a.active {
+            background-color: #f0f0f0; /* 激活时的背景色 */
+            color: #FF9800; /* 激活时的文字颜色 */
+            font-weight: bold; /* 字体加粗 */
+            border-left: 4px solid #FF9800; /* 左侧添加亮橙色边框 */
+            padding-left: 4px; /* 调整内边距以适应新边框 */
+        }
+
+        /* 保持hover效果 */
+        .menu ul li a:hover {
+            background-color: #f0f0f0; /* 悬停背景色更柔和 */
+            color: #333;
+        }
+
+        .search-form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .search-form input[type="text"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .search-form input[type="submit"] {
+            padding: 10px 15px;
+            background-color: #ff9800; /* 搜索按钮颜色与菜单标题一致 */
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .search-form input[type="submit"]:hover {
+            background-color: #d35400;
+        }
+
+        .contact-box {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #666;
+            margin-top: 10px;
+        }
+        .contact-box b {
+            font-size: 16px;
+            color: #333;
+        }
+        .contact-box a {
+            color: #e67e22;
+            text-decoration: none;
+        }
+
+        .main-content {
+            flex-grow: 1;
+        }
+
+        /* 商品列表特有样式 */
+        .product-list-container {
+            background-color: #ffffff;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+        }
+        .product-list-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 10px;
+        }
+        .product-list-header h1 {
+            font-size: 24px;
+            color: #2c3e50;
+            margin: 0;
+        }
+        .product-list-header .filter-menu {
+            font-size: 14px;
+            color: #555;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        @media (min-width: 576px) {
+            .product-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        @media (min-width: 992px) {
+            .product-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        .product-item {
+            display: flex;
+            flex-direction: column;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+        }
+        .product-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+        .product-item img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            aspect-ratio: 1 / 1; /* 统一图片宽高比 */
+        }
+        .product-info {
+            padding: 15px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            flex-grow: 1; /* 确保信息区域高度一致 */
+        }
+        .product-info .product-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #333;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .product-info .product-price {
+            font-size: 18px;
+            color: #e74c3c;
+            font-weight: bold;
+        }
+
+        .bottom-section {
+            background-color: #ff9800; /* 底部与顶部导航颜色一致，形成呼应 */
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        /* 飞行图片样式 */
+        .fly-image-temp {
+            position: fixed;
+            z-index: 9999;
+            width: 50px; /* 飞行图片的大小 */
+            height: 50px;
+            border-radius: 50%; /* 可选，让图片变成圆形 */
+            pointer-events: none; /* 忽略鼠标事件 */
+            transition: all 0.8s cubic-bezier(0.5, -0.75, 0.7, 1); /* 抛物线动画的关键 */
+            opacity: 0;
+        }
+
+        /* +1 标记样式 */
+        .plus-one {
+            position: absolute;
+            font-size: 16px;
+            font-weight: bold;
+            color: #e74c3c; /* 颜色与价格保持一致 */
+            opacity: 0;
+            animation: fly-out 1s forwards; /* 动画效果 */
+        }
+
+        /* 关键帧动画：+1 标记向上飞出并消失 */
+        @keyframes fly-out {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-20px);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-menu">
+        <ul>
+            <li><a href="/index.php"><span class="icon">🏠</span>主页</a></li>
+            <li><a href="/users/login.php" title="登录"><span class="icon">🔑</span>登录</a></li>
+            <li><a href="/users/signup.php" title="注册"><span class="icon">📝</span>注册</a></li>
+            <li><a href="/cart.php" id="cart-link" title="购物车"><span class="icon">🛒</span>购物车</a></li>
+        </ul>
+    </div>
+
+    <div class="main-wrapper">
+        <div class="left-sidebar">
+            <div class="menu">
+                <div class="catelogn">产品分类</div>
+                <ul>
+                    <li><a href="/index.php"><span class="icon">🏠</span>主页</a></li>
+                    <li><a id="CategoryID1" href="#" class="active"><span class="icon">🎁</span>玩具套装</a></li>
+                    <li><a id="CategoryID2" href="#"><span class="icon">👟</span>玩具鞋</a></li>
+                    <li><a id="CategoryID3" href="#"><span class="icon">💡</span>玩具灯</a></li>
+                    <li><a id="CategoryID4" href="#"><span class="icon">👕</span>玩具服装</a></li>
+                </ul>
+            </div>
+
+            <div class="menu">
+                <div class="catelogn">站点搜索</div>
+                <form id="SearchForm" class="search-form" name="search" action="/search.php" method="get">
+                    <input type="text" name="SearchFor" placeholder="搜索商品..." />
+                    <input type="submit" name="dosearch" value="搜索" />
+                </form>
+            </div>
+
+            <div class="menu">
+                <div class="catelogn">联系我们</div>
+                <div class="contact-box">
+                    <b>Toys Company Cn</b><br />
+                    HongKong china<br />
+                    HongKong china<br />
+                    HongKong,&nbsp;Yukon Territory&nbsp;210012<br />
+                    CA<br /><br />
+                    86-021-33770514<br />
+                    555-666-0606<br />
+                    传真: 317-317-3137<br /><br />
+                    邮箱:<br />
+                    <a href="mailto:test@test.com">test@test.com</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="product-list-container">
+                <div class="product-list-header">
+                    <h1>玩具套装</h1>
+                    <div class="filter-menu">
+                        <span>排序: 价格 ↓</span>
+                    </div>
+                </div>
+                
+                <div class="product-grid">
+                    <a href="/product-detail.php?id=1" class="product-item">
+                        <img src="http://43.142.220.215/images/products/2_01_th.jpg" alt="商品1">
+                        <div class="product-info">
+                            <span class="product-title">Myethos 小乔 天鹅之梦手办</span>
+                            <span class="product-price">￥300.00</span>
+                        </div>
+                    </a>
+                    <a href="/product-detail.php?id=2" class="product-item">
+                        <img src="http://43.142.220.215/images/products/2_01_th.jpg" alt="商品2">
+                        <div class="product-info">
+                            <span class="product-title">复古机器人套装</span>
+                            <span class="product-price">￥150.00</span>
+                        </div>
+                    </a>
+                    <a href="/product-detail.php?id=3" class="product-item">
+                        <img src="http://43.142.220.215/images/products/2_01_th.jpg" alt="商品3">
+                        <div class="product-info">
+                            <span class="product-title">迷你积木城堡</span>
+                            <span class="product-price">￥85.00</span>
+                        </div>
+                    </a>
+                    <a href="/product-detail.php?id=4" class="product-item">
+                        <img src="http://43.142.220.215/images/products/2_01_th.jpg" alt="商品4">
+                        <div class="product-info">
+                            <span class="product-title">星际探险队模型</span>
+                            <span class="product-price">￥220.00</span>
+                        </div>
+                    </a>
+                    <a href="/product-detail.php?id=5" class="product-item">
+                        <img src="http://43.142.220.215/images/products/2_01_th.jpg" alt="商品5">
+                        <div class="product-info">
+                            <span class="product-title">魔法森林小精灵</span>
+                            <span class="product-price">￥99.00</span>
+                        </div>
+                    </a>
+                    <a href="/product-detail.php?id=6" class="product-item">
+                        <img src="http://43.142.220.215/images/products/2_01_th.jpg" alt="商品6">
+                        <div class="product-info">
+                            <span class="product-title">未来战士可动人偶</span>
+                            <span class="product-price">￥450.00</span>
+                        </div>
+                    </a>
+                    <a href="/product-detail.php?id=7" class="product-item">
+                        <img src="http://43.142.220.215/images/products/2_01_th.jpg" alt="商品7">
+                        <div class="product-info">
+                            <span class="product-title">海洋生物系列盲盒</span>
+                            <span class="product-price">￥60.00</span>
+                        </div>
+                    </a>
+                    <a href="/product-detail.php?id=8" class="product-item">
+                        <img src="http://43.142.220.215/images/products/2_01_th.jpg" alt="商品8">
+                        <div class="product-info">
+                            <span class="product-title">超音速跑车模型</span>
+                            <span class="product-price">￥180.00</span>
+                        </div>
+                    </a>
+                    <a href="/product-detail.php?id=9" class="product-item">
+                        <img src="http://43.142.220.215/images/products/2_01_th.jpg" alt="商品9">
+                        <div class="product-info">
+                            <span class="product-title">蒸汽朋克机械臂</span>
+                            <span class="product-price">￥380.00</span>
+                        </div>
+                    </a>
+                    <a href="/product-detail.php?id=10" class="product-item">
+                        <img src="http://43.142.220.215/images/products/2_01_th.jpg" alt="商品10">
+                        <div class="product-info">
+                            <span class="product-title">宇宙飞船积木</span>
+                            <span class="product-price">￥299.00</span>
+                        </div>
+                    </a>
+                    <a href="/product-detail.php?id=11" class="product-item">
+                        <img src="http://43.142.220.215/images/products/2_01_th.jpg" alt="商品11">
+                        <div class="product-info">
+                            <span class="product-title">小熊布偶套装</span>
+                            <span class="product-price">￥75.00</span>
+                        </div>
+                    </a>
+                    <a href="/product-detail.php?id=12" class="product-item">
+                        <img src="http://43.142.220.215/images/products/2_01_th.jpg" alt="商品12">
+                        <div class="product-info">
+                            <span class="product-title">恐龙世界模型</span>
+                            <span class="product-price">￥210.00</span>
+                        </div>
+                    </a>
+                    <a href="/product-detail.php?id=13" class="product-item">
+                        <img src="http://43.142.220.215/images/products/2_01_th.jpg" alt="商品13">
+                        <div class="product-info">
+                            <span class="product-title">赛博忍者手办</span>
+                            <span class="product-price">￥500.00</span>
+                        </div>
+                    </a>
+                    <a href="/product-detail.php?id=14" class="product-item">
+                        <img src="http://43.142.220.215/images/products/2_01_th.jpg" alt="商品14">
+                        <div class="product-info">
+                            <span class="product-title">猫咪茶会盲盒</span>
+                            <span class="product-price">￥60.00</span>
+                        </div>
+                    </a>
+                    <a href="/product-detail.php?id=15" class="product-item">
+                        <img src="http://43.142.220.215/images/products/2_01_th.jpg" alt="商品15">
+                        <div class="product-info">
+                            <span class="product-title">奇幻独角兽</span>
+                            <span class="product-price">￥110.00</span>
+                        </div>
+                    </a>
+                    <a href="/product-detail.php?id=16" class="product-item">
+                        <img src="http://43.142.220.215/images/products/2_01_th.jpg" alt="商品16">
+                        <div class="product-info">
+                            <span class="product-title">城市建造者积木</span>
+                            <span class="product-price">￥330.00</span>
+                        </div>
+                    </a>
+                    <a href="/product-detail.php?id=17" class="product-item">
+                        <img src="http://43.142.220.215/images/products/2_01_th.jpg" alt="商品17">
+                        <div class="product-info">
+                            <span class="product-title">古代神话人偶</span>
+                            <span class="product-price">￥250.00</span>
+                        </div>
+                    </a>
+                    <a href="/product-detail.php?id=18" class="product-item">
+                        <img src="http://43.142.220.215/images/products/2_01_th.jpg" alt="商品18">
+                        <div class="product-info">
+                            <span class="product-title">太空宇航员模型</span>
+                            <span class="product-price">￥199.00</span>
+                        </div>
+                    </a>
+                    <a href="/product-detail.php?id=19" class="product-item">
+                        <img src="http://43.142.220.215/images/products/2_01_th.jpg" alt="商品19">
+                        <div class="product-info">
+                            <span class="product-title">魔兽系列收藏卡</span>
+                            <span class="product-price">￥45.00</span>
+                        </div>
+                    </a>
+                    <a href="/product-detail.php?id=20" class="product-item">
+                        <img src="http://43.142.220.215/images/products/2_01_th.jpg" alt="商品20">
+                        <div class="product-info">
+                            <span class="product-title">精灵宝可梦手办</span>
+                            <span class="product-price">￥350.00</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bottom-section">
+        Registered Names and Trademarks are the copyright and property of their respective owners.
+        &copy; 2024 Andyweiren Toy Store. All Rights Reserved.
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuLinks = document.querySelectorAll('.menu ul li a');
+
+            // 为每个菜单链接添加点击事件监听器
+            menuLinks.forEach(link => {
+                link.addEventListener('click', (event) => {
+                    // 阻止链接默认跳转行为
+                    // event.preventDefault();
+
+                    // 移除所有菜单链接的 'active' 类
+                    menuLinks.forEach(item => {
+                        item.classList.remove('active');
+                    });
+
+                    // 为当前点击的链接添加 'active' 类
+                    event.currentTarget.classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

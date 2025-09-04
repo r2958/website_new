@@ -2,6 +2,8 @@
 require_once('application.php');
 $CategoryID = $ShoppingCart->setDefault($_GET['CategoryID'], 0) + 0;
 $PageText = $ShoppingCart->getPageText('index.php');
+$Category = null;
+
 
 if($CategoryID > 0) {
 	$qid = $ShoppingCart->queryCategoryDetails($CategoryID);
@@ -17,16 +19,19 @@ if($CategoryID > 0) {
 $ShoppingCart->showSiteHeader();
 
 
-$ShoppingCart->showTextOrHTML($PageText->PageText, $PageText->PageFormat);
+
+//var_dump($ShoppingCart->showCategories());
+//exit;
+//$ShoppingCart->showTextOrHTML($PageText->PageText, $PageText->PageFormat);
 
 
 if($CategoryID > 0) {
-	$ShoppingCart->showTextOrHTML($cat->PageText, $cat->PageFormat);
+	//$ShoppingCart->showTextOrHTML($cat->PageText, $cat->PageFormat);
 
 	if($DB->numRows($qid->results) == 0) {
 		$ShoppingCart->showCookiesRequiredText();
 	} else {
-		$ShoppingCart->showProductsGrid($qid);
+		$ShoppingCart->showProductsGrid2($qid,$cat);
 		//$ShoppingCart->showMultiProductAddToCartForm($CategoryID);
 	}
 }else {
@@ -43,5 +48,5 @@ if($CategoryID > 0) {
 }
 
 
-$ShoppingCart->showSiteFooter();
+$ShoppingCart->showSiteFooter(); 
 ?>

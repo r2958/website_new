@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>【王者荣耀】天鹅之梦 小乔典藏手办</title>
+    <meta name="keywords" content="王者荣耀, 小乔, 天鹅之梦, 手办, 典藏, Myethos, 收藏品, 模型">
+    <meta name="description" content="探索《王者荣耀》官方典藏手办，精美还原游戏角色小乔“天鹅之梦”，细节考究，极具收藏价值。">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <style>
+        /* 🎨 全局样式与配色优化 - 橙色主题 */
+        body {
+            font-family: 'PingFang SC', 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, sans-serif;
+            background-color: #fcf6f3; /* 柔和的浅橙色背景，减少视觉疲劳 */
+            margin: 0;
+            padding: 0;
+            color: #2c3e50; /* 深色文字，对比度高且不刺眼 */
+        }
+
+        .top-menu {
+            background-color: #ff9800; /* 顶部导航改为温暖的橙色 */
+            color: #fff;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: flex-end;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 增加轻微阴影，提升层次感 */
+        }
+        .top-menu ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+        }
+        .top-menu ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+        .top-menu ul li a:hover {
+            color: #f39c12; /* 鼠标悬停时变为亮黄色 */
+            transform: translateY(-2px);
+        }
+        .top-menu ul li .icon {
+            margin-right: 8px;
+        }
+
+        .main-wrapper {
+            display: flex;
+            flex-direction: column;
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+            gap: 20px;
+        }
+
+        @media (min-width: 768px) {
+            .main-wrapper {
+                flex-direction: row;
+            }
+        }
+
+        .left-sidebar {
+            width: 100%;
+            max-width: 250px;
+        }
+        
+        @media (min-width: 768px) {
+            .left-sidebar {
+                flex-shrink: 0;
+            }
+        }
+
+        .menu {
+            background-color: #ffffff; /* 菜单背景改为白色，与页面背景形成区分 */
+            color: #333;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); /* 增加阴影，提升质感 */
+        }
+        .menu .catelogn {
+            font-size: 18px; /* 标题字号加大 */
+            font-weight: bold;
+            color: #e67e22; /* 标题使用品牌色 */
+            padding: 10px 0;
+            border-bottom: 2px solid #e0e0e0; /* 底部边框加粗 */
+            margin-bottom: 10px;
+        }
+        .menu ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .menu ul li a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #555;
+            font-size: 15px;
+            padding: 10px 8px;
+            border-radius: 4px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .menu ul li a:hover {
+            background-color: #f0f0f0; /* 悬停背景色更柔和 */
+            color: #333;
+        }
+        .menu ul li .icon {
+            margin-right: 8px;
+        }
+
+        /* 为菜单链接添加一个激活状态样式 */
+        .menu ul li a.active {
+            background-color: #f0f0f0; /* 激活时的背景色 */
+            color: #FF9800; /* 激活时的文字颜色 */
+            font-weight: bold; /* 字体加粗 */
+            border-left: 4px solid #FF9800; /* 左侧添加亮橙色边框 */
+            padding-left: 4px; /* 调整内边距以适应新边框 */
+        }
+
+        /* 保持hover效果 */
+        .menu ul li a:hover {
+            background-color: #f0f0f0; /* 悬停背景色更柔和 */
+            color: #333;
+        }
+
+
+
+        .search-form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .search-form input[type="text"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .search-form input[type="submit"] {
+            padding: 10px 15px;
+            background-color: #ff9800; /* 搜索按钮颜色与菜单标题一致 */
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .search-form input[type="submit"]:hover {
+            background-color: #d35400;
+        }
+
+        .contact-box {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #666;
+            margin-top: 10px;
+        }
+        .contact-box b {
+            font-size: 16px;
+            color: #333;
+        }
+        .contact-box a {
+            color: #e67e22;
+            text-decoration: none;
+        }
+
+        .main-content {
+            flex-grow: 1;
+        }
+
+        .product-card {
+            background-color: #ffffff;
+            border-radius: 12px;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08); /* 突出产品卡片 */
+        }
+
+        @media (min-width: 768px) {
+            .product-card {
+                flex-direction: row;
+            }
+        }
+
+        .image-section {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        @media (min-width: 768px) {
+            .image-section {
+                width: 50%;
+            }
+        }
+        .main-image {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+            object-fit: contain; /* 确保图片完整显示 */
+        }
+        .thumbnail-container {
+            display: flex;
+            justify-content: flex-start;
+            gap: 15px; /* 增加缩略图间距 */
+            margin-top: 15px;
+        }
+        .thumbnail-image {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border: 3px solid transparent; /* 边框默认透明 */
+            border-radius: 6px;
+            cursor: pointer;
+            transition: border-color 0.3s ease, transform 0.2s ease; /* 增加过渡效果 */
+        }
+        .thumbnail-image:hover {
+            transform: scale(1.05); /* 鼠标悬停时轻微放大 */
+        }
+        .thumbnail-image.active {
+            border-color: #e67e22; /* 选中时边框变色，更醒目 */
+        }
+
+        .details-section {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        @media (min-width: 768px) {
+            .details-section {
+                width: 50%;
+            }
+        }
+        .product-title {
+            font-size:24px; /* 标题字号加大 */
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+        .price-info {
+            font-size: 40px;
+            font-weight: bold;
+            color: #e74c3c;
+            margin-bottom: 20px;
+        }
+        .info-group {
+            margin-bottom: 15px;
+            padding: 15px 20px;
+            background-color: #f9f9f9;
+            border-left: 4px solid #ff9800; /* 侧边条颜色统一为橙色 */
+            border-radius: 4px;
+        }
+        .info-item {
+            display: flex;
+            margin-bottom: 8px;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        .info-label {
+            font-weight: bold;
+            color: #555;
+            min-width: 80px;
+        }
+        .info-text {
+            color: #666;
+        }
+        .add-to-cart-section {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+        .add-to-cart-info {
+            font-size: 18px;
+            color: #2c3e50;
+        }
+        .add-to-cart-info .price {
+            font-size: 28px; /* 购物车价格字号加大 */
+            font-weight: bold;
+            color: #e74c3c;
+        }
+   
+        .add-to-cart-btn {
+            background-color: #ff9800; /* 活泼的亮橙色 */
+            color: #fff;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            text-decoration: none;
+            text-align: center;
+        }
+        .add-to-cart-btn:hover {
+            background-color: #f57c00; /* 鼠标悬停时颜色变深 */
+            transform: translateY(-2px);
+        }
+        
+        .product-spec-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+            background-color: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); /* 增加阴影 */
+        }
+        .product-spec-table table {
+            width: 100%;
+        }
+        .product-spec-table th, .product-spec-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        .product-spec-table th {
+            background-color: #f9f9f9;
+            font-weight: bold;
+            color: #555;
+        }
+        .product-spec-table tr:last-child td {
+            border-bottom: none;
+        }
+        .product-spec-table a {
+            color: #e67e22;
+            text-decoration: none;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            font-size: 15px;
+            color: #e67e22;
+            text-decoration: none;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .bottom-section {
+            background-color: #ff9800; /* 底部与顶部导航颜色一致，形成呼应 */
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+
+        /* 飞行图片样式 */
+        #fly-image {
+            position: fixed;
+            z-index: 9999;
+            width: 50px; /* 飞行图片的大小 */
+            height: 50px;
+            border-radius: 50%; /* 可选，让图片变成圆形 */
+            pointer-events: none; /* 忽略鼠标事件 */
+            transition: all 0.8s cubic-bezier(0.5, -0.75, 0.7, 1); /* 抛物线动画的关键 */
+            opacity: 0;
+        }
+
+        /* +1 标记样式 */
+        .plus-one {
+            position: absolute;
+            font-size: 16px;
+            font-weight: bold;
+            color: #e74c3c; /* 颜色与价格保持一致 */
+            opacity: 0;
+            animation: fly-out 1s forwards; /* 动画效果 */
+        }
+
+        /* 关键帧动画：+1 标记向上飞出并消失 */
+        @keyframes fly-out {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-20px);
+                opacity: 0;
+            }
+        }
+
+        /* 为表格内的按钮单独设置样式 */
+        .table-add-btn {
+            background-color: #ff9800; /* 活泼的亮橙色 */
+            color: #fff;
+            padding: 8px 12px; /* 较小的内边距 */
+            border: none;
+            border-radius: 6px;
+            font-size: 14px; /* 字体更小以适应表格 */
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block; /* 确保内边距和宽度生效 */
+            line-height: 1; /* 避免文字垂直居中问题 */
+        }
+
+        .table-add-btn:hover {
+            background-color: #f57c00; /* 鼠标悬停时颜色变深 */
+            transform: translateY(-1px);
+        }      
+
+    </style>
+</head>
+<body>
+
+    <div class="top-menu">
+        <ul>
+            <li><a href="/index.php"><span class="icon">🏠</span>主页</a></li>
+            <li><a href="/users/login.php" title="登录"><span class="icon">🔑</span>登录</a></li>
+            <li><a href="/users/signup.php" title="注册"><span class="icon">📝</span>注册</a></li>
+            <li><a href="/cart.php" id="cart-link" title="购物车"><span class="icon">🛒</span>购物车</a></li>
+             
+
+        </ul>
+    </div>
+
+    <div class="main-wrapper">
+        <div class="left-sidebar">
+            <div class="menu">
+                <div class="catelogn">产品分类</div>
+                <ul>
+                    <li><a href="#"><span class="icon">🏠</span>主页</a></li>
+                    <li><a id="CategoryID1" href="#"><span class="icon">🎁</span>玩具套装</a></li>
+                    <li><a id="CategoryID2" href="#"><span class="icon">👟</span>玩具鞋</a></li>
+                    <li><a id="CategoryID3" href="#"><span class="icon">💡</span>玩具灯</a></li>
+                    <li><a id="CategoryID4" href="#"><span class="icon">👕</span>玩具服装</a></li>
+                </ul>
+            </div>
+
+            <div class="menu">
+                <div class="catelogn">站点搜索</div>
+                <form id="SearchForm" class="search-form" name="search" action="/search.php" method="get">
+                    <input type="text" name="SearchFor" placeholder="搜索商品..." />
+                    <input type="submit" name="dosearch" value="搜索" />
+                </form>
+            </div>
+
+            <div class="menu">
+                <div class="catelogn">联系我们</div>
+                <div class="contact-box">
+                    <b>Toys Company Cn</b><br />
+                    HongKong china<br />
+                    HongKong china<br />
+                    HongKong,&nbsp;Yukon Territory&nbsp;210012<br />
+                    CA<br /><br />
+                    86-021-33770514<br />
+                    555-666-0606<br />
+                    传真: 317-317-3137<br /><br />
+                    邮箱:<br />
+                    <a href="mailto:test@test.com">test@test.com</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="product-card">
+                <div class="image-section">
+                    <img class="main-image" src="http://43.142.220.215/images/products/2_01_th.jpg" alt="Myethos 天鹅之梦手办">
+                    <div class="thumbnail-container">
+                        <img class="thumbnail-image active" src="http://43.142.220.215/images/products/2_01_th.jpg" data-main-src="http://43.142.220.215/images/products/2_01_th.jpg" alt="缩略图1">
+                        <img class="thumbnail-image" src="http://43.142.220.215/images/products/3_01_th.jpg" data-main-src="http://43.142.220.215/images/products/3_01_th.jpg" alt="缩略图2">
+                        <img class="thumbnail-image" src="http://43.142.220.215/images/products/4_01_th.jpg" data-main-src="http://43.142.220.215/images/products/4_01_th.jpg" alt="缩略图3">
+                    </div>
+                </div>
+
+                <div class="details-section">
+                    <h1 class="product-title">【王者荣耀】入梦系列Myethos 天鹅之梦小乔典藏手办</h1>
+
+
+                    <div class="product-description">
+                        <h2>产品详情</h2>
+                        <p>这款典藏级手办，灵感来自《王者荣耀》人气角色小乔的“天鹅之梦”皮肤。由知名手办品牌Myethos精心打造，每一处细节都经过匠心打磨，力求完美还原...</p>
+                    </div>
+
+                    
+                    <div class="info-group">
+                        <div class="info-item">
+                            <span class="info-label">服务:</span>
+                            <span class="info-text">2-3个工作日发货 · 全国包邮(港澳台除外) · 腾讯专属优惠价</span>
+                        </div>
+                    </div>
+                    
+                    <div class="info-group">
+                        <div class="info-item">
+                            <span class="info-label">限制:</span>
+                            <span class="info-text">塑封产品非质量问题不支持退换。如有质量问题支持7天退货、15天换货，人为损坏除外。</span>
+                        </div>
+                    </div>
+                    
+                    <div class="add-to-cart-section">
+                        <div class="add-to-cart-info">
+                            价格: <span class="price">￥100.00 ～ ￥300.00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-spec-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>型号</th>
+                            <th>商品描述</th>
+                            <th>价格</th>
+                            <th>加入购物车</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>STAND MIXER SET</td>
+                            <td>【王者荣耀】入梦系列Myethos 天鹅之梦小乔典藏手办</td>
+                            <td>￥100.00</td>
+                            <td><button class="add-to-cart-fly table-add-btn" data-product-img="http://43.142.220.215/images/products/2_01_th.jpg" data-product-name="STAND MIXER SET">加入购物车</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p><a href="javascript:history.go(-1)" class="back-link">返回列表</a></p>
+        </div>
+    </div>
+
+    <div class="bottom-section">
+        Registered Names and Trademarks are the copyright and property of their respective owners.
+        &copy; 2024 Andyweiren Toy Store. All Rights Reserved.
+    </div>
+
+    <script>
+        // 🚀 JavaScript 动态效果
+        document.addEventListener('DOMContentLoaded', () => {
+            const mainImage = document.querySelector('.main-image');
+            const thumbnails = document.querySelectorAll('.thumbnail-image');
+
+            // 为每个缩略图添加点击事件监听器
+            thumbnails.forEach(thumbnail => {
+                thumbnail.addEventListener('click', () => {
+                    // 移除所有缩略图的 active 类
+                    thumbnails.forEach(thumb => thumb.classList.remove('active'));
+
+                    // 为当前点击的缩略图添加 active 类
+                    thumbnail.classList.add('active');
+
+                    // 将主图的 src 切换为当前缩略图的 data-main-src
+                    mainImage.src = thumbnail.getAttribute('data-main-src');
+                });
+            });
+
+            // 获取所有菜单链接元素
+            const menuLinks = document.querySelectorAll('.menu ul li a');
+
+            // 遍历所有菜单链接，并为每个链接添加点击事件监听器
+            menuLinks.forEach(link => {
+                link.addEventListener('click', (event) => {
+                    // 阻止链接默认跳转行为
+                    event.preventDefault();
+
+                    // 移除所有菜单链接的 'active' 类
+                    menuLinks.forEach(item => {
+                        item.classList.remove('active');
+                    });
+
+                    // 为当前点击的链接添加 'active' 类
+                    event.currentTarget.classList.add('active');
+                });
+            });
+
+
+
+        const flyButtons = document.querySelectorAll('.add-to-cart-fly');
+        const cartLink = document.getElementById('cart-link');
+
+        // 缩略图点击事件
+        thumbnails.forEach(thumbnail => {
+            thumbnail.addEventListener('click', () => {
+                thumbnails.forEach(thumb => thumb.classList.remove('active'));
+                thumbnail.classList.add('active');
+                mainImage.src = thumbnail.getAttribute('data-main-src');
+            });
+        });
+
+        // 菜单链接点击事件
+        menuLinks.forEach(link => {
+            link.addEventListener('click', (event) => {
+                event.preventDefault();
+                menuLinks.forEach(item => {
+                    item.classList.remove('active');
+                });
+                event.currentTarget.classList.add('active');
+            });
+        });
+
+        // 购物车抛物线动画函数
+        function flyToCart(button) {
+            // 1. 创建一个新的飞行图片元素
+            const flyImage = document.createElement('img');
+            flyImage.src = button.getAttribute('data-product-img');
+            flyImage.classList.add('fly-image-temp'); // 使用一个临时类名
+            document.body.appendChild(flyImage);
+
+            // 获取按钮和购物车的位置
+            const buttonRect = button.getBoundingClientRect();
+            const cartRect = cartLink.getBoundingClientRect();
+
+            // 2. 设置飞行图片的初始位置和样式
+            flyImage.style.cssText = `
+                position: fixed;
+                z-index: 9999;
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                pointer-events: none;
+                transition: all 0.8s cubic-bezier(0.5, -0.75, 0.7, 1);
+                opacity: 1;
+                left: ${buttonRect.left + buttonRect.width / 2 - 25}px;
+                top: ${buttonRect.top + buttonRect.height / 2 - 25}px;
+            `;
+
+            // 强制浏览器回流，确保动画从初始位置开始
+            void flyImage.offsetWidth;
+
+            // 3. 设置飞行图片的最终位置，并触发动画
+            flyImage.style.left = `${cartRect.left + cartRect.width / 2 - 25}px`;
+            flyImage.style.top = `${cartRect.top + cartRect.height / 2 - 25}px`;
+
+            // 4. 动画结束后，移除飞行图片并显示 +1 标记
+            setTimeout(() => {
+                flyImage.remove(); // 移除元素
+                
+                // 创建 +1 标记
+                const plusOne = document.createElement('span');
+                plusOne.textContent = '+1';
+                plusOne.classList.add('plus-one');
+                
+                // 定位并显示 +1 标记
+                plusOne.style.cssText = `
+                    position: absolute;
+                    left: ${cartRect.left + cartRect.width / 2}px;
+                    top: ${cartRect.top}px;
+                `;
+                document.body.appendChild(plusOne);
+
+                // 动画结束后移除 +1 标记
+                setTimeout(() => {
+                    plusOne.remove();
+                }, 1500); // 与 @keyframes fly-out 的时长一致
+            }, 1000);
+        }
+
+        // 为每个“加入购物车”按钮添加点击事件
+        flyButtons.forEach(button => {
+            button.addEventListener('click', (event) => {
+                flyToCart(event.currentTarget);
+            });
+        });
+
+
+
+
+
+        });
+    </script>
+
+</body>
+</html>

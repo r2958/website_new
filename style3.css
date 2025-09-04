@@ -1,0 +1,438 @@
+       /* 🎨 全局样式与配色优化 - 橙色主题 */
+        body {
+            font-family: 'PingFang SC', 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, sans-serif;
+            background-color: #fcf6f3; /* 柔和的浅橙色背景，减少视觉疲劳 */
+            margin: 0;
+            padding: 0;
+            color: #2c3e50; /* 深色文字，对比度高且不刺眼 */
+        }
+
+        .top-menu {
+            background-color: #ff9800; /* 顶部导航改为温暖的橙色 */
+            color: #fff;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: flex-end;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 增加轻微阴影，提升层次感 */
+        }
+        .top-menu ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+        }
+        .top-menu ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+        .top-menu ul li a:hover {
+            color: #f39c12; /* 鼠标悬停时变为亮黄色 */
+            transform: translateY(-2px);
+        }
+        .top-menu ul li .icon {
+            margin-right: 8px;
+        }
+
+        .main-wrapper {
+            display: flex;
+            flex-direction: column;
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+            gap: 20px;
+        }
+
+        @media (min-width: 768px) {
+            .main-wrapper {
+                flex-direction: row;
+            }
+        }
+
+        .left-sidebar {
+            width: 100%;
+            max-width: 250px;
+        }
+
+        @media (min-width: 768px) {
+            .left-sidebar {
+                flex-shrink: 0;
+            }
+        }
+
+        .menu {
+            background-color: #ffffff; /* 菜单背景改为白色，与页面背景形成区分 */
+            color: #333;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); /* 增加阴影，提升质感 */
+        }
+        .menu .catelogn {
+            font-size: 18px; /* 标题字号加大 */
+            font-weight: bold;
+            color: #e67e22; /* 标题使用品牌色 */
+            padding: 10px 0;
+            border-bottom: 2px solid #e0e0e0; /* 底部边框加粗 */
+            margin-bottom: 10px;
+        }
+        .menu ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .menu ul li .icon{
+            margin-right: 8px;
+        }
+
+
+        .menu ul li a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #555;
+            font-size: 15px;
+            padding: 10px 8px;
+            border-radius: 4px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .menu ul li a:hover {
+            background-color: #f0f0f0; /* 悬停背景色更柔和 */
+            color: #333;
+        }
+
+        /* 为菜单链接添加一个激活状态样式 */
+        .menu ul li a.active {
+            background-color: #f0f0f0; /* 激活时的背景色 */
+            color: #FF9800; /* 激活时的文字颜色 */
+            font-weight: bold; /* 字体加粗 */
+            border-left: 4px solid #FF9800; /* 左侧添加亮橙色边框 */
+            padding-left: 4px; /* 调整内边距以适应新边框 */
+        }
+
+        /* 保持hover效果 */
+        .menu ul li a:hover {
+            background-color: #f0f0f0; /* 悬停背景色更柔和 */
+            color: #333;
+        }
+
+        .search-form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .search-form input[type="text"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .search-form input[type="submit"] {
+            padding: 10px 15px;
+            background-color: #ff9800; /* 搜索按钮颜色与菜单标题一致 */
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .search-form input[type="submit"]:hover {
+            background-color: #d35400;
+        }
+
+        .contact-box {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #666;
+            margin-top: 10px;
+        }
+        .contact-box b {
+            font-size: 16px;
+            color: #333;
+        }
+        .contact-box a {
+            color: #e67e22;
+            text-decoration: none;
+        }
+
+        .main-content {
+            flex-grow: 1;
+        }
+
+        /* 主页特有样式 */
+        .hero-section {
+            background: linear-gradient(rgba(255, 152, 0, 0.8), rgba(255, 152, 0, 0.8)), url('https://images.unsplash.com/photo-1518175110842-1481e1884483') no-repeat center center/cover;
+            color: #fff;
+            text-align: center;
+            padding: 80px 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+        .hero-section h1 {
+            font-size: 48px;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        .hero-section p {
+            font-size: 20px;
+            margin-top: 10px;
+            line-height: 1.6;
+        }
+        .hero-btn {
+            display: inline-block;
+            background-color: #fff;
+            color: #ff9800;
+            padding: 15px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 30px;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+        .hero-btn:hover {
+            transform: scale(1.05);
+            background-color: #f0f0f0;
+        }
+
+        .content-section {
+            background-color: #ffffff;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+        .content-section h2 {
+            font-size: 28px;
+            color: #e67e22;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .content-section p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #555;
+            text-indent: 2em;
+        }
+        .content-section ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .content-section ul li {
+            position: relative;
+            padding-left: 30px;
+            font-size: 16px;
+            color: #333;
+            line-height: 1.6;
+        }
+        .content-section ul li::before {
+            content: '✨';
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-size: 20px;
+        }
+        
+        /* 品牌故事板块 */
+        .story-section {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+        }
+        .story-section img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .story-section .text-content {
+            flex: 1;
+        }
+        @media (min-width: 768px) {
+            .story-section {
+                flex-direction: row;
+            }
+        }
+
+
+
+        /* 商品列表特有样式 */
+        .product-list-container {
+            background-color: #ffffff;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+        }
+        .product-list-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 10px;
+        }
+        .product-list-header h1 {
+            font-size: 24px;
+            color: #2c3e50;
+            margin: 0;
+        }
+        .product-list-header .filter-menu {
+            font-size: 14px;
+            color: #555;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        @media (min-width: 576px) {
+            .product-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        @media (min-width: 992px) {
+            .product-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        .product-item {
+            display: flex;
+            flex-direction: column;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+        }
+        .product-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+        .product-item img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            aspect-ratio: 1 / 1; /* 统一图片宽高比 */
+        }
+        .product-info {
+            padding: 15px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            flex-grow: 1; /* 确保信息区域高度一致 */
+        }
+        .product-info .product-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #333;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .product-info .product-price {
+            font-size: 18px;
+            color: #e74c3c;
+            font-weight: bold;
+        }
+
+        .bottom-section {
+            background-color: #ff9800; /* 底部与顶部导航颜色一致，形成呼应 */
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        /* 飞行图片样式 */
+        .fly-image-temp {
+            position: fixed;
+            z-index: 9999;
+            width: 50px; /* 飞行图片的大小 */
+            height: 50px;
+            border-radius: 50%; /* 可选，让图片变成圆形 */
+            pointer-events: none; /* 忽略鼠标事件 */
+            transition: all 0.8s cubic-bezier(0.5, -0.75, 0.7, 1); /* 抛物线动画的关键 */
+            opacity: 0;
+        }
+
+        /* +1 标记样式 */
+        .plus-one {
+            position: absolute;
+            font-size: 16px;
+            font-weight: bold;
+            color: #e74c3c; /* 颜色与价格保持一致 */
+            opacity: 0;
+            animation: fly-out 1s forwards; /* 动画效果 */
+        }
+
+        /* 关键帧动画：+1 标记向上飞出并消失 */
+        @keyframes fly-out {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-20px);
+                opacity: 0;
+            }
+        }
+
+
+
+
+        .bottom-section {
+            background-color: #ff9800; /* 底部与顶部导航颜色一致，形成呼应 */
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        /* 飞行图片样式 */
+        .fly-image-temp {
+            position: fixed;
+            z-index: 9999;
+            width: 50px; /* 飞行图片的大小 */
+            height: 50px;
+            border-radius: 50%; /* 可选，让图片变成圆形 */
+            pointer-events: none; /* 忽略鼠标事件 */
+            transition: all 0.8s cubic-bezier(0.5, -0.75, 0.7, 1); /* 抛物线动画的关键 */
+            opacity: 0;
+        }
+
+        /* +1 标记样式 */
+        .plus-one {
+            position: absolute;
+            font-size: 16px;
+            font-weight: bold;
+            color: #e74c3c; /* 颜色与价格保持一致 */
+            opacity: 0;
+            animation: fly-out 1s forwards; /* 动画效果 */
+        }
+
+        /* 关键帧动画：+1 标记向上飞出并消失 */
+        @keyframes fly-out {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-20px);
+                opacity: 0;
+            }
+        }
