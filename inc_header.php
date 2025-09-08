@@ -7,8 +7,8 @@
     <meta name="keywords" content="玩具, 潮流玩具, 收藏品, 手办, 模型, Andyweiren, 官网">
     <meta name="description" content="Andyweiren 玩具商城，专注于提供高品质、新潮的玩具与收藏品。探索我们的品牌故事、核心优势与独家产品。">
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <link type="text/css" rel="stylesheet" href="style3.css?version=2024011" media="screen" />
-    <link type="text/css" rel="stylesheet" href="productnew.css?version=2024011" media="screen" />
+    <link type="text/css" rel="stylesheet" href="/style3.css?version=2024011" media="screen" />
+    <link type="text/css" rel="stylesheet" href="/productnew.css?version=2024011" media="screen" />
 </head>
 <body>
 
@@ -20,7 +20,7 @@
             <li class="page"><a href="/users/logout.php" title="Logout"><span class="icon">🔓</span>登出</a></li>
             <?php else:?>
             <li class="page"><a href="/index.php"><span class="icon">🏠</span>主页</a></li>
-            <li class="page"><a href="/users/login.php" title="Login"><span class="icon">🔑</span>Login</a></li>
+            <li class="page"><a href="/users/newlogin.html" title="Login"><span class="icon">🔑</span>Login</a></li>
             <li class="page"><a href="/users/signup.php" title="sign up"><span class="icon">📝</span>Register</a></a></li>
             <?php endif;?>
             <li><a href="/cart.php" id="cart-link" title="购物车"><span class="icon">🛒</span>购物车</a></li>

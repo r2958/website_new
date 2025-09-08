@@ -155,6 +155,28 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
         });
+
+
+// 获取 URL 中的查询字符串
+const queryString = window.location.search;
+
+// 使用 URLSearchParams 来解析查询字符串
+const urlParams = new URLSearchParams(queryString);
+
+// 获取 'SearchFor' 参数的值
+const searchForValue = urlParams.get('SearchFor');
+
+// 检查是否成功获取到值
+if (searchForValue) {
+  // 找到搜索框元素（假设其 name 属性为 'SearchFor'）
+  const searchInput = document.querySelector('input[name="SearchFor"]');
+  
+  // 如果找到了搜索框，就更新它的值
+  if (searchInput) {
+    searchInput.value = searchForValue;
+  }
+}
+
     </script>
 
 

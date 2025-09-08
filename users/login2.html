@@ -194,6 +194,13 @@
             transform: translateY(-2px);
         }
 
+        /* 提交按钮禁用时的样式 */
+        .submit-btn:disabled {
+            background-color: #cccccc; /* 灰色 */
+            cursor: not-allowed;
+            transform: translateY(0); /* 禁用时取消悬停效果 */
+        }
+
         .bottom-section {
             background-color: #ff9800;
             color: #fff;
@@ -201,7 +208,6 @@
             text-align: center;
             margin-top: 20px;
         }
-
     </style>
 </head>
 <body>
@@ -218,8 +224,6 @@
         <div class="login-container">
             <div class="login-card">
                 <h2>账户登录</h2>
-                <div id="login-error" class="error-message" style="text-align: center;"></div>
-
                 <form id="login-form" class="login-form">
                     <div class="form-group">
                         <label for="username">用户名</label>
@@ -276,6 +280,8 @@
 
             // 表单提交验证和处理
             const loginForm = document.getElementById('login-form');
+            const submitBtn = document.querySelector('.submit-btn');
+
             loginForm.addEventListener('submit', (event) => {
                 // 阻止表单的默认提交行为
                 event.preventDefault();
@@ -290,60 +296,32 @@
                     return; // 验证不通过，停止执行
                 }
                 
-                // 如果前端验证通过，则手动提交表单
-                // 创建一个临时的 form 元素来提交数据
+                // 如果前端验证通过，禁用按钮以防止重复提交
+                submitBtn.disabled = true;
+                submitBtn.innerText = '登录中...';
+                
+                // 手动提交表单
                 const tempForm = document.createElement('form');
-                tempForm.action = '/users/login.php';
+                tempForm.action = '/users/login_process.php';
                 tempForm.method = 'POST';
-                tempForm.style.display = 'none'; // 隐藏此表单
+                tempForm.style.display = 'none';
 
-                // 创建并添加用户名输入框
                 const usernameInput = document.createElement('input');
                 usernameInput.type = 'hidden';
                 usernameInput.name = 'Username';
                 usernameInput.value = username;
                 tempForm.appendChild(usernameInput);
 
-                // 创建并添加密码输入框
                 const passwordInput = document.createElement('input');
                 passwordInput.type = 'hidden';
                 passwordInput.name = 'Password';
                 passwordInput.value = password;
                 tempForm.appendChild(passwordInput);
 
-                // 将临时表单添加到 body 并提交
                 document.body.appendChild(tempForm);
                 tempForm.submit();
             });
         });
-
-    document.addEventListener('DOMContentLoaded', () => {
-        const urlParams = new URLSearchParams(window.location.search);
-        
-        // 获取错误信息
-        const usernameError = urlParams.get('username');
-        const passwordError = urlParams.get('password');
-        const loginFailedError = urlParams.get('login_failed');
-
-        // 显示用户名错误
-        if (usernameError) {
-            document.getElementById('username-error').innerText = '用户名不能为空！';
-        }
-
-        // 显示密码错误
-        if (passwordError) {
-            document.getElementById('password-error').innerText = '密码不能为空！';
-        }
-
-        // 显示登录失败错误
-        if (loginFailedError) {
-            document.getElementById('login-error').innerText = '用户名或密码不正确，请重试！';
-        }
-
-        // 密码显示/隐藏功能...
-        // 表单提交功能...
-    });
-
     </script>
 </body>
 </html>

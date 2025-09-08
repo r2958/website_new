@@ -1839,6 +1839,28 @@ class ShoppingCart
 	}
 
 
+	function getProductsImages($ProductID, $Direction='top')
+	{
+		// Get Image Files /images/products/4_01_th.jpg
+		$ImageLarge = array();
+		for($i = 0; $i < 3; $i++) {
+			$ImageThumbnail[$i] = '/products/' . $ProductID . '_0' . ($i + 1) . '_th';
+
+			if(file_exists($this->CFG->siteroot . '/images/products/' . $ProductID . '_0' . ($i + 1) . '_th.jpg')) {
+				$ImageLarge[$i] = '/images/products/' . $ProductID . '_0' . ($i + 1) . '_th.jpg';
+			} elseif(file_exists($this->CFG->siteroot . '/images/products/' . $ProductID . '_0' . ($i + 1) . '_th.png')) {
+				$ImageLarge[$i] = '/images/products/' . $ProductID . '_0' . ($i + 1) . '_th.png';
+			} elseif(file_exists($this->CFG->siteroot . '/images/products/' . $ProductID . '_0' . ($i + 1) . '_th.gif')) {
+				$ImageLarge[$i] = '/images/products/' . $ProductID . '_0' . ($i + 1) . '_th.gif';
+			} else {
+				//$ImageLarge[$i] = '';
+			}
+		}
+
+		return $ImageLarge;
+	}
+
+
 	function showProductDetailsImages($ProductID, $Direction='top')
 	{
 		// Get Image Files
@@ -1855,6 +1877,8 @@ class ShoppingCart
 				$ImageLarge[$i] = '';
 			}
 		}
+
+		//var_dump($ImageLarge);exit;
 
 		if(!empty($ImageLarge[0]) AND !empty($ImageLarge[1])) {
 

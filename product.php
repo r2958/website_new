@@ -10,7 +10,13 @@ $qid = $ShoppingCart->queryProductDetails($ProductID);
 if($DB->numRows($qid) == 0) header('Location:/');
 $prod = $DB->fetchObject($qid);
 
-$PageText->PageTitle = $prod->ProductName.' : IBS-Controls Ltd.';
+//array(1) { [0]=> string(28) "/images/products/4_01_th.jpg" }
+//var_dump($ShoppingCart->getProductsImages($prod->ProductID));
+$ProductImages = $ShoppingCart->getProductsImages($prod->ProductID);
+//exit;
+//var_dump($prod);
+
+$PageText->PageTitle = $prod->ProductName.' : Andrew.';
 $ShoppingCart->showSiteHeader();
 ?>
 
@@ -20,18 +26,21 @@ $ShoppingCart->showSiteHeader();
                     <img class="main-image" src="http://43.142.220.215/images/products/2_01_th.jpg" alt="Myethos 天鹅之梦手办">
                     <div class="thumbnail-container">
                         <img class="thumbnail-image active" src="http://43.142.220.215/images/products/2_01_th.jpg" data-main-src="http://43.142.220.215/images/products/2_01_th.jpg" alt="缩略图1">
-                        <img class="thumbnail-image" src="http://43.142.220.215/images/products/3_01_th.jpg" data-main-src="http://43.142.220.215/images/products/3_01_th.jpg" alt="缩略图2">
-                        <img class="thumbnail-image" src="http://43.142.220.215/images/products/4_01_th.jpg" data-main-src="http://43.142.220.215/images/products/4_01_th.jpg" alt="缩略图3">
+						<?php if($ProductImages): ?>
+							<?php foreach($ProductImages as $img):?>
+								<img class="thumbnail-image" src="<?= $img ?>" data-main-src="<?= $img ?>" alt="缩略图">
+							<?php endforeach;?>
+						<?php endif; ?>
                     </div>
                 </div>
 
                 <div class="details-section">
-                    <h1 class="product-title">【王者荣耀】入梦系列Myethos 天鹅之梦小乔典藏手办</h1>
+                    <h1 class="product-title"><?php echo $prod->ProductName;?></h1>
 
 
                     <div class="product-description">
                         <h2>产品详情</h2>
-                        <p>这款典藏级手办，灵感来自《王者荣耀》人气角色小乔的“天鹅之梦”皮肤。由知名手办品牌Myethos精心打造，每一处细节都经过匠心打磨，力求完美还原...</p>
+                        <p><? $ShoppingCart->showTextOrHTML($prod->PageText, $prod->PageFormat); ?></p>
                     </div>
 
                     
@@ -101,3 +110,4 @@ $ShoppingCart->showSiteHeader();
 </div>
 -->
 <? $ShoppingCart->showSiteFooter(); ?>
+
