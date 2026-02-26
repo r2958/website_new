@@ -17,7 +17,77 @@ class Users
 	{
 		return session_id();
 	}
-	
+	/*
+            users: [{ 
+                username: "admin", 
+                password: "123", 
+                name: "Alexander Wang", 
+                phone: "13800138000", 
+                avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80", 
+                bio: "Curator of fine things.",
+                favorites: [101, 104], 
+                addresses: [
+                    { id: 1, name: "Alexander", phone: "13800138000", detail: "Plaza 66, Nanjing West Road, Shanghai", isDefault: true },
+                    { id: 2, name: "Office", phone: "021-88888888", detail: "Lujiazui Center, Pudong New Area, Shanghai", isDefault: false }
+                ] 
+            }]
+	*/
+
+	function loginnew($Username,$Password){
+		$qid = $this->DB->query("SELECT * FROM users WHERE Username = '$Username' and Password = '$Password'");
+		$row = $this->DB->fetchObject($qid);
+		$p_user = array();
+		if($row){
+			// login in success
+			$p_user["status"]= "success";
+			$p_user["code"]= 200;
+			$p_user["message"]= "Login successful.";
+			$p_user["id"] = $row->id;
+			$p_user["name"] = $row->FirstName.' '.$row->LastName;
+			$p_user["email"] = $row->Email;
+			$p_user["tel"] = $row->Telephone;
+			$p_user["avatar"] = "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80";
+			$p_user["favorites"] = [101,2];
+			//set session
+			$_SESSION['user'] = $row;
+			$p_user["addresses"] = $this->getUserAddresses();
+
+
+			return $p_user;
+			//var_dump(json_encode($p_user));exit;
+		}else{
+			$p_user["status"]= "error";
+			$p_user["code"]= 401;
+			$p_user["message"]= "Username or password incorrect.";
+			//unset session
+			$_SESSION['user'] = "";
+			return $p_user;
+			
+			var_dump(json_encode($p_user));exit;
+			//login failed
+
+			return false;
+		}
+		
+	}
+
+	function get_current_user(){
+		if($this->checkLogin()){
+			$row = $_SESSION['user'];
+			$p_user = array();
+			$p_user["id"] = $row->id;
+			$p_user["name"] = $row->FirstName.' '.$row->LastName;
+			$p_user["email"] = $row->Email;
+			$p_user["tel"] = $row->Telephone;
+			$p_user["avatar"] = "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80";
+			$p_user["favorites"] = [101,2];
+			$p_user["addresses"] = $this->getUserAddresses();
+			return $p_user;
+		}else{
+			return null;
+		}
+	}
+
 	function login($Username,$Password){
 		$qid = $this->DB->query("SELECT * FROM users WHERE Username = '$Username' and Password = '$Password'");
 		$row = $this->DB->fetchObject($qid);
@@ -30,6 +100,41 @@ class Users
 			return false;
 		}
 		
+	}
+
+
+
+	function getUserAddresses(){
+		if(!$this->checkLogin()){
+			return false;
+		}
+		$addresses = array();
+		$addresses[] = array(
+			'id' => 1,
+			'name' => $_SESSION['user']->FirstName.' '.$_SESSION['user']->LastName,
+			'phone' => $_SESSION['user']->Telephone,
+			'detail' => $_SESSION['user']->ShippingAddress,
+			'isDefault' => true
+		);
+		$addresses[]= array(
+			'id' => 2,
+			'name' => $_SESSION['user']->FirstName.' '.$_SESSION['user']->LastName,
+			'phone' => $_SESSION['user']->Telephone,
+			'detail' => $_SESSION['user']->BillingAddress,
+			'isDefault' => false
+		);
+
+		return $addresses;
+
+		/*
+		$username = $this->getUserName();
+		$qid = $this->DB->query("SELECT * FROM user_addresses WHERE Username = '$username'");
+		$addresses = array();
+		while($row = $this->DB->fetchObject($qid)){
+			$addresses[] = $row;
+		}
+		return $addresses;
+		*/
 	}
 	
 	

@@ -893,6 +893,52 @@ class ShoppingCart
 		return new PagedResultSet($Query, $this->SITE->ProductsPerPage);
 	}
 
+	function getProductsByCategory($CategoryID)
+	{
+/*
+ * 
+ *                 { 
+                    id: 101, 
+                    name: "Royal Sapphire Necklace", 
+                    price: 12999, 
+                    category: "5", // Toy Doll
+                    img: "https://images.unsplash.com/photo-1599643478518-17488fbbcd75?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80", 
+                    images: ["https://images.unsplash.com/photo-1599643478518-17488fbbcd75?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"], 
+                    desc: "An exquisite piece featuring a central sapphire of unparalleled depth and clarity, surrounded by a halo of brilliant-cut diamonds. Crafted in 18k white gold, this necklace embodies timeless elegance and sophistication." 
+                },
+ * 
+ * 
+ * 
+ */
+
+		$Query = "SELECT products.ProductID, ProductName, ProductDescription, PageText, OnSpecial,Image,url FROM products, products_categories WHERE products.ProductID = products_categories.ProductID AND CategoryID = '" . $this->DB->escape($CategoryID) . "' AND Display = 1 ORDER BY " . $this->SITE->OrderProductsBy;
+		$qid = new PagedResultSet($Query, $this->SITE->ProductsPerPage);
+		
+		$productArray = array();
+		while ($row = $qid->fetchObject($qid)) {
+			$images = [
+				"/images/products/" . $row->ProductID . "_1.jpg",
+				"/images/products/" . $row->ProductID . "_2.jpg",
+				"/images/products/" . $row->ProductID . "_3.jpg",
+			];
+			$productArray[] = [
+				"id"   => $row->ProductID,
+				"name" => $row->ProductName,
+				"price"=> 12000,
+				"category" => $CategoryID,
+				"img" => "/images/products/" . $row->ProductID . "_01_th.jpg",
+				//"images" => ["https://images.unsplash.com/photo-1599643478518-17488fbbcd75?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80","https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"],
+				"images" => $images,
+				"desc" => $row->ProductDescription
+			];
+		}
+		//echo json_encode($productArray);exit;
+		
+		return $productArray;
+	}
+
+
+
 	function _a_queryProductsByCategory($CategoryID)
 	{
 		$Query = "SELECT products.ProductID, ProductName, ProductDescription, PageText, OnSpecial FROM products, products_categories WHERE products.ProductID = products_categories.ProductID AND CategoryID = '" . $this->DB->escape($CategoryID) . "' AND Display = 1 ORDER BY " . $this->SITE->OrderProductsBy;
@@ -990,6 +1036,23 @@ class ShoppingCart
 			echo '</ul>';
 		}
 	}
+
+
+	function getCategoryJSON($CategoryID=0, $level=0)
+		{
+			// Pull the Category List into a multi-dimensional array
+			$qid = $this->DB->query("SELECT CategoryID, ParentID, CategoryName FROM categories WHERE ParentID = '$CategoryID' AND Display = 1 AND InMenu = 1 ORDER BY MenuOrder, CategoryName");
+			$temp = array();
+			if($this->DB->numRows($qid) > 0) {
+		
+				while ($row = $this->DB->fetchObject($qid)) {
+					$temp[$row->CategoryID]= $row->CategoryName;
+				}
+				return json_encode($temp);
+		
+			}
+		}
+
 
 
 	function showCompanyList()

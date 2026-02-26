@@ -1,0 +1,6 @@
+services:
+  websitenew:
+    image: websitenew
+    build:
+      context: .
+      dockerfile: ./Dockerfile

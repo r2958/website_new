@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用户注册 - 注册新账户</title>
+    <meta name="keywords" content="用户注册, 注册, 新账户, Toys Company Cn">
+    <meta name="description" content="欢迎注册Toys Company Cn新账户，填写必要信息即可开始您的购物之旅。">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link type="text/css" rel="stylesheet" href="style3.css?version=2024011" media="screen" />
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
+    <style>
+        /* 🎨 全局样式与配色优化 - 橙色主题 */
+        body {
+            font-family: 'PingFang SC', 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, sans-serif;
+            background-color: #fcf6f3;
+            margin: 0;
+            padding: 0;
+            color: #2c3e50;
+        }
+
+        .top-menu {
+            background-color: #ff9800;
+            color: #fff;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: flex-end;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .top-menu ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+        }
+
+        .top-menu ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .top-menu ul li a:hover {
+            color: #f39c12;
+            transform: translateY(-2px);
+        }
+
+        .top-menu ul li .icon {
+            margin-right: 8px;
+        }
+
+        .main-wrapper {
+            display: flex;
+            flex-direction: column;
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+            gap: 20px;
+        }
+
+        /* 注册页面特定样式 */
+        .register-container {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 0;
+        }
+
+        .register-card {
+            background-color: #ffffff;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            width: 100%;
+            max-width: 500px; /* 控制注册卡片的最大宽度 */
+            text-align: center;
+        }
+
+        .register-card h2 {
+            font-size: 28px;
+            font-weight: bold;
+            color: #e67e22;
+            margin-bottom: 25px;
+            position: relative;
+        }
+        
+        /* 注册表单样式 */
+        .register-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            text-align: left;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        .input-group {
+            position: relative;
+            display: flex;
+            align-items: center;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .input-group:focus-within {
+            border-color: #ff9800;
+            box-shadow: 0 0 0 3px rgba(255, 152, 0, 0.2);
+        }
+
+        .input-group i {
+            font-size: 20px;
+            color: #999;
+            margin-left: 12px;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 12px 12px 12px 0;
+            border: none;
+            outline: none;
+            background: transparent;
+            font-size: 16px;
+            color: #333;
+        }
+
+        /* 密码输入框的眼睛图标样式 */
+        .password-toggle {
+            cursor: pointer;
+            padding: 0 12px;
+            color: #999;
+            transition: color 0.3s;
+        }
+
+        .password-toggle:hover {
+            color: #333;
+        }
+        
+        .form-divider {
+            border-top: 1px dashed #e0e0e0;
+            margin: 20px 0;
+        }
+
+        .submit-btn {
+            background-color: #ff9800;
+            color: #fff;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .submit-btn:hover {
+            background-color: #f57c00;
+            transform: translateY(-2px);
+        }
+
+        .login-link {
+            display: block;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #e67e22;
+            text-decoration: none;
+        }
+
+        .login-link:hover {
+            text-decoration: underline;
+        }
+
+        .bottom-section {
+            background-color: #ff9800;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="top-menu">
+        <ul>
+            <li><a href="/index.php"><span class="icon">🏠</span>主页</a></li>
+            <li><a href="/users/login.php" title="登录"><span class="icon">🔑</span>登录</a></li>
+            <li><a href="/users/signup.php" title="注册"><span class="icon">📝</span>注册</a></li>
+            <li><a href="/cart.php" id="cart-link" title="购物车"><span class="icon">🛒</span>购物车</a></li>
+        </ul>
+    </div>
+
+    <div class="main-wrapper">
+        <div class="register-container">
+            <div class="register-card">
+                <h2>新用户注册</h2>
+                <form id="register-form" class="register-form" action="/users/register_process.php" method="post">
+                    
+                    <h3>账户信息</h3>
+                    <div class="form-group">
+                        <label for="username">用户名</label>
+                        <div class="input-group">
+                            <i class="ri-user-3-line"></i>
+                            <input type="text" id="username" name="username" placeholder="请输入用户名" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">密码</label>
+                        <div class="input-group">
+                            <i class="ri-lock-line"></i>
+                            <input type="password" id="password" name="password" placeholder="请输入密码" required>
+                            <i class="ri-eye-line password-toggle" data-target="password"></i>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirm-password">确认密码</label>
+                        <div class="input-group">
+                            <i class="ri-lock-2-line"></i>
+                            <input type="password" id="confirm-password" name="confirm_password" placeholder="请再次输入密码" required>
+                            <i class="ri-eye-line password-toggle" data-target="confirm-password"></i>
+                        </div>
+                    </div>
+
+                    <div class="form-divider"></div>
+                    
+                    <h3>个人及联系信息</h3>
+                    <div class="form-group">
+                        <label for="email">电子邮件</label>
+                        <div class="input-group">
+                            <i class="ri-mail-line"></i>
+                            <input type="email" id="email" name="email" placeholder="请输入常用邮箱" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">手机号</label>
+                        <div class="input-group">
+                            <i class="ri-phone-line"></i>
+                            <input type="tel" id="phone" name="phone" placeholder="请输入手机号" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="address">收货地址</label>
+                        <div class="input-group">
+                            <i class="ri-map-pin-line"></i>
+                            <input type="text" id="address" name="address" placeholder="请输入详细收货地址" required>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="submit-btn">立即注册</button>
+                    <a href="/users/login.php" class="login-link">已有账户？返回登录</a>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <div class="bottom-section">
+        Registered Names and Trademarks are the copyright and property of their respective owners.
+        &copy; 2024 Andyweiren Toy Store. All Rights Reserved.
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 密码显示/隐藏切换功能
+            const passwordToggles = document.querySelectorAll('.password-toggle');
+            passwordToggles.forEach(toggle => {
+                toggle.addEventListener('click', (event) => {
+                    const targetId = event.currentTarget.getAttribute('data-target');
+                    const targetInput = document.getElementById(targetId);
+                    
+                    if (targetInput.type === 'password') {
+                        targetInput.type = 'text';
+                        event.currentTarget.classList.remove('ri-eye-line');
+                        event.currentTarget.classList.add('ri-eye-off-line');
+                    } else {
+                        targetInput.type = 'password';
+                        event.currentTarget.classList.remove('ri-eye-off-line');
+                        event.currentTarget.classList.add('ri-eye-line');
+                    }
+                });
+            });
+
+            // 表单验证
+            const registerForm = document.getElementById('register-form');
+            registerForm.addEventListener('submit', (event) => {
+                const password = document.getElementById('password').value;
+                const confirmPassword = document.getElementById('confirm-password').value;
+                
+                if (password !== confirmPassword) {
+                    alert('两次输入的密码不一致，请重新输入！');
+                    event.preventDefault(); // 阻止表单提交
+                    return false;
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>更新个人信息 - Toys Company Cn</title>
+    <meta name="keywords" content="更新信息, 账户设置, 个人资料, Toys Company Cn">
+    <meta name="description" content="修改您的Toys Company Cn账户个人信息。">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link type="text/css" rel="stylesheet" href="style3.css?version=2024011" media="screen" />
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
+    <style>
+        /* 🎨 全局样式与配色优化 - 橙色主题 */
+        body {
+            font-family: 'PingFang SC', 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, sans-serif;
+            background-color: #fcf6f3;
+            margin: 0;
+            padding: 0;
+            color: #2c3e50;
+        }
+
+        .top-menu {
+            background-color: #ff9800;
+            color: #fff;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: flex-end;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .top-menu ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+        }
+
+        .top-menu ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .top-menu ul li a:hover {
+            color: #f39c12;
+            transform: translateY(-2px);
+        }
+
+        .top-menu ul li .icon {
+            margin-right: 8px;
+        }
+
+        .main-wrapper {
+            display: flex;
+            flex-direction: column;
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+            gap: 20px;
+        }
+
+        /* 个人信息更新页面特定样式 */
+        .update-container {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 0;
+        }
+
+        .update-card {
+            background-color: #ffffff;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+        }
+
+        .update-card h2 {
+            font-size: 28px;
+            font-weight: bold;
+            color: #e67e22;
+            margin-bottom: 25px;
+        }
+        
+        .update-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            text-align: left;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        .input-group {
+            position: relative;
+            display: flex;
+            align-items: center;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .input-group:focus-within {
+            border-color: #ff9800;
+            box-shadow: 0 0 0 3px rgba(255, 152, 0, 0.2);
+        }
+
+        .input-group i {
+            font-size: 20px;
+            color: #999;
+            margin-left: 12px;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 12px 12px 12px 0;
+            border: none;
+            outline: none;
+            background: transparent;
+            font-size: 16px;
+            color: #333;
+        }
+
+        /* 密码输入框的眼睛图标样式 */
+        .password-toggle {
+            cursor: pointer;
+            padding: 0 12px;
+            color: #999;
+            transition: color 0.3s;
+        }
+
+        .password-toggle:hover {
+            color: #333;
+        }
+
+        /* 只读输入框样式 */
+        .input-group input[readonly] {
+            background-color: #f5f5f5;
+            cursor: not-allowed;
+            color: #888;
+        }
+
+        .input-group input[readonly]:focus-within {
+            box-shadow: none;
+        }
+        
+        .password-tip {
+            font-size: 13px;
+            color: #888;
+            margin-top: -10px;
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .submit-btn {
+            background-color: #ff9800;
+            color: #fff;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .submit-btn:hover {
+            background-color: #f57c00;
+            transform: translateY(-2px);
+        }
+
+        .back-link {
+            display: block;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #e67e22;
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .bottom-section {
+            background-color: #ff9800;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="top-menu">
+        <ul>
+            <li><a href="/index.php"><span class="icon">🏠</span>主页</a></li>
+            <li><a href="/users/login.php" title="登录"><span class="icon">🔑</span>登录</a></li>
+            <li><a href="/users/signup.php" title="注册"><span class="icon">📝</span>注册</a></li>
+            <li><a href="/cart.php" id="cart-link" title="购物车"><span class="icon">🛒</span>购物车</a></li>
+        </ul>
+    </div>
+
+    <div class="main-wrapper">
+        <div class="update-container">
+            <div class="update-card">
+                <h2>更新个人信息</h2>
+                <form id="update-form" class="update-form" action="/users/update_profile.php" method="post">
+                    
+                    <div class="form-group">
+                        <label for="username">用户名</label>
+                        <div class="input-group">
+                            <i class="ri-user-3-line"></i>
+                            <input type="text" id="username" name="username" value="user123" readonly>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">电子邮件</label>
+                        <div class="input-group">
+                            <i class="ri-mail-line"></i>
+                            <input type="email" id="email" name="email" value="user@example.com" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">手机号</label>
+                        <div class="input-group">
+                            <i class="ri-phone-line"></i>
+                            <input type="tel" id="phone" name="phone" value="13812345678" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="address">收货地址</label>
+                        <div class="input-group">
+                            <i class="ri-map-pin-line"></i>
+                            <input type="text" id="address" name="address" value="上海市浦东新区张江高科" required>
+                        </div>
+                    </div>
+
+                    <h3>修改密码（可选）</h3>
+                    <p class="password-tip">如果您不需要修改密码，请留空以下字段。</p>
+                    <div class="form-group">
+                        <label for="new-password">新密码</label>
+                        <div class="input-group">
+                            <i class="ri-lock-line"></i>
+                            <input type="password" id="new-password" name="new_password" placeholder="请输入新密码">
+                            <i class="ri-eye-line password-toggle" data-target="new-password"></i>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirm-password">确认新密码</label>
+                        <div class="input-group">
+                            <i class="ri-lock-2-line"></i>
+                            <input type="password" id="confirm-password" name="confirm_password" placeholder="请再次输入新密码">
+                            <i class="ri-eye-line password-toggle" data-target="confirm-password"></i>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="submit-btn">保存修改</button>
+                    <a href="#" class="back-link">返回个人中心</a>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <div class="bottom-section">
+        Registered Names and Trademarks are the copyright and property of their respective owners.
+        &copy; 2024 Andyweiren Toy Store. All Rights Reserved.
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 密码显示/隐藏切换功能
+            const passwordToggles = document.querySelectorAll('.password-toggle');
+            passwordToggles.forEach(toggle => {
+                toggle.addEventListener('click', (event) => {
+                    const targetId = event.currentTarget.getAttribute('data-target');
+                    const targetInput = document.getElementById(targetId);
+                    
+                    if (targetInput.type === 'password') {
+                        targetInput.type = 'text';
+                        event.currentTarget.classList.remove('ri-eye-line');
+                        event.currentTarget.classList.add('ri-eye-off-line');
+                    } else {
+                        targetInput.type = 'password';
+                        event.currentTarget.classList.remove('ri-eye-off-line');
+                        event.currentTarget.classList.add('ri-eye-line');
+                    }
+                });
+            });
+
+            // 表单验证，确保两次密码输入一致
+            const updateForm = document.getElementById('update-form');
+            updateForm.addEventListener('submit', (event) => {
+                const newPassword = document.getElementById('new-password').value;
+                const confirmPassword = document.getElementById('confirm-password').value;
+                
+                // 只有在填写了新密码时才进行验证
+                if (newPassword && newPassword !== confirmPassword) {
+                    alert('两次输入的新密码不一致，请重新输入！');
+                    event.preventDefault(); // 阻止表单提交
+                    return false;
+                }
+            });
+        });
+    </script>
+</body>
+</html>

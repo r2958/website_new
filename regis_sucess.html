@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>注册成功 - Toys Company Cn</title>
+    <meta name="keywords" content="注册成功, 完成注册, 新用户, Toys Company Cn">
+    <meta name="description" content="恭喜您，账户注册成功！欢迎来到Toys Company Cn，开始您的购物之旅。">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link type="text/css" rel="stylesheet" href="style3.css?version=2024011" media="screen" />
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
+    <style>
+        /* 🎨 全局样式与配色优化 - 橙色主题 */
+        body {
+            font-family: 'PingFang SC', 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, sans-serif;
+            background-color: #fcf6f3;
+            margin: 0;
+            padding: 0;
+            color: #2c3e50;
+        }
+
+        .top-menu {
+            background-color: #ff9800;
+            color: #fff;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: flex-end;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .top-menu ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+        }
+
+        .top-menu ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .top-menu ul li a:hover {
+            color: #f39c12;
+            transform: translateY(-2px);
+        }
+
+        .top-menu ul li .icon {
+            margin-right: 8px;
+        }
+
+        .main-wrapper {
+            display: flex;
+            flex-direction: column;
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+            gap: 20px;
+        }
+
+        /* 注册成功页面特定样式 */
+        .success-container {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 0;
+        }
+
+        .success-card {
+            background-color: #ffffff;
+            border-radius: 12px;
+            padding: 50px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .success-icon {
+            font-size: 80px;
+            color: #2ecc71; /* 绿色，代表成功 */
+            margin-bottom: 20px;
+            animation: bounceIn 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes bounceIn {
+            0% {
+                transform: scale(0.5);
+                opacity: 0;
+            }
+            60% {
+                transform: scale(1.1);
+                opacity: 1;
+            }
+            80% {
+                transform: scale(0.9);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .success-card h2 {
+            font-size: 32px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .success-card p {
+            font-size: 18px;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .success-actions {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .success-btn {
+            padding: 15px 25px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            text-decoration: none;
+            text-align: center;
+            flex: 1;
+            min-width: 180px;
+        }
+
+        .btn-login {
+            background-color: #ff9800; /* 橙色按钮 */
+            color: #fff;
+        }
+
+        .btn-login:hover {
+            background-color: #f57c00;
+            transform: translateY(-2px);
+        }
+
+        .btn-home {
+            background-color: #f0f0f0; /* 浅灰色按钮 */
+            color: #555;
+        }
+
+        .btn-home:hover {
+            background-color: #e0e0e0;
+            transform: translateY(-2px);
+        }
+
+        .bottom-section {
+            background-color: #ff9800;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="top-menu">
+        <ul>
+            <li><a href="/index.php"><span class="icon">🏠</span>主页</a></li>
+            <li><a href="/users/login.php" title="登录"><span class="icon">🔑</span>登录</a></li>
+            <li><a href="/users/signup.php" title="注册"><span class="icon">📝</span>注册</a></li>
+            <li><a href="/cart.php" id="cart-link" title="购物车"><span class="icon">🛒</span>购物车</a></li>
+        </ul>
+    </div>
+
+    <div class="main-wrapper">
+        <div class="success-container">
+            <div class="success-card">
+                <i class="ri-check-line success-icon"></i>
+                <h2>注册成功！</h2>
+                <p>恭喜您，您的账户已创建成功。欢迎加入我们！</p>
+                <div class="success-actions">
+                    <a href="/login.html" class="success-btn btn-login">立即前往登录</a>
+                    <a href="/index2.php" class="success-btn btn-home">返回首页</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="bottom-section">
+        Registered Names and Trademarks are the copyright and property of their respective owners.
+        &copy; 2024 Andyweiren Toy Store. All Rights Reserved.
+    </div>
+</body>
+</html>
