@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人账户中心 - Toys Company Cn</title>
+    <meta name="keywords" content="个人账户, 个人信息, 地址管理, 订单, Toys Company Cn">
+    <meta name="description" content="管理您的个人信息、收货地址和查看历史订单。">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link type="text/css" rel="stylesheet" href="style3.css?version=2024011" media="screen" />
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
+    <style>
+        /* 🎨 全局样式与配色优化 - 橙色主题 */
+        body {
+            font-family: 'PingFang SC', 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, sans-serif;
+            background-color: #fcf6f3;
+            margin: 0;
+            padding: 0;
+            color: #2c3e50;
+        }
+
+        .top-menu {
+            background-color: #ff9800;
+            color: #fff;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: flex-end;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .top-menu ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+        }
+
+        .top-menu ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .top-menu ul li a:hover {
+            color: #f39c12;
+            transform: translateY(-2px);
+        }
+
+        .top-menu ul li .icon {
+            margin-right: 8px;
+        }
+
+        .main-wrapper {
+            display: flex;
+            flex-direction: column;
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+            gap: 20px;
+        }
+        
+        /* 个人账户中心特定样式 */
+        .account-container {
+            display: flex;
+            gap: 30px;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            width: 100%;
+        }
+
+        /* 左侧导航栏样式 */
+        .account-sidebar {
+            flex: 0 0 250px; /* 固定宽度 */
+            padding-right: 20px;
+            border-right: 1px solid #e0e0e0;
+        }
+
+        .account-sidebar h3 {
+            font-size: 20px;
+            color: #e67e22;
+            margin-bottom: 20px;
+        }
+        
+        .account-sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .account-sidebar ul li a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 15px 20px;
+            text-decoration: none;
+            color: #555;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 8px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .account-sidebar ul li a i {
+            font-size: 20px;
+        }
+
+        .account-sidebar ul li a:hover {
+            background-color: #fcf6f3;
+        }
+        
+        .account-sidebar ul li a.active {
+            background-color: #ff9800;
+            color: #fff;
+            box-shadow: 0 2px 8px rgba(255, 152, 0, 0.3);
+        }
+
+        /* 右侧内容区域样式 */
+        .account-content {
+            flex-grow: 1;
+        }
+
+        .content-section {
+            display: none; /* 默认隐藏所有内容模块 */
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        
+        .content-section.active {
+            display: block; /* 激活时显示 */
+        }
+        
+        .content-section h2 {
+            font-size: 24px;
+            color: #e67e22;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #ff9800;
+        }
+        
+        /* 淡入动画 */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .bottom-section {
+            background-color: #ff9800;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="top-menu">
+        <ul>
+            <li><a href="/index.php"><span class="icon">🏠</span>主页</a></li>
+            <li><a href="/users/login.php" title="登录"><span class="icon">🔑</span>登录</a></li>
+            <li><a href="/users/signup.php" title="注册"><span class="icon">📝</span>注册</a></li>
+            <li><a href="/cart.php" id="cart-link" title="购物车"><span class="icon">🛒</span>购物车</a></li>
+        </ul>
+    </div>
+
+    <div class="main-wrapper">
+        <div class="account-container">
+            <aside class="account-sidebar">
+                <h3>账户中心</h3>
+                <ul>
+                    <li><a href="#" class="nav-link active" data-target="profile"><i class="ri-user-line"></i>个人信息</a></li>
+                    <li><a href="#" class="nav-link" data-target="address"><i class="ri-map-pin-line"></i>地址信息</a></li>
+                    <li><a href="#" class="nav-link" data-target="orders"><i class="ri-shopping-bag-line"></i>订单列表</a></li>
+                </ul>
+            </aside>
+
+            <main class="account-content">
+                <section id="profile" class="content-section active">
+                    <h2>个人信息</h2>
+                    <p>在这里您可以查看和修改您的个人信息，包括用户名、电子邮件和手机号。</p>
+                    <p>（这里是个人信息表单或内容）</p>
+                </section>
+
+                <section id="address" class="content-section">
+                    <h2>地址信息</h2>
+                    <p>管理您的收货地址，添加、修改或删除地址。</p>
+                    <p>（这里是地址管理列表或表单）</p>
+                </section>
+
+                <section id="orders" class="content-section">
+                    <h2>订单列表</h2>
+                    <p>查看您的所有历史订单及其状态。</p>
+                    <p>（这里是订单列表表格或卡片）</p>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <div class="bottom-section">
+        Registered Names and Trademarks are the copyright and property of their respective owners.
+        &copy; 2024 Andyweiren Toy Store. All Rights Reserved.
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const contentSections = document.querySelectorAll('.content-section');
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', (event) => {
+                    // 阻止默认的链接跳转行为
+                    event.preventDefault();
+
+                    // 移除所有导航链接的 active 类
+                    navLinks.forEach(nav => nav.classList.remove('active'));
+
+                    // 为当前点击的链接添加 active 类
+                    link.classList.add('active');
+
+                    // 获取目标内容的 ID
+                    const targetId = link.getAttribute('data-target');
+
+                    // 隐藏所有内容区域
+                    contentSections.forEach(section => section.classList.remove('active'));
+
+                    // 显示目标内容区域
+                    document.getElementById(targetId).classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
