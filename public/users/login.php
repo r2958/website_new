@@ -10,7 +10,7 @@ if(isset($_POST)&& !empty($_POST)){
 */
 
 
-$errors = new Object;
+$errors = new stdClass;
 if($User->checkLogin()){
         $userUrl = 'http://'.$CFG->siteurl."/public/users/user.php";
 }
@@ -42,7 +42,7 @@ if(isset($_POST['done']) && ($_POST['done'] == 'Yes')) {
         </div> 
         <div class="register_container" style="width:500px;min-height: 600px;float: right;border: 0px solid #000;">
             <form action="<?php echo $_SERVER['PHP_SELF'] ;?>" method="post" style="border:0px solid #000;padding-top: 50px;margin-left: 100px;" onsubmit="return checkForm(this);">
-                <div id="errorBox" class="<? echo count(get_object_vars($errors))> 0 ? 'error_active' : 'inactive'; ?>">用户名或密码错误！</div>
+                <div id="errorBox" class="<?php echo count(get_object_vars($errors))> 0 ? 'error_active' : 'inactive'; ?>">用户名或密码错误！</div>
                 <div class="filed_div">
                     <div class="form-lable"><span>用户名：</span></div>
                     <div class="ipt_div">

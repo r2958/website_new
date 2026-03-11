@@ -1,5 +1,6 @@
 <?
 include('../../application.php');
+include('../auth.php');
 
 if(isset($_POST['done']) && ($_POST['done'] == 'Yes')) {
 	if($_POST['CompanyID'] == '') $errorList[] = 'Site Error: Internal ID field left blank.';

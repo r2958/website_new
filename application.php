@@ -4,11 +4,22 @@ ini_set('register_globals',0);
 ini_set('allow_call_time_pass_reference' ,'On');
 ob_start('ob_gzhandler');
 */
-class Aobject {};
+class Aobject {
+
+};
+
 $CFG = new Aobject;
 
 /* Set Username */
 $CFG->username = 'andrew';
+
+// Fix for PHP built-in server
+if (empty($_SERVER['DOCUMENT_ROOT'])) {
+    $_SERVER['DOCUMENT_ROOT'] = dirname(__FILE__);
+}
+if (empty($_SERVER['SERVER_ADDR'])) {
+    $_SERVER['SERVER_ADDR'] = '127.0.0.1';
+}
 
 $CFG->serverroot = $_SERVER['DOCUMENT_ROOT'];
 $CFG->siteroot	= $_SERVER['DOCUMENT_ROOT'];
@@ -19,10 +30,20 @@ $CFG->siteurl	= $_SERVER['SERVER_ADDR'];
 /* Database Library and Connection Information */
 require_once($CFG->serverroot . '/common/functions/class.DB.php');
 $DB = new DB;
-$DB->Host = '47.100.240.225';
-$DB->Database = 'ibscontrols';
+
+// Make $DB accessible in global scope for Users class
+global $DB;
+$GLOBALS['DB'] = $DB;
+
+$DB->Host = 'sh-cdb-8utxi2hs.sql.tencentcdb.com:21616';
+$DB->Database = 'ibscontrols-2025';
+
+/*
+$DB->Host = 'sh-cdb-3lh7xiwc.sql.tencentcdb.com:29230';
+$DB->Database = 'testdb2026';
+*/
 $DB->Username = 'root';
-$DB->Password = 'travel@123';
+$DB->Password = 'Travel@123';
 $DB->DieOnFail = false;
 $DB->Debug = false;
 $DB->Timed = false;
@@ -43,18 +64,22 @@ session_start();
 /* Load and user classes */
 require_once($CFG->serverroot . '/common/user/class.Users.php');
 $User = new Users();
+// Fix for PHP 8+: Re-assign DB after construction
+$User->DB = $DB;
 
 //var_dump($_SESSION);
 /* Load Shopping Cart Class */
 require_once($CFG->siteroot . '/lib/class.CustomCart.php');
 $ShoppingCart = new CustomShoppingCart();
+// Fix for PHP 8+: Re-assign DB after construction
+$ShoppingCart->DB = $DB;
 
 /* Load Shopping Cart Admin Class */
 require_once($CFG->siteroot . '/lib/class.CustomCartAdmin.php');
 $Admin = new CustomShoppingCartAdmin();
 
 require_once($CFG->serverroot . '/common/functions/class.PagedResultSet.php');
-$querystring = preg_replace('(resultpage=[0-9]+&)', '', $_SERVER['QUERY_STRING']);
+$querystring = isset($_SERVER['QUERY_STRING']) ? preg_replace('(resultpage=[0-9]+&)', '', $_SERVER['QUERY_STRING']) : '';
 
 if((isset($_GET['CategoryID'])) && ($_GET['CategoryID'] > 0)) {
 	$caID=array($_GET['CategoryID']);

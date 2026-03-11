@@ -1,5 +1,6 @@
 <?
 require_once('../../application.php');
+require_once('../auth.php');
 
 //$Page->PageTitle = 'Manage Categories';
 $Admin->showAdminHeader();

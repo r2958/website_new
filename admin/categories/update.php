@@ -1,5 +1,6 @@
 <?
 require_once('../../application.php');
+require_once('../auth.php');
 
 if(isset($_POST['done']) && ($_POST['done'] == 'Yes')) {
 	if($_POST['CategoryName'] == '') $errorList[] = 'Name field left blank.';

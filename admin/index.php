@@ -1,5 +1,6 @@
 <?
 require_once('../application.php');
+require_once('auth.php');
 
 $PageText = $ShoppingCart->getPageText('admin/index.php');
 //$Page->PageTitle = 'Boca Main Menu';

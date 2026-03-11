@@ -3,6 +3,7 @@ ob_start();
 require_once "../application.php";
 $ShoppingCart->showSiteHeader();
 $errors = new Aobject;
+
 if($User->checkLogin()){
 	//var_dump($_SESSION);exit;
 	header('Location: /');
@@ -14,6 +15,7 @@ if($User->checkLogin()){
 
 /* form has been submitted */
 if(isset($_POST['done']) && ($_POST['done'] == 'Yes')) {
+	
 	if(empty($_POST['Username'])) $errors->errorUsername = true;
 	if(empty($_POST['Password'])) $errors->errorPassword = true;
 	if(count(get_object_vars($errors)) == 0) {

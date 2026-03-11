@@ -6,9 +6,9 @@ class ShoppingCartAdmin
 	
 	function ShoppingCartAdmin()
 	{
-		global $ShoppingCart, $CFG;
-		$this->ShoppingCart = $ShoppingCart;
-		$this->CFG = $CFG;
+		// Use $GLOBALS for PHP 8+ compatibility
+		$this->ShoppingCart = $GLOBALS['ShoppingCart'];
+		$this->CFG = $GLOBALS['CFG'];
 	}
 	
 
@@ -754,10 +754,12 @@ class ShoppingCartAdmin
 	
 	function doUpdateAttribute($count)
 	{
+	
 		if($_POST['AttributeName_' . $count] != "") {
 			$this->ShoppingCart->DB->query("UPDATE products_attributes SET 
 							ProductID = '{$_POST['ProductID']}', 
 							SKU = '{$_POST['SKU_' . $count]}', 
+							AttribtDescriptions = '{$_POST['AttribtDescriptions_' . $count]}', 
 							UPC = '{$_POST['UPC_' . $count]}', 
 							AttributeName = '{$_POST['AttributeName_' . $count]}', 
 							AttributeOrder = '{$_POST['AttributeOrder_' . $count]}', 
@@ -773,14 +775,17 @@ class ShoppingCartAdmin
 		} else {
 			$qid = $this->ShoppingCart->DB->query("DELETE FROM products_attributes WHERE AttributeID = '{$_POST['AttributeID_' . $count]}'");
 		}
+		//exit;
 	}
 
 	function doInsertAttribute()
 	{
+		$shippingPrice = $_POST["ShippingPrice_New"] === '' ? 0 : $_POST["ShippingPrice_New"];
 		$qid = $this->ShoppingCart->DB->query("
 			INSERT into products_attributes(
 				ProductID, 
 				SKU, 
+				AttribtDescriptions,
 				UPC, 
 				AttributeName, 
 				AttributeOrder, 
@@ -795,18 +800,20 @@ class ShoppingCartAdmin
 			) VALUES (
 				'{$_POST["ProductID"]}', 
 				'{$_POST["SKU_New"]}', 
+				'{$_POST["AttribtDescriptions_New"]}',
 				'{$_POST["UPC_New"]}', 
 				'{$_POST["AttributeName_New"]}', 
 				'{$_POST["AttributeOrder_New"]}', 
 				'{$_POST["AttributeCost_New"]}', 
 				'{$_POST["AttributePrice_New"]}', 
-				'{$_POST["ShippingPrice_New"]}', 
+				$shippingPrice, 
 				'{$_POST["ShippingWeight_New"]}', 
 				'{$_POST["ShippingLength_New"]}', 
 				'{$_POST["ShippingWidth_New"]}', 
 				'{$_POST["ShippingHeight_New"]}', 
 				'{$_POST["Display_New"]}'
 			)");
+
 	}
 	
 	

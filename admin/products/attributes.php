@@ -1,5 +1,6 @@
 <?
 require_once('../../application.php');
+require_once('../auth.php');
 
 if(isset($_POST['done']) && ($_POST['done'] == 'Yes')) {
 
@@ -33,8 +34,8 @@ $Admin->createBaseAttribute($row->ProductID);
 
 $count = 0;
 $qid = $Admin->queryAttributesForProduct($row->ProductID);
-class Object {}
-$Page  = new Object;
+class PageObject {}
+$Page  = new PageObject;
 $Page->PageTitle = 'Product Attributes - ' . $row->ProductName;
 $Admin->showAdminHeader();
 $Admin->showProductHeader();
@@ -46,6 +47,7 @@ $Admin->showProductHeader();
 		<tr>
 			<th>ID</th>
 			<th>SKU</th>
+			<th>Descriptions</th>
 			<th>UPC</th>
 			<th>Name</th>
 			<th>Order</th>
@@ -56,6 +58,7 @@ $Admin->showProductHeader();
 		<tr onclick="javascript:showDiv('details<? echo $count; ?>');">
 			<td><input type="text" name="" value="<? $ShoppingCart->pv($attribute['AttributeID']); ?>" size="6" readonly><input type="hidden" name="AttributeID_<? echo $count; ?>" value="<? $ShoppingCart->pv($attribute['AttributeID']); ?>"></td>
 			<td><input type="text" name="SKU_<? echo $count; ?>" value="<? $ShoppingCart->pv($attribute['SKU']); ?>" size="15" maxlength="25"></td>
+			<td><input type="text" name="AttribtDescriptions_<? echo $count; ?>" value="<? $ShoppingCart->pv($attribute['AttribtDescriptions']); ?>" size="15" maxlength="25"></td>
 			<td><input type="text" name="UPC_<? echo $count; ?>" value="<? $ShoppingCart->pv($attribute['UPC']); ?>" size="15" maxlength="25"></td>
 			<td><input type="text" name="AttributeName_<? echo $count; ?>" value="<? $ShoppingCart->pv($attribute['AttributeName']); ?>" size="30" maxlength="50"></td>
 			<td><input type="text" name="AttributeOrder_<? echo $count; ?>" value="<? $ShoppingCart->pv($attribute['AttributeOrder']); ?>" size="5"></td>
@@ -108,6 +111,7 @@ $Admin->showProductHeader();
 		<table border="0" cellspacing="0" cellpadding="2">
 			<tr>
 				<th>SKU</th>
+				<th>Descriptions</th>
 				<th>UPC</th>
 				<th>Name</th>
 				<th>Order</th>
@@ -117,6 +121,7 @@ $Admin->showProductHeader();
 			</tr>
 			<tr onclick="javascript:showDiv('attributeNewDetails');">
 				<td><input type="text" name="SKU_New" value="" size="15" maxlength="25"></td>
+				<td><input type="text" name="AttribtDescriptions_New" value="" size="15" maxlength="25"></td>
 				<td><input type="text" name="UPC_New" value="" size="15" maxlength="25"></td>
 				<td><input type="text" name="AttributeName_New" value="" size="30" maxlength="50"></td>
 				<td><input type="text" name="AttributeOrder_New" value="<? echo $count; ?>" size="5"></td>

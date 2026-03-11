@@ -17,8 +17,8 @@ class ASessionHandler {
 	var $DB;
 	
 	function ASessionHandler() {
-		global $DB;
-		$this->DB =& $DB;
+		// Use $GLOBALS for PHP 8+ compatibility
+		$this->DB =& $GLOBALS['DB'];
 		//$this->DB->Timed = 0;
 		session_set_save_handler(array($this, 'open'), array($this, 'close'), array($this, 'read'), array($this, 'write'), array($this, 'destroy'), array($this, 'gc'));
 	}

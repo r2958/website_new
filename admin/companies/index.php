@@ -1,5 +1,6 @@
 <?
 include('../../application.php');
+include('../auth.php');
 
 $qid = $DB->query("SELECT * FROM companies ORDER BY CompanyName");
 

@@ -4,6 +4,9 @@
 	<li><a href="/admin/products/index.php">Products</a>
 	<br /><br />
 	<li><a href="/admin/orders/index.php">Manage Orders</a>
+	<li><a href="/admin/orders2/index.php">Manage Orders2</a>
+	<li><a href="/admin/users/index.php">Manage Users</a>
+	<li><a href="/admin/users2/index.php">Manage Users2</a>
 	<br /><br />
 	<li><a href="/admin/pagetext.php">Edit Website Text</a>
 	<li><a href="/admin/settings/index.php">Website Preferences</a>

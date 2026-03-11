@@ -72,9 +72,7 @@ class DB
 	{
 		// Stripslashes if necessary, then escape with mysqli_real_escape_string
 		// This should be used on EVERY query built!!!
-		if (get_magic_quotes_gpc()) {
-			$value = stripslashes($value);
-		}
+		// Note: get_magic_quotes_gpc() was removed in PHP 8.0, magic quotes no longer exist
 		return mysqli_real_escape_string($this->Handle , $value);
 	}
 
@@ -152,6 +150,9 @@ class DB
 
 	function numRows($qid)
 	{
+		if ($qid === null || $qid === false) {
+			return 0;
+		}
 		return @mysqli_num_rows($qid);
 	}
 
@@ -360,8 +361,8 @@ class DBDump {
 
 	function DBDump($Database='')
 	{
-		global $DB;
-		$this->DB =& $DB;
+		// Use $GLOBALS for PHP 8+ compatibility
+		$this->DB =& $GLOBALS['DB'];
 		$this->Database = (!empty($Database)) ? $Database : $DB->Database;
 	}
 
@@ -419,8 +420,8 @@ class DBDump2Excel
 
 	function DBDump2Excel()
 	{
-		global $DB;
-		$this->DB =& $DB;
+		// Use $GLOBALS for PHP 8+ compatibility
+		$this->DB =& $GLOBALS['DB'];
 	}
 
 	function getTableData($Database, $Table, $CustomQuery = '')

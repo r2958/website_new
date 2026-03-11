@@ -309,6 +309,75 @@
         /* Animations */
         .fade-in { animation: fadeIn 0.5s ease-in-out; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Wishlist Button */
+        .wishlist-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            z-index: 10;
+        }
+        .wishlist-btn:hover {
+            background: #fff;
+            transform: scale(1.1);
+        }
+        .wishlist-btn i {
+            font-size: 16px;
+            color: #999;
+            transition: color 0.3s ease;
+        }
+        .wishlist-btn.active i {
+            color: #e74c3c;
+        }
+        .wishlist-btn.active {
+            background: #fff;
+        }
+
+        /* Wishlist Button in Detail Page */
+        .wishlist-btn-detail {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #fff;
+            border: 1px solid #ddd;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        .wishlist-btn-detail:hover {
+            border-color: #e74c3c;
+            transform: scale(1.05);
+        }
+        .wishlist-btn-detail i {
+            font-size: 20px;
+            color: #999;
+            transition: color 0.3s ease;
+        }
+        .wishlist-btn-detail.active {
+            border-color: #e74c3c;
+            background: #fff;
+        }
+        .wishlist-btn-detail.active i {
+            color: #e74c3c;
+        }
+
+        /* Product Image Box - Add relative positioning for wishlist button */
+        .p-img-box {
+            position: relative;
+        }
     </style>
 </head>
 <body>
@@ -410,16 +479,38 @@
             <div class="modal-header" id="address-modal-title">ADD ADDRESS</div>
             <input type="hidden" id="addr-id">
             <div class="form-group">
-                <label>Recipient Name</label>
-                <input type="text" id="addr-name" class="form-control">
+                <label>Recipient Name *</label>
+                <input type="text" id="addr-name" class="form-control" placeholder="Full name">
             </div>
             <div class="form-group">
-                <label>Phone Number</label>
-                <input type="text" id="addr-phone" class="form-control">
+                <label>Phone Number *</label>
+                <input type="text" id="addr-phone" class="form-control" placeholder="Mobile phone">
             </div>
             <div class="form-group">
-                <label>Detailed Address</label>
-                <textarea id="addr-detail" class="form-control" rows="2"></textarea>
+                <label>Country</label>
+                <select id="addr-country" class="form-control">
+                    <option value="">Loading countries...</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Province</label>
+                <input type="text" id="addr-province" class="form-control" placeholder="e.g. Shanghai">
+            </div>
+            <div class="form-group">
+                <label>City</label>
+                <input type="text" id="addr-city" class="form-control" placeholder="e.g. Shanghai">
+            </div>
+            <div class="form-group">
+                <label>District</label>
+                <input type="text" id="addr-district" class="form-control" placeholder="e.g. Pudong New Area">
+            </div>
+            <div class="form-group">
+                <label>Detailed Address *</label>
+                <textarea id="addr-detail" class="form-control" rows="2" placeholder="Street address, building, unit number"></textarea>
+            </div>
+            <div class="form-group">
+                <label>Postal Code</label>
+                <input type="text" id="addr-postcode" class="form-control" placeholder="Postal code">
             </div>
             <div class="form-group">
                 <label>
@@ -469,6 +560,60 @@
                 <h4 style="text-align: left; margin: 15px 0 10px; font-size: 14px; color: var(--primary-color);">1. SHIPPING ADDRESS</h4>
                 <div id="modal-address-list" class="address-select-list">
                     <!-- Address items injected via JS -->
+                </div>
+                <div id="checkout-address-form" style="display: none; text-align: left; margin-top: 15px; padding: 15px; background: #f9f9f9; border-radius: 4px;">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px;">
+                        <div>
+                            <label style="font-size: 12px; color: #666;">Contact Name</label>
+                            <input type="text" id="checkout-new-name" class="form-control" placeholder="Full Name" style="font-size: 13px; padding: 8px;">
+                        </div>
+                        <div>
+                            <label style="font-size: 12px; color: #666;">Phone Number</label>
+                            <input type="tel" id="checkout-new-phone" class="form-control" placeholder="13800138000" style="font-size: 13px; padding: 8px;">
+                        </div>
+                    </div>
+                    <div style="margin-bottom: 10px;">
+                        <label style="font-size: 12px; color: #666;">Country</label>
+                        <select id="checkout-new-country" class="form-control" style="font-size: 13px; padding: 8px; height: 36px;">
+                            <option value="China" selected>China</option>
+                        </select>
+                    </div>
+                    <div style="margin-bottom: 10px;">
+                        <label style="font-size: 12px; color: #666;">Province</label>
+                        <input type="text" id="checkout-new-province" class="form-control" placeholder="e.g. Shanghai" style="font-size: 13px; padding: 8px;">
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px;">
+                        <div>
+                            <label style="font-size: 12px; color: #666;">City</label>
+                            <input type="text" id="checkout-new-city" class="form-control" placeholder="City" style="font-size: 13px; padding: 8px;">
+                        </div>
+                        <div>
+                            <label style="font-size: 12px; color: #666;">District</label>
+                            <input type="text" id="checkout-new-district" class="form-control" placeholder="District" style="font-size: 13px; padding: 8px;">
+                        </div>
+                    </div>
+                    <div style="margin-bottom: 10px;">
+                        <label style="font-size: 12px; color: #666;">Detailed Address</label>
+                        <input type="text" id="checkout-new-address" class="form-control" placeholder="Street, Building, Room Number" style="font-size: 13px; padding: 8px;">
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 15px;">
+                        <div>
+                            <label style="font-size: 12px; color: #666;">Postal Code</label>
+                            <input type="text" id="checkout-new-postcode" class="form-control" placeholder="200000" style="font-size: 13px; padding: 8px;">
+                        </div>
+                        <div style="display: flex; align-items: flex-end;">
+                            <label style="display: flex; align-items: center; font-size: 13px; cursor: pointer;">
+                                <input type="checkbox" id="checkout-new-default" style="margin-right: 5px;"> Set as default address
+                            </label>
+                        </div>
+                    </div>
+                    <div style="display: flex; gap: 10px; justify-content: flex-end;">
+                        <button class="btn btn-outline" style="padding: 8px 15px; font-size: 13px;" onclick="toggleCheckoutAddressForm(false)">Cancel</button>
+                        <button class="btn btn-primary" style="padding: 8px 15px; font-size: 13px;" onclick="saveCheckoutAddress()">Save Address</button>
+                    </div>
+                </div>
+                <div id="checkout-add-address-link" style="text-align: left; margin-top: 10px;">
+                    <a onclick="toggleCheckoutAddressForm(true)" style="color: var(--primary-color); cursor: pointer; font-size: 13px; text-decoration: underline;">+ Add New Shipping Address</a>
                 </div>
 
                 <!-- Payment Section -->
@@ -618,14 +763,49 @@
         };
 
         // ================= 2. State & Core =================
+        // Load cart from localStorage on page load
+        function loadCartFromStorage() {
+            try {
+                const savedCart = localStorage.getItem('shopping_cart');
+                if (savedCart) {
+                    return JSON.parse(savedCart);
+                }
+            } catch (e) {
+                console.warn('Failed to load cart from localStorage', e);
+            }
+            return [];
+        }
+
+        // Save cart to localStorage
+        function saveCartToStorage() {
+            try {
+                localStorage.setItem('shopping_cart', JSON.stringify(state.cart));
+            } catch (e) {
+                console.warn('Failed to save cart to localStorage', e);
+            }
+        }
+
+        // Clear cart from localStorage
+        function clearCartStorage() {
+            try {
+                localStorage.removeItem('shopping_cart');
+            } catch (e) {
+                console.warn('Failed to clear cart from localStorage', e);
+            }
+        }
+
         const state = {
             currentUser: null,
-            cart: [],
-            categories: [], 
-            currentList: [], 
+            cart: loadCartFromStorage(),
+            categories: [],
+            currentList: [],
             currentCategory: 'all',
-            currentPage: 1,  
+            currentPage: 1,
             itemsPerPage: 8,
+            orders: [],
+            ordersLoaded: false, // Flag to prevent infinite loading
+            wishlist: [], // Wishlist items
+            wishlistLoaded: false, // Flag to prevent infinite loading
             checkout: { // NEW: Temporary checkout state
                 subtotal: 0,
                 shipping: 0,
@@ -655,15 +835,65 @@
                 const response = await fetch('http://localhost:9000/api.php?action=checkLogin');
                 // Handle non-200 responses if necessary, though fetch only rejects on network error
                 if (!response.ok) throw new Error('Network response was not ok');
-                
+
                 const data = await response.json();
 
-                // Logic based on user requirement: 
+                // Logic based on user requirement:
                 // Success returns user object with "id", "name", etc.
                 // Failure returns {"isLoggedIn": false}
-                
+
                 if (data && data.id) {
                     // User is logged in
+                    // Fetch addresses from API
+                    let addresses = [];
+                    try {
+                        const addrResponse = await fetch('http://localhost:9000/api.php?action=getAddresses');
+                        const addrData = await addrResponse.json();
+                        if (addrData.status === 'success' && addrData.data) {
+                            addresses = addrData.data.map(a => ({
+                                id: a.id,
+                                name: a.consignee,
+                                phone: a.phone,
+                                country: a.country,
+                                detail: [a.province, a.city, a.district, a.address].filter(Boolean).join(' '),
+                                isDefault: a.is_default
+                            }));
+                        }
+                    } catch (e) {
+                        console.warn('Failed to fetch addresses', e);
+                        addresses = data.addresses || [];
+                    }
+
+                    // Fetch orders from API
+                    let orders = [];
+                    try {
+                        const ordersResponse = await fetch('http://localhost:9000/api.php?action=getOrders');
+                        const ordersData = await ordersResponse.json();
+                        if (ordersData.status === 'success' && ordersData.data) {
+                            orders = ordersData.data.map(o => ({
+                                id: o.id,
+                                order_number: o.order_number,
+                                date: o.order_date ? o.order_date.split('T')[0] : '',
+                                subtotal: o.subtotal,
+                                shipping: o.shipping,
+                                tax: o.tax,
+                                total: o.total,
+                                status: o.status,
+                                payment_status: o.payment_status || 'unpaid',
+                                payment_method: o.payment_method,
+                                items: o.items || [],
+                                address: o.address || {}
+                            }));
+                        }
+                        // Mark orders as loaded
+                        state.ordersLoaded = true;
+                    } catch (e) {
+                        console.warn('Failed to fetch orders', e);
+                        orders = db.orders || [];
+                        state.ordersLoaded = true;
+                    }
+                    state.orders = orders;
+
                     state.currentUser = {
                         username: data.email, // Use email as username identifier if username is missing
                         name: data.name,
@@ -671,7 +901,7 @@
                         phone: data.tel, // Map API 'tel' to internal 'phone'
                         avatar: data.avatar,
                         favorites: data.favorites || [],
-                        addresses: data.addresses || []
+                        addresses: addresses
                     };
                     console.log("User auto-logged in:", state.currentUser.name);
                 } else {
@@ -682,6 +912,259 @@
             } catch (error) {
                 console.warn("Check login failed (likely due to localhost environment), defaulting to logged out.", error);
                 state.currentUser = null;
+            }
+        }
+
+        // --- Fetch Addresses from API ---
+        async function fetchAddresses() {
+            if (!state.currentUser) return [];
+            try {
+                const response = await fetch('http://localhost:9000/api.php?action=getAddresses');
+                const data = await response.json();
+
+                if (data.status === 'success' && data.data) {
+                    return data.data.map(a => ({
+                        id: Number(a.id), // Ensure id is a number
+                        name: a.consignee,
+                        phone: a.phone,
+                        country: a.country || 'China',
+                        detail: [a.province, a.city, a.district, a.address].filter(Boolean).join(' '),
+                        province: a.province || '',
+                        city: a.city || '',
+                        district: a.district || '',
+                        address: a.address || '',
+                        postcode: a.postcode || '',
+                        isDefault: a.is_default
+                    }));
+                } else if (data.needLogin) {
+                    // Not logged in, redirect to login
+                    state.currentUser = null;
+                    navigateTo('login');
+                    return [];
+                }
+                return [];
+            } catch (error) {
+                console.warn('Failed to fetch addresses', error);
+                return state.currentUser.addresses || [];
+            }
+        }
+
+        // --- Fetch Countries from API ---
+        async function fetchCountries() {
+            try {
+                const response = await fetch('http://localhost:9000/api.php?action=getCountries');
+                const data = await response.json();
+                
+                if (data.status === 'success' && data.data) {
+                    return data.data;
+                }
+                return [];
+            } catch (error) {
+                console.warn('Failed to fetch countries', error);
+                // Fallback: return China as default
+                return [{ id: 44, name: 'China', code: 'CN' }];
+            }
+        }
+
+        // --- Fetch Orders from API ---
+        async function fetchOrders() {
+            // Wait for initial login check to complete if it hasn't already
+            if (!window.initialLoginCheckComplete) {
+                // Wait up to 5 seconds for login check to complete
+                let attempts = 0;
+                while (!window.initialLoginCheckComplete && attempts < 50) {
+                    await new Promise(resolve => setTimeout(resolve, 100));
+                    attempts++;
+                }
+            }
+            
+            if (!state.currentUser) return [];
+            try {
+                const response = await fetch('http://localhost:9000/api.php?action=getOrders');
+                const data = await response.json();
+
+                // Mark orders as loaded regardless of whether data is empty or not
+                state.ordersLoaded = true;
+
+                if (data.status === 'success' && data.data) {
+                    return data.data.map(o => ({
+                        id: o.id,
+                        order_number: o.order_number,
+                        date: o.order_date ? o.order_date.split('T')[0] : '',
+                        subtotal: o.subtotal,
+                        shipping: o.shipping,
+                        tax: o.tax,
+                        total: o.total,
+                        status: o.status,
+                        payment_status: o.payment_status || 'unpaid',
+                        payment_method: o.payment_method,
+                        items: o.items || [],
+                        address: o.address || {}
+                    }));
+                } else if (data.needLogin) {
+                    state.currentUser = null;
+                    navigateTo('login');
+                    return [];
+                }
+                return [];
+            } catch (error) {
+                console.warn('Failed to fetch orders', error);
+                state.ordersLoaded = true; // Mark as loaded even on error
+                return db.orders || [];
+            }
+        }
+
+        // --- Fetch Wishlist from API ---
+        async function fetchWishlist() {
+            if (!state.currentUser) return [];
+            try {
+                const response = await fetch('http://localhost:9000/api.php?action=getWishlist');
+                const data = await response.json();
+
+                // Mark wishlist as loaded regardless of whether data is empty or not
+                state.wishlistLoaded = true;
+
+                if (data.status === 'success' && data.data) {
+                    return data.data.map(w => ({
+                        id: w.id,
+                        product_id: w.product_id,
+                        product_name: w.product_name,
+                        product_price: w.product_price,
+                        product_image: w.product_image,
+                        create_time: w.create_time
+                    }));
+                } else if (data.needLogin) {
+                    state.currentUser = null;
+                    navigateTo('login');
+                    return [];
+                }
+                return [];
+            } catch (error) {
+                console.warn('Failed to fetch wishlist', error);
+                state.wishlistLoaded = true; // Mark as loaded even on error
+                return [];
+            }
+        }
+
+        // --- Toggle Wishlist ---
+        async function toggleWishlist(productId, productName, productPrice, productImage, event) {
+            if (event) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+
+            if (!state.currentUser) {
+                showToast('Please login first', 'error');
+                navigateTo('login');
+                return;
+            }
+
+            try {
+                const response = await fetch('http://localhost:9000/api.php?action=toggleWishlist', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        product_id: productId,
+                        product_name: productName,
+                        product_price: productPrice,
+                        product_image: productImage
+                    })
+                });
+                const data = await response.json();
+
+                if (data.status === 'success') {
+                    // Update local wishlist state
+                    if (data.action === 'added') {
+                        state.wishlist.push({
+                            product_id: productId,
+                            product_name: productName,
+                            product_price: productPrice,
+                            product_image: productImage
+                        });
+                        showToast('Added to Wishlist', 'success');
+                    } else {
+                        state.wishlist = state.wishlist.filter(w => w.product_id !== productId);
+                        showToast('Removed from Wishlist', 'success');
+                    }
+
+                    // Update all heart icons for this product on the current page
+                    updateWishlistButtons(productId, data.action === 'added');
+
+                    // If on wishlist page, re-render it
+                    const path = window.location.hash.slice(1).split('?')[0];
+                    const params = new URLSearchParams(window.location.hash.slice(1).split('?')[1]);
+                    if (path === 'me' && params.get('tab') === 'favorites') {
+                        renderMe(document.getElementById('app'), 'favorites');
+                    }
+                } else if (data.needLogin) {
+                    showToast('Please login first', 'error');
+                    navigateTo('login');
+                } else {
+                    showToast(data.message || 'Failed to update wishlist', 'error');
+                }
+            } catch (error) {
+                console.error('Toggle wishlist error:', error);
+                showToast('Failed to update wishlist', 'error');
+            }
+        }
+
+        // --- Update Wishlist Button UI ---
+        function updateWishlistButtons(productId, isAdded) {
+            // Find all wishlist buttons for this product
+            const buttons = document.querySelectorAll(`button[onclick*="toggleWishlist(${productId},"]`);
+            buttons.forEach(btn => {
+                if (isAdded) {
+                    btn.classList.add('active');
+                    const icon = btn.querySelector('i');
+                    if (icon) {
+                        icon.classList.remove('far');
+                        icon.classList.add('fas');
+                    }
+                } else {
+                    btn.classList.remove('active');
+                    const icon = btn.querySelector('i');
+                    if (icon) {
+                        icon.classList.remove('fas');
+                        icon.classList.add('far');
+                    }
+                }
+            });
+        }
+
+        async function fetchOrderDetail(orderId) {
+            if (!state.currentUser) return null;
+            try {
+                const response = await fetch(`http://localhost:9000/api.php?action=getOrderDetail&id=${orderId}`);
+                const data = await response.json();
+
+                if (data.status === 'success' && data.data) {
+                    const o = data.data;
+                    return {
+                        id: o.id,
+                        order_number: o.order_number,
+                        date: o.order_date ? o.order_date.split('T')[0] : '',
+                        subtotal: o.subtotal,
+                        shipping: o.shipping,
+                        tax: o.tax,
+                        total: o.total,
+                        status: o.status,
+                        payment_status: o.payment_status || 'unpaid',
+                        payment_method: o.payment_method,
+                        consignee: o.consignee,
+                        phone: o.phone,
+                        address: o.address || {},
+                        items: o.items || []
+                    };
+                } else if (data.needLogin) {
+                    state.currentUser = null;
+                    navigateTo('login');
+                    return null;
+                }
+                return null;
+            } catch (error) {
+                console.warn('Failed to fetch order detail', error);
+                // Fallback to local db
+                return db.orders.find(x => x.id == orderId) || null;
             }
         }
 
@@ -725,7 +1208,7 @@
         }
 
         // --- Fetch Products API Integration ---
-        async function fetchProducts(categoryId) {
+        async function fetchProducts(categoryId, skipRender = false) {
             // Loading state could be added here
             
             try {
@@ -758,9 +1241,11 @@
                 }
             }
             
-            // After fetching (or falling back), re-render the grid
+            // After fetching (or falling back), re-render the grid unless skipRender is true
             // We use render(true) to keep scroll position handled by goToCategory
-            render(true);
+            if (!skipRender) {
+                render(true);
+            }
         }
 
         // Helper to get name from ID
@@ -779,15 +1264,16 @@
             render();
         }
         
-        function goToCategory(catId) {
+        async function goToCategory(catId) {
             state.currentCategory = catId;
             state.currentPage = 1;
             
             window.skipNextScrollToTop = true;
             
-            // Trigger fetch
-            fetchProducts(catId);
+            // Fetch products first (without rendering)
+            await fetchProducts(catId, true);
             
+            // Then navigate to home which will trigger a single render
             navigateTo('home');
             
             setTimeout(() => {
@@ -884,18 +1370,28 @@
             const end = start + state.itemsPerPage;
             const paginatedProducts = filteredProducts.slice(start, end);
 
-            const gridHtml = paginatedProducts.length ? paginatedProducts.map(p => `
+            const gridHtml = paginatedProducts.length ? paginatedProducts.map(p => {
+                const isWishlisted = state.wishlist && state.wishlist.some(w => w.product_id === p.id);
+                // Show price range if multiple attributes with different prices exist
+                const hasPriceRange = p.price_min !== p.price_max && p.attributes && p.attributes.length > 1;
+                const priceDisplay = hasPriceRange 
+                    ? `$${Number(p.price_min).toLocaleString()} - $${Number(p.price_max).toLocaleString()}`
+                    : `$${Number(p.price).toLocaleString()}`;
+                return `
                 <div class="product-card fade-in">
                     <div class="p-img-box" onclick="navigateTo('product', {id: ${p.id}})">
                         <img src="${p.img}" onerror="handleImageError(this)">
+                        <button class="wishlist-btn ${isWishlisted ? 'active' : ''}" onclick="toggleWishlist(${p.id}, '${p.name.replace(/'/g, "\\'")}', ${p.price}, '${p.img}', event)">
+                            <i class="${isWishlisted ? 'fas' : 'far'} fa-heart"></i>
+                        </button>
                     </div>
                     <div class="p-info">
                         <div class="p-title">${p.name}</div>
-                        <div class="p-price">$${Number(p.price).toLocaleString()}</div>
-                        <button class="btn btn-outline" style="width:100%; margin-top:10px;" onclick="addToCart(${p.id})">ADD TO BAG</button>
+                        <div class="p-price">${priceDisplay}</div>
+                        <button class="btn btn-outline" style="width:100%; margin-top:10px;" onclick="navigateTo('product', {id: ${p.id}})">SELECT OPTIONS</button>
                     </div>
                 </div>
-            `).join('') : '<div style="padding:50px; text-align:center; color:#999; grid-column:1/-1;">No products found</div>';
+            `}).join('') : '<div style="padding:50px; text-align:center; color:#999; grid-column:1/-1;">No products found</div>';
 
             let paginationHtml = '';
             if (totalPages > 1) {
@@ -1019,6 +1515,33 @@
 
             // Updated Breadcrumb to use dynamic category name
             const categoryName = getCategoryName(p.category);
+            
+            // Generate attributes selector HTML
+            let attributesHtml = '';
+            if (p.attributes && p.attributes.length > 0) {
+                const hasMultiplePrices = p.price_min !== p.price_max;
+                const priceDisplay = hasMultiplePrices 
+                    ? `$${Number(p.price_min).toLocaleString()} - $${Number(p.price_max).toLocaleString()}`
+                    : `$${Number(p.price).toLocaleString()}`;
+                
+                attributesHtml = `
+                    <div class="attributes-section" style="margin: 20px 0;">
+                        <label style="display: block; margin-bottom: 10px; font-weight: 600; font-size: 13px; text-transform: uppercase; letter-spacing: 1px;">Select Option:</label>
+                        <select id="attribute-select-${p.id}" class="attribute-select" onchange="updateProductPrice(${p.id})" style="width: 100%; padding: 12px; border: 1px solid var(--border-color); font-family: var(--font-body); font-size: 14px;">
+                            ${p.attributes.map((attr, idx) => `
+                                <option value="${attr.id}" data-price="${attr.price}" ${idx === 0 ? 'selected' : ''}>
+                                    ${attr.name} - $${Number(attr.price).toLocaleString()}
+                                </option>
+                            `).join('')}
+                        </select>
+                    </div>
+                `;
+            }
+            
+            // Get initial price (first attribute or default price)
+            const initialPrice = (p.attributes && p.attributes.length > 0) 
+                ? p.attributes[0].price 
+                : p.price;
 
             container.innerHTML = `
                 <div class="detail-wrapper">
@@ -1041,11 +1564,15 @@
                         
                         <div class="d-info">
                             <h1 class="d-title">${p.name}</h1>
-                            <div class="d-price">$${Number(p.price).toLocaleString()}</div>
+                            <div class="d-price" id="product-price-${p.id}">$${Number(initialPrice).toLocaleString()}</div>
                             <div class="d-desc">${p.desc}</div>
-                            <div style="display:flex; gap:20px; margin-top: 40px;">
-                                <button class="btn btn-primary" style="flex:1; padding: 15px;" onclick="addToCart(${p.id})">ADD TO BAG</button>
-                                <button class="btn btn-outline" style="flex:1; padding: 15px;" onclick="addToCart(${p.id}); navigateTo('cart')">BUY NOW</button>
+                            ${attributesHtml}
+                            <div style="display:flex; gap:20px; margin-top: 40px; align-items: center;">
+                                <button class="btn btn-primary" style="flex:1; padding: 15px;" onclick="addToCartWithAttribute(${p.id})">ADD TO BAG</button>
+                                <button class="btn btn-outline" style="flex:1; padding: 15px;" onclick="addToCartWithAttribute(${p.id}); navigateTo('cart')">BUY NOW</button>
+                                <button class="wishlist-btn-detail ${state.wishlist && state.wishlist.some(w => w.product_id === p.id) ? 'active' : ''}" onclick="toggleWishlist(${p.id}, '${p.name.replace(/'/g, "\\'")}', ${initialPrice}, '${p.img}', event)" title="Add to Wishlist">
+                                    <i class="${state.wishlist && state.wishlist.some(w => w.product_id === p.id) ? 'fas' : 'far'} fa-heart"></i>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -1085,42 +1612,151 @@
 
         function renderCart(container) {
             if(!state.cart.length) return container.innerHTML = `<div style="text-align:center; padding:80px;"><h2>YOUR BAG IS EMPTY</h2><button class="btn btn-primary" style="margin-top:20px" onclick="navigateTo('home')">CONTINUE SHOPPING</button></div>`;
-            
+
             let total = 0;
-            const rows = state.cart.map(item => {
+            const rows = state.cart.map((item, index) => {
                 total += item.price * item.qty;
+                const itemId = String(item.id);
+                const attributeInfo = item.attribute_name ? `<div style="font-size:12px; color:#666; margin-top:3px;">${item.attribute_name}</div>` : '';
                 return `<tr>
-                    <td><img src="${item.img}" width="50" style="vertical-align:middle; margin-right:10px;" onerror="handleImageError(this)">${item.name}</td>
+                    <td>
+                        <div style="display:flex; align-items:center; gap:10px;">
+                            <img src="${item.img}" width="60" style="vertical-align:middle; object-fit:cover; border-radius:4px;" onerror="handleImageError(this)">
+                            <div>
+                                <div style="font-weight:bold;">${item.name}</div>
+                                ${attributeInfo}
+                                <button style="border:none; background:none; color:#dc3545; font-size:12px; cursor:pointer; padding:0; margin-top:5px;" onclick="removeFromCartByIndex(${index})">Remove</button>
+                            </div>
+                        </div>
+                    </td>
                     <td>$${Number(item.price).toLocaleString()}</td>
                     <td>
-                        <button style="border:none; background:none; cursor:pointer; font-weight:bold;" onclick="updateCart(${item.id}, -1)">-</button>
-                        <span style="margin:0 10px">${item.qty}</span>
-                        <button style="border:none; background:none; cursor:pointer; font-weight:bold;" onclick="updateCart(${item.id}, 1)">+</button>
+                        <div style="display:flex; align-items:center; gap:10px;">
+                            <button style="border:1px solid #ddd; background:none; width:28px; height:28px; cursor:pointer; border-radius:4px;" onclick="updateCartByIndex(${index}, -1)">-</button>
+                            <span style="min-width:30px; text-align:center;">${item.qty}</span>
+                            <button style="border:1px solid #ddd; background:none; width:28px; height:28px; cursor:pointer; border-radius:4px;" onclick="updateCartByIndex(${index}, 1)">+</button>
+                        </div>
                     </td>
                     <td style="font-weight:bold">$${(item.price*item.qty).toLocaleString()}</td>
                 </tr>`;
             }).join('');
 
             container.innerHTML = `
-                <h2>SHOPPING BAG</h2>
-                <table class="cart-table"><thead><tr><th>Product</th><th>Price</th><th>Qty</th><th>Subtotal</th></tr></thead><tbody>${rows}</tbody></table>
-                <div class="cart-summary">Total: <span style="font-weight:bold; font-size:24px;">$${total.toLocaleString()}</span><br><br><button class="btn btn-primary" onclick="openCheckoutModal(${total})">CHECKOUT</button></div>
+                <div style="max-width:1000px; margin:0 auto;">
+                    <h2 style="margin-bottom:30px;">SHOPPING BAG (${state.cart.reduce((sum,item)=>sum+item.qty,0)} items)</h2>
+                    <table class="cart-table">
+                        <thead>
+                            <tr>
+                                <th style="width:50%;">Product</th>
+                                <th style="width:15%;">Price</th>
+                                <th style="width:20%;">Quantity</th>
+                                <th style="width:15%;">Subtotal</th>
+                            </tr>
+                        </thead>
+                        <tbody>${rows}</tbody>
+                    </table>
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-top:30px; flex-wrap:wrap; gap:20px;">
+                        <button class="btn btn-outline" onclick="navigateTo('home')">CONTINUE SHOPPING</button>
+                        <div style="text-align:right;">
+                            <div style="font-size:14px; color:#666;">Subtotal: <span style="font-weight:bold; font-size:18px; color:#333;">$${total.toLocaleString()}</span></div>
+                            <div style="font-size:12px; color:#888; margin-top:5px;">Shipping & taxes calculated at checkout</div>
+                            <button class="btn btn-primary" style="margin-top:15px; padding:15px 40px; font-size:16px;" onclick="openCheckoutModal(${total})">PROCEED TO CHECKOUT</button>
+                        </div>
+                    </div>
+                </div>
             `;
+        }
+
+        function removeFromCart(id) {
+            console.log('removeFromCart called with id:', id, 'type:', typeof id);
+            console.log('cart items:', state.cart.map(x => ({id: x.id, type: typeof x.id})));
+            state.cart = state.cart.filter(x => Number(x.id) != Number(id));
+            console.log('cart after filter:', state.cart);
+            saveCartToStorage(); // Save to localStorage
+            showToast('Item removed from bag', 'success');
+            renderCart(document.getElementById('app'));
+            renderHeader();
+        }
+        
+        // Remove cart item by index (for items with attributes)
+        function removeFromCartByIndex(index) {
+            if (index >= 0 && index < state.cart.length) {
+                state.cart.splice(index, 1);
+                saveCartToStorage();
+                showToast('Item removed from bag', 'success');
+                renderCart(document.getElementById('app'));
+                renderHeader();
+            }
+        }
+        
+        // Update cart item quantity by index
+        function updateCartByIndex(index, n) {
+            if (index >= 0 && index < state.cart.length) {
+                const item = state.cart[index];
+                item.qty += n;
+                if (item.qty <= 0) {
+                    state.cart.splice(index, 1);
+                }
+                saveCartToStorage();
+                renderCart(document.getElementById('app'));
+                renderHeader();
+            }
         }
 
         function renderAuth(container, type) {
             const isLogin = type === 'login';
+            const captchaHtml = !isLogin ? `
+                        <div style="display:flex; gap:10px; align-items:center;">
+                            <input type="text" id="reg-captcha" class="auth-input" placeholder="Captcha" style="flex:1;">
+                            <img id="captcha-img" src="captcha.php?t=${Date.now()}" onclick="this.src='captcha.php?t='+Date.now()" style="height:40px; cursor:pointer; border-radius:4px;" title="Click to refresh">
+                        </div>
+            ` : '';
             container.innerHTML = `
                 <div style="display:flex; justify-content:center; align-items:center; height:60vh;">
                     <div class="auth-box fade-in">
                         <h2 class="auth-title">${isLogin ? 'LOGIN' : 'REGISTER'}</h2>
-                        <input type="text" id="u" class="auth-input" placeholder="Username (admin)">
-                        <input type="password" id="p" class="auth-input" placeholder="Password (123)">
+                        <input type="text" id="u" class="auth-input" placeholder="Username">
+                        <input type="password" id="p" class="auth-input" placeholder="Password">
+                        ${!isLogin ? `
+                        <input type="password" id="reg-confirm-pwd" class="auth-input" placeholder="Confirm Password">
+                        <div id="pwd-strength" style="font-size:11px; color:#666; margin:-10px 0 10px; text-align:left;"></div>
+                        <input type="text" id="reg-phone" class="auth-input" placeholder="Phone (optional)">
+                        <input type="text" id="reg-email" class="auth-input" placeholder="Email (optional)">
+                        <input type="text" id="reg-hint" class="auth-input" placeholder="Password hint (e.g. pet name)">
+                        ${captchaHtml}
+                        ` : ''}
                         <button class="btn btn-primary" style="width:100%; margin-top:20px;" onclick="${isLogin?'login()':'register()'}">${isLogin?'SIGN IN':'CREATE ACCOUNT'}</button>
                         <p style="margin-top:20px; font-size:12px; cursor:pointer; color:#999;" onclick="navigateTo('${isLogin?'register':'login'}')">${isLogin?'No account? Create one':'Already have an account?'}</p>
                     </div>
                 </div>
             `;
+            // Add password strength checker for register
+            if (!isLogin) {
+                const pwdInput = document.getElementById('p');
+                const confirmInput = document.getElementById('reg-confirm-pwd');
+                const strengthDiv = document.getElementById('pwd-strength');
+                pwdInput.addEventListener('input', () => {
+                    const pwd = pwdInput.value;
+                    const hasLetter = /[a-zA-Z]/.test(pwd);
+                    const hasNumber = /\d/.test(pwd);
+                    const hasSpecial = /[!@#$%^&*(),.?":{}|<>]/.test(pwd);
+                    const types = [hasLetter, hasNumber, hasSpecial].filter(Boolean).length;
+                    if (pwd.length < 6) {
+                        strengthDiv.innerHTML = '<span style="color:#dc3545;">Password must be at least 6 characters</span>';
+                    } else if (types < 2) {
+                        strengthDiv.innerHTML = '<span style="color:#ffc107;">Need at least 2 of: letters, numbers, special chars</span>';
+                    } else {
+                        strengthDiv.innerHTML = '<span style="color:#28a745;">Password strength: Good</span>';
+                    }
+                });
+                confirmInput.addEventListener('input', () => {
+                    if (confirmInput.value && confirmInput.value !== pwdInput.value) {
+                        strengthDiv.innerHTML = '<span style="color:#dc3545;">Passwords do not match</span>';
+                    } else if (confirmInput.value === pwdInput.value && confirmInput.value) {
+                        strengthDiv.innerHTML = '<span style="color:#28a745;">Passwords match</span>';
+                    }
+                });
+            }
         }
 
         function renderMe(container, tab) {
@@ -1155,24 +1791,41 @@
                     </div>
                 `;
             } else if (tab === 'orders') {
-                contentHtml = `
-                    <h2 class="me-section-title">My Orders</h2>
-                    ${db.orders.length ? db.orders.map(o => `
-                        <div style="border:1px solid #eee; margin-bottom:20px; padding:20px; background:#fff;">
-                            <div style="display:flex; justify-content:space-between; margin-bottom:15px; font-size:13px; color:#888; border-bottom:1px solid #f9f9f9; padding-bottom:10px;">
-                                <span>${o.date} | ORDER #${o.id}</span>
-                                <span style="color:var(--primary-color); font-weight:700; text-transform:uppercase;">${o.status}</span>
-                            </div>
-                            <div style="display:flex; justify-content:space-between; align-items:center;">
-                                <div>${o.items.map(item => item.name).join(', ')}</div>
-                                <div style="text-align:right;">
-                                    <div style="font-weight:bold; font-size:16px;">$${o.total.toLocaleString()}</div>
-                                    <button class="btn btn-outline btn-sm" style="margin-top:10px" onclick="navigateTo('order-detail', {id: '${o.id}'})">DETAILS</button>
+                // Fetch orders from API if not loaded (check ordersLoaded flag to prevent infinite loop)
+                if (!state.ordersLoaded) {
+                    fetchOrders().then(orders => {
+                        state.orders = orders;
+                        renderMe(container, 'orders');
+                    });
+                    contentHtml = `<h2 class="me-section-title">My Orders</h2><div style="padding:40px; text-align:center; color:#999;">Loading orders...</div>`;
+                } else {
+                    const orders = state.orders;
+                    contentHtml = `
+                        <h2 class="me-section-title">My Orders</h2>
+                        ${orders.length ? orders.map(o => {
+                            const paymentStatus = o.payment_status || 'unpaid';
+                            const paymentStatusText = paymentStatus === 'paid' ? 'Paid' : (paymentStatus === 'paying' ? 'Paying' : 'Unpaid');
+                            const paymentStatusColor = paymentStatus === 'paid' ? '#28a745' : (paymentStatus === 'paying' ? '#ffc107' : '#dc3545');
+                            return `
+                            <div style="border:1px solid #eee; margin-bottom:20px; padding:20px; background:#fff;">
+                                <div style="display:flex; justify-content:space-between; margin-bottom:15px; font-size:13px; color:#888; border-bottom:1px solid #f9f9f9; padding-bottom:10px;">
+                                    <span>${o.date} | ORDER #${o.order_number || o.id}</span>
+                                    <div>
+                                        <span style="color:var(--primary-color); font-weight:700; text-transform:uppercase; margin-right:15px;">${o.status}</span>
+                                        <span style="color:${paymentStatusColor}; font-weight:700; text-transform:uppercase;">${paymentStatusText}</span>
+                                    </div>
+                                </div>
+                                <div style="display:flex; justify-content:space-between; align-items:center;">
+                                    <div>${o.items && o.items.length ? o.items.map(item => item.name || item.product_name || 'Unknown').join(', ') : 'N/A'}</div>
+                                    <div style="text-align:right;">
+                                        <div style="font-weight:bold; font-size:16px;">$${Number(o.total || 0).toLocaleString()}</div>
+                                        <button class="btn btn-outline btn-sm" style="margin-top:10px" onclick="navigateTo('order-detail', {id: '${o.id}'})">DETAILS</button>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    `).join('') : '<div style="padding:40px; text-align:center; color:#999;">No orders yet.</div>'}
-                `;
+                        `}).join('') : '<div style="padding:40px; text-align:center; color:#999;">No orders yet.</div>'}
+                    `;
+                }
             } else if (tab === 'address') {
                 contentHtml = `
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:30px; border-bottom:1px solid #eee; padding-bottom:15px;">
@@ -1184,7 +1837,7 @@
                             <div class="address-card ${a.isDefault ? 'default' : ''}">
                                 ${a.isDefault ? '<span class="address-tag">DEFAULT</span>' : ''}
                                 <h4 style="margin-bottom:5px; font-weight:700;">${a.name} <span style="font-weight:400; font-size:13px; color:#888; margin-left:10px;">${a.phone}</span></h4>
-                                <p style="color:#666; font-size:14px; margin:10px 0; height:40px; overflow:hidden;">${a.detail}</p>
+                                <p style="color:#666; font-size:14px; margin:10px 0; height:40px; overflow:hidden;">${a.country ? a.country + ', ' : ''}${a.detail}</p>
                                 <div class="address-actions">
                                     <span onclick="openAddressModal(${a.id})">EDIT</span>
                                     <span onclick="deleteAddress(${a.id})">DELETE</span>
@@ -1194,39 +1847,74 @@
                     </div>
                 `;
             } else if (tab === 'favorites') {
-                const favs = db.products.filter(p => state.currentUser.favorites.includes(p.id));
-                contentHtml = `
-                    <h2 class="me-section-title">Wishlist</h2>
-                    ${favs.length ? `<div class="product-grid" style="grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap:30px;">
-                        ${favs.map(p => `
-                            <div class="product-card">
-                                <div class="p-img-box" style="height:250px;" onclick="navigateTo('product', {id: ${p.id}})"><img src="${p.img}" onerror="handleImageError(this)"></div>
-                                <div class="p-info">
-                                    <div class="p-title">${p.name}</div>
-                                    <div class="p-price">$${p.price.toLocaleString()}</div>
-                                    <button class="btn btn-primary btn-sm" style="width:100%; margin-top:5px;" onclick="addToCart(${p.id})">ADD</button>
-                                    <button class="btn btn-danger btn-sm" style="width:100%; margin-top:5px;" onclick="removeFavorite(${p.id})">REMOVE</button>
+                // Fetch wishlist from API if not loaded
+                if (!state.wishlistLoaded) {
+                    fetchWishlist().then(wishlist => {
+                        state.wishlist = wishlist;
+                        renderMe(container, 'favorites');
+                    });
+                    contentHtml = `<h2 class="me-section-title">My Wishlist</h2><div style="padding:40px; text-align:center; color:#999;">Loading wishlist...</div>`;
+                } else {
+                    const wishlist = state.wishlist;
+                    contentHtml = `
+                        <h2 class="me-section-title">My Wishlist (${wishlist.length})</h2>
+                        ${wishlist.length ? `<div class="product-grid" style="grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap:30px;">
+                            ${wishlist.map(w => `
+                                <div class="product-card">
+                                    <div class="p-img-box" style="height:250px;" onclick="navigateTo('product', {id: ${w.product_id}})">
+                                        <img src="${w.product_image}" onerror="handleImageError(this)">
+                                        <button class="wishlist-btn active" onclick="toggleWishlist(${w.product_id}, '${w.product_name.replace(/'/g, "\\'")}', ${w.product_price}, '${w.product_image}', event)">
+                                            <i class="fas fa-heart"></i>
+                                        </button>
+                                    </div>
+                                    <div class="p-info">
+                                        <div class="p-title">${w.product_name}</div>
+                                        <div class="p-price">$${Number(w.product_price).toLocaleString()}</div>
+                                        <button class="btn btn-primary btn-sm" style="width:100%; margin-top:5px;" onclick="addToCart(${w.product_id})">ADD TO BAG</button>
+                                    </div>
                                 </div>
-                            </div>
-                        `).join('')}
-                    </div>` : '<div style="color:#999; text-align:center; padding:50px;">Your wishlist is empty.</div>'}
-                `;
+                            `).join('')}
+                        </div>` : '<div style="color:#999; text-align:center; padding:50px;">Your wishlist is empty. Browse products and click the heart icon to add items.</div>'}
+                    `;
+                }
             }
 
             container.innerHTML = `<div class="me-container"><ul class="me-nav">${navHtml}</ul><div class="me-content fade-in">${contentHtml}</div></div>`;
         }
-        
-        function renderOrderDetail(container, id) {
-            const o = db.orders.find(x => x.id === id);
+
+        async function renderOrderDetail(container, id) {
+            // Try to fetch from API first
+            const orderData = await fetchOrderDetail(id);
+
+            // Fallback to local db if API fails
+            const o = orderData || db.orders.find(x => x.id == id);
             if (!o) return container.innerHTML = "Order not found";
-            
+
+            const isPending = o.status === 'pending';
+            const canCancel = isPending;
+            const paymentStatus = o.payment_status || 'unpaid';
+            const canPay = paymentStatus === 'unpaid';
+
+            // Order action buttons
+            const actionButtons = `
+                <div style="display:flex; gap:10px; margin-top:20px; justify-content:flex-end;">
+                    ${canPay ? `<button class="btn btn-primary" onclick="continuePaymentHandler(${o.id})">Continue Payment</button>` : ''}
+                    ${canCancel ? `<button class="btn btn-outline" style="border-color:#dc3545; color:#dc3545;" onclick="cancelOrderHandler(${o.id})">Cancel Order</button>` : ''}
+                </div>
+            `;
+
             container.innerHTML = `
                 <div class="me-content" style="max-width:900px; margin:0 auto;">
                     <button class="btn btn-outline" style="margin-bottom:20px" onclick="navigateTo('me', {tab:'orders'})">&lt; BACK TO ORDERS</button>
-                    
+
                     <div style="display:flex; justify-content:space-between; align-items:flex-end; border-bottom:1px solid #eee; padding-bottom:15px; margin-bottom:20px;">
-                        <h2 style="margin:0;">Order #${o.id}</h2>
-                        <span style="color:#666; font-size:14px;">Placed on ${o.date}</span>
+                        <div>
+                            <h2 style="margin:0;">Order #${o.order_number || o.id}</h2>
+                            <span style="color:#666; font-size:14px;">Placed on ${o.date || 'N/A'}</span>
+                        </div>
+                        <div style="text-align:right;">
+                            ${actionButtons}
+                        </div>
                     </div>
 
                     <!-- Status & Address Row -->
@@ -1234,39 +1922,59 @@
                         <div style="flex:1; background:#f9f9f9; padding:25px; border-radius:4px;">
                             <h4 style="margin-top:0; font-size:14px; text-transform:uppercase; color:#888;">Order Status</h4>
                             <div style="font-size:18px; font-weight:bold; color:var(--primary-color); margin-top:5px;">${o.status}</div>
+                            <div style="font-size:12px; color:#888; margin-top:5px;">Payment Method: ${o.payment_method || 'N/A'}</div>
+                        </div>
+                        <div style="flex:1; background:#f9f9f9; padding:25px; border-radius:4px;">
+                            <h4 style="margin-top:0; font-size:14px; text-transform:uppercase; color:#888;">Payment Status</h4>
+                            <div style="font-size:18px; font-weight:bold; color:${paymentStatus === 'paid' ? '#28a745' : (paymentStatus === 'paying' ? '#ffc107' : '#dc3545')}; margin-top:5px;">
+                                ${paymentStatus === 'paid' ? 'Payment Completed' : (paymentStatus === 'paying' ? 'Payment In Progress' : 'Unpaid')}
+                            </div>
+                            <div style="font-size:12px; color:#888; margin-top:5px;">${canPay ? 'Please complete payment' : (paymentStatus === 'paying' ? 'Waiting for payment confirmation' : 'Payment confirmed')}</div>
                         </div>
                         <div style="flex:2; background:#f9f9f9; padding:25px; border-radius:4px;">
                             <h4 style="margin-top:0; font-size:14px; text-transform:uppercase; color:#888;">Shipping Address</h4>
-                            ${o.address ? `
-                                <div style="margin-top:5px; font-weight:bold;">${o.address.name} <span style="font-weight:normal; color:#666;">${o.address.phone}</span></div>
-                                <div style="color:#555; margin-top:5px;">${o.address.detail}</div>
+                            ${o.address && (o.address.name || o.address.address || o.consignee) ? `
+                                <div style="margin-top:5px; font-weight:bold;">${o.address.name || o.consignee || ''} <span style="font-weight:normal; color:#666;">${o.address.phone || o.phone || ''}</span></div>
+                                <div style="color:#555; margin-top:5px;">${[o.address.province, o.address.city, o.address.district, o.address.address].filter(Boolean).join(' ')}</div>
+                                ${o.address.country ? `<div style="color:#555; margin-top:5px; font-weight:500;">${o.address.country}</div>` : ''}
+                                ${o.address.postcode ? `<div style="color:#888; margin-top:5px; font-size:12px;">Postal Code: ${o.address.postcode}</div>` : ''}
                             ` : '<div style="color:#666; margin-top:5px;">Digital Delivery / No Address</div>'}
                         </div>
                     </div>
 
                     <!-- Items Table -->
-                    <h3 style="font-size:18px; margin-bottom:20px;">Order Items</h3>
+                    <h3 style="font-size:18px; margin-bottom:20px;">Order Items (${o.items ? o.items.length : 0})</h3>
                     <table class="cart-table" style="margin-bottom:30px;">
                         <thead>
                             <tr>
                                 <th style="padding-left:0;">Product</th>
                                 <th style="text-align:right;">Price</th>
                                 <th style="text-align:center;">Qty</th>
-                                <th style="text-align:right; padding-right:0;">Total</th>
-                            </tr>
+                            <th style="text-align:right; padding-right:0;">Total</th>
+                        </tr>
                         </thead>
                         <tbody>
-                            ${o.items.map(item => `
+                            ${(o.items || []).map(item => {
+                                const itemName = item.name || item.product_name || 'Unknown Product';
+                                const itemPrice = parseFloat(item.price) || 0;
+                                const itemQty = parseInt(item.qty) || parseInt(item.quantity) || 0;
+                                const itemImg = item.img || item.product_image || 'https://via.placeholder.com/50';
+                                const itemTotal = itemPrice * itemQty;
+                                const attrName = item.attribute_name || '';
+                                return `
                                 <tr>
                                     <td style="padding-left:0; display:flex; align-items:center; gap:15px;">
-                                        <img src="${item.img || 'https://via.placeholder.com/50'}" width="50" height="50" style="object-fit:cover; border-radius:4px;" onerror="handleImageError(this)">
-                                        <div>${item.name}</div>
+                                        <img src="${itemImg}" width="50" height="50" style="object-fit:cover; border-radius:4px;" onerror="handleImageError(this)">
+                                        <div>
+                                            <div>${itemName}</div>
+                                            ${attrName ? `<div style="font-size:12px; color:#666; margin-top:3px;">${attrName}</div>` : ''}
+                                        </div>
                                     </td>
-                                    <td style="text-align:right;">$${Number(item.price).toLocaleString()}</td>
-                                    <td style="text-align:center;">${item.qty}</td>
-                                    <td style="text-align:right; padding-right:0; font-weight:bold;">$${(item.price * item.qty).toLocaleString()}</td>
+                                    <td style="text-align:right;">$${itemPrice.toLocaleString()}</td>
+                                    <td style="text-align:center;">${itemQty}</td>
+                                    <td style="text-align:right; padding-right:0; font-weight:bold;">$${itemTotal.toLocaleString()}</td>
                                 </tr>
-                            `).join('')}
+                            `}).join('')}
                         </tbody>
                     </table>
 
@@ -1274,12 +1982,251 @@
                     <div style="display:flex; justify-content:flex-end;">
                         <div style="width:300px; text-align:right;">
                             <div class="price-row"><span>Subtotal:</span> <span>$${(o.subtotal || o.total).toLocaleString()}</span></div>
-                            <div class="price-row"><span>Shipping:</span> <span>${o.shipping > 0 ? '$'+o.shipping : 'Free'}</span></div>
-                            <div class="price-row total" style="font-size:24px;"><span>Total:</span> <span>$${o.total.toLocaleString()}</span></div>
+                            <div class="price-row"><span>Shipping:</span> <span>${(o.shipping || 0) > 0 ? '$'+Number(o.shipping).toLocaleString() : 'Free'}</span></div>
+                            <div class="price-row total" style="font-size:24px;"><span>Total:</span> <span>$${Number(o.total).toLocaleString()}</span></div>
                         </div>
                     </div>
                 </div>
             `;
+        }
+
+        // Order item operations
+        async function updateOrderItemQty(orderId, itemId, change) {
+            try {
+                const response = await fetch(`http://localhost:9000/api.php?action=getOrderDetail&id=${orderId}`);
+                const data = await response.json();
+
+                if (data.status === 'success' && data.data) {
+                    const item = data.data.items.find(i => (i.id || i.product_id) == itemId);
+                    if (item) {
+                        const newQty = item.qty + change;
+                        const updateResponse = await fetch(`http://localhost:9000/api.php?action=updateOrderItem&orderId=${orderId}&itemId=${item.id || item.product_id}`, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ quantity: newQty })
+                        });
+                        const result = await updateResponse.json();
+
+                        if (result.status === 'success') {
+                            showToast('Quantity updated', 'success');
+                            // Refresh order detail
+                            const orderDetail = await fetchOrderDetail(orderId);
+                            if (orderDetail) {
+                                // Update local orders cache
+                                const orderIndex = state.orders.findIndex(o => o.id == orderId);
+                                if (orderIndex >= 0) {
+                                    state.orders[orderIndex] = {
+                                        ...state.orders[orderIndex],
+                                        items: orderDetail.items,
+                                        subtotal: orderDetail.subtotal,
+                                        total: orderDetail.total
+                                    };
+                                }
+                            }
+                            renderOrderDetail(document.getElementById('app'), orderId);
+                        } else {
+                            showToast(result.message || 'Failed to update quantity', 'error');
+                        }
+                    }
+                }
+            } catch (error) {
+                console.error('Update quantity error:', error);
+                showToast('Failed to update quantity', 'error');
+            }
+        }
+
+        async function removeOrderItemHandler(orderId, itemId) {
+            if (!confirm('Are you sure you want to remove this item?')) return;
+
+            try {
+                const response = await fetch(`http://localhost:9000/api.php?action=removeOrderItem&orderId=${orderId}&itemId=${itemId}`);
+                const result = await response.json();
+
+                if (result.status === 'success') {
+                    showToast('Item removed', 'success');
+                    // Refresh orders
+                    state.orders = await fetchOrders();
+                    renderOrderDetail(document.getElementById('app'), orderId);
+                } else {
+                    showToast(result.message || 'Failed to remove item', 'error');
+                }
+            } catch (error) {
+                console.error('Remove item error:', error);
+                showToast('Failed to remove item', 'error');
+            }
+        }
+
+        async function cancelOrderHandler(orderId) {
+            if (!confirm('Are you sure you want to cancel this order?')) return;
+
+            try {
+                const response = await fetch(`http://localhost:9000/api.php?action=cancelOrder&id=${orderId}`);
+                const result = await response.json();
+
+                if (result.status === 'success') {
+                    showToast('Order cancelled successfully', 'success');
+                    // Refresh orders
+                    state.orders = await fetchOrders();
+                    navigateTo('me', { tab: 'orders' });
+                } else if (result.needLogin) {
+                    showToast('Please login first', 'error');
+                    navigateTo('login');
+                } else {
+                    showToast(result.message || 'Failed to cancel order', 'error');
+                }
+            } catch (error) {
+                console.error('Cancel order error:', error);
+                showToast('Failed to cancel order', 'error');
+            }
+        }
+
+        async function continuePaymentHandler(orderId) {
+            // Get order details
+            const order = state.orders.find(o => o.id == orderId);
+            if (!order) {
+                showToast('Order not found', 'error');
+                return;
+            }
+
+            // Show payment method selection modal
+            const modalHtml = `
+                <div id="paymentModal" style="position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:10000; display:flex; align-items:center; justify-content:center;">
+                    <div style="background:white; padding:30px; border-radius:8px; max-width:400px; width:90%;">
+                        <h3 style="margin-bottom:20px;">Select Payment Method</h3>
+                        <p style="color:#666; margin-bottom:20px;">Order #${order.order_number || order.id} - Total: $${Number(order.total).toLocaleString()}</p>
+                        
+                        <div style="margin-bottom:20px;">
+                            <label style="display:flex; align-items:center; padding:15px; border:2px solid #ddd; border-radius:8px; margin-bottom:10px; cursor:pointer; transition:all 0.2s;" onmouseover="this.style.borderColor='var(--primary-color)'" onmouseout="this.style.borderColor='#ddd'">
+                                <input type="radio" name="payment_method" value="creditcard" style="margin-right:15px;" checked>
+                                <span style="font-size:18px; margin-right:10px;">💳</span>
+                                <div>
+                                    <div style="font-weight:bold;">Credit Card</div>
+                                    <div style="font-size:12px; color:#666;">Visa, Mastercard, Amex</div>
+                                </div>
+                            </label>
+                            
+                            <label style="display:flex; align-items:center; padding:15px; border:2px solid #ddd; border-radius:8px; margin-bottom:10px; cursor:pointer; transition:all 0.2s;" onmouseover="this.style.borderColor='var(--primary-color)'" onmouseout="this.style.borderColor='#ddd'">
+                                <input type="radio" name="payment_method" value="paypal" style="margin-right:15px;">
+                                <span style="font-size:18px; margin-right:10px;">🅿️</span>
+                                <div>
+                                    <div style="font-weight:bold;">PayPal</div>
+                                    <div style="font-size:12px; color:#666;">Pay with your PayPal account</div>
+                                </div>
+                            </label>
+                            
+                            <label style="display:flex; align-items:center; padding:15px; border:2px solid #ddd; border-radius:8px; margin-bottom:10px; cursor:pointer; transition:all 0.2s;" onmouseover="this.style.borderColor='var(--primary-color)'" onmouseout="this.style.borderColor='#ddd'">
+                                <input type="radio" name="payment_method" value="alipay" style="margin-right:15px;">
+                                <span style="font-size:18px; margin-right:10px;">🔵</span>
+                                <div>
+                                    <div style="font-weight:bold;">Alipay</div>
+                                    <div style="font-size:12px; color:#666;">Pay with Alipay</div>
+                                </div>
+                            </label>
+                            
+                            <label style="display:flex; align-items:center; padding:15px; border:2px solid #ddd; border-radius:8px; cursor:pointer; transition:all 0.2s;" onmouseover="this.style.borderColor='var(--primary-color)'" onmouseout="this.style.borderColor='#ddd'">
+                                <input type="radio" name="payment_method" value="wechat" style="margin-right:15px;">
+                                <span style="font-size:18px; margin-right:10px;">🟢</span>
+                                <div>
+                                    <div style="font-weight:bold;">WeChat Pay</div>
+                                    <div style="font-size:12px; color:#666;">Pay with WeChat</div>
+                                </div>
+                            </label>
+                        </div>
+                        
+                        <div style="display:flex; gap:10px;">
+                            <button class="btn btn-outline" style="flex:1;" onclick="closePaymentModal()">Cancel</button>
+                            <button class="btn btn-primary" style="flex:1;" onclick="processPayment(${orderId})">Pay Now</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            // Remove existing modal if any
+            const existingModal = document.getElementById('paymentModal');
+            if (existingModal) existingModal.remove();
+            
+            // Add modal to body
+            document.body.insertAdjacentHTML('beforeend', modalHtml);
+        }
+
+        function closePaymentModal() {
+            const modal = document.getElementById('paymentModal');
+            if (modal) modal.remove();
+        }
+
+        async function processPayment(orderId) {
+            const selectedMethod = document.querySelector('input[name="payment_method"]:checked');
+            if (!selectedMethod) {
+                showToast('Please select a payment method', 'error');
+                return;
+            }
+            
+            const paymentMethod = selectedMethod.value;
+            const order = state.orders.find(o => o.id == orderId);
+            
+            try {
+                // Update payment status to 'paying' and set payment method
+                const response = await fetch(`http://localhost:9000/api.php?action=updatePaymentStatus&orderId=${orderId}&status=paying`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ payment_method: paymentMethod })
+                });
+                const result = await response.json();
+
+                if (result.status === 'success') {
+                    closePaymentModal();
+                    showToast('Redirecting to payment gateway...', 'success');
+                    
+                    // Build payment URL with order information
+                    const paymentData = {
+                        orderId: orderId,
+                        orderNumber: order.order_number || orderId,
+                        amount: order.total,
+                        currency: 'USD',
+                        paymentMethod: paymentMethod,
+                        description: `Order #${order.order_number || orderId}`,
+                        returnUrl: window.location.origin + '/payment/success',
+                        cancelUrl: window.location.origin + '/payment/cancel'
+                    };
+                    
+                    // Redirect to respective payment gateway
+                    switch(paymentMethod) {
+                        case 'creditcard':
+                            // Simulate credit card payment page
+                            alert(`Credit Card Payment Simulation\n\nOrder: ${paymentData.orderNumber}\nAmount: $${paymentData.amount}\n\nIn production, this would redirect to a secure payment gateway.`);
+                            // Simulate successful payment
+                            await fetch(`http://localhost:9000/api.php?action=updatePaymentStatus&orderId=${orderId}&status=paid`);
+                            showToast('Payment successful!', 'success');
+                            renderOrderDetail(document.getElementById('app'), orderId);
+                            break;
+                        case 'paypal':
+                            // PayPal integration
+                            const paypalUrl = `https://www.paypal.com/checkoutnow?amount=${paymentData.amount}&currency_code=${paymentData.currency}&item_name=${encodeURIComponent(paymentData.description)}`;
+                            window.open(paypalUrl, '_blank');
+                            break;
+                        case 'alipay':
+                            // Alipay integration
+                            const alipayUrl = `https://openapi.alipay.com/gateway.do?out_trade_no=${paymentData.orderNumber}&total_amount=${paymentData.amount}&subject=${encodeURIComponent(paymentData.description)}`;
+                            window.open(alipayUrl, '_blank');
+                            break;
+                        case 'wechat':
+                            // WeChat Pay - typically shows QR code
+                            alert(`WeChat Pay QR Code\n\nOrder: ${paymentData.orderNumber}\nAmount: $${paymentData.amount}\n\nIn production, a QR code would be displayed for scanning.`);
+                            break;
+                        default:
+                            showToast('Payment method not supported yet', 'error');
+                    }
+                } else if (result.needLogin) {
+                    closePaymentModal();
+                    showToast('Please login first', 'error');
+                    navigateTo('login');
+                } else {
+                    showToast(result.message || 'Failed to initiate payment', 'error');
+                }
+            } catch (error) {
+                console.error('Payment error:', error);
+                showToast('Failed to process payment', 'error');
+            }
         }
 
         // Logic Helpers
@@ -1294,19 +2241,85 @@
             }, 50);
         }
         function addToCart(id) {
-            let p = state.currentList.find(x => x.id == id);
-            if (!p) p = db.products.find(x => x.id == id);
+            id = Number(id);
+            let p = state.currentList.find(x => Number(x.id) == id);
+            if (!p) p = db.products.find(x => Number(x.id) == id);
             if (!p) return;
 
-            const exist = state.cart.find(x => x.id === id);
-            exist ? exist.qty++ : state.cart.push({...p, qty: 1});
+            const exist = state.cart.find(x => Number(x.id) == id);
+            if (exist) {
+                exist.qty++;
+            } else {
+                state.cart.push({...p, qty: 1, shipping_price: p.shipping_price || 0});
+            }
+            saveCartToStorage(); // Save to localStorage
             showToast('ADDED TO BAG', 'success'); renderHeader();
         }
+        
+        // Update product price when attribute selection changes
+        function updateProductPrice(productId) {
+            const select = document.getElementById(`attribute-select-${productId}`);
+            if (!select) return;
+            
+            const selectedOption = select.options[select.selectedIndex];
+            const price = selectedOption.getAttribute('data-price');
+            
+            const priceElement = document.getElementById(`product-price-${productId}`);
+            if (priceElement && price) {
+                priceElement.textContent = `$${Number(price).toLocaleString()}`;
+            }
+        }
+        
+        // Add to cart with selected attribute
+        function addToCartWithAttribute(productId) {
+            productId = Number(productId);
+            let p = state.currentList.find(x => Number(x.id) == productId);
+            if (!p) p = db.products.find(x => Number(x.id) == productId);
+            if (!p) return;
+            
+            // Get selected attribute
+            let selectedAttribute = null;
+            const select = document.getElementById(`attribute-select-${productId}`);
+            if (select && p.attributes && p.attributes.length > 0) {
+                const attributeId = Number(select.value);
+                selectedAttribute = p.attributes.find(a => Number(a.id) == attributeId);
+            }
+            
+            // Create cart item with attribute info
+            const cartItem = {
+                ...p,
+                qty: 1,
+                attribute_id: selectedAttribute ? selectedAttribute.id : null,
+                attribute_name: selectedAttribute ? selectedAttribute.name : null,
+                price: selectedAttribute ? selectedAttribute.price : p.price,
+                shipping_price: selectedAttribute ? (selectedAttribute.shipping_price || 0) : (p.shipping_price || 0)
+            };
+            
+            // Check if same product with same attribute already in cart
+            const exist = state.cart.find(x => 
+                Number(x.id) == productId && 
+                x.attribute_id == cartItem.attribute_id
+            );
+            
+            if (exist) {
+                exist.qty++;
+            } else {
+                state.cart.push(cartItem);
+            }
+            
+            saveCartToStorage(); // Save to localStorage
+            showToast('ADDED TO BAG', 'success');
+            renderHeader();
+        }
         function updateCart(id, n) {
-            const item = state.cart.find(x => x.id === id);
+            console.log('updateCart called with id:', id, 'type:', typeof id);
+            console.log('cart items:', state.cart.map(x => ({id: x.id, type: typeof x.id})));
+            const item = state.cart.find(x => Number(x.id) == Number(id));
+            console.log('found item:', item);
             if(item) {
                 item.qty += n;
-                if(item.qty <= 0) state.cart = state.cart.filter(x => x.id !== id);
+                if(item.qty <= 0) state.cart = state.cart.filter(x => Number(x.id) != Number(id));
+                saveCartToStorage(); // Save to localStorage
                 renderCart(document.getElementById('app')); renderHeader();
             }
         }
@@ -1314,7 +2327,7 @@
             const u = document.getElementById('u').value;
             const p = document.getElementById('p').value;
             const btn = document.querySelector('.auth-box button');
-            
+
             if(!u || !p) return showToast('Please enter username and password', 'error');
 
             const originalText = btn.innerText;
@@ -1322,17 +2335,96 @@
             btn.disabled = true;
 
             try {
+                // Reset orders and wishlist state before login
+                state.orders = [];
+                state.ordersLoaded = false;
+                state.wishlist = [];
+                state.wishlistLoaded = false;
+
                 const response = await fetch(`http://localhost:9000/api.php?action=loginUser&username=${encodeURIComponent(u)}&password=${encodeURIComponent(p)}`);
                 const data = await response.json();
 
                 if (data.status === 'success') {
+                    // Fetch addresses from API after successful login
+                    let addresses = [];
+                    try {
+                        const addrResponse = await fetch('http://localhost:9000/api.php?action=getAddresses');
+                        const addrData = await addrResponse.json();
+                        if (addrData.status === 'success' && addrData.data) {
+                            addresses = addrData.data.map(a => ({
+                                id: a.id,
+                                name: a.consignee,
+                                phone: a.phone,
+                                detail: [a.province, a.city, a.district, a.address].filter(Boolean).join(' '),
+                                province: a.province || '',
+                                city: a.city || '',
+                                district: a.district || '',
+                                address: a.address || '',
+                                postcode: a.postcode || '',
+                                isDefault: a.is_default
+                            }));
+                        }
+                    } catch (e) {
+                        console.warn('Failed to fetch addresses after login', e);
+                        addresses = data.addresses || [];
+                    }
+
+                    // Fetch orders from API after successful login
+                    let orders = [];
+                    state.ordersLoaded = true; // Mark as loaded since we're fetching now
+                    try {
+                        const ordersResponse = await fetch('http://localhost:9000/api.php?action=getOrders');
+                        const ordersData = await ordersResponse.json();
+                        if (ordersData.status === 'success' && ordersData.data) {
+                            orders = ordersData.data.map(o => ({
+                                id: o.id,
+                                order_number: o.order_number,
+                                date: o.order_date.split('T')[0],
+                                subtotal: o.subtotal,
+                                shipping: o.shipping,
+                                tax: o.tax,
+                                total: o.total,
+                                status: o.status,
+                                items: o.items || [],
+                                address: o.address || {}
+                            }));
+                        }
+                        state.orders = orders;
+                    } catch (e) {
+                        console.warn('Failed to fetch orders after login', e);
+                        orders = db.orders || [];
+                        state.orders = orders;
+                    }
+
+                    // Fetch wishlist from API after successful login
+                    let wishlist = [];
+                    state.wishlistLoaded = true;
+                    try {
+                        const wishlistResponse = await fetch('http://localhost:9000/api.php?action=getWishlist');
+                        const wishlistData = await wishlistResponse.json();
+                        if (wishlistData.status === 'success' && wishlistData.data) {
+                            wishlist = wishlistData.data.map(w => ({
+                                id: w.id,
+                                product_id: w.product_id,
+                                product_name: w.product_name,
+                                product_price: w.product_price,
+                                product_image: w.product_image,
+                                create_time: w.create_time
+                            }));
+                        }
+                        state.wishlist = wishlist;
+                    } catch (e) {
+                        console.warn('Failed to fetch wishlist after login', e);
+                        state.wishlist = [];
+                    }
+
                     state.currentUser = {
-                        username: u, 
+                        username: u,
                         name: data.name,
-                        phone: data.tel, 
+                        phone: data.tel,
                         avatar: data.avatar,
                         favorites: data.favorites || [],
-                        addresses: data.addresses || [],
+                        addresses: addresses,
                         email: data.email
                     };
                     showToast(data.message || 'WELCOME BACK', 'success');
@@ -1343,10 +2435,10 @@
             } catch (error) {
                 console.warn("API Login failed, trying mock fallback...", error);
                 const user = db.users.find(x => x.username === u && x.password === p);
-                if(user) { 
-                    state.currentUser = user; 
-                    showToast('WELCOME BACK (Mock)', 'success'); 
-                    navigateTo('home'); 
+                if(user) {
+                    state.currentUser = user;
+                    showToast('WELCOME BACK (Mock)', 'success');
+                    navigateTo('home');
                 } else {
                     showToast('Login failed. API unreachable and mock user not found.', 'error');
                 }
@@ -1366,11 +2458,68 @@
                 console.warn('Logout API failed', error);
             } finally {
                 state.currentUser = null;
+                state.orders = [];
+                state.ordersLoaded = false;
+                state.wishlist = [];
+                state.wishlistLoaded = false;
                 render(); 
             }
         }
 
-        function register() { showToast('ACCOUNT CREATED'); navigateTo('login'); }
+        async function register() {
+            const username = document.getElementById('u').value.trim();
+            const password = document.getElementById('p').value;
+            const confirmPassword = document.getElementById('reg-confirm-pwd')?.value || '';
+            const phone = document.getElementById('reg-phone')?.value.trim() || '';
+            const email = document.getElementById('reg-email')?.value.trim() || '';
+            const password_hint = document.getElementById('reg-hint')?.value.trim() || '';
+            const captcha = document.getElementById('reg-captcha')?.value.trim() || '';
+
+            if (!username || !password) {
+                showToast('Username and password are required', 'error');
+                return;
+            }
+            if (password.length < 6) {
+                showToast('Password must be at least 6 characters', 'error');
+                return;
+            }
+            // Check password complexity: at least 2 of (letters, numbers, special chars)
+            const hasLetter = /[a-zA-Z]/.test(password);
+            const hasNumber = /\d/.test(password);
+            const hasSpecial = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+            const types = [hasLetter, hasNumber, hasSpecial].filter(Boolean).length;
+            if (types < 2) {
+                showToast('Password must contain at least 2 types: letters, numbers, special characters', 'error');
+                return;
+            }
+            if (password !== confirmPassword) {
+                showToast('Passwords do not match', 'error');
+                return;
+            }
+            if (!captcha) {
+                showToast('Please enter the captcha code', 'error');
+                return;
+            }
+
+            try {
+                const response = await fetch('http://localhost:9000/api.php?action=registerUser', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username, password, phone, email, password_hint, captcha })
+                });
+                const data = await response.json();
+
+                if (data.status === 'success') {
+                    showToast('ACCOUNT CREATED - PLEASE LOGIN', 'success');
+                    navigateTo('login');
+                } else {
+                    showToast(data.message || 'Registration failed', 'error');
+                }
+            } catch (error) {
+                console.error('Registration error:', error);
+                showToast('Registration failed', 'error');
+            }
+        }
 
         // --- Modal Functions ---
         function closeModal(modalId) {
@@ -1424,57 +2573,193 @@
             }, 1000);
         }
 
-        function openAddressModal(id = null) {
+        async function openAddressModal(id = null) {
             const modal = document.getElementById('address-modal');
             const title = document.getElementById('address-modal-title');
+            
+            // First, handle the address data if editing
+            let addr = null;
             if (id) {
-                const addr = state.currentUser.addresses.find(a => a.id === id);
+                // Use loose equality to handle both string and number IDs
+                addr = state.currentUser.addresses.find(a => a.id == id);
+                if (!addr) {
+                    showToast('Address not found', 'error');
+                    return;
+                }
+            }
+            
+            // Load countries dropdown
+            const countrySelect = document.getElementById('addr-country');
+            const countries = await fetchCountries();
+            
+            // Build options with China as default
+            let optionsHtml = countries.map(c => 
+                `<option value="${c.name}" ${c.name === 'China' ? 'selected' : ''}>${c.name}</option>`
+            ).join('');
+            // Ensure at least China is in the list
+            if (!optionsHtml) {
+                optionsHtml = `<option value="China" selected>China</option>`;
+            }
+            countrySelect.innerHTML = optionsHtml;
+            
+            if (addr) {
                 document.getElementById('addr-id').value = addr.id;
                 document.getElementById('addr-name').value = addr.name;
                 document.getElementById('addr-phone').value = addr.phone;
-                document.getElementById('addr-detail').value = addr.detail;
+                document.getElementById('addr-country').value = addr.country || 'China';
+                document.getElementById('addr-province').value = addr.province || '';
+                document.getElementById('addr-city').value = addr.city || '';
+                document.getElementById('addr-district').value = addr.district || '';
+                document.getElementById('addr-detail').value = addr.detail || addr.address || '';
+                document.getElementById('addr-postcode').value = addr.postcode || '';
                 document.getElementById('addr-default').checked = addr.isDefault;
                 title.innerText = "EDIT ADDRESS";
             } else {
                 document.getElementById('addr-id').value = '';
                 document.getElementById('addr-name').value = '';
                 document.getElementById('addr-phone').value = '';
+                document.getElementById('addr-country').value = 'China';
+                document.getElementById('addr-province').value = '';
+                document.getElementById('addr-city').value = '';
+                document.getElementById('addr-district').value = '';
                 document.getElementById('addr-detail').value = '';
+                document.getElementById('addr-postcode').value = '';
                 document.getElementById('addr-default').checked = false;
                 title.innerText = "ADD ADDRESS";
             }
             modal.classList.add('open');
         }
 
-        function saveAddress() {
-             const id = document.getElementById('addr-id').value;
-             // Mock save
-             const newAddr = {
-                id: id ? parseInt(id) : Date.now(),
-                name: document.getElementById('addr-name').value,
-                phone: document.getElementById('addr-phone').value,
-                detail: document.getElementById('addr-detail').value,
-                isDefault: document.getElementById('addr-default').checked
-             };
-             
-             if (newAddr.isDefault) state.currentUser.addresses.forEach(a => a.isDefault = false);
-             
-             if (id) {
-                 const idx = state.currentUser.addresses.findIndex(a => a.id == id);
-                 state.currentUser.addresses[idx] = newAddr;
-             } else {
-                 state.currentUser.addresses.push(newAddr);
-             }
-             closeModal('address-modal');
-             render(true);
-             if(document.getElementById('checkout-modal').classList.contains('open')) {
-                 openCheckoutModal(state.checkout.subtotal); // Re-open to refresh list
-             }
+        async function saveAddress() {
+            const idInput = document.getElementById('addr-id').value;
+            const id = idInput ? Number(idInput) : null; // Convert to number if exists
+            const name = document.getElementById('addr-name').value;
+            const phone = document.getElementById('addr-phone').value;
+            const country = document.getElementById('addr-country').value;
+            const province = document.getElementById('addr-province').value;
+            const city = document.getElementById('addr-city').value;
+            const district = document.getElementById('addr-district').value;
+            const detail = document.getElementById('addr-detail').value;
+            const postcode = document.getElementById('addr-postcode').value;
+            const isDefault = document.getElementById('addr-default').checked;
+
+            if (!name || !phone || !detail) {
+                showToast('Please fill in all required fields', 'error');
+                return;
+            }
+
+            const addressData = {
+                consignee: name,
+                phone: phone,
+                country: country,
+                province: province,
+                city: city,
+                district: district,
+                address: detail,
+                postcode: postcode,
+                is_default: isDefault ? 1 : 0
+            };
+
+            const btn = document.querySelector('#address-modal .btn-primary');
+            const originalText = btn.innerText;
+            btn.innerText = "SAVING...";
+            btn.disabled = true;
+
+            try {
+                let response;
+                if (id) {
+                    // Update existing address
+                    response = await fetch(`http://localhost:9000/api.php?action=updateAddress&id=${encodeURIComponent(id)}`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(addressData)
+                    });
+                } else {
+                    // Add new address
+                    response = await fetch('http://localhost:9000/api.php?action=addAddress', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(addressData)
+                    });
+                }
+
+                const data = await response.json();
+
+                if (data.status === 'success') {
+                    showToast(data.message || 'Address saved successfully', 'success');
+                    // Refresh addresses from API
+                    state.currentUser.addresses = await fetchAddresses();
+                    closeModal('address-modal');
+                    render(true);
+                    if (document.getElementById('checkout-modal').classList.contains('open')) {
+                        openCheckoutModal(state.checkout.subtotal);
+                    }
+                } else if (data.needLogin) {
+                    showToast('Please login first', 'error');
+                    state.currentUser = null;
+                    navigateTo('login');
+                } else {
+                    showToast(data.message || 'Failed to save address', 'error');
+                }
+            } catch (error) {
+                console.warn('Save address failed, using mock fallback', error);
+                // Fallback to mock save
+                const newAddr = {
+                    id: id ? parseInt(id) : Date.now(),
+                    name: name,
+                    phone: phone,
+                    detail: detail,
+                    isDefault: isDefault
+                };
+
+                if (newAddr.isDefault) state.currentUser.addresses.forEach(a => a.isDefault = false);
+
+                if (id) {
+                    const idx = state.currentUser.addresses.findIndex(a => a.id == id);
+                    state.currentUser.addresses[idx] = newAddr;
+                } else {
+                    state.currentUser.addresses.push(newAddr);
+                }
+                closeModal('address-modal');
+                showToast('Address saved (Mock)', 'success');
+                render(true);
+                if (document.getElementById('checkout-modal').classList.contains('open')) {
+                    openCheckoutModal(state.checkout.subtotal);
+                }
+            } finally {
+                btn.innerText = originalText;
+                btn.disabled = false;
+            }
         }
         
-        function deleteAddress(id) {
-            if(confirm('Delete address?')) {
+        async function deleteAddress(id) {
+            if (!confirm('Delete address?')) return;
+
+            try {
+                const numericId = Number(id);
+                const response = await fetch(`http://localhost:9000/api.php?action=deleteAddress&id=${encodeURIComponent(numericId)}`);
+                const data = await response.json();
+
+                if (data.status === 'success') {
+                    showToast(data.message || 'Address deleted successfully', 'success');
+                    // Refresh addresses from API
+                    state.currentUser.addresses = await fetchAddresses();
+                    render(true);
+                    if (document.getElementById('checkout-modal').classList.contains('open')) {
+                        openCheckoutModal(state.checkout.subtotal);
+                    }
+                } else if (data.needLogin) {
+                    showToast('Please login first', 'error');
+                    state.currentUser = null;
+                    navigateTo('login');
+                } else {
+                    showToast(data.message || 'Failed to delete address', 'error');
+                }
+            } catch (error) {
+                console.warn('Delete address failed, using mock fallback', error);
+                // Fallback to mock delete
                 state.currentUser.addresses = state.currentUser.addresses.filter(a => a.id !== id);
+                showToast('Address deleted (Mock)', 'success');
                 render(true);
             }
         }
@@ -1493,26 +2778,31 @@
                 return;
             }
 
+            // Calculate shipping cost from cart items (sum of shipping_price * qty)
+            const shippingCost = state.cart.reduce((sum, item) => {
+                const itemShipping = item.shipping_price || 0;
+                return sum + (itemShipping * item.qty);
+            }, 0);
+            
             state.checkout.subtotal = subtotal;
-            state.checkout.shipping = 0;
-            state.checkout.total = subtotal;
+            state.checkout.shipping = shippingCost;
+            state.checkout.total = subtotal + shippingCost;
             state.checkout.addressId = null;
             state.checkout.paymentMethod = null;
 
             // Render Address List
             const addrContainer = document.getElementById('modal-address-list');
             if (state.currentUser.addresses.length === 0) {
-                addrContainer.innerHTML = '<p style="font-size:13px; color:#999; padding:10px; text-align:center;">No addresses found. <a onclick="openAddressModal()" style="color:var(--primary-color); cursor:pointer; text-decoration:underline;">Add New</a></p>';
+                addrContainer.innerHTML = '<p style="font-size:13px; color:#999; padding:10px; text-align:center;">No addresses found. Please add a shipping address below.</p>';
             } else {
                 addrContainer.innerHTML = state.currentUser.addresses.map(a => {
-                    const cost = a.isDefault ? 0 : 20; 
+                    const displayDetail = a.country ? `${a.country}, ${a.detail}` : a.detail;
                     return `
-                    <div class="address-option" onclick="selectAddress(${a.id}, ${cost}, this)">
+                    <div class="address-option" onclick="selectAddress(${a.id}, this)">
                         <input type="radio" name="checkout_addr" ${state.checkout.addressId === a.id ? 'checked' : ''}>
                         <div>
                             <div style="font-weight:bold; font-size:14px;">${a.name} <span style="font-weight:normal; color:#666;">${a.phone}</span></div>
-                            <div class="address-details">${a.detail}</div>
-                            <div class="address-shipping">${cost === 0 ? 'Free Shipping' : 'Shipping: $20'}</div>
+                            <div class="address-details">${displayDetail}</div>
                         </div>
                     </div>`;
                 }).join('');
@@ -1532,12 +2822,124 @@
             document.getElementById('checkout-modal').classList.add('open');
         }
 
-        function selectAddress(id, cost, el) {
+        function selectAddress(id, el) {
             document.querySelectorAll('.address-option input').forEach(i => i.checked = false);
             el.querySelector('input').checked = true;
             state.checkout.addressId = id;
-            state.checkout.shipping = cost;
+            // Shipping cost is calculated from cart items, not from address
             updateCheckoutTotals();
+        }
+
+        async function toggleCheckoutAddressForm(show) {
+            const form = document.getElementById('checkout-address-form');
+            const link = document.getElementById('checkout-add-address-link');
+            if (show) {
+                form.style.display = 'block';
+                link.style.display = 'none';
+                // Load countries dropdown
+                const countrySelect = document.getElementById('checkout-new-country');
+                const countries = await fetchCountries();
+                let optionsHtml = countries.map(c =>
+                    `<option value="${c.name}" ${c.name === 'China' ? 'selected' : ''}>${c.name}</option>`
+                ).join('');
+                if (!optionsHtml) {
+                    optionsHtml = `<option value="China" selected>China</option>`;
+                }
+                countrySelect.innerHTML = optionsHtml;
+            } else {
+                form.style.display = 'none';
+                link.style.display = 'block';
+                // Clear form
+                document.getElementById('checkout-new-name').value = '';
+                document.getElementById('checkout-new-phone').value = '';
+                document.getElementById('checkout-new-country').value = 'China';
+                document.getElementById('checkout-new-province').value = '';
+                document.getElementById('checkout-new-city').value = '';
+                document.getElementById('checkout-new-district').value = '';
+                document.getElementById('checkout-new-address').value = '';
+                document.getElementById('checkout-new-postcode').value = '';
+                document.getElementById('checkout-new-default').checked = false;
+            }
+        }
+
+        function saveCheckoutAddress() {
+            const name = document.getElementById('checkout-new-name').value.trim();
+            const phone = document.getElementById('checkout-new-phone').value.trim();
+            const country = document.getElementById('checkout-new-country').value.trim();
+            const province = document.getElementById('checkout-new-province').value.trim();
+            const city = document.getElementById('checkout-new-city').value.trim();
+            const district = document.getElementById('checkout-new-district').value.trim();
+            const address = document.getElementById('checkout-new-address').value.trim();
+            const postcode = document.getElementById('checkout-new-postcode').value.trim();
+            const isDefault = document.getElementById('checkout-new-default').checked;
+
+            if (!name || !phone || !address) {
+                showToast('Please fill in required fields (Name, Phone, Address)', 'error');
+                return;
+            }
+
+            // Create new address object
+            const newAddr = {
+                id: Date.now(),
+                name: name,
+                phone: phone,
+                country: country,
+                province: province,
+                city: city,
+                district: district,
+                detail: address,
+                postcode: postcode,
+                isDefault: isDefault
+            };
+
+            // If setting as default, update other addresses
+            if (isDefault && state.currentUser.addresses) {
+                state.currentUser.addresses.forEach(a => a.isDefault = false);
+            }
+
+            // Add to user's addresses
+            if (!state.currentUser.addresses) {
+                state.currentUser.addresses = [];
+            }
+            state.currentUser.addresses.push(newAddr);
+
+            // Save to backend
+            if (state.currentUser && state.currentUser.id) {
+                fetch('api.php?action=addAddress', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(newAddr)
+                }).then(r => r.json()).catch(() => {});
+            }
+
+            // Update checkout address list
+            const addrContainer = document.getElementById('modal-address-list');
+            const displayDetail = newAddr.country ? `${newAddr.country}, ${newAddr.detail}` : newAddr.detail;
+            const addressHtml = `
+                <div class="address-option" onclick="selectAddress(${newAddr.id}, this)">
+                    <input type="radio" name="checkout_addr" checked>
+                    <div>
+                        <div style="font-weight:bold; font-size:14px;">${newAddr.name} <span style="font-weight:normal; color:#666;">${newAddr.phone}</span></div>
+                        <div class="address-details">${displayDetail}</div>
+                    </div>
+                </div>`;
+            // Check if currently showing "No addresses found" message
+            if (state.currentUser.addresses.length === 1) {
+                // First address, replace the "no addresses" message
+                addrContainer.innerHTML = addressHtml;
+            } else {
+                // Append to existing addresses
+                addrContainer.innerHTML = addrContainer.innerHTML + addressHtml;
+            }
+
+            // Auto-select the new address
+            state.checkout.addressId = newAddr.id;
+            // Shipping cost is calculated from cart items, not from address
+            updateCheckoutTotals();
+
+            // Hide form
+            toggleCheckoutAddressForm(false);
+            showToast('Address added successfully', 'success');
         }
 
         function updateCheckoutTotals() {
@@ -1567,65 +2969,106 @@
             payBtn.disabled = true;
 
             if (state.checkout.paymentMethod === 'email') {
-                setTimeout(() => {
-                    finishOrder('Pending'); 
+                setTimeout(async () => {
+                    await finishOrder('Pending');
                 }, 1500);
             } else {
                 payBtn.innerText = "REDIRECTING...";
-                
-                setTimeout(() => {
-                    window.open('about:blank', '_blank'); 
-                    
+
+                setTimeout(async () => {
+                    window.open('about:blank', '_blank');
+
                     document.getElementById('checkout-step-1').classList.remove('active');
                     document.getElementById('checkout-step-2').classList.add('active');
-                    
+
                     // Show visuals for step 2
                     document.getElementById('check-icon').style.display = 'inline-block';
-                    
+
                     payBtn.innerText = originalText;
                     payBtn.disabled = false;
+
+                    // Create order after payment redirect simulation
+                    await finishOrder('Processing');
                 }, 1000);
             }
         }
 
-        function finishOrder(status) {
-            // UPDATED: Create complete order snapshot
+        async function finishOrder(status) {
             const addr = state.currentUser.addresses.find(a => a.id == state.checkout.addressId);
-            const orderItems = state.cart.map(item => ({
-                id: item.id,
-                name: item.name,
-                price: item.price,
-                qty: item.qty,
-                img: item.img
-            }));
+            if (!addr) {
+                showToast('Please select a shipping address', 'error');
+                return;
+            }
 
-            const newOrder = {
-                id: "ORD-" + Date.now(),
-                date: new Date().toISOString().split('T')[0],
+            const orderData = {
+                consignee: addr.name,
+                phone: addr.phone,
+                country: addr.country || 'China',
+                province: addr.province || '',
+                city: addr.city || '',
+                district: addr.district || '',
+                address: addr.address || addr.detail || '',
+                postcode: addr.postcode || '',
                 subtotal: state.checkout.subtotal,
                 shipping: state.checkout.shipping,
+                tax: 0,
                 total: state.checkout.total,
-                status: status, 
-                items: orderItems,
-                address: addr // Store address snapshot
+                payment_method: state.checkout.paymentMethod === 'email' ? 'email' : 'online',
+                items: state.cart.map(item => ({
+                    id: item.id,
+                    name: item.name,
+                    price: item.price,
+                    qty: item.qty,
+                    img: item.img,
+                    attribute_id: item.attribute_id,
+                    attribute_name: item.attribute_name
+                }))
             };
-            
-            db.orders.unshift(newOrder); 
-            state.cart = []; 
-            
-            closeModal('checkout-modal');
-            showToast(`Order Placed: ${status}`, 'success');
-            renderHeader();
-            
-            navigateTo('order-detail', {id: newOrder.id});
+
+            try {
+                const response = await fetch('http://localhost:9000/api.php?action=createOrder', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(orderData)
+                });
+                const result = await response.json();
+
+                if (result.status === 'success') {
+                    state.cart = [];
+                    clearCartStorage(); // Clear cart from localStorage
+                    closeModal('checkout-modal');
+                    showToast(`Order Placed: ${result.data.order_number}`, 'success');
+                    renderHeader();
+
+                    // Refresh orders list from API
+                    state.ordersLoaded = false; // Reset flag to force refresh
+                    state.orders = await fetchOrders();
+
+                    // Navigate to order detail with the new order ID
+                    navigateTo('order-detail', { id: result.data.id });
+                } else if (result.needLogin) {
+                    showToast('Please login to place order', 'error');
+                    navigateTo('login');
+                } else {
+                    showToast(result.message || 'Failed to create order', 'error');
+                }
+            } catch (error) {
+                console.error('Order creation error:', error);
+                showToast('Failed to create order. Please try again.', 'error');
+            }
         }
 
         window.addEventListener('hashchange', () => render(false));
+        
+        // Global flag to track if initial login check is complete
+        window.initialLoginCheckComplete = false;
+        
         window.addEventListener('DOMContentLoaded', async () => { 
             applyConfig();
             await checkLoginStatus();
+            window.initialLoginCheckComplete = true;
             await fetchCategories(); 
-            fetchProducts('all');
+            await fetchProducts('all');
             render();
         });
 

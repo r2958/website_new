@@ -1,5 +1,6 @@
 <?
 require_once('../../application.php');
+require_once('../auth.php');
 
 $qid = $Admin->queryProductDetails($_GET['ProductID']);
 if($DB->numRows($qid) == 0) header('Location: index.php');

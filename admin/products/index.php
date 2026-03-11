@@ -1,5 +1,6 @@
 <?
 require_once('../../application.php');
+require_once('../auth.php');
 
 $OrderBy = (!isset($_GET['OrderBy'])) ? $ShoppingCart->SITE->OrderProductsBy : $_GET['OrderBy'];
 $WhereClause = '';

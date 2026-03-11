@@ -19,8 +19,8 @@ class PagedResultSet
   
 	function PagedResultSet($query, $pageSize)
 	{
-		global $DB;
-		$this->DB = $DB;
+		// Use $GLOBALS for PHP 8+ compatibility
+		$this->DB = $GLOBALS['DB'];
 		$this->results = $this->DB->query($query);
 		$this->totalrows = $this->DB->numRows($this->results);
 		$this->pageSize = $pageSize;

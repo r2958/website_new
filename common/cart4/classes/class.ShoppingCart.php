@@ -15,9 +15,9 @@ class ShoppingCart
 
 	function ShoppingCart()
 	{
-		global $CFG, $DB;
-		$this->CFG =& $CFG;
-		$this->DB =& $DB;
+		// Use $GLOBALS for PHP 8+ compatibility
+		$this->CFG =& $GLOBALS['CFG'];
+		$this->DB =& $GLOBALS['DB'];
 		$this->SessionID = $this->getSessionID();
 		$this->SITE =& $this->getSiteSettings();
 		$this->getUPSRateCalculator();
@@ -904,7 +904,12 @@ class ShoppingCart
                     category: "5", // Toy Doll
                     img: "https://images.unsplash.com/photo-1599643478518-17488fbbcd75?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80", 
                     images: ["https://images.unsplash.com/photo-1599643478518-17488fbbcd75?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"], 
-                    desc: "An exquisite piece featuring a central sapphire of unparalleled depth and clarity, surrounded by a halo of brilliant-cut diamonds. Crafted in 18k white gold, this necklace embodies timeless elegance and sophistication." 
+                    desc: "An exquisite piece featuring a central sapphire of unparalleled depth and clarity, surrounded by a halo of brilliant-cut diamonds. Crafted in 18k white gold, this necklace embodies timeless elegance and sophistication.",
+                    attributes: [
+                        { id: 1, name: "Small", price: 12999 },
+                        { id: 2, name: "Medium", price: 13999 },
+                        { id: 3, name: "Large", price: 14999 }
+                    ]
                 },
  * 
  * 
@@ -921,20 +926,112 @@ class ShoppingCart
 				"/images/products/" . $row->ProductID . "_2.jpg",
 				"/images/products/" . $row->ProductID . "_3.jpg",
 			];
+			
+			// Fetch attributes for this product
+			$attributes = array();
+			$attrQuery = $this->queryAttributesForProduct($row->ProductID);
+			$minPrice = null;
+			$maxPrice = null;
+			
+		while ($attrRow = $this->DB->fetchObject($attrQuery)) {
+			$attributes[] = [
+				"id" => $attrRow->AttributeID,
+				"name" => $attrRow->AttributeName,
+				"price" => (float)$attrRow->AttributePrice,
+				"sku" => $attrRow->SKU,
+				"description" => $attrRow->AttribtDescriptions,
+				"shipping_price" => (float)$attrRow->ShippingPrice
+			];
+				
+				// Calculate min and max prices
+				if ($minPrice === null || $attrRow->AttributePrice < $minPrice) {
+					$minPrice = $attrRow->AttributePrice;
+				}
+				if ($maxPrice === null || $attrRow->AttributePrice > $maxPrice) {
+					$maxPrice = $attrRow->AttributePrice;
+				}
+			}
+			
+			// If no attributes found, set default price
+			if ($minPrice === null) {
+				$minPrice = 0;
+				$maxPrice = 0;
+			}
+			
 			$productArray[] = [
 				"id"   => $row->ProductID,
 				"name" => $row->ProductName,
-				"price"=> 12000,
+				"price" => $minPrice, // Default to minimum price
+				"price_min" => $minPrice,
+				"price_max" => $maxPrice,
 				"category" => $CategoryID,
 				"img" => "/images/products/" . $row->ProductID . "_01_th.jpg",
-				//"images" => ["https://images.unsplash.com/photo-1599643478518-17488fbbcd75?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80","https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"],
 				"images" => $images,
-				"desc" => $row->ProductDescription
+				"desc" => $row->ProductDescription,
+				"attributes" => $attributes // Include attributes with prices
 			];
 		}
 		//echo json_encode($productArray);exit;
 		
 		return $productArray;
+	}
+
+
+	function getProductDetails($ProductID)
+	{
+		$Query = "SELECT products.ProductID, ProductName, ProductDescription, PageText, OnSpecial, Image, url FROM products WHERE products.ProductID = '" . $this->DB->escape($ProductID) . "' AND Display = 1";
+		$qid = $this->DB->query($Query);
+		
+		if ($row = $this->DB->fetchObject($qid)) {
+			$images = [
+				"/images/products/" . $row->ProductID . "_1.jpg",
+				"/images/products/" . $row->ProductID . "_2.jpg",
+				"/images/products/" . $row->ProductID . "_3.jpg",
+			];
+			
+			// Fetch attributes for this product
+			$attributes = array();
+			$attrQuery = $this->queryAttributesForProduct($row->ProductID);
+			$minPrice = null;
+			$maxPrice = null;
+			
+			while ($attrRow = $this->DB->fetchObject($attrQuery)) {
+				$attributes[] = [
+					"id" => $attrRow->AttributeID,
+					"name" => $attrRow->AttributeName,
+					"price" => (float)$attrRow->AttributePrice,
+					"sku" => $attrRow->SKU,
+					"description" => $attrRow->AttribtDescriptions,
+					"shipping_price" => (float)$attrRow->ShippingPrice
+				];
+				
+				if ($minPrice === null || $attrRow->AttributePrice < $minPrice) {
+					$minPrice = $attrRow->AttributePrice;
+				}
+				if ($maxPrice === null || $attrRow->AttributePrice > $maxPrice) {
+					$maxPrice = $attrRow->AttributePrice;
+				}
+			}
+			
+			if ($minPrice === null) {
+				$minPrice = 0;
+				$maxPrice = 0;
+			}
+			
+			return [
+				"id" => $row->ProductID,
+				"name" => $row->ProductName,
+				"price" => $minPrice,
+				"price_min" => $minPrice,
+				"price_max" => $maxPrice,
+				"img" => "/images/products/" . $row->ProductID . "_01_th.jpg",
+				"images" => $images,
+				"desc" => $row->ProductDescription,
+				"attributes" => $attributes
+			];
+		}
+		
+		return null;
 	}
 
 
