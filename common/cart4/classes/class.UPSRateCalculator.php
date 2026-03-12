@@ -1,4 +1,4 @@
-<?
+<?php
 class UPSRateCalculator
 {
 	var $origPostal = '';

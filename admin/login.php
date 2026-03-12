@@ -1,13 +1,18 @@
-<?
+<?php
 require_once('../application.php');
 
-// Check if already logged in
-if (isset($_SESSION['admin_logged_in']) && $_SESSION['admin_logged_in'] === true) {
+// Check if already logged in (but not if coming from logout)
+if (!isset($_GET['logout']) && isset($_SESSION['admin_logged_in']) && $_SESSION['admin_logged_in'] === true) {
     header('Location: index.php');
     exit;
 }
 
 $error = '';
+
+// Check for session expired message
+if (isset($_GET['error']) && $_GET['error'] === 'session_expired') {
+    $error = 'Your session has expired. Please log in again.';
+}
 
 // Handle login form submission
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -24,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_SESSION['admin_login_time'] = time();
 
         // Redirect to intended page or admin index
-        $redirect = isset($_GET['redirect']) ? $_GET['redirect'] : 'index.php';
+        $redirect = isset($_POST['redirect']) ? $_POST['redirect'] : (isset($_GET['redirect']) ? $_GET['redirect'] : 'index.php');
         header('Location: ' . $redirect);
         exit;
     } else {
@@ -139,13 +144,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <p>Please enter your credentials to access the admin area</p>
         </div>
 
-        <? if ($error): ?>
+        <?php if ($error): ?>
         <div class="error-message">
-            <? echo htmlspecialchars($error); ?>
+            <?php echo htmlspecialchars($error); ?>
         </div>
-        <? endif; ?>
+        <?php endif; ?>
 
         <form method="POST" action="">
+            <?php if (isset($_GET['redirect'])): ?>
+            <input type="hidden" name="redirect" value="<?php echo htmlspecialchars($_GET['redirect']); ?>">
+            <?php endif; ?>
             <div class="form-group">
                 <label for="username">Username</label>
                 <input type="text" id="username" name="username" required autofocus>

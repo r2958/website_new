@@ -1,4 +1,4 @@
-<?
+<?php
 // To call these functions, use the following notation:
 // Neturf::showMetaTags();
 // Neturf::showPoweredBy();

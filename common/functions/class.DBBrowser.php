@@ -1,4 +1,4 @@
-<?
+<?php
 // Database Browser
 // Provide an easier tool than phpMyAdmin for browsing data tables
 // No editing, purely for searching/browsing through their database

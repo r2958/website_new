@@ -1,4 +1,4 @@
-<?
+<?php
 /* Generates a result set with number of pages
  * Usage:
  * $qid = new PagedResultSet("select * from TABLE", ROWSTOSHOW);

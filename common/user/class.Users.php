@@ -1,4 +1,4 @@
-<?
+<?php
 class Users
 {
 	var $SessionID;

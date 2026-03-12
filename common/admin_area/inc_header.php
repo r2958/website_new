@@ -1,4 +1,4 @@
-<?
+<?php
 function css(){
 	global $_COOKIE;
 	if(isset($_COOKIE['AdminStyle'])) {
@@ -43,7 +43,7 @@ header('Content-type: text/html; charset=UTF-8');
 
 	<head>
 		<meta http-equiv="content-type" content="text/html;charset=UTF-8">
-		<title><? echo $Page->PageTitle; ?></title>
+		<title><?php echo $Page->PageTitle; ?></title>
 		<link rel="icon" href="/common/admin_area/images/favicon.ico" type="image/x-icon">
 		<link rel="shortcut icon" href="/common/admin_area/images/favicon.ico" type="image/x-icon">
 		<link type="text/css" href="/common/admin_area/style.css" rel="stylesheet" media="screen">
@@ -99,9 +99,9 @@ header('Content-type: text/html; charset=UTF-8');
 			<tr>
 				<td valign="top" align="center" height="450" style="background-image:url(/common/admin_area/images/clear_75pct.png)">
 				<div class="noprint">
-				<div id="updateComplete" <? if(($UpdateStatus == '') && ($UpdateComplete != 'Yes')) echo ' class="inactive"'; ?>>
+				<div id="updateComplete" <?php if(($UpdateStatus == '') && ($UpdateComplete != 'Yes')) echo ' class="inactive"'; ?>>
 					<div id="updateBox" class="fade-00ff00 updateSuccess" onclick="this.className = 'inactive';">
-						<?
+						<?php
 						if($UpdateComplete == 'Yes') { 
 							echo 'Update Complete';
 						} elseif($UpdateStatus != '') {

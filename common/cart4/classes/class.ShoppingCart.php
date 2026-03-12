@@ -921,11 +921,29 @@ class ShoppingCart
 		
 		$productArray = array();
 		while ($row = $qid->fetchObject($qid)) {
-			$images = [
-				"/images/products/" . $row->ProductID . "_1.jpg",
-				"/images/products/" . $row->ProductID . "_2.jpg",
-				"/images/products/" . $row->ProductID . "_3.jpg",
-			];
+			// 从 product_images 表读取一张主图或第一张图
+			$imgQuery = "SELECT image_name FROM product_images 
+						 WHERE product_id = '" . $this->DB->escape($row->ProductID) . "' 
+						 AND image_type = 'full' 
+						 ORDER BY is_primary DESC, sort_order ASC, id ASC 
+						 LIMIT 1";
+			$imgQid = $this->DB->query($imgQuery);
+			$imgRow = $this->DB->fetchObject($imgQid);
+			
+			// 如果有图片记录，使用数据库图片；否则使用默认图片
+			if ($imgRow) {
+				$productImage = "/images/products/" . $imgRow->image_name;
+			} else {
+				// 检查默认图片文件是否存在
+				$defaultImage = "/images/products/" . $row->ProductID . "_01_th.jpg";
+				$defaultImagePath = $_SERVER['DOCUMENT_ROOT'] . $defaultImage;
+				if (file_exists($defaultImagePath)) {
+					$productImage = $defaultImage;
+				} else {
+					// 使用系统默认占位图
+					$productImage = "/images/products/default.jpg";
+				}
+			}
 			
 			// Fetch attributes for this product
 			$attributes = array();
@@ -965,8 +983,7 @@ class ShoppingCart
 				"price_min" => $minPrice,
 				"price_max" => $maxPrice,
 				"category" => $CategoryID,
-				"img" => "/images/products/" . $row->ProductID . "_01_th.jpg",
-				"images" => $images,
+				"img" => $productImage,
 				"desc" => $row->ProductDescription,
 				"attributes" => $attributes // Include attributes with prices
 			];
@@ -983,11 +1000,34 @@ class ShoppingCart
 		$qid = $this->DB->query($Query);
 		
 		if ($row = $this->DB->fetchObject($qid)) {
-			$images = [
-				"/images/products/" . $row->ProductID . "_1.jpg",
-				"/images/products/" . $row->ProductID . "_2.jpg",
-				"/images/products/" . $row->ProductID . "_3.jpg",
-			];
+			// 从 product_images 表读取图片
+			$images = [];
+			$imgQuery = "SELECT image_name, image_type, is_primary FROM product_images 
+						 WHERE product_id = '" . $this->DB->escape($ProductID) . "' 
+						 AND image_type = 'full' 
+						 ORDER BY sort_order ASC, id ASC";
+			$imgQid = $this->DB->query($imgQuery);
+			
+			while ($imgRow = $this->DB->fetchObject($imgQid)) {
+				$images[] = "/images/products/" . $imgRow->image_name;
+			}
+			
+			// 如果没有图片记录，使用默认图片
+			if (empty($images)) {
+				$images = [
+					"/images/products/" . $row->ProductID . "_1.jpg",
+					"/images/products/" . $row->ProductID . "_2.jpg",
+					"/images/products/" . $row->ProductID . "_3.jpg",
+				];
+			}
+			
+			// 获取产品所属的分类ID（取第一个分类）
+			$categoryId = null;
+			$catQuery = "SELECT CategoryID FROM products_categories WHERE ProductID = '" . $this->DB->escape($ProductID) . "' LIMIT 1";
+			$catQid = $this->DB->query($catQuery);
+			if ($catRow = $this->DB->fetchObject($catQid)) {
+				$categoryId = $catRow->CategoryID;
+			}
 			
 			// Fetch attributes for this product
 			$attributes = array();
@@ -1024,9 +1064,13 @@ class ShoppingCart
 				"price" => $minPrice,
 				"price_min" => $minPrice,
 				"price_max" => $maxPrice,
+				"category" => $categoryId,
 				"img" => "/images/products/" . $row->ProductID . "_01_th.jpg",
 				"images" => $images,
 				"desc" => $row->ProductDescription,
+				"description" => $row->ProductDescription,
+				"detail" => $row->PageText,
+				"on_special" => $row->OnSpecial,
 				"attributes" => $attributes
 			];
 		}

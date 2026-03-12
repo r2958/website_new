@@ -1,4 +1,4 @@
-<?
+<?php
 //require_once('/hsphere/local/home/ibscontrols3/ibs-controls.com/common/functions/class.Neturf.php');
 require_once($_SERVER['DOCUMENT_ROOT'].'/common/functions/class.Neturf.php');
 //require_once(Neturf::getServerRoot() . '/common/functions/class.SessionHandler.php');

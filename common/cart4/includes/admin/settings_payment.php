@@ -1,4 +1,4 @@
-<form name="FormName" method="post" action="<? echo $_SERVER['PHP_SELF']; ?>" onsubmit="sendPost(this.name); return false;">
+<form name="FormName" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" onsubmit="sendPost(this.name); return false;">
 	You can choose any or all of the payment options shown below. For each section that is filled in, a new payment button and any associated fields will be added to your online checkout form.
 	<hr />
 	<b>PayPal Order Button</b><br /><br />
@@ -7,18 +7,18 @@
 			<td rowspan="3" width="50%" valign="top">To use Authorize.net or PayPal, you must have an account setup with the respective company.  Enter your account information into the proper fields, and set the text that you would like for the checkout button.</td>
 			<td align="right">Test Mode:</td>
 			<td width="10%"><select name="PaymentPaypalTestmode" size="1">
-					<option value="" <? if($ShoppingCart->SITE->PaymentPaypalTestmode == '') echo 'selected="selected"'; ?>>Choose:</option>
-					<option value="Yes" <? if($ShoppingCart->SITE->PaymentPaypalTestmode == 'Yes') echo 'selected="selected"'; ?>>Yes</option>
-					<option value="No" <? if($ShoppingCart->SITE->PaymentPaypalTestmode == 'No') echo 'selected="selected"'; ?>>No</option>
+					<option value="" <?php if($ShoppingCart->SITE->PaymentPaypalTestmode == '') echo 'selected="selected"'; ?>>Choose:</option>
+					<option value="Yes" <?php if($ShoppingCart->SITE->PaymentPaypalTestmode == 'Yes') echo 'selected="selected"'; ?>>Yes</option>
+					<option value="No" <?php if($ShoppingCart->SITE->PaymentPaypalTestmode == 'No') echo 'selected="selected"'; ?>>No</option>
 				</select></td>
 		</tr>
 		<tr>
 			<td align="right">Account Email:</td>
-			<td><input type="text" name="PaymentPaypalEmail" size="25" value="<? $ShoppingCart->pv($ShoppingCart->SITE->PaymentPaypalEmail); ?>" maxlength="75"></td>
+			<td><input type="text" name="PaymentPaypalEmail" size="25" value="<?php $ShoppingCart->pv($ShoppingCart->SITE->PaymentPaypalEmail); ?>" maxlength="75"></td>
 		</tr>
 		<tr>
 			<td align="right">Checkout Button:</td>
-			<td><input type="text" name="PaymentPaypalOrderButton" size="25" value="<? $ShoppingCart->pv($ShoppingCart->SITE->PaymentPaypalOrderButton); ?>" maxlength="35"></td>
+			<td><input type="text" name="PaymentPaypalOrderButton" size="25" value="<?php $ShoppingCart->pv($ShoppingCart->SITE->PaymentPaypalOrderButton); ?>" maxlength="35"></td>
 		</tr>
 	</table>
 	<hr />
@@ -28,29 +28,29 @@
 			<td rowspan="5" width="50%" valign="top">To use Authorize.net or PayPal, you must have an account setup with the respective company.  Enter your account information into the proper fields, and set the text that you would like for the checkout button.</td>
 			<td align="right">Test Mode:</td>
 			<td width="10%"><select name="PaymentAuthnetTestmode" size="1">
-					<option value="" <? if($ShoppingCart->SITE->PaymentAuthnetTestmode == '') echo 'selected="selected"'; ?>>Choose:</option>
-					<option value="Yes" <? if($ShoppingCart->SITE->PaymentAuthnetTestmode == 'Yes') echo 'selected="selected"'; ?>>Yes</option>
-					<option value="No" <? if($ShoppingCart->SITE->PaymentAuthnetTestmode == 'No') echo 'selected="selected"'; ?>>No</option>
+					<option value="" <?php if($ShoppingCart->SITE->PaymentAuthnetTestmode == '') echo 'selected="selected"'; ?>>Choose:</option>
+					<option value="Yes" <?php if($ShoppingCart->SITE->PaymentAuthnetTestmode == 'Yes') echo 'selected="selected"'; ?>>Yes</option>
+					<option value="No" <?php if($ShoppingCart->SITE->PaymentAuthnetTestmode == 'No') echo 'selected="selected"'; ?>>No</option>
 				</select></td>
 		</tr>
 		<tr>
 			<td align="right">Account Login:</td>
-			<td><input type="text" name="PaymentAuthnetLogin" size="25" value="<? $ShoppingCart->pv($ShoppingCart->SITE->PaymentAuthnetLogin); ?>" maxlength="75"></td>
+			<td><input type="text" name="PaymentAuthnetLogin" size="25" value="<?php $ShoppingCart->pv($ShoppingCart->SITE->PaymentAuthnetLogin); ?>" maxlength="75"></td>
 		</tr>
 		<tr>
 			<td align="right">Transaction Key:</td>
-			<td><input type="text" name="PaymentAuthnetKey" size="25" value="<? $ShoppingCart->pv($ShoppingCart->SITE->PaymentAuthnetKey); ?>" maxlength="75"></td>
+			<td><input type="text" name="PaymentAuthnetKey" size="25" value="<?php $ShoppingCart->pv($ShoppingCart->SITE->PaymentAuthnetKey); ?>" maxlength="75"></td>
 		</tr>
 		<tr>
 			<td align="right">Type:</td>
 			<td><select name="PaymentAuthnetType" size="1">
-					<option value="AUTH_CAPTURE" <? if($ShoppingCart->SITE->PaymentAuthnetType == 'AUTH_CAPTURE') echo 'selected="selected"'; ?>>AUTH_CAPTURE</option>
-					<option value="AUTH_ONLY" <? if($ShoppingCart->SITE->PaymentAuthnetType == 'AUTH_ONLY') echo 'selected="selected"'; ?>>AUTH_ONLY</option>
+					<option value="AUTH_CAPTURE" <?php if($ShoppingCart->SITE->PaymentAuthnetType == 'AUTH_CAPTURE') echo 'selected="selected"'; ?>>AUTH_CAPTURE</option>
+					<option value="AUTH_ONLY" <?php if($ShoppingCart->SITE->PaymentAuthnetType == 'AUTH_ONLY') echo 'selected="selected"'; ?>>AUTH_ONLY</option>
 				</select></td>
 		</tr>
 		<tr>
 			<td align="right">Checkout Button:</td>
-			<td><input type="text" name="PaymentAuthnetOrderButton" size="25" value="<? $ShoppingCart->pv($ShoppingCart->SITE->PaymentAuthnetOrderButton); ?>" maxlength="35"></td>
+			<td><input type="text" name="PaymentAuthnetOrderButton" size="25" value="<?php $ShoppingCart->pv($ShoppingCart->SITE->PaymentAuthnetOrderButton); ?>" maxlength="35"></td>
 		</tr>
 	</table>
 	<hr />
@@ -61,24 +61,24 @@
 			<td align="right">Cards You Accept:<br />
 				<small>(Use Shift, Control, or Apple keys to select multiple categories)</small></td>
 			<td width="10%"><select name="AcceptedCards[]" size="6" style="width:100%"multiple>
-					<option value="1" <? if(strstr($ShoppingCart->SITE->PaymentCCCardsAccepted, 1)) echo 'selected="selected"'; ?>>MasterCard</option>
-					<option value="2" <? if(strstr($ShoppingCart->SITE->PaymentCCCardsAccepted, 2)) echo 'selected="selected"'; ?>>Visa</option>
-					<option value="3" <? if(strstr($ShoppingCart->SITE->PaymentCCCardsAccepted, 3)) echo 'selected="selected"'; ?>>Amex</option>
-					<option value="4" <? if(strstr($ShoppingCart->SITE->PaymentCCCardsAccepted, 4)) echo 'selected="selected"'; ?>>Diners</option>
-					<option value="5" <? if(strstr($ShoppingCart->SITE->PaymentCCCardsAccepted, 5)) echo 'selected="selected"'; ?>>Discover</option>
-					<option value="6" <? if(strstr($ShoppingCart->SITE->PaymentCCCardsAccepted, 6)) echo 'selected="selected"'; ?>>JCB</option>
+					<option value="1" <?php if(strstr($ShoppingCart->SITE->PaymentCCCardsAccepted, 1)) echo 'selected="selected"'; ?>>MasterCard</option>
+					<option value="2" <?php if(strstr($ShoppingCart->SITE->PaymentCCCardsAccepted, 2)) echo 'selected="selected"'; ?>>Visa</option>
+					<option value="3" <?php if(strstr($ShoppingCart->SITE->PaymentCCCardsAccepted, 3)) echo 'selected="selected"'; ?>>Amex</option>
+					<option value="4" <?php if(strstr($ShoppingCart->SITE->PaymentCCCardsAccepted, 4)) echo 'selected="selected"'; ?>>Diners</option>
+					<option value="5" <?php if(strstr($ShoppingCart->SITE->PaymentCCCardsAccepted, 5)) echo 'selected="selected"'; ?>>Discover</option>
+					<option value="6" <?php if(strstr($ShoppingCart->SITE->PaymentCCCardsAccepted, 6)) echo 'selected="selected"'; ?>>JCB</option>
 				</select></td>
 		</tr>
 		<tr>
 			<td align="right">Validate Card?</td>
 			<td><select name="PaymentCCValidate" size="1">
-					<option value="Yes" <? if($ShoppingCart->SITE->PaymentCCValidate == 'Yes') echo 'selected="selected"'; ?>>Yes</option>
-					<option value="No" <? if($ShoppingCart->SITE->PaymentCCValidate == 'No') echo 'selected="selected"'; ?>>No</option>
+					<option value="Yes" <?php if($ShoppingCart->SITE->PaymentCCValidate == 'Yes') echo 'selected="selected"'; ?>>Yes</option>
+					<option value="No" <?php if($ShoppingCart->SITE->PaymentCCValidate == 'No') echo 'selected="selected"'; ?>>No</option>
 				</select></td>
 		</tr>
 		<tr>
 			<td align="right">Checkout Button:</td>
-			<td><input type="text" name="PaymentCCOrderButton" size="25" value="<? $ShoppingCart->pv($ShoppingCart->SITE->PaymentCCOrderButton); ?>" maxlength="35"></td>
+			<td><input type="text" name="PaymentCCOrderButton" size="25" value="<?php $ShoppingCart->pv($ShoppingCart->SITE->PaymentCCOrderButton); ?>" maxlength="35"></td>
 		</tr>
 	</table>
 	<hr />
@@ -87,7 +87,7 @@
 		<tr>
 			<td valign="top" width="50%">The Default Order Button will allow your customers to save their order and print an invoice to mail or fax in with their payment. <i>This option is turned on by default and must be turned off by deleting the text for the checkout button</i></td>
 			<td align="right" valign="top">Checkout Button:</td>
-			<td valign="top" width="10%"><input type="text" name="PaymentManualOrderButton" size="25" value="<? $ShoppingCart->pv($ShoppingCart->SITE->PaymentManualOrderButton); ?>" maxlength="35"></td>
+			<td valign="top" width="10%"><input type="text" name="PaymentManualOrderButton" size="25" value="<?php $ShoppingCart->pv($ShoppingCart->SITE->PaymentManualOrderButton); ?>" maxlength="35"></td>
 		</tr>
 	</table>
 	<p>

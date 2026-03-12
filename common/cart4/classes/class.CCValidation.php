@@ -1,4 +1,4 @@
-<?
+<?php
 define("CARD_TYPE_MC", 0);
 define("CARD_TYPE_VS", 1);
 define("CARD_TYPE_AX", 2);

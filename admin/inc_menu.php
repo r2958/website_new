@@ -1,4 +1,8 @@
 <ul style="line-height:1.5em; font-weight: bold;">
+	<li><a href="/admin/dashboard/index.php">📊 运营监控大盘</a>
+	<li><a href="/admin/monitor/index.php">🖥️ 服务器状态监控</a>
+	<li><a href="/admin/monitor/grafana.php">📈 Grafana风格监控</a>
+	<br /><br />
 	<li><a href="/admin/categories/index.php">Categories</a>
 	<li><a href="/admin/companies/index.php">Companies</a>
 	<li><a href="/admin/products/index.php">Products</a>
@@ -35,4 +39,6 @@
 	<br /><br />
 	<li><? Neturf::showHelpLink(); ?>
 	<li><? Neturf::showControlPanelLink(); ?>
+	<br /><br />
+	<li><a href="/admin/logout.php" onclick="return confirm('Are you sure you want to logout?');" style="color: #c33; font-weight: bold;">🚪 Logout</a>
 </ul>

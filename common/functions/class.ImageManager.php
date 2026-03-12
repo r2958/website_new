@@ -1,4 +1,4 @@
-<?
+<?php
 //var_dump($_SERVER['DOCUMENT_ROOT']);exit;
 require_once($_SERVER['DOCUMENT_ROOT']."/common/functions/class.Neturf.php");
 class ImageManager

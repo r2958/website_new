@@ -1,4 +1,4 @@
-<?
+<?php
 if((@$Message == '') && (@$errorMessage == '') && (@$Redirect == '')) {
 	$Message = 'Update Complete';
 }

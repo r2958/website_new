@@ -619,21 +619,46 @@
                 <!-- Payment Section -->
                 <h4 style="text-align: left; margin: 15px 0 10px; font-size: 14px; color: var(--primary-color);">2. PAYMENT METHOD</h4>
                 <div class="payment-methods">
-                    <div class="payment-option" onclick="selectPayment('alipay', this)">
-                        <i class="fab fa-alipay" style="color:#1677FF"></i> Alipay
+                    <div class="payment-option" onclick="selectPayment('alipay', this)" data-method="alipay">
+                        <i class="fab fa-alipay" style="color:#1677FF; font-size: 24px;"></i> 
+                        <div style="text-align: left;">
+                            <div style="font-weight: 600;">Alipay</div>
+                            <div style="font-size: 11px; color: #999;">支付宝 - 即时到账</div>
+                        </div>
                     </div>
-                    <div class="payment-option" onclick="selectPayment('wechat', this)">
-                        <i class="fab fa-weixin" style="color:#09B83E"></i> WeChat Pay
+                    <div class="payment-option" onclick="selectPayment('wechat', this)" data-method="wechat">
+                        <i class="fab fa-weixin" style="color:#09B83E; font-size: 24px;"></i> 
+                        <div style="text-align: left;">
+                            <div style="font-weight: 600;">WeChat Pay</div>
+                            <div style="font-size: 11px; color: #999;">微信支付</div>
+                        </div>
                     </div>
-                    <div class="payment-option" onclick="selectPayment('paypal', this)">
-                        <i class="fab fa-paypal" style="color:#003087"></i> PayPal
+                    <div class="payment-option" onclick="selectPayment('paypal', this)" data-method="paypal">
+                        <i class="fab fa-paypal" style="color:#003087; font-size: 24px;"></i> 
+                        <div style="text-align: left;">
+                            <div style="font-weight: 600;">PayPal</div>
+                            <div style="font-size: 11px; color: #999;">国际支付</div>
+                        </div>
                     </div>
-                    <div class="payment-option" onclick="selectPayment('card', this)">
-                        <i class="fas fa-credit-card" style="color:#333"></i> Credit Card
+                    <div class="payment-option" onclick="selectPayment('card', this)" data-method="card">
+                        <i class="fas fa-credit-card" style="color:#333; font-size: 24px;"></i> 
+                        <div style="text-align: left;">
+                            <div style="font-weight: 600;">Credit Card</div>
+                            <div style="font-size: 11px; color: #999;">Visa / Mastercard</div>
+                        </div>
                     </div>
-                    <div class="payment-option" onclick="selectPayment('email', this)">
-                        <i class="fas fa-envelope" style="color:#C5A059"></i> Email Invoice
+                    <div class="payment-option" onclick="selectPayment('email', this)" data-method="email">
+                        <i class="fas fa-envelope" style="color:#C5A059; font-size: 24px;"></i> 
+                        <div style="text-align: left;">
+                            <div style="font-weight: 600;">Email Invoice</div>
+                            <div style="font-size: 11px; color: #999;">邮件账单支付</div>
+                        </div>
                     </div>
+                </div>
+                
+                <!-- 支付方式说明 -->
+                <div id="payment-description" style="background: #f5f5f5; padding: 12px; border-radius: 6px; margin-top: 10px; font-size: 12px; color: #666; text-align: left; display: none;">
+                    <span id="payment-desc-text"></span>
                 </div>
 
                 <div id="payment-email-input" class="email-field-wrap">
@@ -664,8 +689,8 @@
                     <p style="color: #666; margin-bottom: 30px; line-height: 1.6;" id="confirm-msg">Please complete the payment in the new tab.</p>
                     
                     <div class="modal-actions" style="justify-content: center;">
-                        <button class="btn btn-outline" onclick="finishOrder('Pending')">PAY LATER</button>
-                        <button class="btn btn-primary" onclick="finishOrder('Paid')">PAYMENT COMPLETED</button>
+                        <button class="btn btn-outline" onclick="handlePaymentComplete('Pending')">PAY LATER</button>
+                        <button class="btn btn-primary" onclick="handlePaymentComplete('Paid')">PAYMENT COMPLETED</button>
                     </div>
                 </div>
             </div>
@@ -1282,7 +1307,7 @@
             }, 100);
         }
 
-        function render(preserveScroll) {
+        async function render(preserveScroll) {
             const shouldScrollToTop = preserveScroll !== true && !window.skipNextScrollToTop;
             if (shouldScrollToTop) window.scrollTo(0, 0);
             
@@ -1296,14 +1321,22 @@
             app.innerHTML = '';
 
             if (['me'].includes(path) && !state.currentUser) {
-                showToast('Please login first', 'error');
-                window.location.hash = 'login'; // Direct hash update
+                // Redirect to login only when user explicitly navigates to 'me' page
+                // Don't redirect on logout (which triggers a re-render)
+                const navigationSource = sessionStorage.getItem('navSource');
+                if (navigationSource !== 'logout') {
+                    showToast('Please login first', 'error');
+                    window.location.hash = 'login';
+                    return;
+                }
+                // If coming from logout, just show home page
+                renderHome(app);
                 return;
             }
 
             switch(path) {
                 case 'home': renderHome(app); break;
-                case 'product': renderProduct(app, params.get('id')); break;
+                case 'product': await renderProduct(app, params.get('id')); break;
                 case 'cart': renderCart(app); break;
                 case 'me': renderMe(app, params.get('tab') || 'info'); break;
                 case 'concierge': renderConcierge(app); break; // NEW: Concierge Route
@@ -1499,10 +1532,24 @@
             }, 1500);
         }
 
-        function renderProduct(container, id) {
-            // Find in current fetched list OR fallback to local db
-            let p = state.currentList.find(x => x.id == id);
-            if (!p) p = db.products.find(x => x.id == id);
+        async function renderProduct(container, id) {
+            // Always fetch from API to get latest data
+            let p = null;
+            try {
+                const response = await fetch(`http://localhost:9000/api.php?action=getProductDetails&ProductID=${id}`);
+                const data = await response.json();
+                // API returns product object directly or null
+                if (data && data.id) {
+                    p = data;
+                }
+            } catch (e) {
+                console.error('Failed to fetch product:', e);
+            }
+            
+            // Fallback to local cache if API fails
+            if (!p) {
+                p = state.currentList.find(x => x.id == id) || db.products.find(x => x.id == id);
+            }
             
             if(!p) return container.innerHTML = "Product not found";
             
@@ -1543,6 +1590,21 @@
                 ? p.attributes[0].price 
                 : p.price;
 
+            // Prepare description and detail sections
+            const descriptionHtml = p.description ? `
+                <div class="product-section" style="margin-top: 60px; padding-top: 40px; border-top: 1px solid var(--border-color);">
+                    <h2 style="font-family: var(--font-heading); font-size: 24px; margin-bottom: 20px; color: var(--primary-color);">Description</h2>
+                    <div style="font-size: 15px; line-height: 1.8; color: var(--text-light);">${p.description}</div>
+                </div>
+            ` : '';
+            
+            const detailHtml = p.detail ? `
+                <div class="product-section" style="margin-top: 40px; padding-top: 40px; border-top: 1px solid var(--border-color);">
+                    <h2 style="font-family: var(--font-heading); font-size: 24px; margin-bottom: 20px; color: var(--primary-color);">Product Details</h2>
+                    <div style="font-size: 15px; line-height: 1.8; color: var(--text-light);">${p.detail}</div>
+                </div>
+            ` : '';
+
             container.innerHTML = `
                 <div class="detail-wrapper">
                     <div class="detail-breadcrumb">
@@ -1576,6 +1638,9 @@
                             </div>
                         </div>
                     </div>
+                    
+                    ${descriptionHtml}
+                    ${detailHtml}
                 </div>
             `;
         }
@@ -1705,28 +1770,82 @@
 
         function renderAuth(container, type) {
             const isLogin = type === 'login';
-            const captchaHtml = !isLogin ? `
-                        <div style="display:flex; gap:10px; align-items:center;">
-                            <input type="text" id="reg-captcha" class="auth-input" placeholder="Captcha" style="flex:1;">
-                            <img id="captcha-img" src="captcha.php?t=${Date.now()}" onclick="this.src='captcha.php?t='+Date.now()" style="height:40px; cursor:pointer; border-radius:4px;" title="Click to refresh">
+            const captchaHtml = `
+                        <div style="display:flex; gap:8px; align-items:center;">
+                            <input type="text" id="auth-captcha" class="auth-input" placeholder="Enter captcha code" style="flex:1; padding:10px 12px; font-size:13px;">
+                            <img id="captcha-img" src="captcha.php?t=${Date.now()}" onclick="refreshCaptcha()" style="height:38px; cursor:pointer; border-radius:4px; border:1px solid #ddd;" title="Click to refresh">
                         </div>
-            ` : '';
+                        <div style="font-size:10px; color:#999; margin-top:2px; text-align:left;">
+                            <i class="fas fa-info-circle" style="margin-right:4px;"></i>Click the image to refresh if unclear
+                        </div>
+            `;
             container.innerHTML = `
-                <div style="display:flex; justify-content:center; align-items:center; height:60vh;">
-                    <div class="auth-box fade-in">
-                        <h2 class="auth-title">${isLogin ? 'LOGIN' : 'REGISTER'}</h2>
-                        <input type="text" id="u" class="auth-input" placeholder="Username">
-                        <input type="password" id="p" class="auth-input" placeholder="Password">
+                <div style="display:flex; justify-content:center; align-items:flex-start; padding:5px 20px 40px;">
+                    <div class="auth-box fade-in" style="background:#fff; border:1px solid #e5e5e5; padding:20px 25px 25px; width:100%; max-width:420px; box-shadow:0 4px 20px rgba(0,0,0,0.08);">
                         ${!isLogin ? `
-                        <input type="password" id="reg-confirm-pwd" class="auth-input" placeholder="Confirm Password">
-                        <div id="pwd-strength" style="font-size:11px; color:#666; margin:-10px 0 10px; text-align:left;"></div>
-                        <input type="text" id="reg-phone" class="auth-input" placeholder="Phone (optional)">
-                        <input type="text" id="reg-email" class="auth-input" placeholder="Email (optional)">
-                        <input type="text" id="reg-hint" class="auth-input" placeholder="Password hint (e.g. pet name)">
-                        ${captchaHtml}
-                        ` : ''}
-                        <button class="btn btn-primary" style="width:100%; margin-top:20px;" onclick="${isLogin?'login()':'register()'}">${isLogin?'SIGN IN':'CREATE ACCOUNT'}</button>
-                        <p style="margin-top:20px; font-size:12px; cursor:pointer; color:#999;" onclick="navigateTo('${isLogin?'register':'login'}')">${isLogin?'No account? Create one':'Already have an account?'}</p>
+                        <div style="text-align:center; margin-bottom:15px; padding-bottom:15px; border-bottom:1px solid #f0f0f0;">
+                            <div style="width:48px; height:48px; background:linear-gradient(135deg, #1a1a1a 0%, #333 100%); border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 10px;">
+                                <i class="fas fa-user-plus" style="font-size:20px; color:#C5A059;"></i>
+                            </div>
+                            <h2 style="font-family:var(--font-heading); font-size:22px; font-weight:600; color:var(--primary-color); margin-bottom:4px; text-transform:uppercase; letter-spacing:1px;">Create Account</h2>
+                            <p style="font-size:12px; color:#888; margin:0;">Join us today and start your journey</p>
+                        </div>
+                        ` : `
+                        <div style="text-align:center; margin-bottom:15px; padding-bottom:15px; border-bottom:1px solid #f0f0f0;">
+                            <div style="width:48px; height:48px; background:linear-gradient(135deg, #1a1a1a 0%, #333 100%); border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 10px;">
+                                <i class="fas fa-user" style="font-size:20px; color:#C5A059;"></i>
+                            </div>
+                            <h2 style="font-family:var(--font-heading); font-size:22px; font-weight:600; color:var(--primary-color); margin-bottom:4px; text-transform:uppercase; letter-spacing:1px;">Welcome Back</h2>
+                            <p style="font-size:12px; color:#888; margin:0;">Sign in to continue your experience</p>
+                        </div>
+                        `}
+                        <div style="display:flex; flex-direction:column; gap:10px;">
+                            <div>
+                                <label style="display:block; font-size:11px; color:#666; margin-bottom:3px; text-transform:uppercase; letter-spacing:1px; font-weight:500;">Username</label>
+                                <input type="text" id="u" class="auth-input" placeholder="Enter your username" style="width:100%; padding:10px 12px; border:1px solid #ddd; font-size:13px; transition:border-color 0.3s;">
+                            </div>
+                            <div>
+                                <label style="display:block; font-size:11px; color:#666; margin-bottom:3px; text-transform:uppercase; letter-spacing:1px; font-weight:500;">Password</label>
+                                <input type="password" id="p" class="auth-input" placeholder="Enter your password" style="width:100%; padding:10px 12px; border:1px solid #ddd; font-size:13px; transition:border-color 0.3s;">
+                            </div>
+                            ${!isLogin ? `
+                            <div>
+                                <label style="display:block; font-size:11px; color:#666; margin-bottom:3px; text-transform:uppercase; letter-spacing:1px; font-weight:500;">Confirm Password</label>
+                                <input type="password" id="reg-confirm-pwd" class="auth-input" placeholder="Confirm your password" style="width:100%; padding:10px 12px; border:1px solid #ddd; font-size:13px; transition:border-color 0.3s;">
+                            </div>
+                            <div id="pwd-strength" style="font-size:11px; margin:-3px 0 2px; text-align:left; padding:6px 10px; background:#f9f9f9; border-radius:4px; display:none;"></div>
+                            <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+                                <div>
+                                    <label style="display:block; font-size:11px; color:#666; margin-bottom:3px; text-transform:uppercase; letter-spacing:1px; font-weight:500;">Phone</label>
+                                    <input type="text" id="reg-phone" class="auth-input" placeholder="Phone (optional)" style="width:100%; padding:10px 12px; border:1px solid #ddd; font-size:13px;">
+                                </div>
+                                <div>
+                                    <label style="display:block; font-size:11px; color:#666; margin-bottom:3px; text-transform:uppercase; letter-spacing:1px; font-weight:500;">Email</label>
+                                    <input type="text" id="reg-email" class="auth-input" placeholder="Email (optional)" style="width:100%; padding:10px 12px; border:1px solid #ddd; font-size:13px;">
+                                </div>
+                            </div>
+                            <div>
+                                <label style="display:block; font-size:11px; color:#666; margin-bottom:3px; text-transform:uppercase; letter-spacing:1px; font-weight:500;">Password Hint</label>
+                                <input type="text" id="reg-hint" class="auth-input" placeholder="e.g. Your pet's name (optional)" style="width:100%; padding:10px 12px; border:1px solid #ddd; font-size:13px;">
+                            </div>
+                            <div>
+                                <label style="display:block; font-size:11px; color:#666; margin-bottom:3px; text-transform:uppercase; letter-spacing:1px; font-weight:500;">Verification Code</label>
+                                ${captchaHtml}
+                            </div>
+                            ` : `
+                            <div>
+                                <label style="display:block; font-size:11px; color:#666; margin-bottom:3px; text-transform:uppercase; letter-spacing:1px; font-weight:500;">Verification Code</label>
+                                ${captchaHtml}
+                            </div>
+                            `}
+                        </div>
+                        <button class="btn btn-primary" style="width:100%; margin-top:15px; padding:12px; font-size:12px; letter-spacing:2px;" onclick="${isLogin?'login()':'register()'}">${isLogin?'SIGN IN':'CREATE ACCOUNT'}</button>
+                        <div style="margin-top:15px; padding-top:12px; border-top:1px solid #f0f0f0; text-align:center;">
+                            <p style="font-size:12px; color:#888; margin:0;">
+                                ${isLogin?"Don't have an account? ":"Already have an account? "}
+                                <span style="color:var(--primary-color); cursor:pointer; font-weight:600; text-decoration:underline;" onclick="navigateTo('${isLogin?'register':'login'}')">${isLogin?'Create one':'Sign in'}</span>
+                            </p>
+                        </div>
                     </div>
                 </div>
             `;
@@ -1737,23 +1856,33 @@
                 const strengthDiv = document.getElementById('pwd-strength');
                 pwdInput.addEventListener('input', () => {
                     const pwd = pwdInput.value;
+                    if (!pwd) {
+                        strengthDiv.style.display = 'none';
+                        return;
+                    }
+                    strengthDiv.style.display = 'block';
                     const hasLetter = /[a-zA-Z]/.test(pwd);
                     const hasNumber = /\d/.test(pwd);
                     const hasSpecial = /[!@#$%^&*(),.?":{}|<>]/.test(pwd);
                     const types = [hasLetter, hasNumber, hasSpecial].filter(Boolean).length;
                     if (pwd.length < 6) {
-                        strengthDiv.innerHTML = '<span style="color:#dc3545;">Password must be at least 6 characters</span>';
+                        strengthDiv.innerHTML = '<i class="fas fa-exclamation-circle" style="margin-right:5px;"></i><span style="color:#dc3545;">Password must be at least 6 characters</span>';
                     } else if (types < 2) {
-                        strengthDiv.innerHTML = '<span style="color:#ffc107;">Need at least 2 of: letters, numbers, special chars</span>';
+                        strengthDiv.innerHTML = '<i class="fas fa-exclamation-triangle" style="margin-right:5px; color:#ffc107;"></i><span style="color:#856404;">Need at least 2 of: letters, numbers, special chars</span>';
                     } else {
-                        strengthDiv.innerHTML = '<span style="color:#28a745;">Password strength: Good</span>';
+                        strengthDiv.innerHTML = '<i class="fas fa-check-circle" style="margin-right:5px; color:#28a745;"></i><span style="color:#28a745;">Password strength: Good</span>';
                     }
                 });
                 confirmInput.addEventListener('input', () => {
-                    if (confirmInput.value && confirmInput.value !== pwdInput.value) {
-                        strengthDiv.innerHTML = '<span style="color:#dc3545;">Passwords do not match</span>';
-                    } else if (confirmInput.value === pwdInput.value && confirmInput.value) {
-                        strengthDiv.innerHTML = '<span style="color:#28a745;">Passwords match</span>';
+                    if (!confirmInput.value) {
+                        strengthDiv.style.display = 'none';
+                        return;
+                    }
+                    strengthDiv.style.display = 'block';
+                    if (confirmInput.value !== pwdInput.value) {
+                        strengthDiv.innerHTML = '<i class="fas fa-times-circle" style="margin-right:5px; color:#dc3545;"></i><span style="color:#dc3545;">Passwords do not match</span>';
+                    } else if (confirmInput.value === pwdInput.value) {
+                        strengthDiv.innerHTML = '<i class="fas fa-check-circle" style="margin-right:5px; color:#28a745;"></i><span style="color:#28a745;">Passwords match</span>';
                     }
                 });
             }
@@ -2205,9 +2334,8 @@
                             window.open(paypalUrl, '_blank');
                             break;
                         case 'alipay':
-                            // Alipay integration
-                            const alipayUrl = `https://openapi.alipay.com/gateway.do?out_trade_no=${paymentData.orderNumber}&total_amount=${paymentData.amount}&subject=${encodeURIComponent(paymentData.description)}`;
-                            window.open(alipayUrl, '_blank');
+                            // Alipay integration - call API to create payment form
+                            await processAlipayForExistingOrder(order, orderId);
                             break;
                         case 'wechat':
                             // WeChat Pay - typically shows QR code
@@ -2323,12 +2451,28 @@
                 renderCart(document.getElementById('app')); renderHeader();
             }
         }
+        // Refresh captcha image
+        function refreshCaptcha() {
+            const captchaImg = document.getElementById('captcha-img');
+            if (captchaImg) {
+                captchaImg.src = 'captcha.php?t=' + Date.now();
+            }
+            // Clear captcha input - support both login and register
+            const captchaInput = document.getElementById('auth-captcha');
+            if (captchaInput) {
+                captchaInput.value = '';
+                captchaInput.focus();
+            }
+        }
+
         async function login() {
             const u = document.getElementById('u').value;
             const p = document.getElementById('p').value;
+            const captcha = document.getElementById('auth-captcha')?.value?.trim() || '';
             const btn = document.querySelector('.auth-box button');
 
             if(!u || !p) return showToast('Please enter username and password', 'error');
+            if(!captcha) return showToast('Please enter the captcha code', 'error');
 
             const originalText = btn.innerText;
             btn.innerText = "LOGGING IN...";
@@ -2341,7 +2485,7 @@
                 state.wishlist = [];
                 state.wishlistLoaded = false;
 
-                const response = await fetch(`http://localhost:9000/api.php?action=loginUser&username=${encodeURIComponent(u)}&password=${encodeURIComponent(p)}`);
+                const response = await fetch(`http://localhost:9000/api.php?action=loginUser&username=${encodeURIComponent(u)}&password=${encodeURIComponent(p)}&captcha=${encodeURIComponent(captcha)}`);
                 const data = await response.json();
 
                 if (data.status === 'success') {
@@ -2431,6 +2575,8 @@
                     navigateTo('home');
                 } else {
                     showToast(data.message || 'INVALID CREDENTIALS', 'error');
+                    // Refresh captcha on login failure
+                    refreshCaptcha();
                 }
             } catch (error) {
                 console.warn("API Login failed, trying mock fallback...", error);
@@ -2441,6 +2587,8 @@
                     navigateTo('home');
                 } else {
                     showToast('Login failed. API unreachable and mock user not found.', 'error');
+                    // Refresh captcha on login failure
+                    refreshCaptcha();
                 }
             } finally {
                 btn.innerText = originalText;
@@ -2462,7 +2610,12 @@
                 state.ordersLoaded = false;
                 state.wishlist = [];
                 state.wishlistLoaded = false;
-                render(); 
+                // Mark navigation source as logout to prevent redirect to login
+                sessionStorage.setItem('navSource', 'logout');
+                // Stay on current page, just refresh to update UI
+                render(true);
+                // Clear the flag after render
+                setTimeout(() => sessionStorage.removeItem('navSource'), 100);
             }
         }
 
@@ -2514,6 +2667,10 @@
                     navigateTo('login');
                 } else {
                     showToast(data.message || 'Registration failed', 'error');
+                    // 如果验证码错误，自动刷新验证码
+                    if (data.message && data.message.toLowerCase().includes('captcha')) {
+                        refreshCaptcha();
+                    }
                 }
             } catch (error) {
                 console.error('Registration error:', error);
@@ -2818,6 +2975,13 @@
             document.getElementById('check-icon').style.display = 'none';
             document.getElementById('redirect-spinner').style.display = 'none';
 
+            // Reset payment button text and state
+            const payBtn = document.getElementById('btn-confirm-pay');
+            if (payBtn) {
+                payBtn.innerText = "COMPLETE PAYMENT";
+                payBtn.disabled = false;
+            }
+
             updateCheckoutTotals();
             document.getElementById('checkout-modal').classList.add('open');
         }
@@ -2955,8 +3119,25 @@
             element.classList.add('selected');
             
             const emailInput = document.getElementById('payment-email-input');
-            if (method === 'email') emailInput.classList.add('show');
-            else emailInput.classList.remove('show');
+            const descDiv = document.getElementById('payment-description');
+            const descText = document.getElementById('payment-desc-text');
+            
+            if (method === 'email') {
+                emailInput.classList.add('show');
+                descDiv.style.display = 'none';
+            } else {
+                emailInput.classList.remove('show');
+                descDiv.style.display = 'block';
+                
+                // 显示支付方式说明
+                const descriptions = {
+                    'alipay': '💡 点击"COMPLETE PAYMENT"后将跳转至支付宝官方页面完成支付。支付成功后订单将自动确认。',
+                    'wechat': '💡 微信支付即将开通，敬请期待。',
+                    'paypal': '💡 PayPal支付即将开通，敬请期待。',
+                    'card': '💡 信用卡支付即将开通，敬请期待。'
+                };
+                descText.textContent = descriptions[method] || '';
+            }
         }
 
         async function processPayment() {
@@ -2972,6 +3153,24 @@
                 setTimeout(async () => {
                     await finishOrder('Pending');
                 }, 1500);
+            } else if (state.checkout.paymentMethod === 'alipay') {
+                // 支付宝支付流程
+                await processAlipayPayment(payBtn, originalText);
+            } else if (state.checkout.paymentMethod === 'wechat') {
+                // 微信支付流程
+                showToast('WeChat Pay coming soon', 'info');
+                payBtn.innerText = originalText;
+                payBtn.disabled = false;
+            } else if (state.checkout.paymentMethod === 'paypal') {
+                // PayPal支付流程
+                showToast('PayPal coming soon', 'info');
+                payBtn.innerText = originalText;
+                payBtn.disabled = false;
+            } else if (state.checkout.paymentMethod === 'card') {
+                // 信用卡支付流程
+                showToast('Credit Card payment coming soon', 'info');
+                payBtn.innerText = originalText;
+                payBtn.disabled = false;
             } else {
                 payBtn.innerText = "REDIRECTING...";
 
@@ -2991,6 +3190,223 @@
                     await finishOrder('Processing');
                 }, 1000);
             }
+        }
+
+        /**
+         * 处理支付宝支付
+         */
+        /**
+         * 为已有订单处理支付宝支付
+         */
+        async function processAlipayForExistingOrder(order, orderId) {
+            showToast('Redirecting to Alipay...', 'success');
+            
+            try {
+                // 调用API获取支付宝支付表单
+                const response = await fetch(`http://localhost:9000/api.php?action=getAlipayForm&orderId=${orderId}`, {
+                    method: 'GET',
+                    headers: { 'Content-Type': 'application/json' }
+                });
+                
+                const responseText = await response.text();
+                console.log('Alipay API response:', responseText);
+                
+                let result;
+                try {
+                    result = JSON.parse(responseText);
+                } catch (e) {
+                    console.error('Failed to parse JSON:', e);
+                    showToast('Server error: Invalid response', 'error');
+                    return;
+                }
+                
+                if (result.success) {
+                    // 创建隐藏的div来存放支付宝表单
+                    const alipayDiv = document.createElement('div');
+                    alipayDiv.id = 'alipay-form-container-' + orderId;
+                    alipayDiv.style.display = 'none';
+                    alipayDiv.innerHTML = result.data.alipay_form;
+                    document.body.appendChild(alipayDiv);
+                    
+                    // 在新窗口打开支付宝支付页面
+                    const form = document.getElementById('alipaysubmit');
+                    if (form) {
+                        form.target = 'alipay_payment_window';
+                        window.open('', 'alipay_payment_window', 'width=1200,height=800,scrollbars=yes,resizable=yes');
+                        form.submit();
+                        showToast('Alipay payment window opened. Please complete payment in the new window.', 'info');
+                    } else {
+                        showToast('Payment form error. Please try again.', 'error');
+                    }
+                } else if (result.needLogin) {
+                    showToast('Please login first', 'error');
+                    navigateTo('login');
+                } else {
+                    showToast(result.message || 'Failed to create payment', 'error');
+                }
+            } catch (error) {
+                console.error('Alipay payment error:', error);
+                showToast('Payment failed: ' + error.message, 'error');
+            }
+        }
+
+        async function processAlipayPayment(payBtn, originalText) {
+            const addr = state.currentUser.addresses.find(a => a.id == state.checkout.addressId);
+            if (!addr) {
+                showToast('Please select a shipping address', 'error');
+                payBtn.innerText = originalText;
+                payBtn.disabled = false;
+                return;
+            }
+
+            payBtn.innerText = "CREATING ORDER...";
+
+            const orderData = {
+                consignee: addr.name,
+                phone: addr.phone,
+                country: addr.country || 'China',
+                province: addr.province || '',
+                city: addr.city || '',
+                district: addr.district || '',
+                address: addr.address || addr.detail || '',
+                postcode: addr.postcode || '',
+                subtotal: state.checkout.subtotal,
+                shipping: state.checkout.shipping,
+                tax: 0,
+                total: state.checkout.total,
+                items: state.cart.map(item => ({
+                    id: item.id,
+                    name: item.name,
+                    price: item.price,
+                    qty: item.qty,
+                    img: item.img,
+                    attribute_id: item.attribute_id,
+                    attribute_name: item.attribute_name
+                }))
+            };
+
+            try {
+                // 使用正确的API路径
+                const apiUrl = 'http://localhost:9000/api/alipay.php?action=createOrderAndPay';
+                console.log('Calling Alipay API:', apiUrl);
+                console.log('Order data:', orderData);
+                
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(orderData)
+                });
+                
+                console.log('Response status:', response.status);
+                const responseText = await response.text();
+                console.log('Response text:', responseText);
+                
+                let result;
+                try {
+                    result = JSON.parse(responseText);
+                } catch (e) {
+                    console.error('Failed to parse JSON:', e);
+                    showToast('Server error: Invalid response', 'error');
+                    payBtn.innerText = originalText;
+                    payBtn.disabled = false;
+                    return;
+                }
+                
+                console.log('Response data:', result);
+
+                if (result.success) {
+                    // 保存订单ID用于后续跳转
+                    state.currentOrderId = result.data.order_id;
+                    state.currentOrderNumber = result.data.order_number;
+                    
+                    // 清空购物车
+                    state.cart = [];
+                    clearCartStorage();
+                    renderHeader();
+
+                    // 显示支付中状态
+                    payBtn.innerText = "REDIRECTING TO ALIPAY...";
+                    document.getElementById('checkout-step-1').classList.remove('active');
+                    document.getElementById('checkout-step-2').classList.add('active');
+                    document.getElementById('check-icon').style.display = 'inline-block';
+
+                    // 创建隐藏的div来存放支付宝表单
+                    const alipayDiv = document.createElement('div');
+                    alipayDiv.id = 'alipay-form-container';
+                    alipayDiv.style.display = 'none';
+                    alipayDiv.innerHTML = result.data.alipay_form;
+                    document.body.appendChild(alipayDiv);
+
+                    // 延迟提交表单，在新窗口打开支付宝
+                    setTimeout(() => {
+                        const form = document.getElementById('alipaysubmit');
+                        if (form) {
+                            console.log('Opening Alipay in new window...');
+                            // 设置表单target为新窗口
+                            form.target = 'alipay_payment_window';
+                            // 打开新窗口
+                            window.open('', 'alipay_payment_window', 'width=1200,height=800,scrollbars=yes,resizable=yes');
+                            // 提交表单
+                            form.submit();
+                            
+                            // 显示提示信息
+                            payBtn.innerText = "WAITING FOR PAYMENT...";
+                            showToast('Alipay payment window opened. Please complete payment in the new window.', 'info');
+                        } else {
+                            console.error('Alipay form not found!');
+                            showToast('Payment form error. Please try again.', 'error');
+                            payBtn.innerText = originalText;
+                            payBtn.disabled = false;
+                        }
+                    }, 800);
+
+                } else if (result.needLogin) {
+                    showToast('Please login to place order', 'error');
+                    navigateTo('login');
+                } else {
+                    showToast(result.message || 'Failed to create order', 'error');
+                    payBtn.innerText = originalText;
+                    payBtn.disabled = false;
+                }
+            } catch (error) {
+                console.error('Alipay payment error:', error);
+                showToast('Payment failed: ' + error.message, 'error');
+                payBtn.innerText = originalText;
+                payBtn.disabled = false;
+            }
+        }
+
+        // 处理支付宝支付完成后的跳转
+        async function handlePaymentComplete(paymentStatus) {
+            const orderId = state.currentOrderId;
+            const orderNumber = state.currentOrderNumber;
+            
+            if (!orderId) {
+                showToast('Order information not found', 'error');
+                return;
+            }
+            
+            // 关闭支付弹窗
+            closeModal('checkout-modal');
+            
+            // 点击 PAYMENT COMPLETED 时，设置状态为 paying（等待支付平台回调确认）
+            if (paymentStatus === 'Paid') {
+                try {
+                    await fetch(`http://localhost:9000/api.php?action=updatePaymentStatus&orderId=${orderId}&status=paying`);
+                    showToast('Payment processing... Order: ' + orderNumber, 'info');
+                } catch (e) {
+                    console.error('Failed to update payment status:', e);
+                }
+            } else {
+                showToast('Order placed: ' + orderNumber, 'info');
+            }
+            
+            // 刷新订单列表
+            state.ordersLoaded = false;
+            state.orders = await fetchOrders();
+            
+            // 跳转到订单详情页
+            navigateTo('order-detail', { id: orderId });
         }
 
         async function finishOrder(status) {
@@ -3058,7 +3474,7 @@
             }
         }
 
-        window.addEventListener('hashchange', () => render(false));
+        window.addEventListener('hashchange', async () => await render(false));
         
         // Global flag to track if initial login check is complete
         window.initialLoginCheckComplete = false;
@@ -3069,8 +3485,40 @@
             window.initialLoginCheckComplete = true;
             await fetchCategories(); 
             await fetchProducts('all');
-            render();
+            
+            // 处理支付返回结果
+            handlePaymentReturn();
+            
+            await render();
         });
+        
+        /**
+         * 处理支付返回结果
+         */
+        function handlePaymentReturn() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const status = urlParams.get('status');
+            const orderNumber = urlParams.get('order');
+            const message = urlParams.get('message');
+            
+            if (status === 'success' && orderNumber) {
+                showToast(`Payment successful! Order: ${orderNumber}`, 'success');
+                // 清除URL参数
+                window.history.replaceState({}, document.title, window.location.pathname + window.location.hash);
+                // 刷新订单列表
+                state.ordersLoaded = false;
+                fetchOrders().then(() => {
+                    // 跳转到订单详情
+                    navigateTo('order-detail', { id: orderNumber });
+                });
+            } else if (status === 'error') {
+                showToast(message || 'Payment failed', 'error');
+                window.history.replaceState({}, document.title, window.location.pathname + window.location.hash);
+            } else if (status === 'pending' && orderNumber) {
+                showToast(`Order ${orderNumber} is pending payment`, 'info');
+                window.history.replaceState({}, document.title, window.location.pathname + window.location.hash);
+            }
+        }
 
     </script>
 </body>

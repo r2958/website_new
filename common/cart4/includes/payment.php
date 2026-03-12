@@ -1,4 +1,4 @@
-<? $ShoppingCart->showTextOrHTML($PageText->PageText, $PageText->PageFormat); ?>
+<?php $ShoppingCart->showTextOrHTML($PageText->PageText, $PageText->PageFormat); ?>
 <div align="center">
 	<br />
 	<hr />

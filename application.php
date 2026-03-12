@@ -1,4 +1,4 @@
-<?
+<?php
 /*
 ini_set('register_globals',0);
 ini_set('allow_call_time_pass_reference' ,'On');
@@ -43,7 +43,7 @@ $DB->Host = 'sh-cdb-3lh7xiwc.sql.tencentcdb.com:29230';
 $DB->Database = 'testdb2026';
 */
 $DB->Username = 'root';
-$DB->Password = 'Travel@123';
+$DB->Password = '3E157d80@';
 $DB->DieOnFail = false;
 $DB->Debug = false;
 $DB->Timed = false;
@@ -77,6 +77,20 @@ $ShoppingCart->DB = $DB;
 /* Load Shopping Cart Admin Class */
 require_once($CFG->siteroot . '/lib/class.CustomCartAdmin.php');
 $Admin = new CustomShoppingCartAdmin();
+
+/* Load User Activity Tracking Class */
+require_once($CFG->serverroot . '/common/user/class.UserActivity.php');
+$UserActivity = new UserActivity();
+
+// Record user activity (for logged in users)
+if (isset($_SESSION['user2']) && !empty($_SESSION['user2'])) {
+    $UserActivity->recordActivity($_SESSION['user2']->id, $_SESSION['user2']->username);
+} elseif (isset($_SESSION['user']) && !empty($_SESSION['user'])) {
+    $UserActivity->recordActivity($_SESSION['user']->id, $_SESSION['user']->Username);
+} else {
+    // Record guest activity
+    $UserActivity->recordActivity(0, null);
+}
 
 require_once($CFG->serverroot . '/common/functions/class.PagedResultSet.php');
 $querystring = isset($_SERVER['QUERY_STRING']) ? preg_replace('(resultpage=[0-9]+&)', '', $_SERVER['QUERY_STRING']) : '';

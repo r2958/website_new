@@ -1,4 +1,4 @@
-<?
+<?php
 class DB
 {
 
@@ -304,7 +304,7 @@ class DB
 			return false;
 		} else {
 			// Implode $sql_columns_use and $sql_value_use into an SQL insert sqlstatement
-			$SQLStatement = "INSERT INTO " . $this->Database . "." . $table . " (" . implode(', ', $sql_columns_use) . ") VALUES (" . implode(', ', $sql_value_use) . ")";
+			$SQLStatement = "INSERT INTO `" . $this->Database . "`.`" . $table . "` (" . implode(', ', $sql_columns_use) . ") VALUES (" . implode(', ', $sql_value_use) . ")";
 			$this->query($SQLStatement);
 		}
 	}
@@ -326,6 +326,9 @@ class DB
 				// If this variable contains the string "DATESTAMP" then use MYSQL NOW()
 				if ($value === 'DATESTAMP') {
 					$sql_value_use[] = $key . " = NOW()";
+				} elseif ($value === '' && (strpos($key, 'ID') !== false || strpos($key, 'id') !== false)) {
+					// For ID fields with empty string, set to 0 (avoid NULL constraint issues)
+					$sql_value_use[] = $key . " = 0";
 				} else {
 					$sql_value_use[] = $key . " = '" . $this->escape($value) . "'";
 				}
@@ -337,7 +340,7 @@ class DB
 			return false;
 		} else {
 			// Implode $sql_value_use into an SQL insert sqlstatement
-			$SQLStatement = "UPDATE " . $this->Database . "." . $table . " SET " . implode(", ", $sql_value_use) . " WHERE " . $id_name . " = '" . $id . "'";
+			$SQLStatement = "UPDATE `" . $this->Database . "`.`" . $table . "` SET " . implode(", ", $sql_value_use) . " WHERE `" . $id_name . "` = '" . $id . "'";
 			$this->query($SQLStatement);
 		}
 	}
@@ -368,7 +371,7 @@ class DBDump {
 
 	function getTableSchema($Table)
 	{
-		$qid = $this->DB->query("SHOW CREATE TABLE " . $this->Database . "." . $Table . "");
+		$qid = $this->DB->query("SHOW CREATE TABLE `" . $this->Database . "`.`" . $Table . "`");
 		$row = $this->DB->fetchArray($qid);
 		$Output = "# Dump of table $row[0]\n";
 		$Output .= "# ------------------------------------------------------------\n";

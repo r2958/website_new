@@ -25,6 +25,20 @@ switch ($_GET['action']) {
         echo json_encode($response);
         exit;
     case 'loginUser':
+        // Verify captcha first
+        $captcha = $_GET['captcha'] ?? '';
+        if (empty($captcha)) {
+            echo json_encode(['status' => 'error', 'message' => 'Please enter the captcha code']);
+            exit;
+        }
+        if (!isset($_SESSION['captcha_code']) || strtoupper($captcha) !== $_SESSION['captcha_code']) {
+            // Clear captcha to prevent brute force
+            unset($_SESSION['captcha_code']);
+            echo json_encode(['status' => 'error', 'message' => 'Invalid captcha code']);
+            exit;
+        }
+        // Clear captcha after successful verification (one-time use)
+        unset($_SESSION['captcha_code']);
         $response = $User->loginUser2($_GET['username'], $_GET['password']);
         echo json_encode($response);
         exit;
@@ -185,6 +199,17 @@ switch ($_GET['action']) {
         }
         echo json_encode($response);
         exit;
+    case 'getAlipayForm':
+        $orderId = isset($_GET['orderId']) ? intval($_GET['orderId']) : 0;
+        $response = generateAlipayFormForExistingOrder($orderId);
+        if (isset($response['needLogin']) && $response['needLogin']) {
+            header('HTTP/1.1 401 Unauthorized');
+            header('Content-Type: application/json; charset=utf-8');
+            echo json_encode($response);
+            exit;
+        }
+        echo json_encode($response);
+        exit;
     // ========== 订单商品操作 ==========
     case 'updateOrderItem':
         $orderId = isset($_GET['orderId']) ? intval($_GET['orderId']) : 0;
@@ -279,6 +304,111 @@ switch ($_GET['action']) {
         exit;
 }
 
+/**
+ * 为已有订单生成支付宝支付表单
+ */
+function generateAlipayFormForExistingOrder($orderId) {
+    global $DB, $User;
+    
+    // 验证用户登录
+    if (!isset($_SESSION['user2']) || empty($_SESSION['user2'])) {
+        return ['success' => false, 'message' => 'Please login first', 'needLogin' => true];
+    }
+    
+    $userId = $_SESSION['user2']->id;
+    
+    // 获取订单信息
+    $qid = $DB->query("SELECT * FROM user_orders WHERE id = {$orderId} AND user_id = {$userId}");
+    $order = $DB->fetchObject($qid);
+    
+    if (!$order) {
+        return ['success' => false, 'message' => 'Order not found'];
+    }
+    
+    if ($order->status !== 'pending' && $order->status !== 'unpaid') {
+        return ['success' => false, 'message' => 'Order cannot be paid'];
+    }
+    
+    // 支付宝配置
+    $alipay_config = [
+        'partner' => '2088002151754829',
+        'seller_email' => 'r2958@163.com',
+        'key' => '3injj4hgy40mewf5cxo5ruziku8n26h5',
+        'sign_type' => 'MD5',
+        'input_charset' => 'utf-8'
+    ];
+    
+    // 确定协议
+    $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
+    $host = $_SERVER['HTTP_HOST'] ?? $_SERVER['SERVER_NAME'] ?? 'localhost';
+    
+    // 支付参数
+    $parameter = [
+        "service" => "create_direct_pay_by_user",
+        "partner" => trim($alipay_config['partner']),
+        "seller_email" => trim($alipay_config['seller_email']),
+        "payment_type" => "1",
+        "notify_url" => $protocol . "://" . $host . "/api/alipay.php?action=notify",
+        "return_url" => $protocol . "://" . $host . "/api/alipay.php?action=return",
+        "out_trade_no" => $order->order_number,
+        "subject" => "Order: " . $order->order_number,
+        "total_fee" => number_format($order->total, 2, '.', ''),
+        "body" => "Order payment",
+        "show_url" => $protocol . "://" . $host . "/index3.php#order",
+        "_input_charset" => trim(strtolower($alipay_config['input_charset']))
+    ];
+    
+    // 生成签名
+    $parameter = argSort($parameter);
+    $prestr = createLinkstring($parameter);
+    $sign = md5Sign($prestr, $alipay_config['key']);
+    $parameter['sign'] = $sign;
+    $parameter['sign_type'] = strtoupper($alipay_config['sign_type']);
+    
+    // 构建表单
+    $gateway = "https://mapi.alipay.com/gateway.do?_input_charset=" . trim(strtolower($alipay_config['input_charset']));
+    $html = "<form id='alipaysubmit' name='alipaysubmit' action='{$gateway}' method='POST'>";
+    foreach ($parameter as $key => $val) {
+        $html .= "<input type='hidden' name='" . htmlentities($key, ENT_QUOTES, 'UTF-8') . "' value='" . htmlentities($val, ENT_QUOTES, 'UTF-8') . "'/>";
+    }
+    $html .= "<input type='submit' value='Pay with Alipay' style='display:none;'></form>";
+    $html .= "<script>document.getElementById('alipaysubmit').submit();</script>";
+    
+    // 更新订单支付状态为支付中
+    $DB->query("UPDATE user_orders SET status = 'paying', payment_method = 'alipay' WHERE id = {$orderId}");
+    
+    return [
+        'success' => true,
+        'data' => [
+            'order_id' => $orderId,
+            'order_number' => $order->order_number,
+            'alipay_form' => $html
+        ]
+    ];
+}
 
+// ==================== 支付宝工具函数 ====================
+
+function argSort($para) {
+    ksort($para);
+    reset($para);
+    return $para;
+}
+
+function createLinkstring($para) {
+    $arg = "";
+    foreach ($para as $key => $val) {
+        if ($val !== "" && $val !== null) {
+            $arg .= $key . "=" . $val . "&";
+        }
+    }
+    $arg = rtrim($arg, '&');
+    return $arg;
+}
+
+function md5Sign($prestr, $key) {
+    $prestr = $prestr . $key;
+    return md5($prestr);
+}
 
 ?>
