@@ -1,0 +1,1667 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>移动端 API 完整测试平台</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; background: #f5f5f5; padding: 20px; max-width: 1200px; margin: 0 auto; }
+        h1 { text-align: center; margin-bottom: 20px; color: #333; }
+        .nav { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; padding: 10px; background: #fff; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .nav button { padding: 10px 18px; font-size: 13px; background: #6c757d; color: white; border: none; border-radius: 4px; cursor: pointer; transition: all 0.2s; }
+        .nav button:hover { background: #545b62; }
+        .nav button.active { background: #007bff; }
+        .section { background: #fff; border-radius: 8px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); display: none; }
+        .section.active { display: block; }
+        .section h2 { font-size: 18px; color: #333; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #007bff; }
+        .section h3 { font-size: 14px; color: #666; margin: 20px 0 10px; padding-left: 10px; border-left: 3px solid #28a745; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; font-size: 14px; color: #555; margin-bottom: 5px; font-weight: 500; }
+        input, textarea, select { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px; font-size: 14px; transition: border-color 0.2s; }
+        input:focus, textarea:focus, select:focus { outline: none; border-color: #007bff; }
+        textarea { min-height: 80px; resize: vertical; font-family: monospace; }
+        button { background: #007bff; color: #fff; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; font-size: 14px; margin-right: 10px; margin-bottom: 5px; transition: background 0.2s; }
+        button:hover { background: #0056b3; }
+        button.secondary { background: #6c757d; }
+        button.secondary:hover { background: #545b62; }
+        button.danger { background: #dc3545; }
+        button.danger:hover { background: #c82333; }
+        button.success { background: #28a745; }
+        button.success:hover { background: #218838; }
+        button.warning { background: #ffc107; color: #333; }
+        button.warning:hover { background: #e0a800; }
+        .result { margin-top: 15px; padding: 15px; background: #f8f9fa; border-radius: 4px; border-left: 4px solid #007bff; display: none; }
+        .result.error { border-left-color: #dc3545; background: #fff5f5; }
+        .result.success { border-left-color: #28a745; background: #f0fff4; }
+        .result pre { white-space: pre-wrap; word-wrap: break-word; font-size: 12px; max-height: 400px; overflow: auto; font-family: 'Courier New', monospace; }
+        .token-box { background: #e7f3ff; padding: 15px; border-radius: 4px; margin-bottom: 15px; font-size: 12px; border: 1px solid #b3d9ff; }
+        .token-box strong { color: #0056b3; }
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+        .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+        @media (max-width: 768px) { .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; } }
+        .hint { font-size: 12px; color: #888; margin-top: 5px; }
+        .required { color: #dc3545; }
+        .api-doc { background: #f8f9fa; padding: 15px; border-radius: 4px; margin-bottom: 20px; font-size: 13px; }
+        .api-doc code { background: #e9ecef; padding: 2px 6px; border-radius: 3px; font-family: monospace; }
+        .api-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 15px; margin-top: 15px; }
+        .api-card { background: #f8f9fa; padding: 15px; border-radius: 4px; border: 1px solid #e9ecef; }
+        .api-card h4 { font-size: 14px; color: #333; margin-bottom: 8px; }
+        .api-card p { font-size: 12px; color: #666; margin-bottom: 5px; }
+        .api-card .method { display: inline-block; padding: 2px 8px; border-radius: 3px; font-size: 11px; font-weight: bold; margin-right: 5px; }
+        .method.get { background: #28a745; color: white; }
+        .method.post { background: #007bff; color: white; }
+        .method-auth { display: inline-block; padding: 2px 8px; border-radius: 3px; font-size: 11px; margin-left: 5px; }
+        .method-auth.required { background: #dc3545; color: white; }
+        .method-auth.optional { background: #6c757d; color: white; }
+        .test-form { background: #f8f9fa; padding: 15px; border-radius: 4px; margin-top: 10px; }
+        .btn-group { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 15px; }
+        .status-indicator { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 5px; }
+        .status-online { background: #28a745; }
+        .status-offline { background: #dc3545; }
+        .quick-test { background: #fff3cd; padding: 15px; border-radius: 4px; margin-bottom: 20px; border: 1px solid #ffeaa7; }
+        .quick-test h3 { color: #856404; border-left-color: #ffc107; }
+        .json-viewer { background: #1e1e1e; color: #d4d4d4; padding: 15px; border-radius: 4px; font-family: 'Courier New', monospace; font-size: 12px; overflow-x: auto; }
+        .json-key { color: #9cdcfe; }
+        .json-string { color: #ce9178; }
+        .json-number { color: #b5cea8; }
+        .json-boolean { color: #569cd6; }
+        .json-null { color: #569cd6; }
+        .tab-nav { display: flex; border-bottom: 2px solid #e9ecef; margin-bottom: 15px; }
+        .tab-nav button { background: none; color: #666; border: none; padding: 10px 20px; margin: 0; border-bottom: 2px solid transparent; margin-bottom: -2px; }
+        .tab-nav button:hover { background: #f8f9fa; color: #333; }
+        .tab-nav button.active { color: #007bff; border-bottom-color: #007bff; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+    </style>
+</head>
+<body>
+    <h1>移动端 API 完整测试平台</h1>
+
+    <!-- 导航 -->
+    <div class="nav">
+        <button onclick="showSection('overview')" class="active">接口概览</button>
+        <button onclick="showSection('token')">Token状态</button>
+        <button onclick="showSection('dbtest')">数据库测试</button>
+        <button onclick="showSection('auth')">认证接口</button>
+        <button onclick="showSection('user')">用户接口</button>
+        <button onclick="showSection('product')">商品接口</button>
+        <button onclick="showSection('cart')">购物车</button>
+        <button onclick="showSection('order')">订单接口</button>
+        <button onclick="showSection('address')">地址接口</button>
+        <button onclick="showSection('wishlist')">收藏接口</button>
+        <button onclick="showSection('json')">JSON格式化</button>
+        <button onclick="showSection('custom')">自定义请求</button>
+    </div>
+
+    <!-- 接口概览 -->
+    <div class="section active" id="sec-overview">
+        <h2>API 接口概览</h2>
+        <div class="api-doc">
+            <p><strong>基础URL:</strong> <code id="baseUrlDisplay">./api.php</code></p>
+            <p><strong>请求格式:</strong> <code>GET / POST</code> | <strong>响应格式:</strong> <code>JSON</code></p>
+            <p><strong>认证方式:</strong> <code>Authorization: Bearer {accessToken}</code></p>
+        </div>
+        
+        <div class="quick-test">
+            <h3>快速测试</h3>
+            <div class="btn-group">
+                <button onclick="quickTest('dbtest')" class="success">测试数据库连接</button>
+                <button onclick="quickTest('categoryList')" class="success">测试分类列表</button>
+                <button onclick="quickTest('productList')" class="success">测试商品列表</button>
+                <button onclick="quickTest('me')" class="warning">测试用户信息</button>
+                <button onclick="quickTest('cartList')" class="warning">测试购物车</button>
+                <button onclick="quickTest('getOrders')" class="warning">测试订单列表</button>
+                <button onclick="quickTest('getAddresses')" class="warning">测试地址列表</button>
+            </div>
+            <div class="result" id="quickTestResult"></div>
+        </div>
+
+        <h3>所有可用接口</h3>
+        <div class="api-list">
+            <!-- 认证接口 -->
+            <div class="api-card">
+                <h4><span class="method post">POST</span>register</h4>
+                <p>用户注册</p>
+                <p><span class="method-auth optional">无需认证</span></p>
+            </div>
+            <div class="api-card">
+                <h4><span class="method post">POST</span>login</h4>
+                <p>用户登录</p>
+                <p><span class="method-auth optional">无需认证</span></p>
+            </div>
+            <div class="api-card">
+                <h4><span class="method post">POST</span>refresh</h4>
+                <p>刷新Token</p>
+                <p><span class="method-auth optional">无需认证</span></p>
+            </div>
+            <div class="api-card">
+                <h4><span class="method post">POST</span>logout</h4>
+                <p>用户登出</p>
+                <p><span class="method-auth required">需要认证</span></p>
+            </div>
+            <div class="api-card">
+                <h4><span class="method get">GET</span>me</h4>
+                <p>获取当前用户信息</p>
+                <p><span class="method-auth required">需要认证</span></p>
+            </div>
+            <div class="api-card">
+                <h4><span class="method post">POST</span>changePassword</h4>
+                <p>修改密码</p>
+                <p><span class="method-auth required">需要认证</span></p>
+            </div>
+
+            <!-- 用户接口 -->
+            <div class="api-card">
+                <h4><span class="method get">GET</span>getProfile</h4>
+                <p>获取个人资料</p>
+                <p><span class="method-auth required">需要认证</span></p>
+            </div>
+            <div class="api-card">
+                <h4><span class="method post">POST</span>updateProfile</h4>
+                <p>更新个人资料</p>
+                <p><span class="method-auth required">需要认证</span></p>
+            </div>
+            <div class="api-card">
+                <h4><span class="method get">GET</span>getDevices</h4>
+                <p>获取登录设备列表</p>
+                <p><span class="method-auth required">需要认证</span></p>
+            </div>
+            <div class="api-card">
+                <h4><span class="method post">POST</span>revokeDevice</h4>
+                <p>吊销设备登录</p>
+                <p><span class="method-auth required">需要认证</span></p>
+            </div>
+
+            <!-- 商品接口 -->
+            <div class="api-card">
+                <h4><span class="method get">GET</span>categoryList</h4>
+                <p>获取分类列表（仅一级）</p>
+                <p><span class="method-auth optional">无需认证</span></p>
+            </div>
+            <div class="api-card">
+                <h4><span class="method get">GET</span>productList</h4>
+                <p>获取商品列表</p>
+                <p><span class="method-auth optional">无需认证</span></p>
+            </div>
+            <div class="api-card">
+                <h4><span class="method get">GET</span>productDetail</h4>
+                <p>获取商品详情</p>
+                <p><span class="method-auth optional">无需认证</span></p>
+            </div>
+
+            <!-- 购物车接口 -->
+            <div class="api-card">
+                <h4><span class="method get">GET</span>cartList</h4>
+                <p>获取购物车列表</p>
+                <p><span class="method-auth required">需要认证</span></p>
+            </div>
+            <div class="api-card">
+                <h4><span class="method get">GET</span>cartSummary</h4>
+                <p>获取购物车摘要</p>
+                <p><span class="method-auth required">需要认证</span></p>
+            </div>
+            <div class="api-card">
+                <h4><span class="method post">POST</span>cartAdd</h4>
+                <p>添加商品到购物车</p>
+                <p><span class="method-auth required">需要认证</span></p>
+            </div>
+            <div class="api-card">
+                <h4><span class="method post">POST</span>cartUpdate</h4>
+                <p>更新购物车商品</p>
+                <p><span class="method-auth required">需要认证</span></p>
+            </div>
+            <div class="api-card">
+                <h4><span class="method post">POST</span>cartDelete</h4>
+                <p>删除购物车商品</p>
+                <p><span class="method-auth required">需要认证</span></p>
+            </div>
+            <div class="api-card">
+                <h4><span class="method post">POST</span>cartCheckoutPreview</h4>
+                <p>结算预览</p>
+                <p><span class="method-auth required">需要认证</span></p>
+            </div>
+            <div class="api-card">
+                <h4><span class="method post">POST</span>cartCheckout</h4>
+                <p>提交订单</p>
+                <p><span class="method-auth required">需要认证</span></p>
+            </div>
+
+            <!-- 订单接口 -->
+            <div class="api-card">
+                <h4><span class="method get">GET</span>getOrders</h4>
+                <p>获取订单列表</p>
+                <p><span class="method-auth required">需要认证</span></p>
+            </div>
+            <div class="api-card">
+                <h4><span class="method get">GET</span>getOrderDetail</h4>
+                <p>获取订单详情</p>
+                <p><span class="method-auth required">需要认证</span></p>
+            </div>
+
+            <!-- 地址接口 -->
+            <div class="api-card">
+                <h4><span class="method get">GET</span>getAddresses</h4>
+                <p>获取地址列表</p>
+                <p><span class="method-auth required">需要认证</span></p>
+            </div>
+            <div class="api-card">
+                <h4><span class="method post">POST</span>addAddress</h4>
+                <p>添加地址</p>
+                <p><span class="method-auth required">需要认证</span></p>
+            </div>
+            <div class="api-card">
+                <h4><span class="method post">POST</span>updateAddress</h4>
+                <p>更新地址</p>
+                <p><span class="method-auth required">需要认证</span></p>
+            </div>
+            <div class="api-card">
+                <h4><span class="method post">POST</span>deleteAddress</h4>
+                <p>删除地址</p>
+                <p><span class="method-auth required">需要认证</span></p>
+            </div>
+            <div class="api-card">
+                <h4><span class="method post">POST</span>setDefaultAddress</h4>
+                <p>设置默认地址</p>
+                <p><span class="method-auth required">需要认证</span></p>
+            </div>
+
+            <!-- 收藏接口 -->
+            <div class="api-card">
+                <h4><span class="method get">GET</span>getWishlist</h4>
+                <p>获取收藏列表</p>
+                <p><span class="method-auth required">需要认证</span></p>
+            </div>
+            <div class="api-card">
+                <h4><span class="method post">POST</span>addToWishlist</h4>
+                <p>添加商品到收藏</p>
+                <p><span class="method-auth required">需要认证</span></p>
+            </div>
+            <div class="api-card">
+                <h4><span class="method get">GET</span>removeFromWishlist</h4>
+                <p>从收藏移除商品</p>
+                <p><span class="method-auth required">需要认证</span></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Token 状态 -->
+    <div class="section" id="sec-token">
+        <h2>当前 Token 状态</h2>
+        <div class="token-box">
+            <strong>Access Token:</strong><br>
+            <span id="accessTokenDisplay">未登录</span><br><br>
+            <strong>Refresh Token:</strong><br>
+            <span id="refreshTokenDisplay">未登录</span><br><br>
+            <strong>登录状态:</strong> <span id="loginStatus"><span class="status-indicator status-offline"></span>未登录</span><br><br>
+            <strong>Token 过期状态:</strong> <span id="tokenExpiryStatus">未知</span>
+        </div>
+        <button onclick="clearTokens()">清除 Token</button>
+        <button onclick="refreshTokenStatus()" class="secondary">刷新状态</button>
+        <button onclick="testAccessTokenExpired()" class="warning">测试当前 Token</button>
+        <button onclick="testAllAuth()" class="success">测试所有认证接口</button>
+        
+        <h3 style="margin-top: 30px;">验证任意 Token</h3>
+        <div class="test-form">
+            <div class="form-group">
+                <label>输入 Access Token</label>
+                <textarea id="customTokenInput" placeholder="在此粘贴 JWT Token 进行验证..." style="min-height: 100px; font-family: monospace; font-size: 12px;"></textarea>
+            </div>
+            <div class="btn-group">
+                <button onclick="validateCustomToken()" class="success">验证 Token</button>
+                <button onclick="useCurrentToken()" class="secondary">使用当前 Token</button>
+                <button onclick="clearCustomToken()" class="danger">清空</button>
+            </div>
+            <div class="result" id="customTokenResult"></div>
+        </div>
+        
+        <div class="result" id="tokenTestResult"></div>
+    </div>
+
+    <!-- 数据库测试 -->
+    <div class="section" id="sec-dbtest">
+        <h2>数据库连接测试</h2>
+        <div class="api-doc">
+            <p><strong>测试接口:</strong> <code>api.php?action=dbtest</code></p>
+            <p><strong>说明:</strong> 测试数据库服务器连接、数据库查询、数据表访问是否正常</p>
+        </div>
+        <div class="test-form">
+            <div class="btn-group">
+                <button onclick="testDbConnection()" class="success">测试数据库连接</button>
+                <button onclick="testDbQuery()" class="success">测试数据库查询</button>
+                <button onclick="testDbTables()" class="success">测试数据表</button>
+            </div>
+            <div class="result" id="dbTestResult"></div>
+        </div>
+    </div>
+
+    <!-- 认证接口 -->
+    <div class="section" id="sec-auth">
+        <h2>认证接口测试</h2>
+        
+        <h3>注册</h3>
+        <div class="test-form">
+            <div class="grid-2">
+                <div class="form-group">
+                    <label>用户名 <span class="required">*</span></label>
+                    <input type="text" id="regUsername" placeholder="3-20位字母数字下划线">
+                </div>
+                <div class="form-group">
+                    <label>密码 <span class="required">*</span></label>
+                    <input type="password" id="regPassword" placeholder="至少6位">
+                </div>
+            </div>
+            <div class="grid-2">
+                <div class="form-group">
+                    <label>邮箱</label>
+                    <input type="email" id="regEmail" placeholder="选填">
+                </div>
+                <div class="form-group">
+                    <label>手机号</label>
+                    <input type="text" id="regPhone" placeholder="选填">
+                </div>
+            </div>
+            <button onclick="doRegister()">注册</button>
+            <div class="result" id="regResult"></div>
+        </div>
+
+        <h3>登录</h3>
+        <div class="test-form">
+            <div class="grid-2">
+                <div class="form-group">
+                    <label>用户名 <span class="required">*</span></label>
+                    <input type="text" id="loginUsername" placeholder="输入用户名">
+                </div>
+                <div class="form-group">
+                    <label>密码 <span class="required">*</span></label>
+                    <input type="password" id="loginPassword" placeholder="输入密码">
+                </div>
+            </div>
+            <button onclick="doLogin()">登录</button>
+            <div class="result" id="loginResult"></div>
+        </div>
+
+        <h3>刷新 Token</h3>
+        <div class="test-form">
+            <p class="hint">使用 Refresh Token 换取新的 Access Token</p>
+            <button onclick="doRefreshToken()">刷新 Token</button>
+            <div class="result" id="refreshResult"></div>
+        </div>
+
+        <h3>登出</h3>
+        <div class="test-form">
+            <button onclick="doLogout()" class="danger">登出</button>
+            <div class="result" id="logoutResult"></div>
+        </div>
+
+        <h3>修改密码</h3>
+        <div class="test-form">
+            <div class="grid-2">
+                <div class="form-group">
+                    <label>旧密码 <span class="required">*</span></label>
+                    <input type="password" id="oldPassword" placeholder="输入旧密码">
+                </div>
+                <div class="form-group">
+                    <label>新密码 <span class="required">*</span></label>
+                    <input type="password" id="newPassword" placeholder="输入新密码（至少6位）">
+                </div>
+            </div>
+            <button onclick="doChangePassword()">修改密码</button>
+            <div class="result" id="changePasswordResult"></div>
+        </div>
+    </div>
+
+    <!-- 用户接口 -->
+    <div class="section" id="sec-user">
+        <h2>用户接口测试</h2>
+        
+        <h3>获取当前用户信息</h3>
+        <div class="test-form">
+            <button onclick="doGetMe()">获取用户信息</button>
+            <div class="result" id="meResult"></div>
+        </div>
+
+        <h3>获取个人资料</h3>
+        <div class="test-form">
+            <button onclick="doGetProfile()">获取资料</button>
+            <div class="result" id="profileResult"></div>
+        </div>
+
+        <h3>更新个人资料</h3>
+        <div class="test-form">
+            <div class="grid-2">
+                <div class="form-group">
+                    <label>邮箱</label>
+                    <input type="email" id="updateEmail" placeholder="新邮箱">
+                </div>
+                <div class="form-group">
+                    <label>手机号</label>
+                    <input type="text" id="updatePhone" placeholder="新手机号">
+                </div>
+            </div>
+            <button onclick="doUpdateProfile()">更新资料</button>
+            <div class="result" id="updateProfileResult"></div>
+        </div>
+
+        <h3>获取登录设备列表</h3>
+        <div class="test-form">
+            <button onclick="doGetDevices()">获取设备列表</button>
+            <div class="result" id="devicesResult"></div>
+        </div>
+    </div>
+
+    <!-- 商品接口 -->
+    <div class="section" id="sec-product">
+        <h2>商品接口测试</h2>
+        
+        <h3>获取分类列表</h3>
+        <div class="test-form">
+            <button onclick="doGetCategories()" class="success">获取分类列表</button>
+            <div class="result" id="categoryResult"></div>
+        </div>
+
+        <h3>获取商品列表</h3>
+        <div class="test-form">
+            <div class="grid-3">
+                <div class="form-group">
+                    <label>分类ID</label>
+                    <input type="number" id="productCategoryId" placeholder="全部分类">
+                </div>
+                <div class="form-group">
+                    <label>页码</label>
+                    <input type="number" id="productPage" value="1" min="1">
+                </div>
+                <div class="form-group">
+                    <label>每页数量</label>
+                    <input type="number" id="productPageSize" value="10" min="1" max="100">
+                </div>
+            </div>
+            <div class="form-group">
+                <label>关键词</label>
+                <input type="text" id="productKeyword" placeholder="搜索关键词（可选）">
+            </div>
+            <button onclick="doGetProducts()" class="success">获取商品列表</button>
+            <div class="result" id="productListResult"></div>
+        </div>
+
+        <h3>获取商品详情</h3>
+        <div class="test-form">
+            <div class="form-group">
+                <label>商品ID <span class="required">*</span></label>
+                <input type="number" id="productDetailId" placeholder="输入商品ID">
+            </div>
+            <button onclick="doGetProductDetail()" class="success">获取商品详情</button>
+            <div class="result" id="productDetailResult"></div>
+        </div>
+    </div>
+
+    <!-- 购物车 -->
+    <div class="section" id="sec-cart">
+        <h2>购物车接口测试</h2>
+        
+        <h3>获取购物车列表</h3>
+        <div class="test-form">
+            <button onclick="doCartList()">获取购物车列表</button>
+            <div class="result" id="cartListResult"></div>
+        </div>
+
+        <h3>获取购物车摘要</h3>
+        <div class="test-form">
+            <button onclick="doCartSummary()">获取购物车摘要</button>
+            <div class="result" id="cartSummaryResult"></div>
+        </div>
+
+        <h3>添加商品到购物车</h3>
+        <div class="test-form">
+            <div class="grid-3">
+                <div class="form-group">
+                    <label>商品ID <span class="required">*</span></label>
+                    <input type="number" id="cartProductId" placeholder="输入商品ID">
+                </div>
+                <div class="form-group">
+                    <label>数量 <span class="required">*</span></label>
+                    <input type="number" id="cartQuantity" value="1" min="1">
+                </div>
+                <div class="form-group">
+                    <label>属性ID（可选）</label>
+                    <input type="number" id="cartAttributeId" placeholder="商品属性ID">
+                </div>
+            </div>
+            <button onclick="doCartAdd()">添加到购物车</button>
+            <div class="result" id="cartAddResult"></div>
+        </div>
+
+        <h3>更新购物车商品</h3>
+        <div class="test-form">
+            <div class="grid-3">
+                <div class="form-group">
+                    <label>商品ID <span class="required">*</span></label>
+                    <input type="number" id="updateCartProductId" placeholder="商品ID">
+                </div>
+                <div class="form-group">
+                    <label>新数量</label>
+                    <input type="number" id="updateCartQty" placeholder="新数量">
+                </div>
+                <div class="form-group">
+                    <label>是否选中</label>
+                    <select id="updateCartSelected">
+                        <option value="">不修改</option>
+                        <option value="1">选中</option>
+                        <option value="0">不选中</option>
+                    </select>
+                </div>
+            </div>
+            <button onclick="doCartUpdate()">更新</button>
+            <button onclick="doCartDelete()" class="danger">删除</button>
+            <div class="result" id="cartUpdateResult"></div>
+        </div>
+
+        <h3>结算</h3>
+        <div class="test-form">
+            <button onclick="doCartCheckoutPreview()">结算预览</button>
+            <div class="result" id="cartCheckoutResult"></div>
+        </div>
+    </div>
+
+    <!-- 订单接口 -->
+    <div class="section" id="sec-order">
+        <h2>订单接口测试</h2>
+        
+        <h3>获取订单列表</h3>
+        <div class="test-form">
+            <div class="grid-2">
+                <div class="form-group">
+                    <label>页码</label>
+                    <input type="number" id="orderPage" value="1" min="1">
+                </div>
+                <div class="form-group">
+                    <label>每页数量</label>
+                    <input type="number" id="orderLimit" value="10" min="1" max="50">
+                </div>
+            </div>
+            <button onclick="doGetOrders()">获取订单列表</button>
+            <div class="result" id="ordersResult"></div>
+        </div>
+
+        <h3>获取订单详情</h3>
+        <div class="test-form">
+            <div class="form-group">
+                <label>订单ID <span class="required">*</span></label>
+                <input type="text" id="orderId" placeholder="输入订单ID">
+            </div>
+            <button onclick="doGetOrderDetail()">获取订单详情</button>
+            <div class="result" id="orderDetailResult"></div>
+        </div>
+    </div>
+
+    <!-- 地址接口 -->
+    <div class="section" id="sec-address">
+        <h2>地址接口测试</h2>
+        
+        <h3>获取地址列表</h3>
+        <div class="test-form">
+            <button onclick="doGetAddresses()">获取地址列表</button>
+            <div class="result" id="addressesResult"></div>
+        </div>
+
+        <h3>添加地址</h3>
+        <div class="test-form">
+            <div class="grid-2">
+                <div class="form-group">
+                    <label>收件人 <span class="required">*</span></label>
+                    <input type="text" id="addrConsignee" placeholder="收件人姓名">
+                </div>
+                <div class="form-group">
+                    <label>手机号 <span class="required">*</span></label>
+                    <input type="text" id="addrPhone" placeholder="联系电话">
+                </div>
+            </div>
+            <div class="grid-2">
+                <div class="form-group">
+                    <label>国家</label>
+                    <input type="text" id="addrCountry" value="中国">
+                </div>
+                <div class="form-group">
+                    <label>省份</label>
+                    <input type="text" id="addrProvince" placeholder="省份">
+                </div>
+            </div>
+            <div class="grid-2">
+                <div class="form-group">
+                    <label>城市</label>
+                    <input type="text" id="addrCity" placeholder="城市">
+                </div>
+                <div class="form-group">
+                    <label>区县</label>
+                    <input type="text" id="addrDistrict" placeholder="区县">
+                </div>
+            </div>
+            <div class="form-group">
+                <label>详细地址 <span class="required">*</span></label>
+                <input type="text" id="addrAddress" placeholder="街道、门牌号等">
+            </div>
+            <div class="grid-2">
+                <div class="form-group">
+                    <label>邮编</label>
+                    <input type="text" id="addrPostcode" placeholder="邮政编码">
+                </div>
+                <div class="form-group">
+                    <label>是否默认</label>
+                    <select id="addrIsDefault">
+                        <option value="0">否</option>
+                        <option value="1">是</option>
+                    </select>
+                </div>
+            </div>
+            <button onclick="doAddAddress()">添加地址</button>
+            <div class="result" id="addAddressResult"></div>
+        </div>
+
+        <h3>更新地址</h3>
+        <div class="test-form">
+            <div class="form-group">
+                <label>地址ID <span class="required">*</span></label>
+                <input type="text" id="updateAddrId" placeholder="要更新的地址ID">
+            </div>
+            <div class="form-group">
+                <label>收件人</label>
+                <input type="text" id="updateAddrConsignee" placeholder="新收件人">
+            </div>
+            <div class="form-group">
+                <label>手机号</label>
+                <input type="text" id="updateAddrPhone" placeholder="新手机号">
+            </div>
+            <div class="form-group">
+                <label>详细地址</label>
+                <input type="text" id="updateAddrAddress" placeholder="新地址">
+            </div>
+            <button onclick="doUpdateAddress()">更新地址</button>
+            <div class="result" id="updateAddressResult"></div>
+        </div>
+
+        <h3>删除地址</h3>
+        <div class="test-form">
+            <div class="form-group">
+                <label>地址ID <span class="required">*</span></label>
+                <input type="text" id="deleteAddrId" placeholder="要删除的地址ID">
+            </div>
+            <button onclick="doDeleteAddress()" class="danger">删除地址</button>
+            <div class="result" id="deleteAddressResult"></div>
+        </div>
+
+        <h3>设置默认地址</h3>
+        <div class="test-form">
+            <div class="form-group">
+                <label>地址ID <span class="required">*</span></label>
+                <input type="text" id="defaultAddrId" placeholder="要设为默认的地址ID">
+            </div>
+            <button onclick="doSetDefaultAddress()">设为默认</button>
+            <div class="result" id="setDefaultResult"></div>
+        </div>
+    </div>
+
+    <!-- 收藏接口 -->
+    <div class="section" id="sec-wishlist">
+        <h2>收藏接口测试 (Wishlist)</h2>
+        
+        <h3>获取收藏列表</h3>
+        <div class="test-form">
+            <button onclick="doGetWishlist()">获取收藏列表</button>
+            <div class="result" id="wishlistResult"></div>
+        </div>
+
+        <h3>添加收藏</h3>
+        <div class="test-form">
+            <div class="grid-2">
+                <div class="form-group">
+                    <label>商品ID <span class="required">*</span></label>
+                    <input type="number" id="wishlistProductId" placeholder="输入商品ID">
+                </div>
+                <div class="form-group">
+                    <label>商品名称</label>
+                    <input type="text" id="wishlistProductName" placeholder="商品名称（可选）">
+                </div>
+            </div>
+            <div class="grid-2">
+                <div class="form-group">
+                    <label>商品价格</label>
+                    <input type="number" id="wishlistProductPrice" placeholder="商品价格（可选）" step="0.01">
+                </div>
+                <div class="form-group">
+                    <label>商品图片</label>
+                    <input type="text" id="wishlistProductImage" placeholder="商品图片URL（可选）">
+                </div>
+            </div>
+            <button onclick="doAddToWishlist()">添加到收藏</button>
+            <div class="result" id="addWishlistResult"></div>
+        </div>
+
+        <h3>移除收藏</h3>
+        <div class="test-form">
+            <div class="form-group">
+                <label>商品ID <span class="required">*</span></label>
+                <input type="number" id="removeWishlistProductId" placeholder="要移除的商品ID">
+            </div>
+            <button onclick="doRemoveFromWishlist()" class="danger">从收藏移除</button>
+            <div class="result" id="removeWishlistResult"></div>
+        </div>
+    </div>
+
+    <!-- JSON 格式化工具 -->
+    <div class="section" id="sec-json">
+        <h2>JSON 格式化工具</h2>
+        <div class="test-form">
+            <div class="form-group">
+                <label>输入 JSON 字符串</label>
+                <textarea id="jsonInput" placeholder='{"key": "value", "number": 123, "nested": {"a": 1, "b": 2}}' style="min-height: 150px; font-family: monospace;"></textarea>
+            </div>
+            <div class="btn-group">
+                <button onclick="formatJSON()" class="success">格式化</button>
+                <button onclick="minifyJSON()" class="secondary">压缩</button>
+                <button onclick="clearJSON()" class="danger">清空</button>
+                <button onclick="copyJSON()" class="warning">复制结果</button>
+            </div>
+            <div class="form-group" style="margin-top: 15px;">
+                <label>格式化结果</label>
+                <textarea id="jsonOutput" readonly style="min-height: 200px; font-family: monospace; background: #f8f9fa;" placeholder="格式化后的 JSON 将显示在这里..."></textarea>
+            </div>
+        </div>
+    </div>
+
+    <!-- 自定义请求 -->
+    <div class="section" id="sec-custom">
+        <h2>自定义 API 请求</h2>
+        <div class="test-form">
+            <div class="grid-2">
+                <div class="form-group">
+                    <label>请求方法</label>
+                    <select id="customMethod">
+                        <option value="GET">GET</option>
+                        <option value="POST">POST</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Action 参数 <span class="required">*</span></label>
+                    <input type="text" id="customAction" placeholder="如: getProfile">
+                </div>
+            </div>
+            <div class="form-group">
+                <label>请求体 (JSON，仅POST)</label>
+                <textarea id="customBody" placeholder='{"key": "value"}'></textarea>
+            </div>
+            <div class="form-group">
+                <label>
+                    <input type="checkbox" id="customUseAuth" checked> 使用认证 (Bearer Token)
+                </label>
+            </div>
+            <button onclick="doCustomRequest()">发送请求</button>
+            <div class="result" id="customResult"></div>
+        </div>
+    </div>
+
+    <script>
+        // API 基础路径
+        const API_URL = './api.php';
+        
+        // 从 localStorage 读取 Token
+        let accessToken = localStorage.getItem('accessToken') || '';
+        let refreshToken = localStorage.getItem('refreshToken') || '';
+        
+        // 页面加载时更新显示
+        updateTokenDisplay();
+        
+        // 切换页面区域
+        function showSection(name) {
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.nav button').forEach(b => b.classList.remove('active'));
+            document.getElementById('sec-' + name).classList.add('active');
+            event.target.classList.add('active');
+        }
+        
+        function updateTokenDisplay() {
+            accessToken = localStorage.getItem('accessToken') || '';
+            refreshToken = localStorage.getItem('refreshToken') || '';
+            document.getElementById('accessTokenDisplay').textContent = accessToken ? accessToken.substring(0, 50) + '...' : '未登录';
+            document.getElementById('refreshTokenDisplay').textContent = refreshToken ? refreshToken.substring(0, 50) + '...' : '未登录';
+            
+            const isLoggedIn = accessToken && accessToken.length > 0;
+            document.getElementById('loginStatus').innerHTML = isLoggedIn 
+                ? '<span class="status-indicator status-online"></span>已登录' 
+                : '<span class="status-indicator status-offline"></span>未登录';
+            
+            // 更新 Token 过期状态显示
+            if (!isLoggedIn) {
+                document.getElementById('tokenExpiryStatus').innerHTML = '<span class="status-indicator status-offline"></span>未登录';
+            } else {
+                // 解析并显示过期状态
+                const payload = parseJWT(accessToken);
+                if (payload && payload.exp) {
+                    const now = Math.floor(Date.now() / 1000);
+                    const isExpired = now > payload.exp;
+                    const timeLeft = payload.exp - now;
+                    if (isExpired) {
+                        document.getElementById('tokenExpiryStatus').innerHTML = '<span class="status-indicator status-offline"></span>已过期';
+                    } else {
+                        const timeLeftStr = Math.floor(timeLeft / 60) + ' 分 ' + (timeLeft % 60) + ' 秒';
+                        document.getElementById('tokenExpiryStatus').innerHTML = '<span class="status-indicator status-online"></span>有效 (' + timeLeftStr + ')';
+                    }
+                } else {
+                    document.getElementById('tokenExpiryStatus').innerHTML = '<span class="status-indicator status-offline"></span>无法解析';
+                }
+            }
+        }
+        
+        function refreshTokenStatus() {
+            updateTokenDisplay();
+            alert('Token 状态已刷新');
+        }
+        
+        // 解析 JWT Token
+        function parseJWT(token) {
+            try {
+                const base64Url = token.split('.')[1];
+                const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+                const jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+                    return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+                }).join(''));
+                return JSON.parse(jsonPayload);
+            } catch (e) {
+                return null;
+            }
+        }
+        
+        // 验证 Token 的核心逻辑
+        function validateToken(token, resultElementId) {
+            if (!token || token.trim() === '') {
+                showResult(resultElementId, { 
+                    status: 'error', 
+                    message: '请输入 Token',
+                    isExpired: null 
+                }, true);
+                return null;
+            }
+            
+            // 解析 Token
+            const payload = parseJWT(token.trim());
+            if (!payload) {
+                showResult(resultElementId, { 
+                    status: 'error', 
+                    message: 'Token 格式无效，无法解析。请确保输入的是有效的 JWT Token（格式：xxx.yyy.zzz）',
+                    isExpired: null 
+                }, true);
+                return null;
+            }
+            
+            const now = Math.floor(Date.now() / 1000);
+            const exp = payload.exp;
+            const iat = payload.iat;
+            
+            // 检查过期时间
+            if (!exp) {
+                showResult(resultElementId, { 
+                    status: 'warning', 
+                    message: 'Token 没有过期时间字段（exp）',
+                    payload: payload 
+                }, false);
+                return null;
+            }
+            
+            const isExpired = now > exp;
+            const timeLeft = exp - now;
+            const timeLeftStr = timeLeft > 0 
+                ? Math.floor(timeLeft / 60) + ' 分 ' + (timeLeft % 60) + ' 秒' 
+                : '已过期 ' + Math.floor(Math.abs(timeLeft) / 60) + ' 分';
+            
+            // 显示详细信息
+            const result = {
+                status: isExpired ? 'error' : 'success',
+                isExpired: isExpired,
+                message: isExpired ? 'Token 已过期' : 'Token 有效',
+                tokenHeader: {
+                    alg: payload.alg || 'unknown',
+                    typ: payload.typ || 'unknown'
+                },
+                tokenPayload: {
+                    subject: payload.sub,
+                    username: payload.username,
+                    role: payload.role,
+                    jti: payload.jti,
+                    issuedAt: iat ? new Date(iat * 1000).toLocaleString() : 'unknown',
+                    expiresAt: new Date(exp * 1000).toLocaleString(),
+                    currentTime: new Date(now * 1000).toLocaleString(),
+                    timeLeft: timeLeftStr,
+                    expiresInSeconds: timeLeft
+                }
+            };
+            
+            showResult(resultElementId, result, isExpired);
+            return result;
+        }
+        
+        // 测试当前 Access Token 是否过期
+        async function testAccessTokenExpired() {
+            const token = localStorage.getItem('accessToken');
+            const result = validateToken(token, 'tokenTestResult');
+            
+            if (result) {
+                // 更新页面状态显示
+                const expiryStatusHtml = result.isExpired 
+                    ? '<span class="status-indicator status-offline"></span>已过期'
+                    : '<span class="status-indicator status-online"></span>有效 (' + result.tokenPayload.timeLeft + ')';
+                document.getElementById('tokenExpiryStatus').innerHTML = expiryStatusHtml;
+                
+                // 如果过期了，自动尝试刷新
+                if (result.isExpired) {
+                    const refresh = localStorage.getItem('refreshToken');
+                    if (refresh) {
+                        showResult('tokenTestResult', { 
+                            ...result, 
+                            autoRefresh: 'Token 已过期，正在尝试自动刷新...' 
+                        }, true);
+                        await doRefreshToken();
+                    }
+                }
+            }
+        }
+        
+        // 验证自定义输入的 Token
+        function validateCustomToken() {
+            const token = document.getElementById('customTokenInput').value;
+            validateToken(token, 'customTokenResult');
+        }
+        
+        // 将当前 Token 填入输入框
+        function useCurrentToken() {
+            const token = localStorage.getItem('accessToken');
+            if (token) {
+                document.getElementById('customTokenInput').value = token;
+            } else {
+                alert('当前没有保存的 Token');
+            }
+        }
+        
+        // 清空自定义 Token 输入框
+        function clearCustomToken() {
+            document.getElementById('customTokenInput').value = '';
+            document.getElementById('customTokenResult').style.display = 'none';
+        }
+        
+        function saveTokens(access, refresh) {
+            localStorage.setItem('accessToken', access);
+            localStorage.setItem('refreshToken', refresh);
+            updateTokenDisplay();
+        }
+        
+        function clearTokens() {
+            localStorage.removeItem('accessToken');
+            localStorage.removeItem('refreshToken');
+            updateTokenDisplay();
+            alert('Token 已清除');
+        }
+        
+        function showResult(elementId, data, isError) {
+            const el = document.getElementById(elementId);
+            el.style.display = 'block';
+            el.className = 'result ' + (isError ? 'error' : 'success');
+            el.innerHTML = '<pre>' + JSON.stringify(data, null, 2) + '</pre>';
+        }
+        
+        function hideResult(elementId) {
+            document.getElementById(elementId).style.display = 'none';
+        }
+        
+        // 发送请求
+        async function request(action, method, body, useAuth) {
+            const url = API_URL + '?action=' + action;
+            const options = {
+                method: method,
+                headers: { 'Content-Type': 'application/json' }
+            };
+            
+            if (useAuth) {
+                const token = localStorage.getItem('accessToken');
+                if (token) {
+                    options.headers['Authorization'] = 'Bearer ' + token;
+                }
+            }
+            
+            if (body && method === 'POST') {
+                options.body = JSON.stringify(body);
+            }
+            
+            const response = await fetch(url, options);
+            return await response.json();
+        }
+        
+        // 快速测试
+        async function quickTest(action) {
+            if (action === 'dbtest') {
+                testDbConnection();
+                return;
+            }
+            const useAuth = ['me', 'cartList', 'getOrders', 'getAddresses'].includes(action);
+            try {
+                const result = await request(action, 'GET', null, useAuth);
+                showResult('quickTestResult', result, result.status !== 'success' && result.code !== 200);
+            } catch (err) {
+                showResult('quickTestResult', { status: 'error', message: err.message }, true);
+            }
+        }
+        
+        // 测试所有认证接口
+        async function testAllAuth() {
+            const results = [];
+            const authEndpoints = [
+                { action: 'me', method: 'GET' },
+                { action: 'getProfile', method: 'GET' },
+                { action: 'getOrders', method: 'GET' },
+                { action: 'getAddresses', method: 'GET' },
+                { action: 'cartList', method: 'GET' }
+            ];
+            
+            for (const endpoint of authEndpoints) {
+                try {
+                    const result = await request(endpoint.action, endpoint.method, null, true);
+                    results.push({
+                        endpoint: endpoint.action,
+                        status: result.status === 'success' || result.code === 200 ? '✅ 成功' : '❌ 失败',
+                        message: result.message || result.status
+                    });
+                } catch (err) {
+                    results.push({
+                        endpoint: endpoint.action,
+                        status: '❌ 错误',
+                        message: err.message
+                    });
+                }
+            }
+            
+            showResult('tokenTestResult', { testResults: results }, false);
+        }
+        
+        // ==================== 数据库测试 ====================
+        
+        async function testDbConnection() {
+            showResult('dbTestResult', { status: 'info', message: '正在测试数据库连接...' }, false);
+            try {
+                const result = await request('dbtest', 'GET', null, false);
+                showResult('dbTestResult', result, result.status !== 'success' && result.code !== 200);
+            } catch (err) {
+                showResult('dbTestResult', { status: 'error', message: err.message }, true);
+            }
+        }
+        
+        async function testDbQuery() {
+            showResult('dbTestResult', { status: 'info', message: '正在测试数据库查询...' }, false);
+            try {
+                const result = await request('dbtest', 'GET', { type: 'query' }, false);
+                showResult('dbTestResult', result, result.status !== 'success' && result.code !== 200);
+            } catch (err) {
+                showResult('dbTestResult', { status: 'error', message: err.message }, true);
+            }
+        }
+        
+        async function testDbTables() {
+            showResult('dbTestResult', { status: 'info', message: '正在测试数据表...' }, false);
+            try {
+                const result = await request('dbtest', 'GET', { type: 'tables' }, false);
+                showResult('dbTestResult', result, result.status !== 'success' && result.code !== 200);
+            } catch (err) {
+                showResult('dbTestResult', { status: 'error', message: err.message }, true);
+            }
+        }
+        
+        // ==================== 认证接口 ====================
+        
+        async function doRegister() {
+            const username = document.getElementById('regUsername').value.trim();
+            const password = document.getElementById('regPassword').value;
+            
+            if (!username || !password) {
+                showResult('regResult', { status: 'error', message: '请输入用户名和密码' }, true);
+                return;
+            }
+            
+            try {
+                const result = await request('register', 'POST', {
+                    username: username,
+                    password: password,
+                    email: document.getElementById('regEmail').value.trim() || null,
+                    phone: document.getElementById('regPhone').value.trim() || null
+                }, false);
+                
+                showResult('regResult', result, result.status !== 'success');
+            } catch (err) {
+                showResult('regResult', { status: 'error', message: err.message }, true);
+            }
+        }
+        
+        async function doLogin() {
+            const username = document.getElementById('loginUsername').value.trim();
+            const password = document.getElementById('loginPassword').value;
+            
+            if (!username || !password) {
+                showResult('loginResult', { status: 'error', message: '请输入用户名和密码' }, true);
+                return;
+            }
+            
+            try {
+                const result = await request('login', 'POST', {
+                    username: username,
+                    password: password
+                }, false);
+                
+                showResult('loginResult', result, result.status !== 'success');
+                
+                if (result.status === 'success' && result.data && result.data.tokens) {
+                    saveTokens(result.data.tokens.accessToken, result.data.tokens.refreshToken);
+                }
+            } catch (err) {
+                showResult('loginResult', { status: 'error', message: err.message }, true);
+            }
+        }
+        
+        async function doRefreshToken() {
+            const refresh = localStorage.getItem('refreshToken');
+            if (!refresh) {
+                showResult('refreshResult', { status: 'error', message: '没有 Refresh Token' }, true);
+                return;
+            }
+            
+            try {
+                const result = await request('refresh', 'POST', { refreshToken: refresh }, false);
+                showResult('refreshResult', result, result.status !== 'success');
+                
+                if (result.status === 'success' && result.data && result.data.tokens) {
+                    saveTokens(result.data.tokens.accessToken, result.data.tokens.refreshToken);
+                }
+            } catch (err) {
+                showResult('refreshResult', { status: 'error', message: err.message }, true);
+            }
+        }
+        
+        async function doLogout() {
+            try {
+                const result = await request('logout', 'POST', {}, true);
+                showResult('logoutResult', result, result.status !== 'success');
+                
+                if (result.status === 'success') {
+                    clearTokens();
+                }
+            } catch (err) {
+                showResult('logoutResult', { status: 'error', message: err.message }, true);
+            }
+        }
+        
+        async function doChangePassword() {
+            const oldPwd = document.getElementById('oldPassword').value;
+            const newPwd = document.getElementById('newPassword').value;
+            
+            if (!oldPwd || !newPwd) {
+                showResult('changePasswordResult', { status: 'error', message: '请输入旧密码和新密码' }, true);
+                return;
+            }
+            
+            try {
+                const result = await request('changePassword', 'POST', {
+                    oldPassword: oldPwd,
+                    newPassword: newPwd
+                }, true);
+                showResult('changePasswordResult', result, result.status !== 'success');
+            } catch (err) {
+                showResult('changePasswordResult', { status: 'error', message: err.message }, true);
+            }
+        }
+        
+        // ==================== 用户接口 ====================
+        
+        async function doGetMe() {
+            try {
+                const result = await request('me', 'GET', null, true);
+                showResult('meResult', result, result.status !== 'success');
+            } catch (err) {
+                showResult('meResult', { status: 'error', message: err.message }, true);
+            }
+        }
+        
+        async function doGetProfile() {
+            try {
+                const result = await request('getProfile', 'GET', null, true);
+                showResult('profileResult', result, result.status !== 'success');
+            } catch (err) {
+                showResult('profileResult', { status: 'error', message: err.message }, true);
+            }
+        }
+        
+        async function doUpdateProfile() {
+            const body = {};
+            const email = document.getElementById('updateEmail').value.trim();
+            const phone = document.getElementById('updatePhone').value.trim();
+            
+            if (email) body.email = email;
+            if (phone) body.phone = phone;
+            
+            if (!email && !phone) {
+                showResult('updateProfileResult', { status: 'error', message: '请至少填写一项' }, true);
+                return;
+            }
+            
+            try {
+                const result = await request('updateProfile', 'POST', body, true);
+                showResult('updateProfileResult', result, result.status !== 'success');
+            } catch (err) {
+                showResult('updateProfileResult', { status: 'error', message: err.message }, true);
+            }
+        }
+        
+        async function doGetDevices() {
+            try {
+                const result = await request('getDevices', 'GET', null, true);
+                showResult('devicesResult', result, result.status !== 'success');
+            } catch (err) {
+                showResult('devicesResult', { status: 'error', message: err.message }, true);
+            }
+        }
+        
+        // ==================== 商品接口 ====================
+        
+        async function doGetCategories() {
+            try {
+                const result = await request('categoryList', 'GET', null, false);
+                showResult('categoryResult', result, result.status !== 'success');
+            } catch (err) {
+                showResult('categoryResult', { status: 'error', message: err.message }, true);
+            }
+        }
+        
+        async function doGetProducts() {
+            const categoryId = document.getElementById('productCategoryId').value;
+            const page = document.getElementById('productPage').value;
+            const pageSize = document.getElementById('productPageSize').value;
+            const keyword = document.getElementById('productKeyword').value.trim();
+            
+            let url = 'productList&page=' + page + '&pageSize=' + pageSize;
+            if (categoryId) url += '&category_id=' + categoryId;
+            if (keyword) url += '&keyword=' + encodeURIComponent(keyword);
+            
+            try {
+                const result = await request(url, 'GET', null, false);
+                showResult('productListResult', result, result.status !== 'success');
+            } catch (err) {
+                showResult('productListResult', { status: 'error', message: err.message }, true);
+            }
+        }
+        
+        async function doGetProductDetail() {
+            const productId = document.getElementById('productDetailId').value;
+            if (!productId) {
+                showResult('productDetailResult', { status: 'error', message: '请输入商品ID' }, true);
+                return;
+            }
+            
+            try {
+                const result = await request('productDetail&id=' + productId, 'GET', null, false);
+                showResult('productDetailResult', result, result.status !== 'success');
+            } catch (err) {
+                showResult('productDetailResult', { status: 'error', message: err.message }, true);
+            }
+        }
+        
+        // ==================== 购物车接口 ====================
+        
+        async function doCartList() {
+            try {
+                const result = await request('cartList', 'GET', null, true);
+                showResult('cartListResult', result, result.status !== 'success');
+            } catch (err) {
+                showResult('cartListResult', { status: 'error', message: err.message }, true);
+            }
+        }
+        
+        async function doCartSummary() {
+            try {
+                const result = await request('cartSummary', 'GET', null, true);
+                showResult('cartSummaryResult', result, result.status !== 'success');
+            } catch (err) {
+                showResult('cartSummaryResult', { status: 'error', message: err.message }, true);
+            }
+        }
+        
+        async function doCartAdd() {
+            const productId = document.getElementById('cartProductId').value;
+            const quantity = document.getElementById('cartQuantity').value;
+            const attributeId = document.getElementById('cartAttributeId').value;
+            
+            if (!productId || !quantity) {
+                showResult('cartAddResult', { status: 'error', message: '请输入商品ID和数量' }, true);
+                return;
+            }
+            
+            try {
+                const result = await request('cartAdd', 'POST', {
+                    product_id: parseInt(productId),
+                    quantity: parseInt(quantity),
+                    attribute_id: attributeId ? parseInt(attributeId) : null
+                }, true);
+                showResult('cartAddResult', result, result.status !== 'success');
+            } catch (err) {
+                showResult('cartAddResult', { status: 'error', message: err.message }, true);
+            }
+        }
+        
+        async function doCartUpdate() {
+            const productId = document.getElementById('updateCartProductId').value;
+            const quantity = document.getElementById('updateCartQty').value;
+            const selected = document.getElementById('updateCartSelected').value;
+            
+            if (!productId) {
+                showResult('cartUpdateResult', { status: 'error', message: '请输入商品ID' }, true);
+                return;
+            }
+            
+            const body = { product_id: parseInt(productId) };
+            if (quantity) body.quantity = parseInt(quantity);
+            if (selected !== '') body.selected = parseInt(selected);
+            
+            try {
+                const result = await request('cartUpdate', 'POST', body, true);
+                showResult('cartUpdateResult', result, result.status !== 'success');
+            } catch (err) {
+                showResult('cartUpdateResult', { status: 'error', message: err.message }, true);
+            }
+        }
+        
+        async function doCartDelete() {
+            const productId = document.getElementById('updateCartProductId').value;
+            
+            if (!productId) {
+                showResult('cartUpdateResult', { status: 'error', message: '请输入商品ID' }, true);
+                return;
+            }
+            
+            try {
+                const result = await request('cartDelete', 'POST', {
+                    product_id: parseInt(productId)
+                }, true);
+                showResult('cartUpdateResult', result, result.status !== 'success');
+            } catch (err) {
+                showResult('cartUpdateResult', { status: 'error', message: err.message }, true);
+            }
+        }
+        
+        async function doCartCheckoutPreview() {
+            try {
+                const result = await request('cartCheckoutPreview', 'POST', {}, true);
+                showResult('cartCheckoutResult', result, result.status !== 'success');
+            } catch (err) {
+                showResult('cartCheckoutResult', { status: 'error', message: err.message }, true);
+            }
+        }
+        
+        // ==================== 订单接口 ====================
+        
+        async function doGetOrders() {
+            const page = document.getElementById('orderPage').value;
+            const limit = document.getElementById('orderLimit').value;
+            
+            try {
+                const result = await request('getOrders&page=' + page + '&limit=' + limit, 'GET', null, true);
+                showResult('ordersResult', result, result.status !== 'success');
+            } catch (err) {
+                showResult('ordersResult', { status: 'error', message: err.message }, true);
+            }
+        }
+        
+        async function doGetOrderDetail() {
+            const orderId = document.getElementById('orderId').value.trim();
+            if (!orderId) {
+                showResult('orderDetailResult', { status: 'error', message: '请输入订单ID' }, true);
+                return;
+            }
+            
+            try {
+                const result = await request('getOrderDetail&orderId=' + orderId, 'GET', null, true);
+                showResult('orderDetailResult', result, result.status !== 'success');
+            } catch (err) {
+                showResult('orderDetailResult', { status: 'error', message: err.message }, true);
+            }
+        }
+        
+        // ==================== 地址接口 ====================
+        
+        async function doGetAddresses() {
+            try {
+                const result = await request('getAddresses', 'GET', null, true);
+                showResult('addressesResult', result, result.status !== 'success');
+            } catch (err) {
+                showResult('addressesResult', { status: 'error', message: err.message }, true);
+            }
+        }
+        
+        async function doAddAddress() {
+            const consignee = document.getElementById('addrConsignee').value.trim();
+            const phone = document.getElementById('addrPhone').value.trim();
+            const address = document.getElementById('addrAddress').value.trim();
+            
+            if (!consignee || !phone || !address) {
+                showResult('addAddressResult', { status: 'error', message: '请填写必填项' }, true);
+                return;
+            }
+            
+            try {
+                const result = await request('addAddress', 'POST', {
+                    consignee: consignee,
+                    phone: phone,
+                    country: document.getElementById('addrCountry').value.trim() || '中国',
+                    province: document.getElementById('addrProvince').value.trim() || '',
+                    city: document.getElementById('addrCity').value.trim() || '',
+                    district: document.getElementById('addrDistrict').value.trim() || '',
+                    address: address,
+                    postcode: document.getElementById('addrPostcode').value.trim() || '',
+                    is_default: parseInt(document.getElementById('addrIsDefault').value) || 0
+                }, true);
+                showResult('addAddressResult', result, result.status !== 'success');
+            } catch (err) {
+                showResult('addAddressResult', { status: 'error', message: err.message }, true);
+            }
+        }
+        
+        async function doUpdateAddress() {
+            const addrId = document.getElementById('updateAddrId').value.trim();
+            if (!addrId) {
+                showResult('updateAddressResult', { status: 'error', message: '请输入地址ID' }, true);
+                return;
+            }
+            
+            const body = { id: addrId };
+            const consignee = document.getElementById('updateAddrConsignee').value.trim();
+            const phone = document.getElementById('updateAddrPhone').value.trim();
+            const address = document.getElementById('updateAddrAddress').value.trim();
+            
+            if (consignee) body.consignee = consignee;
+            if (phone) body.phone = phone;
+            if (address) body.address = address;
+            
+            try {
+                const result = await request('updateAddress', 'POST', body, true);
+                showResult('updateAddressResult', result, result.status !== 'success');
+            } catch (err) {
+                showResult('updateAddressResult', { status: 'error', message: err.message }, true);
+            }
+        }
+        
+        async function doDeleteAddress() {
+            const addrId = document.getElementById('deleteAddrId').value.trim();
+            if (!addrId) {
+                showResult('deleteAddressResult', { status: 'error', message: '请输入地址ID' }, true);
+                return;
+            }
+            
+            try {
+                const result = await request('deleteAddress', 'POST', { id: addrId }, true);
+                showResult('deleteAddressResult', result, result.status !== 'success');
+            } catch (err) {
+                showResult('deleteAddressResult', { status: 'error', message: err.message }, true);
+            }
+        }
+        
+        async function doSetDefaultAddress() {
+            const addrId = document.getElementById('defaultAddrId').value.trim();
+            if (!addrId) {
+                showResult('setDefaultResult', { status: 'error', message: '请输入地址ID' }, true);
+                return;
+            }
+            
+            try {
+                const result = await request('setDefaultAddress', 'POST', { id: addrId }, true);
+                showResult('setDefaultResult', result, result.status !== 'success');
+            } catch (err) {
+                showResult('setDefaultResult', { status: 'error', message: err.message }, true);
+            }
+        }
+        
+        // ==================== 收藏接口 ====================
+        
+        async function doGetWishlist() {
+            try {
+                const result = await request('getWishlist', 'GET', null, true);
+                showResult('wishlistResult', result, result.status !== 'success');
+            } catch (err) {
+                showResult('wishlistResult', { status: 'error', message: err.message }, true);
+            }
+        }
+        
+        async function doAddToWishlist() {
+            const productId = document.getElementById('wishlistProductId').value;
+            const productName = document.getElementById('wishlistProductName').value.trim();
+            const productPrice = document.getElementById('wishlistProductPrice').value;
+            const productImage = document.getElementById('wishlistProductImage').value.trim();
+            
+            if (!productId) {
+                showResult('addWishlistResult', { status: 'error', message: '请输入商品ID' }, true);
+                return;
+            }
+            
+            const body = { product_id: parseInt(productId) };
+            if (productName) body.product_name = productName;
+            if (productPrice) body.product_price = parseFloat(productPrice);
+            if (productImage) body.product_image = productImage;
+            
+            try {
+                const result = await request('addToWishlist', 'POST', body, true);
+                showResult('addWishlistResult', result, result.status !== 'success');
+            } catch (err) {
+                showResult('addWishlistResult', { status: 'error', message: err.message }, true);
+            }
+        }
+        
+        async function doRemoveFromWishlist() {
+            const productId = document.getElementById('removeWishlistProductId').value;
+            
+            if (!productId) {
+                showResult('removeWishlistResult', { status: 'error', message: '请输入商品ID' }, true);
+                return;
+            }
+            
+            try {
+                const result = await request('removeFromWishlist&productId=' + productId, 'GET', null, true);
+                showResult('removeWishlistResult', result, result.status !== 'success');
+            } catch (err) {
+                showResult('removeWishlistResult', { status: 'error', message: err.message }, true);
+            }
+        }
+        
+        // ==================== JSON 格式化工具 ====================
+        
+        function formatJSON() {
+            const input = document.getElementById('jsonInput').value.trim();
+            if (!input) {
+                document.getElementById('jsonOutput').value = '';
+                return;
+            }
+            
+            try {
+                const parsed = JSON.parse(input);
+                const formatted = JSON.stringify(parsed, null, 2);
+                document.getElementById('jsonOutput').value = formatted;
+            } catch (e) {
+                document.getElementById('jsonOutput').value = '错误: ' + e.message + '\n\n请检查输入的 JSON 格式是否正确。';
+            }
+        }
+        
+        function minifyJSON() {
+            const input = document.getElementById('jsonInput').value.trim();
+            if (!input) {
+                document.getElementById('jsonOutput').value = '';
+                return;
+            }
+            
+            try {
+                const parsed = JSON.parse(input);
+                const minified = JSON.stringify(parsed);
+                document.getElementById('jsonOutput').value = minified;
+            } catch (e) {
+                document.getElementById('jsonOutput').value = '错误: ' + e.message;
+            }
+        }
+        
+        function clearJSON() {
+            document.getElementById('jsonInput').value = '';
+            document.getElementById('jsonOutput').value = '';
+        }
+        
+        function copyJSON() {
+            const output = document.getElementById('jsonOutput');
+            if (!output.value) {
+                alert('没有可复制的内容');
+                return;
+            }
+            
+            output.select();
+            document.execCommand('copy');
+            
+            // 显示复制成功提示
+            const btn = event.target;
+            const originalText = btn.textContent;
+            btn.textContent = '已复制!';
+            setTimeout(() => {
+                btn.textContent = originalText;
+            }, 1500);
+        }
+        
+        // ==================== 自定义请求 ====================
+        
+        async function doCustomRequest() {
+            const method = document.getElementById('customMethod').value;
+            const action = document.getElementById('customAction').value.trim();
+            const useAuth = document.getElementById('customUseAuth').checked;
+            
+            if (!action) {
+                showResult('customResult', { status: 'error', message: '请输入 action' }, true);
+                return;
+            }
+            
+            let body = null;
+            if (method === 'POST') {
+                const bodyStr = document.getElementById('customBody').value.trim();
+                if (bodyStr) {
+                    try {
+                        body = JSON.parse(bodyStr);
+                    } catch (e) {
+                        showResult('customResult', { status: 'error', message: 'JSON 格式错误: ' + e.message }, true);
+                        return;
+                    }
+                }
+            }
+            
+            try {
+                const result = await request(action, method, body, useAuth);
+                showResult('customResult', result, result.status !== 'success');
+            } catch (err) {
+                showResult('customResult', { status: 'error', message: err.message }, true);
+            }
+        }
+    </script>
+</body>
+</html>

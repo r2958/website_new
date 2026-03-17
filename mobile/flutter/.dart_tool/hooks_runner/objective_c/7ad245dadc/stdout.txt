@@ -1,0 +1,34 @@
+Running `(cd /Users/renwei/.pub-cache/hosted/pub.dev/objective_c-9.3.0/; TMPDIR=/var/folders/gr/s38ccdw94zv9v_r75cdkccqm0000gn/T/ PATH=/Users/renwei/.local/bin:/opt/anaconda3/bin:/opt/anaconda3/condabin:/Library/Frameworks/Python.framework/Versions/3.12/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Library/Apple/usr/bin HOME=/Users/renwei /opt/homebrew/share/flutter/bin/cache/dart-sdk/bin/dart --packages=/Users/renwei/Downloads/webapp/website_new/mobile/flutter/.dart_tool/package_config.json /Users/renwei/Downloads/webapp/website_new/mobile/flutter/.dart_tool/hooks_runner/objective_c/7ad245dadc/hook.dill --config=/Users/renwei/Downloads/webapp/website_new/mobile/flutter/.dart_tool/hooks_runner/objective_c/7ad245dadc/input.json )`.
+INFO: 2026-03-17 16:11:50.861256: Running `/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang --version`.
+
+INFO: 2026-03-17 16:11:50.877374: Running `/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang --version`.
+
+INFO: 2026-03-17 16:11:50.896565: Running: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk -target arm64-apple-darwin -mmacos-version-min=13 -x objective-c -fobjc-arc -c /Users/renwei/.pub-cache/hosted/pub.dev/objective_c-9.3.0/src/objective_c_bindings_generated.m -fpic -I src -o /Users/renwei/Downloads/webapp/website_new/mobile/flutter/.dart_tool/hooks_runner/shared/objective_c/build/7ad245dadc/obj/src/objective_c_bindings_generated.m.o
+
+INFO: 2026-03-17 16:11:50.956628: 
+INFO: 2026-03-17 16:11:50.956785: 
+INFO: 2026-03-17 16:11:50.956898: Generated /Users/renwei/Downloads/webapp/website_new/mobile/flutter/.dart_tool/hooks_runner/shared/objective_c/build/7ad245dadc/obj/src/objective_c.c.o
+INFO: 2026-03-17 16:11:50.957080: 
+INFO: 2026-03-17 16:11:50.957095: 
+INFO: 2026-03-17 16:11:50.957106: Generated /Users/renwei/Downloads/webapp/website_new/mobile/flutter/.dart_tool/hooks_runner/shared/objective_c/build/7ad245dadc/obj/src/include/dart_api_dl.c.o
+
+INFO: 2026-03-17 16:11:50.975851: 
+INFO: 2026-03-17 16:11:50.975906: 
+INFO: 2026-03-17 16:11:50.975917: Generated /Users/renwei/Downloads/webapp/website_new/mobile/flutter/.dart_tool/hooks_runner/shared/objective_c/build/7ad245dadc/obj/src/observer.m.o
+
+INFO: 2026-03-17 16:11:50.989750: 
+INFO: 2026-03-17 16:11:50.989810: 
+INFO: 2026-03-17 16:11:50.989821: Generated /Users/renwei/Downloads/webapp/website_new/mobile/flutter/.dart_tool/hooks_runner/shared/objective_c/build/7ad245dadc/obj/src/protocol.m.o
+
+INFO: 2026-03-17 16:11:51.185394: 
+INFO: 2026-03-17 16:11:51.185423: 
+INFO: 2026-03-17 16:11:51.185433: Generated /Users/renwei/Downloads/webapp/website_new/mobile/flutter/.dart_tool/hooks_runner/shared/objective_c/build/7ad245dadc/obj/src/objective_c.m.o
+
+ter.m.o
+
+INFO: 2026-03-17 16:11:51.215211: Running: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -shared -Wl,-encryptable -undefined dynamic_lookup -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk -target arm64-apple-darwin -mmacos-version-min=13 /Users/renwei/Downloads/webapp/website_new/mobile/flutter/.dart_tool/hooks_runner/shared/objective_c/build/7ad245dadc/obj/src/include/dart_api_dl.c.o /Users/renwei/Downloads/webapp/website_new/mobile/flutter/.dart_tool/hooks_runner/shared/objective_c/build/7ad245dadc/obj/src/objective_c.c.o /Users/renwei/Downloads/webapp/website_new/mobile/flutter/.dart_tool/hooks_runner/shared/objective_c/build/7ad245dadc/obj/test/util.c.o /Users/renwei/Downloads/webapp/website_new/mobile/flutter/.dart_tool/hooks_runner/shared/objective_c/build/7ad245dadc/obj/src/input_stream_adapter.m.o /Users/renwei/Downloads/webapp/website_new/mobile/flutter/.dart_tool/hooks_runner/shared/objective_c/build/7ad245dadc/obj/src/objective_c.m.o /Users/renwei/Downloads/webapp/website_new/mobile/flutter/.dart_tool/hooks_runner/shared/objective_c/build/7ad245dadc/obj/src/observer.m.o /Users/renwei/Downloads/webapp/website_new/mobile/flutter/.dart_tool/hooks_runner/shared/objective_c/build/7ad245dadc/obj/src/ns_number.m.o /Users/renwei/Downloads/webapp/website_new/mobile/flutter/.dart_tool/hooks_runner/shared/objective_c/build/7ad245dadc/obj/src/protocol.m.o /Users/renwei/Downloads/webapp/website_new/mobile/flutter/.dart_tool/hooks_runner/shared/objective_c/build/7ad245dadc/obj/src/objective_c_bindings_generated.m.o -o /Users/renwei/Downloads/webapp/website_new/mobile/flutter/.dart_tool/hooks_runner/shared/objective_c/build/7ad245dadc/objective_c.dylib
+
+INFO: 2026-03-17 16:11:51.250085: 
+INFO: 2026-03-17 16:11:51.250164: 
+INFO: 2026-03-17 16:11:51.250176: Generated /Users/renwei/Downloads/webapp/website_new/mobile/flutter/.dart_tool/hooks_runner/shared/objective_c/build/7ad245dadc/objective_c.dylib
+

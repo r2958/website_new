@@ -1,0 +1,45 @@
+Running `(cd /Users/renwei/.pub-cache/hosted/pub.dev/objective_c-9.3.0/; TMPDIR=/var/folders/gr/s38ccdw94zv9v_r75cdkccqm0000gn/T/ PATH=/Applications/Xcode.app/Contents/SharedFrameworks/XCBuild.framework/Versions/A/PlugIns/XCBBuildService.bundle/Contents/PlugIns/XCBSpecifications.ideplugin/Contents/Resources:/Applications/Xcode.app/Contents/SharedFrameworks/XCBuild.framework/Versions/A/PlugIns/XCBBuildService.bundle/Contents/PlugIns/XCBSpecifications.ideplugin:/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin:/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/appleinternal/bin:/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/local/bin:/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/libexec:/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/usr/bin:/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/usr/appleinternal/bin:/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/usr/local/bin:/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/local/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/local/bin:/Users/renwei/.local/bin:/opt/anaconda3/bin:/opt/anaconda3/condabin:/Library/Frameworks/Python.framework/Versions/3.12/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Library/Apple/usr/bin HOME=/Users/renwei /opt/homebrew/share/flutter/bin/cache/dart-sdk/bin/dart --packages=/Users/renwei/Downloads/webapp/website_new/mobile/flutter/.dart_tool/package_config.json /Users/renwei/Downloads/webapp/website_new/mobile/flutter/.dart_tool/hooks_runner/objective_c/84fd4fa0ea/hook.dill --config=/Users/renwei/Downloads/webapp/website_new/mobile/flutter/.dart_tool/hooks_runner/objective_c/84fd4fa0ea/input.json )`.
+INFO: 2026-03-16 13:42:26.504348: Running `/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang --version`.
+
+INFO: 2026-03-16 13:42:26.519681: Running `/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang --version`.
+
+INFO: 2026-03-16 13:42:26.554434: Running: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator18.2.sdk -target arm64-apple-ios-simulator -mios-version-min=13 -c /Users/renwei/.pub-cache/hosted/pub.dev/objective_c-9.3.0/src/include/dart_api_dl.c -fpic -I src -o /Users/renwei/Downloads/webapp/website_new/mobile/flutter/.dart_tool/hooks_runner/shared/objective_c/build/84fd4fa0ea/obj/src/include/dINFO: 2026-03-16 13:42:26.555291: Running: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator18.2.sdk -target arm64-apple-ios-simulator -mios-version-min=13 -x objective-c -fobjc-arc -c /Users/renwei/.pub-cache/hosted/pub.dev/objective_c-9.3.0/src/observer.m -fpic -I src -o /Users/renwei/Downloads/webapp/website_new/mobile/flutter/.dart_tool/hooks_runner/shared/objective_c/build/84fd4fa0ea/obj/src/observer.m.o
+
+
+
+j/src/objective_c_bindings_generated.m.o
+
+INFO: 2026-03-16 13:42:26.599706: 
+INFO: 2026-03-16 13:42:26.599826: 
+INFO: 2026-03-16 13:42:26.599856: Generated /Users/renwei/Downloads/webapp/website_new/mobile/flutter/.dart_tool/hooks_runner/shared/objective_c/build/84fd4fa0ea/obj/src/include/dart_api_dl.c.o
+INFO: 2026-03-16 13:42:26.600011: 
+INFO: 2026-03-16 13:42:26.600022: 
+INFO: 2026-03-16 13:42:26.600031: Generated /Users/renwei/Downloads/webapp/website_new/mobile/flutter/.dart_tool/hooks_runner/shared/objective_c/build/84fd4fa0ea/obj/src/objective_c.c.o
+
+INFO: 2026-03-16 13:42:26.620892: 
+INFO: 2026-03-16 13:42:26.620935: 
+INFO: 2026-03-16 13:42:26.620984: Generated /Users/renwei/Downloads/webapp/website_new/mobile/flutter/.dart_tool/hooks_runner/shared/objective_c/build/84fd4fa0ea/obj/src/observer.m.o
+
+INFO: 2026-03-16 13:42:26.627541: 
+INFO: 2026-03-16 13:42:26.627591: 
+INFO: 2026-03-16 13:42:26.627602: Generated /Users/renwei/Downloads/webapp/website_new/mobile/flutter/.dart_tool/hooks_runner/shared/objective_c/build/84fd4fa0ea/obj/src/protocol.m.o
+
+INFO: 2026-03-16 13:42:26.715192: 
+INFO: 2026-03-16 13:42:26.715235: 
+INFO: 2026-03-16 13:42:26.715269: Generated /Users/renwei/Downloads/webapp/website_new/mobile/flutter/.dart_tool/hooks_runner/shared/objective_c/build/84fd4fa0ea/obj/src/objective_c.m.o
+
+INFO: 2026-03-16 13:42:26.720432: 
+INFO: 2026-03-16 13:42:26.720444: 
+INFO: 2026-03-16 13:42:26.720453: Generated /Users/renwei/Downloads/webapp/website_new/mobile/flutter/.dart_tool/hooks_runner/shared/objective_c/build/84fd4fa0ea/obj/src/input_stream_adapter.m.o
+
+INFO: 2026-03-16 13:42:26.745148: 
+INFO: 2026-03-16 13:42:26.745186: 
+INFO: 2026-03-16 13:42:26.745196: Generated /Users/renwei/Downloads/webapp/website_new/mobile/flutter/.dart_tool/hooks_runner/shared/objective_c/build/84fd4fa0ea/obj/src/objective_c_bindings_generated.m.o
+
+eveloper/SDKs/iPhoneSimulator18.2.sdk -target arm64-apple-ios-simulator -mios-version-min=13 /Users/renwei/Downloads/webapp/website_new/mobile/flutter/.dart_tool/hooks_runner/shared/objective_c/build/84fd4fa0ea/obj/src/include/dart_api_dl.c.o /Users/renwei/Downloads/webapp/website_new/mobile/flutter/.dart_tool/hooks_runner/shared/objective_c/build/84fd4fa0ea/obj/src/objective_c.c.o /Users/renwei/Downloads/webapp/website_new/mobile/flutter/.dart_tool/hooks_runner/shared/objective_c/build/84fd4fa0ea/obj/src/input_stream_adapter.m.o /Users/renwei/Downloads/webapp/website_new/mobile/flutter/.dart_tool/hooks_runner/shared/objective_c/build/84fd4fa0ea/obj/src/objective_c.m.o /Users/renwei/Downloads/webapp/website_new/mobile/flutter/.dart_tool/hooks_runner/shared/objective_c/build/84fd4fa0ea/obj/src/observer.m.o /Users/renwei/Downloads/webapp/website_new/mobile/flutter/.dart_tool/hooks_runner/shared/objective_c/build/84fd4fa0ea/obj/src/ns_number.m.o /Users/renwei/Downloads/webapp/website_new/mobile/flutter/.dart_tool/hooks_runner/shared/objective_c/build/84fd4fa0ea/obj/src/protocol.m.o /Users/renwei/Downloads/webapp/website_new/mobile/flutter/.dart_tool/hooks_runner/shared/objective_c/build/84fd4fa0ea/obj/src/objective_c_bindings_generated.m.o -o /Users/renwei/Downloads/webapp/website_new/mobile/flutter/.dart_tool/hooks_runner/shared/objective_c/build/84fd4fa0ea/objective_c.dylib
+
+INFO: 2026-03-16 13:42:26.778777: 
+INFO: 2026-03-16 13:42:26.778859: ld: warning: -undefined dynamic_lookup is deprecated on iOS-simulator
+
+INFO: 2026-03-16 13:42:26.778873: Generated /Users/renwei/Downloads/webapp/website_new/mobile/flutter/.dart_tool/hooks_runner/shared/objective_c/build/84fd4fa0ea/objective_c.dylib
+
