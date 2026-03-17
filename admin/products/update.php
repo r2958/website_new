@@ -2,6 +2,7 @@
 require_once('../../application.php');
 require_once('../auth.php');
 
+$errorList = array(); // Initialize to prevent warning
 if(isset($_POST['done']) && ($_POST['done'] == 'Yes')) {
 	if($_POST['ProductName'] == '') $errorList[] = 'Name field left blank.';
 	//var_dump($_POST);
@@ -31,15 +32,28 @@ if($_GET['ProductID'] != '') {
 	while ($cat = $DB->fetchObject($qid)) {
 		$frm['categories'][] = $cat->CategoryID;
 	}
+	$category_options = ''; // Initialize to prevent warning
 	$Admin->getCategoryDD($category_options, $frm['categories']);
 	
 //	$Page->PageTitle = 'Product Details - ' . $frm['ProductName'];
 } else {
-	$frm['CompanyID'] = $ShoppingCart->setDefault($_GET['CompanyID'], 0);
-	/* build the categories listbox options, preselect the top item */
-	$frm['categories'] = array($ShoppingCart->setDefault($_GET['CategoryID'], 0));
+	// Initialize $frm array to prevent "Creating default object from empty value" warnings
+	$frm = array(
+		'ProductID' => '',
+		'ProductName' => '',
+		'ProductDescription' => '',
+		'PageText' => '',
+		'PageFormat' => 't',
+		'Display' => 1,
+		'OnSpecial' => 0,
+		'CompanyID' => $ShoppingCart->setDefault($_GET['CompanyID'], 0),
+		'CreatedDate' => date('Y-m-d'),
+		'LastModDate' => date('Y-m-d'),
+		'newmode' => 'insert',
+		'categories' => array($ShoppingCart->setDefault($_GET['CategoryID'], 0))
+	);
+	$category_options = ''; // Initialize to prevent warning
 	$Admin->getCategoryDD($category_options, $frm['categories']);
-	$frm['newmode'] = 'insert';
 
 	$Page->PageTitle = 'Add New Product';
 }

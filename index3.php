@@ -262,7 +262,7 @@
         /* Auth */
         .auth-box { max-width: 400px; margin: 50px auto; border-radius: 0; box-shadow: none; border: 1px solid #eee; padding: 60px 40px; text-align: center; }
         .auth-title { font-size: 24px; color: var(--primary-color); margin-bottom: 30px; font-weight: bold; text-transform: uppercase; letter-spacing: 2px; }
-        .auth-input { width: 100%; border-radius: 0; background: #fff; border-bottom: 1px solid #ddd; border-top:none; border-left:none; border-right:none; padding: 15px 0; margin-bottom: 20px; font-size: 14px; transition: var(--transition); }
+        .auth-input { width: 100%; border-radius: 0; background: #fff; border-bottom: 1px solid #ddd; border-top:none; border-left:none; border-right:none; padding: 15px 0; margin-bottom: 3px; font-size: 14px; transition: var(--transition); }
         .auth-input:focus { box-shadow: none; border-bottom-color: var(--primary-color); }
 
         /* Me / Personal Center Styles (Restored) */
@@ -880,7 +880,12 @@
                                 name: a.consignee,
                                 phone: a.phone,
                                 country: a.country,
+                                province: a.province,
+                                city: a.city,
+                                district: a.district,
+                                address: a.address,
                                 detail: [a.province, a.city, a.district, a.address].filter(Boolean).join(' '),
+                                postcode: a.postcode,
                                 isDefault: a.is_default
                             }));
                         }
@@ -1771,7 +1776,7 @@
         function renderAuth(container, type) {
             const isLogin = type === 'login';
             const captchaHtml = `
-                        <div style="display:flex; gap:8px; align-items:center;">
+                        <div style="display:flex; gap:8px; align-items:flex-end;">
                             <input type="text" id="auth-captcha" class="auth-input" placeholder="Enter captcha code" style="flex:1; padding:10px 12px; font-size:13px;">
                             <img id="captcha-img" src="captcha.php?t=${Date.now()}" onclick="refreshCaptcha()" style="height:38px; cursor:pointer; border-radius:4px; border:1px solid #ddd;" title="Click to refresh">
                         </div>
@@ -1945,8 +1950,19 @@
                                     </div>
                                 </div>
                                 <div style="display:flex; justify-content:space-between; align-items:center;">
-                                    <div>${o.items && o.items.length ? o.items.map(item => item.name || item.product_name || 'Unknown').join(', ') : 'N/A'}</div>
-                                    <div style="text-align:right;">
+                                    <div style="display:flex; align-items:center; gap:15px; flex:1;">
+                                        ${o.items && o.items.length ? `
+                                            <div style="display:flex; gap:8px;">
+                                                ${o.items.slice(0, 3).map(item => {
+                                                    const itemImg = item.img || item.product_image || 'https://via.placeholder.com/50';
+                                                    return `<img src="${itemImg}" width="50" height="50" style="object-fit:cover; border-radius:4px; border:1px solid #eee;" onerror="handleImageError(this)">`;
+                                                }).join('')}
+                                                ${o.items.length > 3 ? `<div style="width:50px; height:50px; display:flex; align-items:center; justify-content:center; background:#f5f5f5; border-radius:4px; font-size:12px; color:#666;">+${o.items.length - 3}</div>` : ''}
+                                            </div>
+                                            <div style="color:#666; font-size:13px;">${o.items.map(item => item.name || item.product_name || 'Unknown').join(', ')}</div>
+                                        ` : 'N/A'}
+                                    </div>
+                                    <div style="text-align:right; margin-left:20px;">
                                         <div style="font-weight:bold; font-size:16px;">$${Number(o.total || 0).toLocaleString()}</div>
                                         <button class="btn btn-outline btn-sm" style="margin-top:10px" onclick="navigateTo('order-detail', {id: '${o.id}'})">DETAILS</button>
                                     </div>
@@ -2087,15 +2103,16 @@
                                 const itemName = item.name || item.product_name || 'Unknown Product';
                                 const itemPrice = parseFloat(item.price) || 0;
                                 const itemQty = parseInt(item.qty) || parseInt(item.quantity) || 0;
-                                const itemImg = item.img || item.product_image || 'https://via.placeholder.com/50';
+                                const itemImg = item.img || item.product_image || 'https://via.placeholder.com/60';
                                 const itemTotal = itemPrice * itemQty;
                                 const attrName = item.attribute_name || '';
+                                const productId = item.id || item.product_id;
                                 return `
                                 <tr>
                                     <td style="padding-left:0; display:flex; align-items:center; gap:15px;">
-                                        <img src="${itemImg}" width="50" height="50" style="object-fit:cover; border-radius:4px;" onerror="handleImageError(this)">
+                                        <img src="${itemImg}" width="60" height="60" style="object-fit:cover; border-radius:4px; cursor:pointer; border:1px solid #eee;" onerror="handleImageError(this)" onclick="navigateTo('product', {id: ${productId}})" title="View product">
                                         <div>
-                                            <div>${itemName}</div>
+                                            <div style="font-weight:500; cursor:pointer;" onclick="navigateTo('product', {id: ${productId}})">${itemName}</div>
                                             ${attrName ? `<div style="font-size:12px; color:#666; margin-top:3px;">${attrName}</div>` : ''}
                                         </div>
                                     </td>
@@ -2499,11 +2516,12 @@
                                 id: a.id,
                                 name: a.consignee,
                                 phone: a.phone,
-                                detail: [a.province, a.city, a.district, a.address].filter(Boolean).join(' '),
+                                country: a.country || 'China',
                                 province: a.province || '',
                                 city: a.city || '',
                                 district: a.district || '',
                                 address: a.address || '',
+                                detail: [a.province, a.city, a.district, a.address].filter(Boolean).join(' '),
                                 postcode: a.postcode || '',
                                 isDefault: a.is_default
                             }));
@@ -2626,7 +2644,7 @@
             const phone = document.getElementById('reg-phone')?.value.trim() || '';
             const email = document.getElementById('reg-email')?.value.trim() || '';
             const password_hint = document.getElementById('reg-hint')?.value.trim() || '';
-            const captcha = document.getElementById('reg-captcha')?.value.trim() || '';
+            const captcha = document.getElementById('auth-captcha')?.value.trim() || '';
 
             if (!username || !password) {
                 showToast('Username and password are required', 'error');
@@ -2865,7 +2883,13 @@
                     id: id ? parseInt(id) : Date.now(),
                     name: name,
                     phone: phone,
-                    detail: detail,
+                    country: country,
+                    province: province,
+                    city: city,
+                    district: district,
+                    address: detail,
+                    detail: [province, city, district, detail].filter(Boolean).join(' '),
+                    postcode: postcode,
                     isDefault: isDefault
                 };
 
@@ -3042,7 +3066,7 @@
                 return;
             }
 
-            // Create new address object
+            // Create frontend address object (for local state)
             const newAddr = {
                 id: Date.now(),
                 name: name,
@@ -3056,23 +3080,36 @@
                 isDefault: isDefault
             };
 
+            // Create backend address object (for API)
+            const backendAddr = {
+                consignee: name,
+                phone: phone,
+                country: country,
+                province: province,
+                city: city,
+                district: district,
+                address: address,
+                postcode: postcode,
+                is_default: isDefault
+            };
+
             // If setting as default, update other addresses
             if (isDefault && state.currentUser.addresses) {
                 state.currentUser.addresses.forEach(a => a.isDefault = false);
             }
 
-            // Add to user's addresses
+            // Add to user's addresses (frontend format)
             if (!state.currentUser.addresses) {
                 state.currentUser.addresses = [];
             }
             state.currentUser.addresses.push(newAddr);
 
-            // Save to backend
+            // Save to backend (backend format)
             if (state.currentUser && state.currentUser.id) {
                 fetch('api.php?action=addAddress', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(newAddr)
+                    body: JSON.stringify(backendAddr)
                 }).then(r => r.json()).catch(() => {});
             }
 

@@ -10,6 +10,9 @@ class Aobject {
 
 $CFG = new Aobject;
 
+/* Initialize $Page object to prevent "Creating default object from empty value" warnings */
+$Page = new stdClass();
+
 /* Set Username */
 $CFG->username = 'andrew';
 
@@ -35,15 +38,27 @@ $DB = new DB;
 global $DB;
 $GLOBALS['DB'] = $DB;
 
-$DB->Host = 'sh-cdb-8utxi2hs.sql.tencentcdb.com:21616';
-$DB->Database = 'ibscontrols-2025';
+// 支持多种数据库主机配置，优先使用环境变量
+// 在 Docker 容器内访问宿主机数据库需要使用 host.docker.internal
+// 可以通过设置 DB_HOST 环境变量来覆盖
+if (getenv('DB_HOST')) {
+    $DB->Host = getenv('DB_HOST');
+} elseif (file_exists('/.dockerenv')) {
+    // 在 Docker 容器内运行
+    $DB->Host = 'host.docker.internal';
+} else {
+    // 在宿主机直接运行
+    $DB->Host = '127.0.0.1';
+}
+$DB->Host = 'host.docker.internal';
+$DB->Database = 'website_db';
 
 /*
 $DB->Host = 'sh-cdb-3lh7xiwc.sql.tencentcdb.com:29230';
 $DB->Database = 'testdb2026';
 */
 $DB->Username = 'root';
-$DB->Password = '3E157d80@';
+$DB->Password = 'root123';
 $DB->DieOnFail = false;
 $DB->Debug = false;
 $DB->Timed = false;
@@ -99,4 +114,3 @@ if((isset($_GET['CategoryID'])) && ($_GET['CategoryID'] > 0)) {
 	$caID=array($_GET['CategoryID']);
 	$OpenedCategories = array_merge($ShoppingCart->getOpenedCategories($_GET['CategoryID']), $caID);
 }
-?>

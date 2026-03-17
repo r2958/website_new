@@ -22,7 +22,16 @@ if(isset($_GET['CompanyID']) && $_GET['CompanyID'] > 0) {
 	$frm = $DB->fetchAssoc($qid);
 	$Page->PageTitle = 'Edit Company';
 } else {
-	//$Page->PageTitle = 'Add New Company';
+	// Initialize $frm array to prevent "Creating default object from empty value" warnings
+	$frm = array(
+		'CompanyID' => '',
+		'CompanyName' => '',
+		'CompanyDescription' => '',
+		'PageText' => '',
+		'PageFormat' => 't',
+		'Display' => 1
+	);
+	$Page->PageTitle = 'Add New Company';
 }
 $Admin->showAdminHeader();
 $Admin->showCompanyHeader();

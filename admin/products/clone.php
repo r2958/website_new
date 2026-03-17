@@ -2,6 +2,7 @@
 require_once('../../application.php');
 require_once('../auth.php');
 
+$errorList = array(); // Initialize to prevent warning
 if(isset($_POST['done']) && ($_POST['done'] == 'Yes')) {
 	$qid = $Admin->queryProductDetails($_POST['ProductID']);
 	if($DB->numRows($qid) != 1) {

@@ -2,6 +2,7 @@
 require_once('../application.php');
 require_once('auth.php');
 
+$errorList = array(); // Initialize to prevent warning
 if(isset($_POST['done']) && ($_POST['done'] == 'Yes')) {
 	if($_POST['PageID'] == '') $errorList[] = 'Site Error: Internal ID field left blank.';
 	if($_POST['PageTitle'] == '') $errorList[] = 'Site Error: Internal ID field left blank.';

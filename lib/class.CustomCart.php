@@ -4,9 +4,9 @@ require_once($CFG->serverroot . '/common/cart4/classes/class.ShoppingCart.php');
 class CustomShoppingCart extends ShoppingCart
 {
 
-	function CustomShoppingCart()
+	function __construct()
 	{
-		parent::ShoppingCart();
+		parent::__construct();
 	}
 	
 	

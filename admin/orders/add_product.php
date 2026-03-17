@@ -1,6 +1,7 @@
 <?
 require_once('../../application.php');
 
+$errorList = array(); // Initialize to prevent warning
 if($_GET['OrderID'] == '') $errorList[] = 'No Order Selected';
 if(sizeof($errorList) > 0) $Admin->DisplayErrorPage($errorList);
 

@@ -13,7 +13,7 @@ class ShoppingCart
 	var $DB;
 	var $CategoryList;
 
-	function ShoppingCart()
+	function __construct()
 	{
 		// Use $GLOBALS for PHP 8+ compatibility
 		$this->CFG =& $GLOBALS['CFG'];

@@ -2,6 +2,7 @@
 require_once('../../application.php');
 require_once('../auth.php');
 
+$errorList = array(); // Initialize to prevent warning
 if(isset($_POST['done']) && ($_POST['done'] == 'Yes')) {
 	if($_POST['CategoryName'] == '') $errorList[] = 'Name field left blank.';
 	if($_POST['ParentID'] == $_POST['CategoryID']) $errorList[] = 'Category cannot be its own ParentID';
@@ -23,6 +24,7 @@ if(isset($_GET['CategoryID']) && $_GET['CategoryID'] > 0) {
 	$qid = $Admin->queryCategoryDetails($_GET['CategoryID']);
 	$frm = $DB->fetchArray($qid);
 	$frm['ParentID'] = array($frm['ParentID']);
+	$category_options = ''; // Initialize to prevent warning
 	$Admin->getCategoryDD($category_options, $frm['ParentID']);
 	$Page->PageTitle = 'Edit Category';
 } else {
@@ -37,6 +39,7 @@ if(isset($_GET['CategoryID']) && $_GET['CategoryID'] > 0) {
 	$frm['Display'] = 0;
 	$frm['CreatedDate'] = '';
 	$frm['ParentID'] = array($ShoppingCart->setDefault($_GET['ParentID'], 0));
+	$category_options = ''; // Initialize to prevent warning
 	$Admin->getCategoryDD($category_options, $frm['ParentID']);
 	$Page->PageTitle = 'Create New Category';
 }

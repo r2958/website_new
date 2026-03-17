@@ -7,7 +7,7 @@ class UserActivity {
     var $DB;
     var $sessionTimeout = 300; // 5分钟无活动视为离线
     
-    function UserActivity() {
+    function __construct() {
         $this->DB = $GLOBALS['DB'];
         $this->initTable();
     }

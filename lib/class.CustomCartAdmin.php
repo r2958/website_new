@@ -4,9 +4,9 @@ require_once($CFG->serverroot . '/common/cart4/classes/class.ShoppingCartAdmin.p
 class CustomShoppingCartAdmin extends ShoppingCartAdmin
 {
 
-	function CustomShoppingCartAdmin()
+	function __construct()
 	{
-		parent::ShoppingCartAdmin();
+		parent::__construct();
 	}
 
 

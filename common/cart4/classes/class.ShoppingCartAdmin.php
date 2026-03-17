@@ -4,7 +4,7 @@ class ShoppingCartAdmin
 	
 	var $ShoppingCart;
 	
-	function ShoppingCartAdmin()
+	function __construct()
 	{
 		// Use $GLOBALS for PHP 8+ compatibility
 		$this->ShoppingCart = $GLOBALS['ShoppingCart'];

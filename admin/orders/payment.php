@@ -1,6 +1,7 @@
 <?
 require_once('../../application.php');
 
+$errorList = array(); // Initialize to prevent warning
 if(isset($_POST['done']) && ($_POST['done'] == 'Yes')) {
 	if($_POST['OrderID'] == '') $errorList[] = 'Site Error: Internal ID field left blank.';
 	if(sizeof($errorList) > 0) $Admin->DisplayError($errorList);

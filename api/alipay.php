@@ -117,6 +117,9 @@ function createOrderAndPay() {
         return;
     }
     
+    // 同时保存地址到 user_addresses 表（如果该地址不存在）
+    saveAddressToUserAddresses($userId, $input);
+    
     // 插入订单商品
     foreach ($input['items'] as $item) {
         $itemData = [
@@ -343,6 +346,52 @@ function queryOrderStatus() {
 }
 
 // ==================== 工具函数 ====================
+
+/**
+ * 保存地址到 user_addresses 表
+ * 检查是否已存在相同地址，如果不存在则添加
+ */
+function saveAddressToUserAddresses($userId, $input) {
+    global $DB;
+    
+    $consignee = $DB->escape($input['consignee']);
+    $phone = $DB->escape($input['phone']);
+    $country = $DB->escape($input['country'] ?? 'China');
+    $province = $DB->escape($input['province'] ?? '');
+    $city = $DB->escape($input['city'] ?? '');
+    $district = $DB->escape($input['district'] ?? '');
+    $address = $DB->escape($input['address']);
+    $postcode = $DB->escape($input['postcode'] ?? '');
+    $userIdEscaped = $DB->escape($userId);
+    
+    // 检查是否已存在相同地址（通过地址内容和收货人判断）
+    $checkSql = "SELECT id FROM user_addresses 
+                 WHERE user_id = '{$userIdEscaped}' 
+                 AND consignee = '{$consignee}' 
+                 AND phone = '{$phone}' 
+                 AND address = '{$address}' 
+                 AND city = '{$city}' 
+                 LIMIT 1";
+    $qid = $DB->query($checkSql);
+    
+    // 如果地址已存在，不重复添加
+    if ($DB->numRows($qid) > 0) {
+        return;
+    }
+    
+    // 检查该用户是否已有地址，如果没有则设为默认
+    $countSql = "SELECT COUNT(*) as total FROM user_addresses WHERE user_id = '{$userIdEscaped}'";
+    $countQid = $DB->query($countSql);
+    $count = $DB->fetchAssoc($countQid);
+    $isDefault = ($count['total'] == 0) ? 1 : 0;
+    
+    // 插入新地址
+    $insertSql = "INSERT INTO user_addresses 
+                  (user_id, consignee, phone, country, province, city, district, address, postcode, is_default) 
+                  VALUES 
+                  ('{$userIdEscaped}', '{$consignee}', '{$phone}', '{$country}', '{$province}', '{$city}', '{$district}', '{$address}', '{$postcode}', {$isDefault})";
+    $DB->query($insertSql);
+}
 
 /**
  * 对数组排序

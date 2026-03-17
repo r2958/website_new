@@ -932,17 +932,27 @@ class Users
 		if (!$userId) {
 			return ['status' => 'error', 'code' => 401, 'message' => 'User ID not found', 'needLogin' => true];
 		}
-		$orderId = intval($orderId);
-
+		
+		// 支持数字ID或字符串订单号
+		$orderId = $this->DB->escape($orderId);
+		
+		// 先尝试按 id 查询（数字ID）
 		$qid = $this->DB->query("SELECT * FROM user_orders WHERE id = '$orderId' AND user_id = '$userId'");
 		$row = $this->DB->fetchObject($qid);
+		
+		// 如果没找到，尝试按 order_number 查询（字符串订单号）
+		if (!$row) {
+			$qid = $this->DB->query("SELECT * FROM user_orders WHERE order_number = '$orderId' AND user_id = '$userId'");
+			$row = $this->DB->fetchObject($qid);
+		}
 
 		if (!$row) {
 			return ['status' => 'error', 'message' => 'Order not found'];
 		}
 
-		// 获取订单商品
-		$itemsQid = $this->DB->query("SELECT * FROM user_order_items WHERE order_id = '$orderId'");
+		// 获取订单商品 - 使用实际的数据库ID
+		$dbOrderId = intval($row->id);
+		$itemsQid = $this->DB->query("SELECT * FROM user_order_items WHERE order_id = '$dbOrderId'");
 		$items = array();
 		while ($item = $this->DB->fetchObject($itemsQid)) {
 			$items[] = array(

@@ -1,6 +1,7 @@
 <?
 require_once('../../application.php');
 
+$errorList = array(); // Initialize to prevent warning
 if(isset($_POST['done']) && ($_POST['done'] == 'Yes')) {
 	if(is_array($_POST['UPSOptions'])) {
 		$_POST['Option8OPTIONS'] = implode($_POST['UPSOptions'], ',');
