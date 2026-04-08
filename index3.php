@@ -9,6 +9,9 @@
     <!-- 引入欧美风字体: Playfair Display (衬线) 和 Lato (无衬线) -->
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     
+    <!-- 埋点SDK -->
+    <script src="js/tracking-sdk.js"></script>
+    
     <style>
         /* ================= 1. 欧美极简风基础设定 ================= */
         :root {
@@ -1635,7 +1638,7 @@
                             <div class="d-desc">${p.desc}</div>
                             ${attributesHtml}
                             <div style="display:flex; gap:20px; margin-top: 40px; align-items: center;">
-                                <button class="btn btn-primary" style="flex:1; padding: 15px;" onclick="addToCartWithAttribute(${p.id})">ADD TO BAG</button>
+                                <button class="btn btn-primary" style="flex:1; padding: 15px;" onclick="addToCartWithAttribute(${p.id})" data-action="add_to_cart" data-product-id="${p.id}">ADD TO BAG</button>
                                 <button class="btn btn-outline" style="flex:1; padding: 15px;" onclick="addToCartWithAttribute(${p.id}); navigateTo('cart')">BUY NOW</button>
                                 <button class="wishlist-btn-detail ${state.wishlist && state.wishlist.some(w => w.product_id === p.id) ? 'active' : ''}" onclick="toggleWishlist(${p.id}, '${p.name.replace(/'/g, "\\'")}', ${initialPrice}, '${p.img}', event)" title="Add to Wishlist">
                                     <i class="${state.wishlist && state.wishlist.some(w => w.product_id === p.id) ? 'fas' : 'far'} fa-heart"></i>
@@ -2005,7 +2008,7 @@
                         <h2 class="me-section-title">My Wishlist (${wishlist.length})</h2>
                         ${wishlist.length ? `<div class="product-grid" style="grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap:30px;">
                             ${wishlist.map(w => `
-                                <div class="product-card">
+                                <div class="product-card" data-product-id="${w.product_id}">
                                     <div class="p-img-box" style="height:250px;" onclick="navigateTo('product', {id: ${w.product_id}})">
                                         <img src="${w.product_image}" onerror="handleImageError(this)">
                                         <button class="wishlist-btn active" onclick="toggleWishlist(${w.product_id}, '${w.product_name.replace(/'/g, "\\'")}', ${w.product_price}, '${w.product_image}', event)">
@@ -2015,7 +2018,7 @@
                                     <div class="p-info">
                                         <div class="p-title">${w.product_name}</div>
                                         <div class="p-price">$${Number(w.product_price).toLocaleString()}</div>
-                                        <button class="btn btn-primary btn-sm" style="width:100%; margin-top:5px;" onclick="addToCart(${w.product_id})">ADD TO BAG</button>
+                                        <button class="btn btn-primary btn-sm" style="width:100%; margin-top:5px;" onclick="addToCart(${w.product_id})" data-action="add_to_cart" data-product-id="${w.product_id}">ADD TO BAG</button>
                                     </div>
                                 </div>
                             `).join('')}
@@ -3491,6 +3494,16 @@
                     clearCartStorage(); // Clear cart from localStorage
                     closeModal('checkout-modal');
                     showToast(`Order Placed: ${result.data.order_number}`, 'success');
+                    
+                    // 埋点：追踪购买成功
+                    if (window.tracker && result.data) {
+                        window.tracker.trackPurchase(
+                            result.data.order_number,
+                            result.data.items || [],
+                            result.data.total_amount || 0
+                        );
+                    }
+                    
                     renderHeader();
 
                     // Refresh orders list from API

@@ -12,6 +12,7 @@ import '../widgets/product_card.dart';
 import '../widgets/skeleton_loading.dart';
 import '../widgets/animated_widgets.dart';
 import '../widgets/macos_title_bar.dart';
+import '../tracking/tracking.dart';
 import 'product_list_screen.dart';
 import 'product_detail_screen.dart';
 import 'cart_screen.dart';
@@ -44,6 +45,10 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
+    // 上报页面浏览事件
+    TrackingSDK().trackPageView('home');
+    print('[HomeScreen] initState - page_view event tracked');
+    
     WidgetsBinding.instance.addPostFrameCallback((_) {
       Provider.of<CartProvider>(context, listen: false).loadSummary();
       Provider.of<ProductProvider>(context, listen: false)

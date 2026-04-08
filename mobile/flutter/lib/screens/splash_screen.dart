@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../providers/auth_provider.dart';
+import '../tracking/tracking.dart';
 import 'login_screen.dart';
 import 'main_screen.dart';
 
@@ -20,6 +21,9 @@ class _SplashScreenState extends State<SplashScreen> {
 
   Future<void> _checkLoginStatus() async {
     await Future.delayed(const Duration(seconds: 2));
+
+    // 上报应用启动事件
+    TrackingSDK().trackAppLaunch();
 
     if (!mounted) return;
 

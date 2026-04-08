@@ -6,6 +6,7 @@ import '../models/api_response.dart';
 import '../services/api_service.dart';
 import '../providers/cart_provider.dart';
 import '../main.dart';
+import '../tracking/tracking.dart';
 import 'address_list_screen.dart';
 import 'payment_screen.dart';
 
@@ -27,6 +28,8 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
   @override
   void initState() {
     super.initState();
+    // 上报结算开始事件
+    TrackingSDK().track('checkout_start');
     _loadData();
   }
 
@@ -143,15 +146,27 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
 
       if (response.isSuccess) {
         Fluttertoast.showToast(msg: '订单提交成功');
+        // 上报购买事件
+        final orderData = response.data;
+        final orderId = orderData?['order_id']?.toString() ?? '';
+        final totalAmount = double.tryParse(orderData?['total']?.toString() ?? '0') ?? 0.0;
+        TrackingSDK().trackPurchase(
+          orderId: orderId,
+          amount: totalAmount,
+          currency: 'CNY',
+          products: _preview?.items.map((item) => {
+            'product_id': item.productId,
+            'product_name': item.productName,
+            'price': item.unitPrice,
+            'quantity': item.quantity,
+          }).toList(),
+        );
         // 刷新购物车
         Provider.of<CartProvider>(context, listen: false).loadCart();
         
         // 获取订单信息并跳转到支付页面
-        final orderData = response.data;
         if (orderData != null && mounted) {
-          final orderId = orderData['order_id']?.toString() ?? '';
           final orderNumber = orderData['order_number']?.toString() ?? '';
-          final totalAmount = double.tryParse(orderData['total']?.toString() ?? '0') ?? 0.0;
           
           // 跳转到支付页面
           final paymentResult = await Navigator.of(context).push(

@@ -46,7 +46,7 @@
 		</data>
 		<key>Frameworks/App.framework/App</key>
 		<data>
-		Wt0hTL+sSxO2QBm7XPXenmaUJ6g=
+		QbXxgwzuw9eUN74ryPrgTjPp+k8=
 		</data>
 		<key>Frameworks/App.framework/Info.plist</key>
 		<data>
@@ -54,7 +54,7 @@
 		</data>
 		<key>Frameworks/App.framework/_CodeSignature/CodeResources</key>
 		<data>
-		SIrbwT2UN5ciIZdOpOtWYS+jbVs=
+		WAyiTTcRMum3ekz71ZD8lbQ7PXc=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/AssetManifest.bin</key>
 		<data>
@@ -66,7 +66,7 @@
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/NOTICES.Z</key>
 		<data>
-		JCWdCbrueelXmu3bvqp744ysWpY=
+		PbGpe/EYYklyVoAxyxqqeYvpP6I=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/NativeAssetsManifest.json</key>
 		<data>
@@ -82,7 +82,7 @@
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/kernel_blob.bin</key>
 		<data>
-		Gtn6RqVRoUbYd2qdGGXZnn4qoPY=
+		LhdOpAoCRy00lYlzmZdbbmTzjCc=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/packages/fluttertoast/assets/toastify.css</key>
 		<data>
@@ -204,6 +204,26 @@
 		<data>
 		j5wlnTozB4ari71J5+eav6HVUu0=
 		</data>
+		<key>Frameworks/Toast.framework/Info.plist</key>
+		<data>
+		uGYpYDUqOL2ucS2oZbqKt5MDpx4=
+		</data>
+		<key>Frameworks/Toast.framework/Toast</key>
+		<data>
+		w2nTHV66gUV1yCJIzcqGf/0khvA=
+		</data>
+		<key>Frameworks/Toast.framework/Toast.bundle/Info.plist</key>
+		<data>
+		CefyjGfLJCQikjroYckYITqZT5w=
+		</data>
+		<key>Frameworks/Toast.framework/Toast.bundle/PrivacyInfo.xcprivacy</key>
+		<data>
+		s7O0r0d6vJFCcROYSLBf8TMqEFs=
+		</data>
+		<key>Frameworks/Toast.framework/_CodeSignature/CodeResources</key>
+		<data>
+		ubI0rg9V6D3c4FE64Y7Ac2U2IqQ=
+		</data>
 		<key>Frameworks/fluttertoast.framework/Info.plist</key>
 		<data>
 		aHphRqMJ9tQm5/s97ZJzPv7VKcQ=
@@ -214,7 +234,7 @@
 		</data>
 		<key>Frameworks/fluttertoast.framework/fluttertoast</key>
 		<data>
-		ZMa5FQp2xW7/XNHGQotaOO5Fk44=
+		rAiUbWHjDKscqD+w6yWREEfmhTY=
 		</data>
 		<key>Frameworks/fluttertoast.framework/fluttertoast_privacy.bundle/Info.plist</key>
 		<data>
@@ -256,6 +276,18 @@
 		<data>
 		6uLTlq7fgHHWA8emYDf4ImHC+AY=
 		</data>
+		<key>Frameworks/sign_in_with_apple.framework/Info.plist</key>
+		<data>
+		SMIJVZ1t3qQwtdb/xi4hVdXcsU8=
+		</data>
+		<key>Frameworks/sign_in_with_apple.framework/_CodeSignature/CodeResources</key>
+		<data>
+		7yGFWUhWDFkw85XjnKtJUxmWBgg=
+		</data>
+		<key>Frameworks/sign_in_with_apple.framework/sign_in_with_apple</key>
+		<data>
+		hiaVDo4lvhj+orRZWNW0OqBBkC8=
+		</data>
 		<key>Frameworks/sqflite_darwin.framework/Info.plist</key>
 		<data>
 		vKXcwjcVCWXdnXsHLehPxOgUQZ8=
@@ -290,7 +322,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		UOJDTzSL+F6Te1HyEQXEWMs29bY=
+		2b84NPj2p/TRxLtfSve7DfH2q9A=
 		</data>
 		<key>PkgInfo</key>
 		<data>
@@ -298,11 +330,11 @@
 		</data>
 		<key>Runner.debug.dylib</key>
 		<data>
-		Qq+2mb3JxhOp3HpF5tJX5JUhS5Q=
+		y0ZppwsqCly1palkqKvjYgAPIjg=
 		</data>
 		<key>__preview.dylib</key>
 		<data>
-		FSZtTptVdmX9B6Iq3JolPvUkng4=
+		zderqbw+lUmr0SDoyr33Vuopx+E=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -381,7 +413,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			GyHwgCg2VhwzIcivC+CvOTGoiy9HFGTskfovNnvnSj8=
+			98OVWLIEWczshbe8XcqopLGgTSgAcJRF1nmpC1pkniQ=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/Info.plist</key>
@@ -395,7 +427,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			jmeEKb4vScJ5oOmrpN8RBFW5WYoAxFcLB7nX+LGkeyU=
+			yUwsyGMp4+dihnRpfZ+SB9cp7Qtn6K12PYjWLRa4kTQ=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/AssetManifest.bin</key>
@@ -416,7 +448,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			Nog/+S8iq98o955LhUEnecVu+evbJXpaZ3YQXuqlaA0=
+			YeDJ2P9Gh/krpQ90uKGdDWmB/cYeYi4r4IbBmQZkBYE=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/NativeAssetsManifest.json</key>
@@ -444,7 +476,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			hBPR+YOBIwKmEBuu1De9oUwunjANohimAqXHGjtggFI=
+			2fhdpvDuGsRw0pfQf9Fy820YizgzZ8YxF+GnarB/wgw=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/packages/fluttertoast/assets/toastify.css</key>
@@ -657,6 +689,41 @@
 			mYNngJqCHVlZKAicGXs/eVnwQg+B951NDa7lM3hJLtU=
 			</data>
 		</dict>
+		<key>Frameworks/Toast.framework/Info.plist</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			WciYJr4sfR1LkVELzTd7u/34G3YCjX294SaGoizcwkQ=
+			</data>
+		</dict>
+		<key>Frameworks/Toast.framework/Toast</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			0fR7cdHIE61swHZ9rDeOKght8HOjrc7Oi50ecszIK88=
+			</data>
+		</dict>
+		<key>Frameworks/Toast.framework/Toast.bundle/Info.plist</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			M1YEluDDBhlpdfpz2GRItcGYFer0dS4QtMMT2d7fEWQ=
+			</data>
+		</dict>
+		<key>Frameworks/Toast.framework/Toast.bundle/PrivacyInfo.xcprivacy</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			dvMMADsfOLu5EVzPdOPenetakOfEpnBaa14Xz2QIbJM=
+			</data>
+		</dict>
+		<key>Frameworks/Toast.framework/_CodeSignature/CodeResources</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			fXc4a4iIFX5TXYqGkhwVRX1s/EPW9THWbqT9LxdDrNU=
+			</data>
+		</dict>
 		<key>Frameworks/fluttertoast.framework/Info.plist</key>
 		<dict>
 			<key>hash2</key>
@@ -675,7 +742,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			v+p8rO5G2UAH4WbOzVtjPwwS89A0JKMRBk5kLkR2AIA=
+			6m3RTwcZBF75fkDCTs4vq8yvxC46BfthSXi7oRNkc88=
 			</data>
 		</dict>
 		<key>Frameworks/fluttertoast.framework/fluttertoast_privacy.bundle/Info.plist</key>
@@ -748,6 +815,27 @@
 			BWQouTi9VwGKYAGdFcPB7i+nJ/I2h1mLu9k0hIsYCxo=
 			</data>
 		</dict>
+		<key>Frameworks/sign_in_with_apple.framework/Info.plist</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			IIJl/0SVAsqFTYTcSSHcjVmkSA9PZTcUl/Gc44z1H4A=
+			</data>
+		</dict>
+		<key>Frameworks/sign_in_with_apple.framework/_CodeSignature/CodeResources</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			2blmYTxj7VZlwgOLhKL5Hlrtknb1csqzcbUKsfESeGU=
+			</data>
+		</dict>
+		<key>Frameworks/sign_in_with_apple.framework/sign_in_with_apple</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			VkWwAsRyBexWLqMsjZN2wSj3rpDfYTNMmy19gtR/yGg=
+			</data>
+		</dict>
 		<key>Frameworks/sqflite_darwin.framework/Info.plist</key>
 		<dict>
 			<key>hash2</key>
@@ -808,14 +896,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			a8IuzrUVlfUSaZs8LD8XHG67p9IYB1WJ4heKB33cBPc=
+			URNZyxMLksPHRsQdrdRkoYGTnq5mV0TEsCawHX5Cr0w=
 			</data>
 		</dict>
 		<key>__preview.dylib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			O20+eFLfk8PEaYi3skFQCyCZ6fuT/V4k07o6Vyaua2s=
+			zW/eklfVm0FB0mQVSJ1Vr4IjuiD58gE5D11CQyv80RY=
 			</data>
 		</dict>
 	</dict>

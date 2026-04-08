@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:dio/dio.dart';
+import '../config/app_config.dart';
 import '../models/api_response.dart';
 import '../models/cart.dart';
 import '../models/favorite.dart';
@@ -15,19 +16,8 @@ class ApiService {
   factory ApiService() => _instance;
   ApiService._internal();
 
-  // 服务器地址
-  // 优先使用环境变量，其次使用本机 IP 地址
-  // 注意：iOS/Android 模拟器/真机都需要使用本机实际 IP 访问主机上的服务
-  static String get baseUrl {
-    // 首先检查环境变量
-    const envUrl = String.fromEnvironment('API_BASE_URL');
-    if (envUrl.isNotEmpty) {
-      return envUrl;
-    }
-    
-    // 使用本机 IP 地址（请根据您的网络环境修改）
-    return 'http://10.26.150.11:9000/';
-  }
+  // 服务器地址 - 使用 AppConfig 动态获取
+  static String get baseUrl => AppConfig.baseUrl;
   
   Dio? _dio;
   final StorageService _storage = StorageService();

@@ -72,6 +72,12 @@
 		<true/>
 	</dict>
 	
+	<!-- Sign in with Apple -->
+	<key>com.apple.developer.applesignin</key>
+	<array>
+		<string>Default</string>
+	</array>
+	
 	<!-- 支付宝支付 URL Scheme -->
 	<key>CFBundleURLTypes</key>
 	<array>

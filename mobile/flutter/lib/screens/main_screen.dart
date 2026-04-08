@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../providers/cart_provider.dart';
 import '../main.dart';
+import '../tracking/tracking.dart';
 import 'home_screen.dart';
 import 'product_list_screen.dart';
 import 'cart_screen.dart';
@@ -77,6 +78,16 @@ class MainScreenState extends State<MainScreen> {
                   setState(() {
                     _currentIndex = index;
                   });
+                  
+                  // 上报点击事件
+                  final tabNames = ['home', 'category', 'cart', 'profile'];
+                  TrackingSDK().trackClick(
+                    'bottom_nav_${tabNames[index]}',
+                    elementType: 'tab',
+                    elementText: tabNames[index],
+                  );
+                  print('[MainScreen] Tab clicked: ${tabNames[index]}');
+                  
                   // 切换到购物车页面时刷新购物车数据
                   if (index == 2) {
                     print('MainScreen - 切换到购物车页面，刷新数据');

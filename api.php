@@ -1,9 +1,15 @@
 <?php
-session_start();
+// 注意：session_start() 在 application.php 中调用
+// 因为需要先设置 CartSessionHandler 数据库处理器
 error_reporting(E_ALL & ~E_DEPRECATED & ~E_NOTICE);
 ini_set('display_errors', 1);
 
 require_once('application.php');
+
+// 确保会话已启动（如果 application.php 中未启动）
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 // Use the $User object already created in application.php
 // $User is already initialized with $DB

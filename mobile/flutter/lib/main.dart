@@ -2,14 +2,43 @@ import 'dart:io';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'config/app_config.dart';
 import 'providers/auth_provider.dart';
 import 'providers/cart_provider.dart';
 import 'providers/product_provider.dart';
 import 'screens/splash_screen.dart';
+import 'tracking/tracking.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  print('[Main] Starting app...');
+
+  // 初始化配置（异步获取本机IP）
+  await AppConfig.initialize();
+  
+  // 打印当前配置
+  AppConfig.printConfig();
+
+  // 初始化埋点SDK
+  print('[Main] Initializing tracking SDK...');
+  try {
+    await _initTracking();
+    print('[Main] Tracking SDK initialized successfully');
+  } catch (e, stackTrace) {
+    print('[Main] Failed to initialize tracking SDK: $e');
+    print('[Main] Stack trace: $stackTrace');
+  }
+
+  print('[Main] Running app...');
   runApp(const MyApp());
+}
+
+/// 初始化埋点SDK
+Future<void> _initTracking() async {
+  // 使用默认配置，确保与 API 地址一致
+  final config = TrackingConfig.defaultConfig();
+  print('[Main] TrackingConfig created: ${config.serverUrl}');
+  await TrackingSDK().init(config);
 }
 
 // 奢侈品黑白配色主题
@@ -31,11 +60,8 @@ class AppTheme {
   // 错误色
   static const Color errorColor = Color(0xFFB71C1C);
   
-  // API 基础 URL - 使用本机 IP 地址
-  // 注意：请将此 IP 修改为您 Mac 的实际 IP 地址
-  static String get baseUrl {
-    return 'http://10.26.150.11:9000/';
-  }
+  // API 基础 URL - 使用 AppConfig 动态获取
+  static String get baseUrl => AppConfig.baseUrl;
   
   // 商品图片列表（从服务端 images/products/ 目录）
   static final List<String> productImages = [
@@ -145,8 +171,39 @@ class AppTheme {
   static String get defaultProductImage => '${baseUrl}mobile/api.php?action=image&path=default.jpg';
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addObserver(this);
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    switch (state) {
+      case AppLifecycleState.resumed:
+        TrackingSDK().trackAppForeground();
+        break;
+      case AppLifecycleState.paused:
+        TrackingSDK().trackAppBackground();
+        break;
+      default:
+        break;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {

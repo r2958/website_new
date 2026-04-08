@@ -8,13 +8,9 @@
 		<data>
 		qUPGAZzKoID877n2Vj9gibU16yw=
 		</data>
-		<key>Headers/UIView+Toast.h</key>
-		<data>
-		WMksjwtNGwmqcLFiNT2lYVHU8lA=
-		</data>
 		<key>Headers/fluttertoast-umbrella.h</key>
 		<data>
-		sAw/MGVol1yVCxuYnDiZDX0cgJM=
+		LiYOawBMpK5GplNIp1HhKdwKmRQ=
 		</data>
 		<key>Info.plist</key>
 		<data>
@@ -42,18 +38,11 @@
 			iVe+FN0oFfBKNjU5uyZroJvY7L8nWygO1+ydIeTAGXM=
 			</data>
 		</dict>
-		<key>Headers/UIView+Toast.h</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			xkLO7X9GGt/zH2VZj9DH+q4IpzRU1kkohLkqjlz+pOU=
-			</data>
-		</dict>
 		<key>Headers/fluttertoast-umbrella.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			vAoB0zQJUilXB4Wxe51LjL+E7GfY6cXohrbFpuxt9SM=
+			R+W4sGPyYfQW1aBdJdZhtcBmOL7gva7XllhaA8xsOTA=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

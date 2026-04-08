@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>智能推荐 - 为您精选</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+        
+        .header h1 {
+            color: #333;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .header h1::before {
+            content: "✨";
+            font-size: 1.2em;
+        }
+        
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-top: 20px;
+            padding: 20px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 15px;
+        }
+        
+        .user-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8em;
+            color: white;
+        }
+        
+        .user-details h3 {
+            color: #333;
+            margin-bottom: 5px;
+        }
+        
+        .user-details p {
+            color: #666;
+            font-size: 0.9em;
+        }
+        
+        .behavior-stats {
+            display: flex;
+            gap: 30px;
+            margin-left: auto;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #667eea;
+        }
+        
+        .stat-label {
+            font-size: 0.85em;
+            color: #888;
+        }
+        
+        .recommendation-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+        
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+        
+        .section-title {
+            font-size: 1.5em;
+            color: #333;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .recommendation-badge {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8em;
+        }
+        
+        .refresh-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .refresh-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+        
+        .refresh-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+        
+        .product-rank {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: white;
+            z-index: 10;
+        }
+        
+        .rank-1 { background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%); }
+        .rank-2 { background: linear-gradient(135deg, #C0C0C0 0%, #A0A0A0 100%); }
+        .rank-3 { background: linear-gradient(135deg, #CD7F32 0%, #B87333 100%); }
+        .rank-other { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        
+        .product-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+        
+        .product-image-placeholder {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4em;
+        }
+        
+        .product-info {
+            padding: 20px;
+        }
+        
+        .product-name {
+            font-size: 1.1em;
+            color: #333;
+            margin-bottom: 8px;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+        
+        .product-description {
+            font-size: 0.9em;
+            color: #666;
+            margin-bottom: 15px;
+            line-height: 1.4;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        .product-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .product-price {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #e74c3c;
+        }
+        
+        .match-score {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.85em;
+            font-weight: 600;
+        }
+        
+        .product-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .btn {
+            flex: 1;
+            padding: 12px;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            font-size: 0.95em;
+            transition: all 0.2s;
+            text-align: center;
+            text-decoration: none;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            transform: scale(1.02);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        .btn-secondary {
+            background: #f0f0f0;
+            color: #333;
+        }
+        
+        .btn-secondary:hover {
+            background: #e0e0e0;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 60px;
+        }
+        
+        .loading-spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .error-message {
+            background: #fee;
+            color: #c33;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: 60px;
+            color: #666;
+        }
+        
+        .empty-state-icon {
+            font-size: 4em;
+            margin-bottom: 20px;
+        }
+        
+        .model-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            margin-left: 15px;
+        }
+        
+        .model-status.online {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        .model-status.offline {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: currentColor;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        .recommendation-reason {
+            font-size: 0.8em;
+            color: #888;
+            margin-top: 8px;
+            padding-top: 8px;
+            border-top: 1px dashed #eee;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+            
+            .user-info {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .behavior-stats {
+                margin-left: 0;
+                margin-top: 15px;
+            }
+            
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>为您推荐</h1>
+            <p style="color: #666;">基于您的浏览和购买历史，AI 智能精选</p>
+            
+            <div class="user-info" id="userInfo">
+                <div class="loading-spinner" style="width: 30px; height: 30px;"></div>
+                <span>正在加载用户信息...</span>
+            </div>
+        </div>
+        
+        <div class="recommendation-section">
+            <div class="section-header">
+                <div style="display: flex; align-items: center;">
+                    <h2 class="section-title">
+                        🎯 精选商品
+                        <span class="recommendation-badge" id="recBadge">AI 推荐</span>
+                    </h2>
+                    <span class="model-status offline" id="modelStatus">
+                        <span class="status-dot"></span>
+                        <span id="modelStatusText">模型服务检测中...</span>
+                    </span>
+                </div>
+                <button class="refresh-btn" id="refreshBtn" onclick="loadRecommendations()">
+                    🔄 刷新推荐
+                </button>
+            </div>
+            
+            <div id="productsContainer">
+                <div class="loading">
+                    <div class="loading-spinner"></div>
+                    <p>正在为您生成个性化推荐...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 全局状态
+        let currentUser = null;
+        let modelOnline = false;
+        
+        // 页面加载时初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            checkModelStatus();
+            loadRecommendations();
+        });
+        
+        // 检查模型服务状态
+        async function checkModelStatus() {
+            try {
+                const response = await fetch('http://localhost:5001/health', {
+                    method: 'GET',
+                    timeout: 3000
+                });
+                
+                if (response.ok) {
+                    modelOnline = true;
+                    updateModelStatus(true);
+                } else {
+                    throw new Error('Model service not ready');
+                }
+            } catch (error) {
+                modelOnline = false;
+                updateModelStatus(false);
+            }
+        }
+        
+        // 更新模型状态显示
+        function updateModelStatus(online) {
+            const statusEl = document.getElementById('modelStatus');
+            const statusText = document.getElementById('modelStatusText');
+            
+            if (online) {
+                statusEl.className = 'model-status online';
+                statusText.textContent = 'AI 模型在线';
+            } else {
+                statusEl.className = 'model-status offline';
+                statusText.textContent = 'AI 模型离线（使用默认排序）';
+            }
+        }
+        
+        // 加载推荐数据
+        async function loadRecommendations() {
+            const container = document.getElementById('productsContainer');
+            const refreshBtn = document.getElementById('refreshBtn');
+            
+            refreshBtn.disabled = true;
+            container.innerHTML = `
+                <div class="loading">
+                    <div class="loading-spinner"></div>
+                    <p>正在为您生成个性化推荐...</p>
+                </div>
+            `;
+            
+            try {
+                const response = await fetch('/api/recommend.php');
+                const data = await response.json();
+                
+                if (data.status === 'success') {
+                    currentUser = {
+                        id: data.user_id,
+                        username: data.username
+                    };
+                    
+                    updateUserInfo(data);
+                    renderProducts(data.recommendations.products);
+                    
+                    // 更新徽章
+                    const badge = document.getElementById('recBadge');
+                    if (data.user_id) {
+                        badge.textContent = modelOnline ? 'AI 个性化推荐' : '热门推荐';
+                    } else {
+                        badge.textContent = '热门推荐';
+                    }
+                } else {
+                    throw new Error(data.message || '获取推荐失败');
+                }
+            } catch (error) {
+                container.innerHTML = `
+                    <div class="error-message">
+                        <p>❌ 获取推荐失败</p>
+                        <p style="font-size: 0.9em; margin-top: 10px;">${error.message}</p>
+                        <button onclick="loadRecommendations()" style="margin-top: 15px; padding: 10px 20px; border: none; border-radius: 5px; background: #667eea; color: white; cursor: pointer;">
+                            重试
+                        </button>
+                    </div>
+                `;
+            } finally {
+                refreshBtn.disabled = false;
+            }
+        }
+        
+        // 更新用户信息显示
+        function updateUserInfo(data) {
+            const userInfoEl = document.getElementById('userInfo');
+            
+            if (data.user_id) {
+                const behavior = data.recommendations.user_behavior || {};
+                userInfoEl.innerHTML = `
+                    <div class="user-avatar">👤</div>
+                    <div class="user-details">
+                        <h3>欢迎回来，${data.username || '用户'}</h3>
+                        <p>用户 ID: ${data.user_id}</p>
+                    </div>
+                    <div class="behavior-stats">
+                        <div class="stat-item">
+                            <div class="stat-value">${behavior.cart_count || 0}</div>
+                            <div class="stat-label">购物车</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">${behavior.order_count || 0}</div>
+                            <div class="stat-label">历史订单</div>
+                        </div>
+                    </div>
+                `;
+            } else {
+                userInfoEl.innerHTML = `
+                    <div class="user-avatar" style="background: linear-gradient(135deg, #ccc 0%, #999 100%);">👋</div>
+                    <div class="user-details">
+                        <h3>游客访问</h3>
+                        <p>登录后可获得个性化推荐</p>
+                    </div>
+                    <div class="behavior-stats">
+                        <div class="stat-item">
+                            <a href="/users/login2.php" style="color: #667eea; text-decoration: none;">
+                                <div class="stat-value" style="font-size: 1em; padding: 10px 20px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border-radius: 20px;">登录</div>
+                            </a>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+        
+        // 渲染商品列表
+        function renderProducts(products) {
+            const container = document.getElementById('productsContainer');
+            
+            if (!products || products.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-state-icon">📦</div>
+                        <h3>暂无推荐商品</h3>
+                        <p>请稍后再试，或浏览其他分类</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            const html = products.map((product, index) => {
+                const rank = product.rank || (index + 1);
+                const rankClass = rank === 1 ? 'rank-1' : rank === 2 ? 'rank-2' : rank === 3 ? 'rank-3' : 'rank-other';
+                const imageHtml = product.image 
+                    ? `<img src="${product.image}" alt="${product.product_name}" class="product-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">`
+                    : '';
+                
+                return `
+                    <div class="product-card">
+                        <div class="product-rank ${rankClass}">${rank}</div>
+                        ${imageHtml}
+                        <div class="product-image-placeholder" style="${product.image ? 'display:none;' : ''}">
+                            🎁
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">${escapeHtml(product.product_name)}</h3>
+                            <p class="product-description">${escapeHtml(product.description || '暂无描述')}</p>
+                            <div class="product-meta">
+                                <span class="product-price">$${parseFloat(product.price).toFixed(2)}</span>
+                                <span class="match-score">匹配度 ${product.probability || '50%'}</span>
+                            </div>
+                            <div class="product-actions">
+                                <a href="/cart.php?action=add&ProductID=${product.product_id}&AttributeID=${product.attribute_id || 0}&Qty=1" class="btn btn-primary">
+                                    🛒 加入购物车
+                                </a>
+                                <a href="/product.php?ProductID=${product.product_id}" class="btn btn-secondary">
+                                    查看详情
+                                </a>
+                            </div>
+                            ${product.is_default ? '<div class="recommendation-reason">🌟 热门商品推荐</div>' : '<div class="recommendation-reason">🤖 AI 根据您的偏好推荐</div>'}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+            
+            container.innerHTML = `<div class="products-grid">${html}</div>`;
+        }
+        
+        // HTML 转义函数
+        function escapeHtml(text) {
+            if (!text) return '';
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+    </script>
+</body>
+</html>

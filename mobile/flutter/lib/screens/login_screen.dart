@@ -3,7 +3,14 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:provider/provider.dart';
 import '../providers/auth_provider.dart';
 import '../main.dart';
+import '../tracking/tracking.dart';
+import '../services/oauth_service.dart';
+import '../services/storage_service.dart';
+import '../services/api_service.dart';
+import '../widgets/oauth_login_buttons.dart';
 import 'register_screen.dart';
+import 'home_screen.dart';
+import 'oauth_binding_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   final bool showAsDialog;
@@ -40,16 +47,89 @@ class _LoginScreenState extends State<LoginScreen> {
 
     if (success) {
       Fluttertoast.showToast(msg: '登录成功');
+      // 上报登录成功事件
+      TrackingSDK().track('login', extraData: {
+        'username': username,
+        'status': 'success',
+      });
       if (mounted) {
         Navigator.of(context).pop(true);
       }
     } else {
       Fluttertoast.showToast(msg: '登录失败，请检查用户名和密码');
+      // 上报登录失败事件
+      TrackingSDK().track('login', extraData: {
+        'username': username,
+        'status': 'failed',
+      });
     }
   }
 
   void _close() {
     Navigator.of(context).pop(false);
+  }
+
+  /// 处理 OAuth 登录结果
+  Future<void> _handleOAuthResult(BuildContext context, OAuthResult result) async {
+    if (!result.success) {
+      Fluttertoast.showToast(msg: result.message ?? '登录失败');
+      return;
+    }
+
+    // 已绑定用户，直接登录
+    if (result.bindStatus == 'already_bound' && result.accessToken != null) {
+      final storage = StorageService();
+      await storage.setAccessToken(result.accessToken!);
+      if (result.refreshToken != null) {
+        await storage.setRefreshToken(result.refreshToken!);
+      }
+      await storage.setUserId(result.user!.id.toString());
+      await storage.setUserName(result.user!.username);
+
+      // 更新全局 Token
+      ApiService().setToken(result.accessToken!);
+
+      // 更新 AuthProvider 登录状态
+      final authProvider = Provider.of<AuthProvider>(context, listen: false);
+      await authProvider.setOAuthLoginState(
+        accessToken: result.accessToken!,
+        refreshToken: result.refreshToken,
+        userId: result.user!.id.toString(),
+        username: result.user!.username,
+      );
+
+      Fluttertoast.showToast(msg: '登录成功');
+
+      // 上报登录成功事件
+      TrackingSDK().track('login', extraData: {
+        'provider': result.user?.username,
+        'status': 'success',
+        'method': 'oauth',
+      });
+
+      // 跳转到首页
+      if (mounted) {
+        Navigator.of(context).pushAndRemoveUntil(
+          MaterialPageRoute(builder: (_) => const HomeScreen()),
+          (route) => false,
+        );
+      }
+      return;
+    }
+
+    // 新用户，需要绑定
+    if (result.bindStatus == 'need_bind' && result.tempInfo != null) {
+      if (mounted) {
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (_) => OAuthBindingScreen(tempInfo: result.tempInfo!),
+          ),
+        );
+      }
+      return;
+    }
+
+    Fluttertoast.showToast(msg: '登录结果异常');
   }
 
   @override
@@ -202,6 +282,11 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
               ],
+            ),
+            // OAuth 登录按钮
+            OAuthLoginButtons(
+              isLoading: authProvider.isLoading,
+              onLoginResult: (result) => _handleOAuthResult(context, result),
             ),
           ],
         ),

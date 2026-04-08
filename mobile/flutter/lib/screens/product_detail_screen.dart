@@ -10,6 +10,7 @@ import '../widgets/cached_image.dart';
 import '../widgets/skeleton_loading.dart';
 import '../widgets/animated_widgets.dart';
 import '../services/api_service.dart';
+import '../tracking/tracking.dart';
 import 'cart_screen.dart';
 import 'login_screen.dart';
 
@@ -98,12 +99,26 @@ class _ProductDetailScreenState extends State<ProductDetailScreen>
 
     try {
       final apiService = ApiService();
+      final productProvider = Provider.of<ProductProvider>(context, listen: false);
+      final product = productProvider.selectedProduct;
       if (_isFavorite) {
         await apiService.addToWishlist(widget.productId);
         Fluttertoast.showToast(msg: '已添加收藏');
+        // 上报收藏事件
+        TrackingSDK().track('collect', extraData: {
+          'product_id': widget.productId,
+          'product_name': product?.name,
+          'action': 'add',
+        });
       } else {
         await apiService.removeFromWishlist(widget.productId);
         Fluttertoast.showToast(msg: '已取消收藏');
+        // 上报取消收藏事件
+        TrackingSDK().track('collect', extraData: {
+          'product_id': widget.productId,
+          'product_name': product?.name,
+          'action': 'remove',
+        });
       }
     } catch (e) {
       // 如果API调用失败，恢复状态
@@ -620,6 +635,13 @@ class _ProductDetailScreenState extends State<ProductDetailScreen>
 
     if (success) {
       Fluttertoast.showToast(msg: '已加入购物车');
+      // 上报加购事件
+      TrackingSDK().trackAddToCart(
+        productId: product.id,
+        productName: product.name,
+        price: product.minPrice,
+        quantity: _quantity,
+      );
       Navigator.of(context).push(
         MaterialPageRoute(builder: (_) => const CartScreen()),
       );

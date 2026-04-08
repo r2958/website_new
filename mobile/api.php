@@ -21,7 +21,11 @@
  * - mobile_token_blacklist: Token 黑名单
  * 
  * 可用接口：
- * 
+ *
+ * 【埋点相关 - 无需认证】
+ * - POST ?action=track             上报单个埋点事件
+ * - POST ?action=trackBatch        批量上报埋点事件
+ *
  * 【认证相关 - 无需认证】
  * - POST ?action=register          用户注册
  * - POST ?action=login             用户登录
@@ -443,6 +447,38 @@ switch ($action) {
         }
         break;
     
+    // ========== OAuth 认证接口（无需认证）==========
+    case 'oauthCallback':
+    case 'oauthBind':
+        require_once __DIR__ . '/api/oauth.php';
+        $oauth = new OAuthAPI($db);
+        
+        switch ($action) {
+            case 'oauthCallback':
+                $oauth->callback();
+                break;
+            case 'oauthBind':
+                $oauth->bindAccount();
+                break;
+        }
+        break;
+    
+    // ========== 埋点相关接口（无需认证）==========
+    case 'track':
+    case 'trackBatch':
+        require_once __DIR__ . '/api/track.php';
+        $tracker = new TrackingService();
+
+        switch ($action) {
+            case 'track':
+                $tracker->collect();
+                break;
+            case 'trackBatch':
+                $tracker->collectBatch();
+                break;
+        }
+        break;
+
     // ========== 默认：未知接口 ==========
     default:
         http_response_code(404);

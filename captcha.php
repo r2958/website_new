@@ -1,5 +1,6 @@
 <?php
-session_start();
+// 加载 application.php 以确保使用相同的会话处理器（数据库）
+require_once('application.php');
 
 // Generate random 4-character captcha code
 $chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'; // Exclude confusing characters like 0, O, 1, I

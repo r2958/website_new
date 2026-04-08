@@ -1,0 +1,12 @@
+模型加载成功!
+特征列: ['user_idx', 'product_idx', 'hour', 'day_of_week', 'price_bucket']
+启动模型推理服务...
+接口地址:
+  - 健康检查: GET  http://localhost:5001/health
+  - 单商品预测: POST http://localhost:5001/predict
+  - 批量预测: POST http://localhost:5001/predict_batch
+
+ * Serving Flask app 'model_server'
+ * Debug mode: off
+Address already in use
+Port 5001 is in use by another program. Either identify and stop that program, or start the server with a different port.

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../providers/auth_provider.dart';
 import '../main.dart';
+import '../tracking/tracking.dart';
 import 'login_screen.dart';
 
 class RegisterScreen extends StatefulWidget {
@@ -54,6 +55,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
       );
 
       if (result.success) {
+        // 上报注册成功事件
+        TrackingSDK().track('register', extraData: {
+          'username': _usernameController.text.trim(),
+          'status': 'success',
+        });
         if (mounted) {
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(
@@ -72,6 +78,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
           }
         }
       } else {
+        // 上报注册失败事件
+        TrackingSDK().track('register', extraData: {
+          'username': _usernameController.text.trim(),
+          'status': 'failed',
+          'message': result.message,
+        });
         if (mounted) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(

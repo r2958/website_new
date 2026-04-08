@@ -151,6 +151,37 @@ class AuthProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  /// 设置 OAuth 登录状态（用于 OAuth 绑定/注册后）
+  Future<void> setOAuthLoginState({
+    required String accessToken,
+    String? refreshToken,
+    required String userId,
+    required String username,
+  }) async {
+    // 先保存到 storage，确保后续请求能获取到 token
+    await _storage.setAccessToken(accessToken);
+    if (refreshToken != null) {
+      await _storage.setRefreshToken(refreshToken);
+    }
+    await _storage.setUserId(userId);
+    await _storage.setUserName(username);
+    
+    // 再更新全局变量和 ApiService
+    globalAccessToken = accessToken;
+    if (refreshToken != null) {
+      globalRefreshToken = refreshToken;
+    }
+    _apiService.setToken(accessToken);
+    if (refreshToken != null) {
+      _apiService.setRefreshToken(refreshToken);
+    }
+    
+    _user = UserInfo(id: userId, username: username);
+    _isLoggedIn = true;
+    notifyListeners();
+    print('AuthProvider - OAuth 登录状态已更新: user=$username, token=${accessToken.substring(0, accessToken.length > 20 ? 20 : accessToken.length)}...');
+  }
+
   // 注册方法
   Future<RegisterResult> register({
     required String username,
